@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-1 md:order-1 relative h-[280px] md:h-[750px] mb-2 md:mb-0">
+                    <div className="order-1 md:order-1 relative h-[320px] md:h-[450px]">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -38,8 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            // Mobile: Centered, larger scale. Desktop: High vertical pull.
-                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-[320px] md:h-[1300px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-[1.35] md:scale-[1.6]"
+                            // Mobile: Centered, super large scale. Desktop: Balanced large scale and high vertical pull.
+                            className="relative w-full max-w-[340px] md:max-w-none md:w-full h-[400px] md:h-[1150px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-[1.5] md:scale-[1.6]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -61,7 +61,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-2 md:mb-4"
+                            className="text-[36px] md:text-7xl font-bold tracking-tight text-white mb-3 md:mb-4"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent-secondary">
