@@ -39,7 +39,7 @@ export function Hero() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
                             // Desktop: Gigantic scale and adjusted positioning for maximum prominence
-                            className="relative w-full max-w-[1000px] md:max-w-none md:w-full h-[1000px] md:h-[1300px] flex items-center justify-center md:justify-end md:-translate-x-8 md:-translate-y-48 z-10 scale-140 md:scale-[2]"
+                            className="relative w-full max-w-[1000px] md:max-w-none md:w-full h-[1000px] md:h-[1300px] flex items-center justify-center md:justify-end md:translate-x-4 md:-translate-y-48 z-10 scale-140 md:scale-[2]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
