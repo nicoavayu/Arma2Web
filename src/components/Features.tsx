@@ -465,9 +465,9 @@ export function Features() {
                             </div>
                         </div>
 
-                        <div className="relative flex-1 flex flex-row items-center justify-center p-6 gap-2 md:gap-6">
-                            {/* Awards on the left */}
-                            <div className="flex flex-col justify-center gap-8 z-10 w-16">
+                        <div className="relative flex-1 flex flex-col md:flex-row items-center justify-center p-6 gap-6 md:gap-6">
+                            {/* Awards - Row on mobile, Column on desktop */}
+                            <div className="flex flex-row md:flex-col justify-center gap-8 md:gap-8 z-10">
                                 {[
                                     { src: "/mvp_award.png", label: "Figura", count: "3X", color: "#fbbf24" },
                                     { src: "/goalkeeper_award.png", label: "Arquero", count: "1X", color: "#38bdf8" },
