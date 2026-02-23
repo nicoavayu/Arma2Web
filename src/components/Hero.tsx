@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative pt-8 pb-8 md:pt-20 md:pb-12 overflow-hidden">
+        <Section id="home" className="relative min-h-[90dvh] md:min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-1 md:order-1 relative h-[320px] md:h-[450px]">
+                    <div className="order-1 md:order-1 relative h-[350px] md:h-[600px] flex items-center justify-center">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -38,8 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            // Mobile: Centered, super large scale. Desktop: Balanced large scale and high vertical pull.
-                            className="relative w-full max-w-[340px] md:max-w-none md:w-full h-[400px] md:h-[1150px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-[1.5] md:scale-[1.6]"
+                            // Mobile: Centered, Gigantic scale. Desktop: Balanced large scale and extreme vertical pull.
+                            className="relative w-full max-w-[400px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-48 z-10 scale-[1.8] md:scale-[1.65]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -84,12 +84,12 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="flex flex-wrap items-center justify-center md:justify-start gap-4"
+                            className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full md:w-auto"
                         >
                             {/* App Store Button */}
                             <button
                                 type="button"
-                                className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-xl tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 active:bg-white/5 transition-colors backdrop-blur-sm"
+                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
                                 onClick={() => window.open("https://apps.apple.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
@@ -106,7 +106,7 @@ export function Hero() {
                             {/* Google Play Button */}
                             <button
                                 type="button"
-                                className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-xl tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 active:bg-white/5 transition-colors backdrop-blur-sm"
+                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
                                 onClick={() => window.open("https://play.google.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
