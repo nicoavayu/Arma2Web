@@ -37,8 +37,8 @@ export function Hero() {
                             initial={{ opacity: 0, x: -20, scale: 0.95 }}
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            // Desktop: Moved very far left (translate-x-40 = ~160px left) to maximize text space
-                            className="relative w-full max-w-[300px] md:max-w-none md:w-full h-[450px] md:h-[750px] flex items-center justify-center md:justify-end md:-translate-x-40 md:-translate-y-4 md:rotate-[-2deg] md:scale-[1.05] z-10"
+                            // Desktop: Centered and scaled to fit the space without rotation or excessive offset
+                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-[500px] md:h-[750px] flex items-center justify-center md:justify-end md:-translate-x-10 md:translate-y-0 z-10"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
