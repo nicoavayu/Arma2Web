@@ -43,7 +43,7 @@ export function Hero() {
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
                                 <Image
-                                    src="/hero.png"
+                                    src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
                                     className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl"
