@@ -38,7 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-[500px] md:h-[750px] flex items-center justify-center md:justify-end md:-translate-x-10 md:translate-y-0 z-10"
+                            // Desktop: Scaled up to be more prominent
+                            className="relative w-full max-w-[400px] md:max-w-none md:w-full h-[600px] md:h-[850px] flex items-center justify-center md:justify-end md:-translate-x-10 md:-translate-y-4 z-10"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -55,21 +56,6 @@ export function Hero() {
 
                     {/* Right Column: Text & Buttons */}
                     <div className="flex flex-col items-start text-left order-1 md:order-2 relative z-20 pl-0 md:pl-0">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="mb-4"
-                        >
-                            <div className="relative w-24 h-24 md:w-32 md:h-32">
-                                <Image
-                                    src="/logo_arma2.png"
-                                    alt="Arma2 Logo Icon"
-                                    fill
-                                    className="object-contain brightness-0 invert"
-                                />
-                            </div>
-                        </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
