@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative pt-12 pb-10 md:pt-20 md:pb-12 overflow-hidden">
+        <Section id="home" className="relative pt-8 pb-8 md:pt-20 md:pb-12 overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-1 md:order-1 relative h-[300px] md:h-[750px]">
+                    <div className="order-1 md:order-1 relative h-[280px] md:h-[750px] mb-2 md:mb-0">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -38,8 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            // Mobile: Centered, smaller scale to prevent overcrowding. Desktop: High vertical pull.
-                            className="relative w-full max-w-[280px] md:max-w-none md:w-full h-[350px] md:h-[1300px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-100 md:scale-[1.6]"
+                            // Mobile: Centered, larger scale. Desktop: High vertical pull.
+                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-[320px] md:h-[1300px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-[1.35] md:scale-[1.6]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -61,7 +61,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-4"
+                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-2 md:mb-4"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent-secondary">
@@ -74,7 +74,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-lg md:text-xl text-text-secondary max-w-xl mb-6 leading-relaxed"
+                            className="text-base md:text-xl text-text-secondary max-w-xl mb-4 md:mb-6 leading-tight md:leading-relaxed"
                         >
                             Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados.
                             Olvidate de las discusiones y concentrate en jugar con Armá2.
