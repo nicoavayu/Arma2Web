@@ -35,7 +35,7 @@ export function Navbar() {
             >
                 <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2 z-50">
-                        <div className="relative w-8 h-8 md:w-10 md:h-10">
+                        <div className="relative w-10 h-10 md:w-10 md:h-10">
                             <Image
                                 src="/logo_navbar.png"
                                 alt="Arma2 Logo"

@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-2 md:order-1 relative h-[450px] md:h-[750px]">
+                    <div className="order-1 md:order-1 relative h-[300px] md:h-[750px]">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -38,8 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            // Desktop: Balanced scale for a premium feel without overpowering
-                            className="relative w-full max-w-[900px] md:max-w-none md:w-full h-[800px] md:h-[1150px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-120 md:scale-[1.6]"
+                            // Mobile: Centered, smaller scale to prevent overcrowding. Desktop: High vertical pull.
+                            className="relative w-full max-w-[280px] md:max-w-none md:w-full h-[350px] md:h-[1300px] flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-36 z-10 scale-100 md:scale-[1.6]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -55,13 +55,13 @@ export function Hero() {
                     </div>
 
                     {/* Right Column: Text & Buttons */}
-                    <div className="flex flex-col items-start text-left order-1 md:order-2 relative z-20 pl-0 md:pl-0">
+                    <div className="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-2 relative z-20">
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4"
+                            className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-4"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent-secondary">
@@ -84,7 +84,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="flex flex-wrap gap-4"
+                            className="flex flex-wrap items-center justify-center md:justify-start gap-4"
                         >
                             {/* App Store Button */}
                             <button

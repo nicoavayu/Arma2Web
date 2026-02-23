@@ -405,9 +405,9 @@ export function Features() {
     return (
         <Section id="features" className="bg-background">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="mb-20">
+                <div className="mb-20 text-center md:text-left">
                     <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">Features</span>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-2xl">
+                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-2xl mx-auto md:mx-0">
                         Todo lo que necesitás para{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary-glow">
                             profesionalizar
