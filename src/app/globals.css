@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Arma2 Palette */
+  --background: #0a0a16;
+  --surface: #12122a;
+  --surface-highlight: #1a1a35;
+  --primary: #3B82F6;
+  --primary-glow: #4f46e5;
+  --accent: #7c3aed;
+  --accent-secondary: #8B5CF6;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+
+  /* Utilities */
+  --font-inter: var(--font-inter);
+  --font-oswald: var(--font-oswald);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-highlight: var(--surface-highlight);
+  --color-primary: var(--primary);
+  --color-primary-glow: var(--primary-glow);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--color-accent-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --font-sans: var(--font-inter);
+  --font-oswald: var(--font-oswald);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
