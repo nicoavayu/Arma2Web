@@ -38,8 +38,8 @@ export function Hero() {
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
-                            // Desktop: Massive scale for maximum visual impact
-                            className="relative w-full max-w-[700px] md:max-w-none md:w-full h-[700px] md:h-[1000px] flex items-center justify-center md:justify-end md:-translate-x-12 md:-translate-y-12 z-10 scale-110 md:scale-125"
+                            // Desktop: Extreme scale and vertical pull for maximum visual impact
+                            className="relative w-full max-w-[800px] md:max-w-none md:w-full h-[800px] md:h-[1100px] flex items-center justify-center md:justify-end md:-translate-x-16 md:-translate-y-24 z-10 scale-125 md:scale-150"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
