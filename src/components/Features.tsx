@@ -508,7 +508,7 @@ export function Features() {
                                 >
                                     <Image
                                         src="/CardProfileCard.png"
-                                        alt="Armá2"
+                                        alt="Arma2"
                                         fill
                                         className="object-contain"
                                     />

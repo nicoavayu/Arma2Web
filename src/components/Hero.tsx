@@ -45,7 +45,7 @@ export function Hero() {
                                     src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl"
+                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-none md:drop-shadow-2xl"
                                     priority
                                 />
                             </div>
@@ -75,7 +75,7 @@ export function Hero() {
                             className="mb-7 max-w-xl text-[15px] leading-relaxed text-text-secondary [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-6 md:text-[clamp(1.12rem,1.55vw,1.35rem)] md:leading-relaxed xl:text-[1.18rem] 2xl:text-xl"
                         >
                             Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados.
-                            Olvidate de las discusiones y concentrate en jugar con Armá2.
+                            Olvidate de las discusiones y concentrate en jugar con Arma2.
                         </motion.p>
 
                         <motion.div
@@ -89,7 +89,7 @@ export function Hero() {
                                 href={STORE_LINKS.appStore}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Descargar Armá2 en App Store"
+                                aria-label="Descargar Arma2 en App Store"
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 22.773 22.773">
@@ -108,7 +108,7 @@ export function Hero() {
                                 href={STORE_LINKS.googlePlay}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Descargar Armá2 en Google Play"
+                                aria-label="Descargar Arma2 en Google Play"
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 64 64">

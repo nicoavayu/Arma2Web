@@ -26,7 +26,7 @@ export function CTA() {
                             href={STORE_LINKS.appStore}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Descargar Armá2 en App Store"
+                            aria-label="Descargar Arma2 en App Store"
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
@@ -45,7 +45,7 @@ export function CTA() {
                             href={STORE_LINKS.googlePlay}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Descargar Armá2 en Google Play"
+                            aria-label="Descargar Arma2 en Google Play"
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">

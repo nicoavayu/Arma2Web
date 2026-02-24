@@ -29,7 +29,7 @@ const quickSteps = [
   {
     icon: <Scale className="h-6 w-6 text-emerald-400" />,
     title: "Equipos parejos y a jugar",
-    description: "Con la votación, Armá2 arma equipos balanceados para arrancar rápido.",
+    description: "Con la votación, Arma2 arma equipos balanceados para arrancar rápido.",
   },
 ] as const;
 
@@ -64,7 +64,7 @@ export function HowItWorks() {
             <span className="block text-primary-glow">organizando el partido.</span>
           </h2>
           <p className="text-sm leading-relaxed text-text-secondary sm:text-base md:text-lg">
-            Armá2 ordena la previa y también el post partido. Menos fricción, más fútbol.
+            Arma2 ordena la previa y también el post partido. Menos fricción, más fútbol.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export function HowItWorks() {
               <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">Qué pasa después del partido</h3>
               <p className="mb-4 text-sm leading-relaxed text-text-secondary sm:text-base">
                 La app te notifica que hay una encuesta post partido. Es breve: 5 preguntas. Si todos la contestan en
-                serio, Armá2 promedia los votos del grupo y usa ese resultado para definir premios, sanciones y
+                serio, Arma2 promedia los votos del grupo y usa ese resultado para definir premios, sanciones y
                 perfiles cada vez más representativos.
               </p>
 

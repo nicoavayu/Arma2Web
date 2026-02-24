@@ -9,7 +9,7 @@ const faqs = [
     {
         question: "¿Es gratis?",
         answer:
-            "Sí, Armá2 es 100% gratuito para organizar partidos con amigos. En el futuro podríamos introducir funciones premium para ligas y torneos.",
+            "Sí, Arma2 es 100% gratuito para organizar partidos con amigos. En el futuro podríamos introducir funciones premium para ligas y torneos.",
     },
     {
         question: "¿Cómo funciona el balance de equipos?",
@@ -29,7 +29,7 @@ const faqs = [
     {
         question: "¿Qué pasa si alguien falta sin aviso?",
         answer:
-            "La reputación es clave en Armá2. Si un jugador falta sin avisar, su índice de disciplina baja, lo que queda registrado en su ficha pública y afecta su prioridad para próximos partidos.",
+            "La reputación es clave en Arma2. Si un jugador falta sin avisar, su índice de disciplina baja, lo que queda registrado en su ficha pública y afecta su prioridad para próximos partidos.",
     },
     {
         question: "¿Es solo para fútbol 5?",

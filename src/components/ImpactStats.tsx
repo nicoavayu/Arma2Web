@@ -64,7 +64,7 @@ export function ImpactStats() {
             Tu temporada queda registrada.
           </h2>
           <p className="mx-auto max-w-3xl text-sm font-medium leading-relaxed text-white/55 sm:text-base md:text-xl">
-            Armá2 te deja ver tu evolución futbolística en el tiempo: volumen de partidos, lesiones, partidos
+            Arma2 te deja ver tu evolución futbolística en el tiempo: volumen de partidos, lesiones, partidos
             recurrentes y balance anual completo.
           </p>
         </motion.div>
