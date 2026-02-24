@@ -27,7 +27,7 @@ export function Hero() {
             <div className="absolute bottom-0 right-0 hidden h-[600px] w-[800px] rounded-full bg-accent/10 blur-[120px] pointer-events-none -z-10 md:block" />
 
             <div className="container relative mx-auto">
-                <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0 lg:grid-cols-[1fr_1.15fr]">
+                <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0 lg:grid-cols-[1.08fr_1fr] xl:grid-cols-[1fr_1.15fr]">
                     {/* Left Column: Image */}
                     <div className="order-1 relative mt-0 mb-0 flex h-[50vh] min-h-[340px] max-h-[500px] items-center justify-center [@media(max-width:430px)]:h-[48vh] [@media(max-width:430px)]:min-h-[330px] [@media(max-width:430px)]:max-h-[480px] [@media(max-width:360px)]:h-[46vh] [@media(max-width:360px)]:min-h-[300px] [@media(max-width:360px)]:max-h-[430px] sm:h-[46vh] sm:min-h-[300px] sm:max-h-[420px] md:mt-0 md:mb-0 md:h-[600px]">
                         {/* Premium Glow Effect - Increased visibility */}
@@ -37,7 +37,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: -20, scale: 0.95 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="relative z-10 flex h-full w-full max-w-[340px] scale-[1.55] items-center justify-center [@media(max-width:430px)]:max-w-[380px] [@media(max-width:430px)]:scale-[1.8] [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:max-w-[340px] [@media(max-width:360px)]:scale-[1.64] [@media(max-width:360px)]:-translate-y-2 sm:max-w-[320px] sm:scale-[1.49] md:w-full md:max-w-none md:translate-x-0 md:-translate-y-2 md:scale-[1.52] md:justify-end lg:-translate-x-14 lg:scale-[1.82] lg:justify-center xl:-translate-x-20"
+                            className="relative z-10 flex h-full w-full max-w-[340px] scale-[1.55] items-center justify-center [@media(max-width:430px)]:max-w-[380px] [@media(max-width:430px)]:scale-[1.8] [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:max-w-[340px] [@media(max-width:360px)]:scale-[1.64] [@media(max-width:360px)]:-translate-y-2 sm:max-w-[320px] sm:scale-[1.49] md:w-full md:max-w-none md:translate-x-0 md:-translate-y-2 md:scale-[1.56] md:justify-end lg:-translate-x-6 lg:scale-[1.92] lg:justify-end xl:-translate-x-20 xl:scale-[1.82] xl:justify-center"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -53,13 +53,13 @@ export function Hero() {
                     </div>
 
                     {/* Right Column: Text & Buttons */}
-                    <div className="order-2 relative z-20 flex flex-col items-center text-center [@media(max-width:430px)]:-mt-6 [@media(max-width:360px)]:-mt-4 md:mt-0 md:items-start md:text-left lg:-translate-x-10 xl:-translate-x-14">
+                    <div className="order-2 relative z-20 flex flex-col items-center text-center [@media(max-width:430px)]:-mt-6 [@media(max-width:360px)]:-mt-4 md:mt-0 md:items-start md:text-left lg:-translate-x-4 xl:-translate-x-14">
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="mb-5 text-[clamp(1.85rem,8vw,2.85rem)] font-bold leading-[1.08] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.6vw,2.35rem)] md:mb-4 md:text-7xl md:leading-tight"
+                            className="mb-5 text-[clamp(1.85rem,8vw,2.85rem)] font-bold leading-[1.08] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.6vw,2.35rem)] md:mb-4 md:text-[clamp(3.15rem,5.2vw,4.5rem)] md:leading-[1.06] xl:text-7xl xl:leading-tight"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-secondary lg:whitespace-nowrap">
@@ -72,7 +72,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="mb-7 max-w-xl text-[15px] leading-relaxed text-text-secondary [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-6 md:text-xl md:leading-relaxed"
+                            className="mb-7 max-w-xl text-[15px] leading-relaxed text-text-secondary [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-6 md:text-[clamp(1.12rem,1.55vw,1.35rem)] md:leading-relaxed xl:text-xl"
                         >
                             Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados.
                             Olvidate de las discusiones y concentrate en jugar con Armá2.
