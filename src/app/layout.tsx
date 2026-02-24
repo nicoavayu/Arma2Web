@@ -18,16 +18,20 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Arma2 – Organizá partidos. Armá equipos parejos.",
     description: "La forma más simple de organizar tus partidos de fútbol. Creá equipos parejos, llevá estadísticas y votá al mejor jugador.",
-    url: "https://arma2.com.ar",
+    url: "https://www.arma2.com.ar",
     type: "website",
     images: [
       {
-        url: "https://arma2.com.ar/og-image.jpg",
+        url: "https://www.arma2.com.ar/og-image.jpg?v=20260224",
+        width: 1200,
+        height: 630,
+        alt: "Arma2 - Organizá partidos. Armá equipos parejos.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://www.arma2.com.ar/og-image.jpg?v=20260224"],
   },
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
