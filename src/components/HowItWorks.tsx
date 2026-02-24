@@ -3,7 +3,16 @@
 import React from "react";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
-import { Calendar, Users, Scale, Trophy, Shield, History } from "lucide-react";
+import {
+  Calendar,
+  Users,
+  Scale,
+  BellRing,
+  ListChecks,
+  Trophy,
+  Shield,
+  History,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 const quickSteps = [
@@ -24,21 +33,21 @@ const quickSteps = [
   },
 ] as const;
 
-const postMatchItems = [
+const postMatchSignals = [
   {
     icon: <Trophy className="h-5 w-5 text-yellow-400" />,
-    title: "Premios",
-    description: "Se registran figura y arquero del partido en el perfil de cada jugador.",
+    title: "Premios y sanciones más justos",
+    description: "El promedio de la encuesta define figuras y tarjetas con criterio colectivo.",
   },
   {
     icon: <Shield className="h-5 w-5 text-red-400" />,
-    title: "Sanciones",
-    description: "Las tarjetas virtuales dejan trazabilidad del compromiso de cada uno.",
+    title: "Perfiles más confiables",
+    description: "Cuanto más en serio vota la comunidad, más precisos son los perfiles.",
   },
   {
     icon: <History className="h-5 w-5 text-blue-400" />,
-    title: "Historial y reputación",
-    description: "Resultados, reconocimientos y conducta quedan en tu historia competitiva.",
+    title: "Historial útil de verdad",
+    description: "Cada encuesta suma contexto al historial de rendimiento y conducta.",
   },
 ] as const;
 
@@ -91,23 +100,51 @@ export function HowItWorks() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-7 rounded-2xl border border-white/10 bg-gradient-to-br from-surface-highlight/35 to-surface/20 p-5 [@media(max-width:430px)]:mt-6 sm:p-6 md:mt-10 md:p-8"
         >
-          <div className="grid gap-6 md:grid-cols-[1fr_1.15fr] md:items-start md:gap-8">
+          <div className="grid gap-6 lg:grid-cols-[1.06fr_1fr] lg:gap-8">
             <div>
               <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">Qué pasa después del partido</h3>
               <p className="mb-4 text-sm leading-relaxed text-text-secondary sm:text-base">
-                Lo más importante no se pierde: Armá2 deja registro de rendimiento y conducta para que cada
-                partido sume a la reputación real de jugadores y equipos.
+                La app te notifica que hay una encuesta post partido. Es breve: 5 preguntas. Si todos la contestan en
+                serio, Armá2 promedia los votos del grupo y usa ese resultado para definir premios, sanciones y
+                perfiles cada vez más representativos.
               </p>
-              <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wider text-white/70">
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Premios</span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Tarjetas</span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Historial</span>
-                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Reputación</span>
+
+              <div className="mb-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wider text-white/70">
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Notificación post partido</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Encuesta de 5 preguntas</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Promedio comunitario</span>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                <div className="rounded-xl border border-primary/25 bg-primary/10 p-3.5">
+                  <div className="mb-2 flex items-center gap-2 text-primary-glow">
+                    <BellRing className="h-4 w-4" />
+                    <span className="text-[11px] font-bold uppercase tracking-[0.18em]">Notificación</span>
+                  </div>
+                  <p className="text-sm font-semibold text-white">Ya podés completar la encuesta del partido</p>
+                  <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                    Te toma menos de 1 minuto y mejora la calidad del ranking del grupo.
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-white/10 bg-black/20 p-3.5">
+                  <div className="mb-2 flex items-center gap-2 text-white/80">
+                    <ListChecks className="h-4 w-4 text-accent-secondary" />
+                    <span className="text-[11px] font-bold uppercase tracking-[0.18em]">Encuesta en curso</span>
+                  </div>
+                  <div className="mb-2 flex items-center justify-between text-xs text-text-secondary">
+                    <span>Preguntas respondidas</span>
+                    <span className="font-semibold text-white">3/5</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div className="h-full w-3/5 rounded-full bg-gradient-to-r from-primary to-accent-secondary" />
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-1 md:gap-3.5">
-              {postMatchItems.map((item, index) => (
+            <div className="grid gap-3 md:gap-3.5">
+              {postMatchSignals.map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 10 }}

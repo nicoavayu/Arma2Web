@@ -1,123 +1,135 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { Section } from "@/components/Section";
+import { Card } from "@/components/Card";
+import {
+  CalendarRange,
+  ChartNoAxesColumn,
+  HeartPulse,
+  FolderKanban,
+  History,
+  Users,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
-/* ─────────────────────────────────────────────────────────────
-   Mini flow – 3 steps
-───────────────────────────────────────────────────────────── */
-const flowSteps = [
-    {
-        label: "Armá tu equipo",
-        icon: (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L3 7V12C3 16.55 6.84 20.74 12 22C17.16 20.74 21 16.55 21 12V7L12 2Z" fill="url(#shGrad)" />
-                <defs>
-                    <linearGradient id="shGrad" x1="3" y1="2" x2="21" y2="22">
-                        <stop stopColor="#818cf8" /><stop offset="1" stopColor="#6366f1" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        ),
-    },
-    {
-        label: "Publicalo al mercado",
-        icon: (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="2.5" fill="#38bdf8" />
-                <path d="M8.5 8.5C9.6 7.4 11 6.75 12 6.75C13 6.75 14.4 7.4 15.5 8.5" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
-                <path d="M5.5 5.5C7.5 3.5 10 2.25 12 2.25C14 2.25 16.5 3.5 18.5 5.5" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-                <line x1="12" y1="14.5" x2="12" y2="21" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="9" y1="21" x2="15" y2="21" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-        ),
-    },
-    {
-        label: "Jugá y dejá historia",
-        icon: (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" fill="url(#bGrad)" />
-                <defs>
-                    <linearGradient id="bGrad" x1="4" y1="2" x2="20" y2="22">
-                        <stop stopColor="#fde68a" /><stop offset="1" stopColor="#f59e0b" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        ),
-    },
-];
+const statCards = [
+  {
+    icon: <ChartNoAxesColumn className="h-5 w-5 text-primary" />,
+    title: "Actividad por período",
+    description:
+      "Seguí cuántos partidos jugaste en la semana, en el mes y en el año para medir constancia real.",
+  },
+  {
+    icon: <HeartPulse className="h-5 w-5 text-red-400" />,
+    title: "Registro de lesiones",
+    description:
+      "Podés cargar molestias o lesiones y dejar trazabilidad de tu estado físico durante la temporada.",
+  },
+  {
+    icon: <FolderKanban className="h-5 w-5 text-accent-secondary" />,
+    title: "Templates semanales",
+    description:
+      "Guardá equipos base para partidos recurrentes y armá cada fecha en menos tiempo.",
+  },
+  {
+    icon: <History className="h-5 w-5 text-blue-400" />,
+    title: "Historial de cada fecha",
+    description:
+      "Queda guardado cuándo se jugó, quiénes jugaron y cómo terminó el partido.",
+  },
+] as const;
 
-/* ─────────────────────────────────────────────────────────────
-   Main component
-───────────────────────────────────────────────────────────── */
+const annualMetrics = [
+  { label: "Semana", value: "2 partidos" },
+  { label: "Mes", value: "9 partidos" },
+  { label: "Año", value: "84 partidos" },
+] as const;
+
 export function ImpactStats() {
-    const ref = useRef<HTMLDivElement>(null);
+  return (
+    <Section id="impact" className="border-t border-white/5 bg-[#07071280]">
+      <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 text-center [@media(max-width:430px)]:mb-8 md:mb-14"
+        >
+          <span className="mb-4 block text-sm font-medium uppercase tracking-wider text-primary">
+            Estadísticas y continuidad
+          </span>
+          <h2 className="mb-4 text-[clamp(2rem,8vw,3rem)] font-black tracking-tight text-white md:mb-5 md:text-6xl">
+            Tu temporada queda registrada.
+          </h2>
+          <p className="mx-auto max-w-3xl text-sm font-medium leading-relaxed text-white/55 sm:text-base md:text-xl">
+            Armá2 te deja ver tu evolución futbolística en el tiempo: volumen de partidos, lesiones, partidos
+            recurrentes y balance anual completo.
+          </p>
+        </motion.div>
 
-    return (
-        <Section id="impact" className="bg-[#07071280] border-t border-white/5">
-            <div ref={ref} className="container mx-auto">
-
-                {/* Header - Honest Messaging */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-14 text-center md:mb-20"
-                >
-                    <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">
-                        Construyendo la red competitiva
-                    </span>
-                    <h2 className="mb-5 text-[clamp(2rem,8vw,3rem)] font-black tracking-tight text-white md:mb-6 md:text-6xl">
-                        La comunidad empieza con vos.
-                    </h2>
-                    <p className="mx-auto max-w-2xl text-base font-medium text-white/50 md:text-xl">
-                        Sumate desde el inicio. Unite a los equipos que ya están marcando el camino en Armá2.
-                    </p>
-                </motion.div>
-
-                {/* Mini flow */}
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-0">
-                    {flowSteps.map((step, i) => (
-                        <React.Fragment key={step.label}>
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: 0.1 + i * 0.15 }}
-                                className="flex flex-col items-center gap-3 px-3 text-center sm:px-6"
-                            >
-                                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-xl transition-all group hover:border-white/20 sm:h-14 sm:w-14">
-                                    {step.icon}
-                                </div>
-                                <span className="text-sm font-bold text-white/80 uppercase tracking-wide">{step.label}</span>
-                            </motion.div>
-
-                            {i < flowSteps.length - 1 && (
-                                <motion.div
-                                    initial={{ opacity: 0, scaleX: 0 }}
-                                    whileInView={{ opacity: 1, scaleX: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.4, delay: 0.25 + i * 0.15 }}
-                                    className="hidden sm:block h-px w-12 md:w-24 bg-gradient-to-r from-white/20 to-white/5 origin-left"
-                                />
-                            )}
-                        </React.Fragment>
-                    ))}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+          <Card className="border-white/10 bg-surface-highlight/20 p-5 sm:p-6 md:col-span-2">
+            <div className="grid gap-5 md:grid-cols-[1.1fr_1fr] md:items-center">
+              <div>
+                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/75">
+                  <CalendarRange className="h-3.5 w-3.5 text-primary" />
+                  Balance de actividad
                 </div>
+                <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">Seguí tu ritmo semanal, mensual y anual</h3>
+                <p className="text-sm leading-relaxed text-text-secondary md:text-base">
+                  Todo se acumula automáticamente en tu historial para que a fin de año puedas ver cómo te fue
+                  futbolísticamente con datos reales.
+                </p>
+              </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="mt-14 flex justify-center md:mt-20"
-                >
-                    <div className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest">
-                        Sé el primero en tu zona
-                    </div>
-                </motion.div>
+              <div className="grid grid-cols-3 gap-2.5">
+                {annualMetrics.map((metric) => (
+                  <div key={metric.label} className="rounded-xl border border-white/10 bg-black/20 p-3 text-center">
+                    <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-white/45">{metric.label}</p>
+                    <p className="text-sm font-bold text-white">{metric.value}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-        </Section>
-    );
+          </Card>
+
+          {statCards.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.08 + index * 0.06 }}
+            >
+              <Card className="h-full border-white/10 bg-surface-highlight/20 p-5 sm:p-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                  {item.icon}
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-white">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-text-secondary">{item.description}</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-center md:mt-10"
+        >
+          <div className="flex items-center gap-2 text-primary-glow">
+            <Users className="h-4 w-4" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em]">Partidos recurrentes</span>
+          </div>
+          <p className="max-w-2xl text-sm text-text-secondary">
+            Si jugás siempre con el mismo grupo, guardás el template del equipo y cada nueva fecha se suma al
+            historial con fecha, jugadores y resultado.
+          </p>
+        </motion.div>
+      </div>
+    </Section>
+  );
 }
