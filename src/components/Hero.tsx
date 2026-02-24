@@ -24,7 +24,6 @@ export function Hero() {
 
             {/* Background gradients */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none -z-10" />
-            <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-accent/15 via-primary/8 to-transparent pointer-events-none -z-10 md:hidden" />
             <div className="absolute bottom-0 right-0 hidden h-[600px] w-[800px] rounded-full bg-accent/10 blur-[120px] pointer-events-none -z-10 md:block" />
 
             <div className="container relative mx-auto">
