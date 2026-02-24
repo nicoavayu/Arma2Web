@@ -41,7 +41,7 @@ export function Navbar() {
                 style={{ paddingTop: "max(env(safe-area-inset-top), 0px)" }}
             >
                 <div className="container mx-auto flex items-center justify-between">
-                    <Link href="/" className="z-50 flex items-center gap-2 [@media(max-width:430px)]:translate-y-1">
+                    <Link href="/" className="z-50 flex items-center gap-2 translate-y-[2px] md:translate-y-[3px]">
                         <div className="relative h-9 w-9 [@media(max-width:360px)]:h-8 [@media(max-width:360px)]:w-8 md:h-10 md:w-10">
                             <Image
                                 src="/logo_navbar.png"
