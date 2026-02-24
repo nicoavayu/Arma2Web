@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative h-[100dvh] md:min-h-screen flex items-center pt-16 md:pt-20 pb-8 md:pb-12 overflow-hidden">
+        <Section id="home" className="relative h-[100dvh] md:min-h-screen flex items-center pt-12 md:pt-20 pb-8 md:pb-12 overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -89,7 +89,7 @@ export function Hero() {
                             {/* App Store Button */}
                             <button
                                 type="button"
-                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
+                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-md md:rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
                                 onClick={() => window.open("https://apps.apple.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
@@ -106,7 +106,7 @@ export function Hero() {
                             {/* Google Play Button */}
                             <button
                                 type="button"
-                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
+                                className="w-full sm:w-auto px-6 py-3 cursor-pointer inline-flex items-center justify-center rounded-md md:rounded-xl text-white tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 transition-all backdrop-blur-sm group"
                                 onClick={() => window.open("https://play.google.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
