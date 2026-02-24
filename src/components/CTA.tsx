@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Section } from "@/components/Section";
+import { STORE_LINKS } from "@/lib/store-links";
 
 export function CTA() {
     return (
@@ -21,10 +22,12 @@ export function CTA() {
 
                     <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                         {/* App Store Button */}
-                        <button
-                            type="button"
+                        <a
+                            href={STORE_LINKS.appStore}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Descargar Armá2 en App Store"
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
-                            onClick={() => window.open("https://apps.apple.com", "_blank")}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
                                 <path
@@ -35,13 +38,15 @@ export function CTA() {
                                 <p className="text-[10px] text-white leading-none text-left font-medium">Download on the</p>
                                 <span className="text-sm font-semibold">App Store</span>
                             </div>
-                        </button>
+                        </a>
 
                         {/* Google Play Button */}
-                        <button
-                            type="button"
+                        <a
+                            href={STORE_LINKS.googlePlay}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Descargar Armá2 en Google Play"
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
-                            onClick={() => window.open("https://play.google.com", "_blank")}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
                                 <path fill="#57cef3" d="M7 3v58l33-29z" />
@@ -56,7 +61,7 @@ export function CTA() {
                                 <p className="text-[10px] text-white leading-none text-left font-medium">Get it on</p>
                                 <span className="text-sm font-semibold">Google Play</span>
                             </div>
-                        </button>
+                        </a>
                     </div>
 
                     <p className="mt-7 text-sm text-text-secondary/60 md:mt-8">

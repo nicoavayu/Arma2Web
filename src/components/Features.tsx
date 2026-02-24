@@ -4,7 +4,7 @@ import React from "react";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
 import { Users2, Smartphone, Swords, Trophy, Star, UserRound, Check } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 /* ─────────────────────────────────────────────────────────────
@@ -58,8 +58,17 @@ function LiveVotingWindow() {
     const [voted, setVoted] = React.useState(false);
     const [clicked, setClicked] = React.useState(false);
     const [scores, setScores] = React.useState<string[]>(Array(5).fill('X'));
+    const reduceMotion = useReducedMotion();
 
     React.useEffect(() => {
+        if (reduceMotion) {
+            setCycle(0);
+            setVoted(true);
+            setClicked(true);
+            setScores(["8", "7", "7", "9", "8"]);
+            return;
+        }
+
         let currentCycle = 0;
 
         const triggerCycle = (c: number) => {
@@ -92,7 +101,7 @@ function LiveVotingWindow() {
             triggerCycle(currentCycle);
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [reduceMotion]);
 
     return (
         <div className="relative flex h-44 w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/20 p-3 shadow-2xl backdrop-blur-sm [@media(max-width:430px)]:h-40 [@media(max-width:430px)]:p-2.5 sm:h-48 sm:p-4">
@@ -133,7 +142,7 @@ function LiveVotingWindow() {
                                 zIndex
                             }}
                             transition={{
-                                duration: isWrapping ? 0 : 0.6,
+                                duration: reduceMotion ? 0 : (isWrapping ? 0 : 0.6),
                                 ease: "circOut"
                             }}
                         >
@@ -158,7 +167,7 @@ function LiveVotingWindow() {
                 <motion.div
                     className="absolute z-20 text-white w-6 h-6 origin-top-left"
                     style={{ left: "54%", top: "40%" }}
-                    animate={
+                    animate={reduceMotion ? { opacity: 0 } : (
                         voted
                             ? {
                                 x: [30, 0, 0, 0, 30],
@@ -167,12 +176,12 @@ function LiveVotingWindow() {
                                 opacity: [0, 1, 1, 1, 0]
                             }
                             : { opacity: 0 }
-                    }
-                    transition={
+                    )}
+                    transition={reduceMotion ? { duration: 0 } : (
                         voted
                             ? { duration: 1.0, times: [0, 0.25, 0.35, 0.5, 1], ease: "easeInOut" }
                             : { duration: 0 }
-                    }
+                    )}
                 >
                     <svg viewBox="0 0 24 24" fill="white" stroke="rgba(0,0,0,0.8)" strokeWidth="1" className="drop-shadow-lg">
                         <path d="M4 2L20 13L13 14L16 20L13 21L10 15L5 19V2Z" />
@@ -187,43 +196,63 @@ function LiveVotingWindow() {
     );
 }
 
-// Disorganized starting positions (scattered across the pitch)
-const getDisorganizedStart = () => playerDots5v5.map(() => ({
-    x: (Math.random() - 0.5) * 180, // wider horizontal spread
-    y: (Math.random() - 0.5) * 280  // wider vertical spread
-}));
+function getDisorganizedStart(isMobile: boolean) {
+    const spreadX = isMobile ? 124 : 176;
+    const spreadY = isMobile ? 190 : 270;
 
-// Organized final positions (2 teams arranged in a 1-2-2 and 2-2-1 formation facing center on vertical pitch)
-const organizedEnd = playerDots5v5.map((p, i) => {
-    const isA = p.team === "A";
-    const idx = isA ? i : i - 5; // 0 to 4
+    return playerDots5v5.map(() => ({
+        x: (Math.random() - 0.5) * spreadX,
+        y: (Math.random() - 0.5) * spreadY,
+    }));
+}
 
-    // Create a simple soccer formation
-    // Team A (Top): 1 Keeper, 2 Defenders, 2 Attackers
-    // Team B (Bottom): 2 Attackers, 2 Defenders, 1 Keeper
-    let x = 0;
-    let y = 0;
+function getOrganizedEnd(isMobile: boolean) {
+    const scale = isMobile ? 0.78 : 1;
 
-    if (isA) {
-        if (idx === 0) { x = 0; y = -120; } // Keeper
-        else if (idx === 1) { x = -40; y = -80; } // Def L
-        else if (idx === 2) { x = 40; y = -80; } // Def R
-        else if (idx === 3) { x = -25; y = -25; } // Att L
-        else if (idx === 4) { x = 25; y = -25; } // Att R
-    } else {
-        if (idx === 0) { x = -25; y = 25; } // Att L
-        else if (idx === 1) { x = 25; y = 25; } // Att R
-        else if (idx === 2) { x = -40; y = 80; } // Def L
-        else if (idx === 3) { x = 40; y = 80; } // Def R
-        else if (idx === 4) { x = 0; y = 120; } // Keeper
-    }
+    return playerDots5v5.map((p, i) => {
+        const isA = p.team === "A";
+        const idx = isA ? i : i - 5; // 0 to 4
 
-    return { x, y };
-});
+        let x = 0;
+        let y = 0;
+
+        if (isA) {
+            if (idx === 0) { x = 0; y = -120; } // Keeper
+            else if (idx === 1) { x = -40; y = -80; } // Def L
+            else if (idx === 2) { x = 40; y = -80; } // Def R
+            else if (idx === 3) { x = -25; y = -25; } // Att L
+            else if (idx === 4) { x = 25; y = -25; } // Att R
+        } else {
+            if (idx === 0) { x = -25; y = 25; } // Att L
+            else if (idx === 1) { x = 25; y = 25; } // Att R
+            else if (idx === 2) { x = -40; y = 80; } // Def L
+            else if (idx === 3) { x = 40; y = 80; } // Def R
+            else if (idx === 4) { x = 0; y = 120; } // Keeper
+        }
+
+        return {
+            x: x * scale,
+            y: y * scale,
+        };
+    });
+}
 
 function TeamBalanceWindow() {
-    // Keep disorganized positions constant so that the boomerang effect always returns exactly to the start
-    const [disorganized] = React.useState(getDisorganizedStart());
+    const [isMobile, setIsMobile] = React.useState(false);
+    const reduceMotion = useReducedMotion();
+
+    React.useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 640px)");
+        const syncViewport = () => setIsMobile(mediaQuery.matches);
+
+        syncViewport();
+        mediaQuery.addEventListener("change", syncViewport);
+        return () => mediaQuery.removeEventListener("change", syncViewport);
+    }, []);
+
+    // Keep stable coordinates per viewport category so the loop is deterministic.
+    const disorganized = React.useMemo(() => getDisorganizedStart(isMobile), [isMobile]);
+    const organized = React.useMemo(() => getOrganizedEnd(isMobile), [isMobile]);
 
     return (
         <div className="relative flex h-full min-h-[320px] w-full flex-col items-center justify-between overflow-hidden rounded-xl border border-white/10 bg-black/20 px-4 py-6 shadow-2xl backdrop-blur-sm [@media(max-width:430px)]:min-h-[280px] [@media(max-width:430px)]:px-3 [@media(max-width:430px)]:py-5 [@media(max-width:360px)]:min-h-[260px] sm:min-h-[360px] sm:py-8 md:min-h-[400px]">
@@ -254,16 +283,22 @@ function TeamBalanceWindow() {
                         key={p.id}
                         className="absolute z-10"
                         animate={{
-                            x: [disorganized[i].x, disorganized[i].x, organizedEnd[i].x],
-                            y: [disorganized[i].y, disorganized[i].y, organizedEnd[i].y],
+                            x: reduceMotion
+                                ? organized[i].x
+                                : [disorganized[i].x, disorganized[i].x, organized[i].x, organized[i].x, disorganized[i].x],
+                            y: reduceMotion
+                                ? organized[i].y
+                                : [disorganized[i].y, disorganized[i].y, organized[i].y, organized[i].y, disorganized[i].y],
                         }}
-                        transition={{
-                            duration: 4, // 4 seconds one way
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            times: [0, 0.5, 1], // Wait disorganized (0-2s), move organized (2-4s)
-                            ease: "easeInOut"
-                        }}
+                        transition={reduceMotion
+                            ? { duration: 0 }
+                            : {
+                                duration: 4.8,
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                times: [0, 0.12, 0.44, 0.9, 1],
+                                ease: "easeInOut"
+                            }}
                     >
                         <MiniAvatar color={p.color} />
                     </motion.div>
@@ -275,8 +310,10 @@ function TeamBalanceWindow() {
                 <div className="w-full max-w-[200px] h-1.5 bg-white/10 rounded-full relative overflow-hidden mb-1.5">
                     {/* Slider thumb moves from left to center as teams balance */}
                     <motion.div
-                        animate={{ left: ["0%", "0%", "50%"] }}
-                        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", times: [0, 0.5, 1], ease: "easeInOut" }}
+                        animate={reduceMotion ? { left: "50%" } : { left: ["0%", "0%", "50%", "50%", "0%"] }}
+                        transition={reduceMotion
+                            ? { duration: 0 }
+                            : { duration: 4.8, repeat: Infinity, repeatType: "loop", times: [0, 0.12, 0.44, 0.9, 1], ease: "easeInOut" }}
                         className="absolute w-3 h-3 bg-white rounded-full border-2 border-primary shadow-[0_0_10px_#3B82F6] top-1/2 -translate-y-1/2 -translate-x-1/2"
                     />
                 </div>
@@ -294,8 +331,15 @@ function TeamBalanceWindow() {
 function AnimatedRating() {
     const [rating, setRating] = React.useState(4.4);
     const [flyingSigns, setFlyingSigns] = React.useState<{ id: number, type: 'plus' | 'minus' }[]>([]);
+    const reduceMotion = useReducedMotion();
 
     React.useEffect(() => {
+        if (reduceMotion) {
+            setRating(4.8);
+            setFlyingSigns([]);
+            return;
+        }
+
         let current = 4.4;
         let direction = 1;
 
@@ -324,7 +368,7 @@ function AnimatedRating() {
 
         }, 1800); // Every 1.8 seconds spawn a new +/-
         return () => clearInterval(interval);
-    }, []);
+    }, [reduceMotion]);
 
     return (
         <div className="relative flex h-14 w-20 items-center justify-center sm:h-16 sm:w-24">
@@ -332,7 +376,7 @@ function AnimatedRating() {
                 key={rating}
                 initial={{ scale: 1.15, color: "#ffffff", filter: "brightness(1.5)" }}
                 animate={{ scale: 1, color: "#facc15", filter: "brightness(1)" }}
-                transition={{ duration: 0.4, type: "spring", bounce: 0.4 }}
+                transition={reduceMotion ? { duration: 0 } : { duration: 0.4, type: "spring", bounce: 0.4 }}
                 className="z-10 w-full text-center text-4xl font-black italic tracking-tighter drop-shadow-lg sm:text-5xl"
             >
                 {rating.toFixed(1)}
@@ -360,6 +404,8 @@ function AnimatedRating() {
    Main Features section
 ───────────────────────────────────────────────────────────── */
 export function Features() {
+    const reduceMotion = useReducedMotion();
+
     return (
         <Section id="features" className="bg-background">
             <div className="container mx-auto">
@@ -572,8 +618,8 @@ export function Features() {
                                     {/* Step 2: Glove (Active) */}
                                     <div className="flex flex-col items-center gap-2">
                                         <motion.div
-                                            animate={{ y: [0, -2, 0] }}
-                                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                            animate={reduceMotion ? { y: 0 } : { y: [0, -2, 0] }}
+                                            transition={reduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                             className="relative w-9 h-9 drop-shadow-[0_0_12px_rgba(59,130,246,0.3)]"
                                         >
                                             <Image src="/goalkeeper_award.png" alt="Arquero" fill className="object-contain" />
@@ -601,8 +647,8 @@ export function Features() {
                                 <div className="h-8 rounded bg-primary/20 border border-primary/30 flex items-center justify-center text-[10px] font-bold text-primary-glow uppercase tracking-widest gap-2">
                                     Confirmar Votos
                                     <motion.div
-                                        animate={{ opacity: [0.4, 1, 0.4] }}
-                                        transition={{ duration: 1.5, repeat: Infinity }}
+                                        animate={reduceMotion ? { opacity: 1 } : { opacity: [0.4, 1, 0.4] }}
+                                        transition={reduceMotion ? { duration: 0 } : { duration: 1.5, repeat: Infinity }}
                                         className="w-1 h-1 rounded-full bg-primary-glow"
                                     />
                                 </div>
@@ -636,8 +682,8 @@ export function Features() {
 
                             {/* Rating badge simulation - CENTERED and BIGGER */}
                             <motion.div
-                                animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.05, 1] }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                animate={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: [0.8, 1, 0.8], scale: [1, 1.05, 1] }}
+                                transition={reduceMotion ? { duration: 0 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
                                 className="mb-8 flex items-center gap-3 self-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-[0_0_30px_rgba(251,191,36,0.1)] sm:mb-10 sm:px-6 sm:py-3"
                             >
                                 <div className="w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-[0_0_15px_#fbbf24]">

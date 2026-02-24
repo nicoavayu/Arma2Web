@@ -83,6 +83,13 @@ button,
   touch-action: manipulation;
 }
 
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+  border-radius: 2px;
+}
+
 section[id] {
   scroll-margin-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top));
 }
@@ -129,5 +136,20 @@ section[id] {
 @media (max-width: 390px) {
   :root {
     --nav-height-mobile: 68px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Section } from "@/components/Section";
 import { motion } from "framer-motion";
+import { STORE_LINKS } from "@/lib/store-links";
 
 export function Hero() {
     return (
@@ -28,7 +29,7 @@ export function Hero() {
             <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-accent/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
             <div className="container relative mx-auto">
-                <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0">
+                <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0 lg:grid-cols-[1fr_1.15fr]">
                     {/* Left Column: Image */}
                     <div className="order-1 relative mt-0 mb-0 flex h-[50vh] min-h-[340px] max-h-[500px] items-center justify-center [@media(max-width:430px)]:h-[48vh] [@media(max-width:430px)]:min-h-[330px] [@media(max-width:430px)]:max-h-[480px] [@media(max-width:360px)]:h-[46vh] [@media(max-width:360px)]:min-h-[300px] [@media(max-width:360px)]:max-h-[430px] sm:h-[46vh] sm:min-h-[300px] sm:max-h-[420px] md:mt-0 md:mb-0 md:h-[600px]">
                         {/* Premium Glow Effect - Increased visibility */}
@@ -38,7 +39,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: -20, scale: 0.95 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="relative z-10 flex h-full w-full max-w-[340px] scale-[1.55] items-center justify-center [@media(max-width:430px)]:max-w-[380px] [@media(max-width:430px)]:scale-[1.8] [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:max-w-[340px] [@media(max-width:360px)]:scale-[1.64] [@media(max-width:360px)]:-translate-y-2 sm:max-w-[320px] sm:scale-[1.49] md:w-full md:max-w-none md:translate-x-0 md:-translate-y-2 md:scale-[1.52] md:justify-end"
+                            className="relative z-10 flex h-full w-full max-w-[340px] scale-[1.55] items-center justify-center [@media(max-width:430px)]:max-w-[380px] [@media(max-width:430px)]:scale-[1.8] [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:max-w-[340px] [@media(max-width:360px)]:scale-[1.64] [@media(max-width:360px)]:-translate-y-2 sm:max-w-[320px] sm:scale-[1.49] md:w-full md:max-w-none md:translate-x-0 md:-translate-y-2 md:scale-[1.52] md:justify-end lg:-translate-x-14 lg:scale-[1.82] lg:justify-center xl:-translate-x-20"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -54,7 +55,7 @@ export function Hero() {
                     </div>
 
                     {/* Right Column: Text & Buttons */}
-                    <div className="order-2 relative z-20 flex flex-col items-center text-center [@media(max-width:430px)]:-mt-6 [@media(max-width:360px)]:-mt-4 md:mt-0 md:items-start md:text-left">
+                    <div className="order-2 relative z-20 flex flex-col items-center text-center [@media(max-width:430px)]:-mt-6 [@media(max-width:360px)]:-mt-4 md:mt-0 md:items-start md:text-left lg:-translate-x-10 xl:-translate-x-14">
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
@@ -63,7 +64,7 @@ export function Hero() {
                             className="mb-5 text-[clamp(1.85rem,8vw,2.85rem)] font-bold leading-[1.08] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.6vw,2.35rem)] md:mb-4 md:text-7xl md:leading-tight"
                         >
                             Organizá partidos. <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-300 to-accent-secondary">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-secondary lg:whitespace-nowrap">
                                 Armá equipos parejos.
                             </span> <br />
                             Jugá.
@@ -86,10 +87,12 @@ export function Hero() {
                             className="flex w-full flex-col items-center justify-center gap-2.5 [@media(max-width:430px)]:gap-2 sm:flex-row md:w-auto md:justify-start md:gap-4"
                         >
                             {/* App Store Button */}
-                            <button
-                                type="button"
+                            <a
+                                href={STORE_LINKS.appStore}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Descargar Armá2 en App Store"
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
-                                onClick={() => window.open("https://apps.apple.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 22.773 22.773">
                                     <path
@@ -100,13 +103,15 @@ export function Hero() {
                                     <p className="text-[10px] text-white leading-none text-left font-medium">Download on the</p>
                                     <span className="text-sm font-semibold">App Store</span>
                                 </div>
-                            </button>
+                            </a>
 
                             {/* Google Play Button */}
-                            <button
-                                type="button"
+                            <a
+                                href={STORE_LINKS.googlePlay}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Descargar Armá2 en Google Play"
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
-                                onClick={() => window.open("https://play.google.com", "_blank")} // Placeholder link
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 64 64">
                                     <path fill="#57cef3" d="M7 3v58l33-29z" />
@@ -121,7 +126,7 @@ export function Hero() {
                                     <p className="text-[10px] text-white leading-none text-left font-medium">Get it on</p>
                                     <span className="text-sm font-semibold">Google Play</span>
                                 </div>
-                            </button>
+                            </a>
                         </motion.div>
                     </div>
                 </div>
