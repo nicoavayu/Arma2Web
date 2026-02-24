@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative min-h-screen h-[100svh] md:h-auto md:min-h-screen flex items-center pt-24 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-hidden">
+        <Section id="home" className="relative h-[100svh] min-h-[100svh] md:h-auto md:min-h-screen flex items-center pt-24 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-y-auto md:overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -39,7 +39,8 @@ export function Hero() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
                             // Mobile: Centered, Gigantic scale. Desktop: Balanced large scale and subtle vertical lift for full visibility.
-                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[1.3] md:scale-[1.65]"
+                            // Small screens refinement: Scale down to 1.1 on heights < 700px
+                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[1.3] [@media(max-height:700px)]:scale-[1.1] md:scale-[1.65]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -61,7 +62,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-2 md:mb-4 leading-[1.1] md:leading-tight"
+                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-2 [@media(max-height:700px)]:mb-1 md:mb-4 leading-[1.1] md:leading-tight"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-300 to-accent-secondary">
