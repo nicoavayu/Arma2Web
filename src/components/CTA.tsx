@@ -2,30 +2,28 @@
 
 import React from "react";
 import { Section } from "@/components/Section";
-import { Button } from "@/components/Button";
-import { ArrowRight, Download } from "lucide-react";
 
 export function CTA() {
     return (
-        <Section className="py-20 text-center relative overflow-hidden">
+        <Section className="relative overflow-hidden py-16 text-center md:py-24">
             {/* Glow Effect */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[100px] rounded-full pointer-events-none -z-10" />
+            <div className="absolute top-1/2 left-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[90px] pointer-events-none md:h-[600px] md:w-[600px] md:blur-[100px]" />
 
-            <div className="container mx-auto px-4 md:px-6">
+            <div className="container mx-auto">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                    <h2 className="mb-5 text-[clamp(2rem,8vw,3rem)] font-bold text-white md:mb-6 md:text-6xl">
                         Competí de verdad. <br />
                         <span className="text-primary-glow">Dejá historia.</span>
                     </h2>
-                    <p className="text-text-secondary text-lg mb-10 max-w-2xl mx-auto">
+                    <p className="mx-auto mb-8 max-w-2xl text-base text-text-secondary md:mb-10 md:text-lg">
                         Armá tu equipo, publicalo en el mercado y construí reputación partido a partido. Es gratis.
                     </p>
 
-                    <div className="flex flex-wrap justify-center gap-4">
+                    <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                         {/* App Store Button */}
                         <button
                             type="button"
-                            className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-xl tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 active:bg-white/5 transition-colors backdrop-blur-sm"
+                            className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                             onClick={() => window.open("https://apps.apple.com", "_blank")}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
@@ -42,7 +40,7 @@ export function CTA() {
                         {/* Google Play Button */}
                         <button
                             type="button"
-                            className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-xl tracking-wider border border-white/10 outline-none bg-white/5 hover:bg-white/10 active:bg-white/5 transition-colors backdrop-blur-sm"
+                            className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                             onClick={() => window.open("https://play.google.com", "_blank")}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
@@ -61,7 +59,7 @@ export function CTA() {
                         </button>
                     </div>
 
-                    <p className="mt-8 text-sm text-text-secondary/60">
+                    <p className="mt-7 text-sm text-text-secondary/60 md:mt-8">
                         No requiere tarjeta de crédito. Es gratis.
                     </p>
                 </div>

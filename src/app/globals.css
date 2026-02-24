@@ -15,6 +15,10 @@
   --text-primary: #ffffff;
   --text-secondary: #9ca3af;
 
+  /* Layout */
+  --nav-height-mobile: 72px;
+  --nav-height-desktop: 88px;
+
   /* Utilities */
   --font-inter: var(--font-inter);
   --font-oswald: var(--font-oswald);
@@ -27,7 +31,7 @@
   --color-primary: var(--primary);
   --color-primary-glow: var(--primary-glow);
   --color-accent: var(--accent);
-  --color-accent-secondary: var(--color-accent-secondary);
+  --color-accent-secondary: var(--accent-secondary);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
 
@@ -35,22 +39,95 @@
   --font-oswald: var(--font-oswald);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
-  /* Support for iOS fill */
+  min-height: 100dvh;
   min-height: -webkit-fill-available;
+  overflow-x: clip;
   width: 100%;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top));
+}
+
+.container {
+  padding-left: clamp(1rem, 4vw, 1.5rem);
+  padding-right: clamp(1rem, 4vw, 1.5rem);
+}
+
+@media (min-width: 768px) {
+  section[id] {
+    scroll-margin-top: var(--nav-height-desktop);
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .hero-mobile-vh {
+    min-height: -webkit-fill-available;
+  }
+}
+
+@media (max-width: 430px) {
+  .container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --nav-height-mobile: 68px;
+  }
 }

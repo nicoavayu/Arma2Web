@@ -3,7 +3,7 @@
 import React from "react";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
-import { Calendar, Users, Scale, BarChart3, Swords, Shield, UserCheck, History, TrendingUp, RotateCcw } from "lucide-react";
+import { Calendar, Users, Scale, BarChart3, Swords, Shield, UserCheck, History } from "lucide-react";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -52,19 +52,19 @@ const steps = [
 export function HowItWorks() {
     return (
         <Section id="how-it-works" className="bg-surface/30">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <div className="container mx-auto">
+                <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+                    <h2 className="mb-4 text-3xl font-bold text-white md:mb-6 md:text-5xl">
                         Menos organización, <br />
                         <span className="text-primary-glow">más fútbol.</span>
                     </h2>
-                    <p className="text-text-secondary text-lg">
+                    <p className="text-base text-text-secondary md:text-lg">
                         Olvidate del Excel y los mensajes interminables. Armá2 simplifica todo el proceso
                         para que solo te preocupes por jugar.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
                     {steps.map((step, index) => (
                         <motion.div
                             key={index}
@@ -73,14 +73,14 @@ export function HowItWorks() {
                             transition={{ duration: 0.5, delay: index * 0.07 }}
                             viewport={{ once: true }}
                         >
-                            <Card className="h-full group hover:bg-surface-highlight/80 transition-all border-white/5 p-6">
-                                <div className="mb-6 p-3 rounded-xl bg-white/5 w-fit border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                            <Card className="h-full border-white/5 p-5 transition-all group hover:bg-surface-highlight/80 sm:p-6">
+                                <div className="mb-5 w-fit rounded-xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 group-hover:scale-110 sm:mb-6">
                                     {step.icon}
                                 </div>
-                                <h3 className="text-xl font-semibold text-white mb-3">
+                                <h3 className="mb-3 text-lg font-semibold text-white sm:text-xl">
                                     {step.title}
                                 </h3>
-                                <p className="text-text-secondary leading-relaxed text-sm">
+                                <p className="text-sm leading-relaxed text-text-secondary">
                                     {step.description}
                                 </p>
                             </Card>

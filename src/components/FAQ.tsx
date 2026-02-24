@@ -54,11 +54,11 @@ export function FAQ() {
     return (
         <Section id="faq" className="bg-background">
             <div className="container mx-auto px-4 md:px-6">
-                <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-16">
+                <h2 className="mb-10 text-center text-3xl font-bold text-white md:mb-16 md:text-5xl">
                     Preguntas Frecuentes
                 </h2>
 
-                <div className="max-w-3xl mx-auto space-y-4">
+                <div className="mx-auto max-w-3xl space-y-3 md:space-y-4">
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
@@ -66,9 +66,9 @@ export function FAQ() {
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                                className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-white/5 sm:p-5 md:p-6"
                             >
-                                <span className="text-lg font-medium text-white">
+                                <span className="pr-4 text-base font-medium text-white sm:text-lg">
                                     {faq.question}
                                 </span>
                                 <span className="text-white/50">
@@ -84,7 +84,7 @@ export function FAQ() {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.3 }}
                                     >
-                                        <div className="p-6 pt-0 text-text-secondary leading-relaxed border-t border-white/5">
+                                        <div className="border-t border-white/5 p-4 pt-0 leading-relaxed text-text-secondary sm:p-5 sm:pt-0 md:p-6 md:pt-0">
                                             {faq.answer}
                                         </div>
                                     </motion.div>

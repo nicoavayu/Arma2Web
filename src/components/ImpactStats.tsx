@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { Section } from "@/components/Section";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────
    Mini flow – 3 steps
@@ -56,7 +56,7 @@ export function ImpactStats() {
 
     return (
         <Section id="impact" className="bg-[#07071280] border-t border-white/5">
-            <div ref={ref} className="container mx-auto px-4 md:px-6">
+            <div ref={ref} className="container mx-auto">
 
                 {/* Header - Honest Messaging */}
                 <motion.div
@@ -64,21 +64,21 @@ export function ImpactStats() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-20"
+                    className="mb-14 text-center md:mb-20"
                 >
                     <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">
                         Construyendo la red competitiva
                     </span>
-                    <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                    <h2 className="mb-5 text-[clamp(2rem,8vw,3rem)] font-black tracking-tight text-white md:mb-6 md:text-6xl">
                         La comunidad empieza con vos.
                     </h2>
-                    <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto font-medium">
+                    <p className="mx-auto max-w-2xl text-base font-medium text-white/50 md:text-xl">
                         Sumate desde el inicio. Unite a los equipos que ya están marcando el camino en Armá2.
                     </p>
                 </motion.div>
 
                 {/* Mini flow */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-0">
+                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-0">
                     {flowSteps.map((step, i) => (
                         <React.Fragment key={step.label}>
                             <motion.div
@@ -86,9 +86,9 @@ export function ImpactStats() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.1 + i * 0.15 }}
-                                className="flex flex-col items-center gap-3 text-center px-6"
+                                className="flex flex-col items-center gap-3 px-3 text-center sm:px-6"
                             >
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-2 shadow-xl group hover:border-white/20 transition-all">
+                                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-xl transition-all group hover:border-white/20 sm:h-14 sm:w-14">
                                     {step.icon}
                                 </div>
                                 <span className="text-sm font-bold text-white/80 uppercase tracking-wide">{step.label}</span>
@@ -111,7 +111,7 @@ export function ImpactStats() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 1 }}
-                    className="mt-20 flex justify-center"
+                    className="mt-14 flex justify-center md:mt-20"
                 >
                     <div className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest">
                         Sé el primero en tu zona

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView, useMotionValue, useSpring } from "framer-motion";
+import React from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────
    Ghost team cards – marketplace background with varied timing
@@ -104,7 +104,7 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
                 transformStyle: "preserve-3d",
                 perspective: "1000px"
             }}
-            className="group relative h-[380px] w-72 shrink-0 md:h-[420px] md:w-80 flex items-center justify-center -mx-4 md:mx-0"
+            className="group relative flex h-[340px] w-full max-w-[320px] shrink-0 items-center justify-center [@media(max-width:430px)]:h-[300px] [@media(max-width:430px)]:max-w-[280px] [@media(max-width:360px)]:h-[280px] [@media(max-width:360px)]:max-w-[260px] sm:h-[380px] md:h-[420px] md:w-80"
         >
             {/* Outer glow ring */}
             <div
@@ -113,7 +113,7 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
             />
 
             {/* Card body */}
-            <div className="relative z-10 w-52 md:w-64 rounded-3xl border border-white/10 bg-gradient-to-br from-[#12122a] to-[#0a0a18] p-6 shadow-2xl overflow-hidden"
+            <div className="relative z-10 w-52 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#12122a] to-[#0a0a18] p-5 shadow-2xl [@media(max-width:430px)]:w-48 [@media(max-width:430px)]:p-4 sm:w-56 sm:p-6 md:w-64"
                 style={{ transform: "translateZ(30px)" }}>
                 <motion.div
                     className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -123,7 +123,7 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
                 />
                 {/* Shield avatar */}
                 <div
-                    className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border text-xl font-black text-white shadow-lg"
+                    className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border text-xl font-black text-white shadow-lg [@media(max-width:430px)]:h-14 [@media(max-width:430px)]:w-14 [@media(max-width:430px)]:text-lg"
                     style={{
                         background: `linear-gradient(135deg, ${color}33, ${color}11)`,
                         borderColor: `${color}44`,
@@ -135,7 +135,7 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
 
                 {/* Name */}
                 <h3
-                    className="mb-3 text-center text-lg font-bold text-white leading-tight"
+                    className="mb-3 text-center text-base font-bold leading-tight text-white sm:text-lg"
                     style={{ textShadow: `0 0 24px ${color}88` }}
                 >
                     {name}
@@ -159,7 +159,7 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
                 </div>
 
                 {/* Mini Roster */}
-                <div className="mt-6 flex flex-wrap justify-center gap-2 border-t border-white/5 pt-5">
+                <div className="mt-5 flex flex-wrap justify-center gap-2 border-t border-white/5 pt-4 sm:mt-6 sm:pt-5">
                     {[
                         { n: "Nico", p: "DEL" },
                         { n: "Santi", p: "MED" },
@@ -191,14 +191,14 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
 ───────────────────────────────────────────────────────────── */
 function EnergyConnector() {
     return (
-        <div className="relative flex flex-col md:flex-row items-center justify-center z-20 mx-2 md:mx-0">
+        <div className="relative z-20 mx-2 flex flex-col items-center justify-center [@media(max-width:430px)]:mx-0 md:mx-0 md:flex-row">
             {/* ── Mobile: vertical line ── */}
             <svg
                 width="70"
                 height="100"
                 viewBox="0 0 70 100"
                 fill="none"
-                className="overflow-visible md:hidden"
+                className="h-[84px] w-[56px] overflow-visible md:hidden"
                 aria-hidden="true"
             >
                 <line x1="35" y1="0" x2="35" y2="100"
@@ -336,30 +336,21 @@ const bullets = [
    Main section
 ───────────────────────────────────────────────────────────── */
 export function Equipos() {
-    const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { once: true, margin: "-100px" });
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (inView) controls.start("visible");
-    }, [inView, controls]);
-
     return (
         <section
             id="equipos"
-            ref={ref}
-            className="relative w-full overflow-hidden bg-[#070712] py-28 md:py-36"
+            className="relative w-full overflow-hidden bg-[#070712] py-20 [@media(max-width:430px)]:py-16 md:py-32"
         >
             {/* ── Ambient radial glow ── */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="h-[600px] w-[800px] rounded-full bg-blue-600/10 blur-[120px]" />
+                <div className="h-[420px] w-[420px] rounded-full bg-blue-600/10 blur-[100px] md:h-[600px] md:w-[800px] md:blur-[120px]" />
             </div>
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="h-[400px] w-[400px] rounded-full bg-violet-700/10 blur-[100px]" />
+                <div className="h-[280px] w-[280px] rounded-full bg-violet-700/10 blur-[90px] md:h-[400px] md:w-[400px] md:blur-[100px]" />
             </div>
 
             {/* ── Ghost market cards grid (blurred background) ── */}
-            <div className="pointer-events-none absolute inset-0 select-none blur-[2px]">
+            <div className="pointer-events-none absolute inset-0 hidden select-none blur-[2px] md:block">
                 <div className="mx-auto grid h-full max-w-6xl grid-cols-4 content-center gap-4 px-6">
                     {marketTeams.map((t, i) => (
                         <GhostCard
@@ -375,7 +366,7 @@ export function Equipos() {
             </div>
 
             {/* ── Main content ── */}
-            <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+            <div className="relative z-10 mx-auto max-w-5xl px-4 text-center [@media(max-width:430px)]:px-3 sm:px-6">
 
                 {/* Eyebrow label */}
                 <motion.span
@@ -383,7 +374,7 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mb-6 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-400"
+                    className="mb-6 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-400 [@media(max-width:430px)]:px-3 [@media(max-width:430px)]:tracking-[0.14em]"
                 >
                     Nuevo · Equipos y Desafíos
                 </motion.span>
@@ -394,7 +385,7 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="mb-5 text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+                    className="mb-5 text-[clamp(2rem,8vw,3.5rem)] font-black leading-[1.05] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.75rem,7.4vw,2.5rem)] md:text-6xl lg:text-7xl"
                 >
                     Tu equipo.{" "}
                     <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
@@ -408,14 +399,14 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mx-auto mb-16 max-w-xl text-base text-white/50 md:text-lg"
+                    className="mx-auto mb-12 max-w-xl text-base text-white/55 [@media(max-width:430px)]:mb-10 [@media(max-width:430px)]:text-[15px] md:mb-16 md:text-lg"
                 >
                     Publicá tu equipo, buscá rivales y confirmá el partido en segundos.
                     Una red activa de equipos esperando el desafío.
                 </motion.p>
 
                 {/* ── Two team cards + connector ── */}
-                <div className="mb-16 flex flex-col items-center justify-center gap-0 md:flex-row md:gap-4">
+                <div className="mb-12 flex flex-col items-center justify-center gap-2 md:mb-16 md:flex-row md:gap-4">
                     <HeroTeamCard
                         side="left"
                         name="Los Galácticos"
@@ -441,7 +432,7 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10"
+                    className="flex w-full flex-col items-center justify-center gap-3 [@media(max-width:430px)]:gap-2 sm:flex-row sm:gap-8 md:gap-10"
                 >
                     {bullets.map((b, i) => (
                         <motion.div
@@ -450,7 +441,7 @@ export function Equipos() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: 0.45 + i * 0.1 }}
-                            className="flex items-center gap-3"
+                            className="flex items-center gap-3 [@media(max-width:430px)]:w-full [@media(max-width:430px)]:justify-center [@media(max-width:430px)]:gap-2 sm:gap-2 md:gap-3"
                         >
                             {i > 0 && (
                                 <span className="hidden text-white/15 sm:inline-block">—</span>
@@ -458,7 +449,7 @@ export function Equipos() {
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-base">
                                 {b.icon}
                             </span>
-                            <span className="text-sm font-semibold text-white/80 md:text-base">
+                            <span className="text-sm font-semibold text-white/80 [@media(max-width:430px)]:text-xs md:text-base">
                                 {b.label}
                             </span>
                         </motion.div>

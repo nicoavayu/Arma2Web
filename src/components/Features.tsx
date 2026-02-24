@@ -3,7 +3,7 @@
 import React from "react";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
-import { ShieldAlert, Users2, Smartphone, Swords, Trophy, Star, UserRound, Check } from "lucide-react";
+import { Users2, Smartphone, Swords, Trophy, Star, UserRound, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -16,17 +16,6 @@ const ZapSVG = () => (
         <defs>
             <linearGradient id="zapGrad" x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#a78bfa" /><stop offset="1" stopColor="#7c3aed" />
-            </linearGradient>
-        </defs>
-    </svg>
-);
-
-const ChartSVG = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="url(#chartGrad)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <defs>
-            <linearGradient id="chartGrad" x1="2" y1="12" x2="22" y2="12" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#34d399" /><stop offset="1" stopColor="#059669" />
             </linearGradient>
         </defs>
     </svg>
@@ -106,8 +95,8 @@ function LiveVotingWindow() {
     }, []);
 
     return (
-        <div className="relative h-48 w-full rounded-xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-sm flex flex-col items-center justify-center p-4 shadow-2xl">
-            <div className="relative w-full h-32 flex items-center justify-center mb-4">
+        <div className="relative flex h-44 w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/20 p-3 shadow-2xl backdrop-blur-sm [@media(max-width:430px)]:h-40 [@media(max-width:430px)]:p-2.5 sm:h-48 sm:p-4">
+            <div className="relative mb-4 flex h-28 w-full items-center justify-center sm:h-32">
                 {votingPlayers.map((p, i) => {
                     let diff = (i - cycle) % votingPlayers.length;
                     if (diff < 0) diff += votingPlayers.length;
@@ -134,7 +123,7 @@ function LiveVotingWindow() {
                     return (
                         <motion.div
                             key={p.id}
-                            className="absolute w-[60px] h-[84px] bg-white/5 rounded-xl border flex flex-col items-center justify-start p-2 shadow-xl backdrop-blur-md"
+                            className="absolute flex h-[80px] w-[56px] flex-col items-center justify-start rounded-xl border bg-white/5 p-2 shadow-xl backdrop-blur-md sm:h-[84px] sm:w-[60px]"
                             animate={{
                                 x,
                                 scale,
@@ -191,7 +180,7 @@ function LiveVotingWindow() {
                 </motion.div>
             </div>
 
-            <div className="absolute bottom-3 text-xs text-center text-primary-glow font-bold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+            <div className="absolute bottom-3 rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-center text-[10px] font-bold uppercase tracking-wider text-primary-glow [@media(max-width:430px)]:bottom-2 [@media(max-width:430px)]:text-[9px] sm:px-3 sm:text-xs sm:tracking-widest">
                 Votación Democrática
             </div>
         </div>
@@ -237,27 +226,27 @@ function TeamBalanceWindow() {
     const [disorganized] = React.useState(getDisorganizedStart());
 
     return (
-        <div className="relative h-full min-h-[400px] w-full rounded-xl overflow-hidden border border-white/10 bg-black/20 backdrop-blur-sm flex flex-col justify-between items-center px-4 py-8 shadow-2xl">
+        <div className="relative flex h-full min-h-[320px] w-full flex-col items-center justify-between overflow-hidden rounded-xl border border-white/10 bg-black/20 px-4 py-6 shadow-2xl backdrop-blur-sm [@media(max-width:430px)]:min-h-[280px] [@media(max-width:430px)]:px-3 [@media(max-width:430px)]:py-5 [@media(max-width:360px)]:min-h-[260px] sm:min-h-[360px] sm:py-8 md:min-h-[400px]">
 
             <div className="flex-1 relative w-full flex items-center justify-center mt-2 mb-6">
                 {/* The Pitch Background (Vertical) - Larger & Brighter */}
-                <div className="absolute inset-0 m-auto w-[200px] sm:w-[240px] h-[95%] max-h-[380px] border-2 border-white/10 rounded-md flex items-center justify-center opacity-100 shadow-[0_0_20px_rgba(255,255,255,0.03)]">
+                <div className="absolute inset-0 m-auto flex h-[95%] w-[180px] max-h-[300px] items-center justify-center rounded-md border-2 border-white/10 opacity-100 shadow-[0_0_20px_rgba(255,255,255,0.03)] sm:w-[220px] sm:max-h-[340px] md:w-[240px] md:max-h-[380px]">
                     {/* Center Line (Horizontal) */}
                     <div className="absolute w-full h-[2px] bg-white/10" />
                     {/* Center Circle */}
-                    <div className="absolute w-16 h-16 rounded-full border-2 border-white/10" />
+                    <div className="absolute h-14 w-14 rounded-full border-2 border-white/10 sm:h-16 sm:w-16" />
                     {/* Center Spot */}
                     <div className="absolute w-1.5 h-1.5 rounded-full bg-white/20" />
 
                     {/* Top Penalty Area */}
-                    <div className="absolute top-0 h-[55px] w-[120px] border-2 border-t-0 border-white/10" />
+                    <div className="absolute top-0 h-[45px] w-[100px] border-2 border-t-0 border-white/10 sm:h-[55px] sm:w-[120px]" />
                     {/* Top Goal Area */}
-                    <div className="absolute top-0 h-[20px] w-[50px] border-2 border-t-0 border-white/10" />
+                    <div className="absolute top-0 h-[16px] w-[42px] border-2 border-t-0 border-white/10 sm:h-[20px] sm:w-[50px]" />
 
                     {/* Bottom Penalty Area */}
-                    <div className="absolute bottom-0 h-[55px] w-[120px] border-2 border-b-0 border-white/10" />
+                    <div className="absolute bottom-0 h-[45px] w-[100px] border-2 border-b-0 border-white/10 sm:h-[55px] sm:w-[120px]" />
                     {/* Bottom Goal Area */}
-                    <div className="absolute bottom-0 h-[20px] w-[50px] border-2 border-b-0 border-white/10" />
+                    <div className="absolute bottom-0 h-[16px] w-[42px] border-2 border-b-0 border-white/10 sm:h-[20px] sm:w-[50px]" />
                 </div>
 
                 {playerDots5v5.map((p, i) => (
@@ -282,7 +271,7 @@ function TeamBalanceWindow() {
             </div>
 
             {/* Slider Simulation */}
-            <div className="absolute bottom-5 left-0 right-0 w-full px-8 flex flex-col items-center z-20">
+            <div className="absolute bottom-5 left-0 right-0 z-20 flex w-full flex-col items-center px-4 sm:px-8">
                 <div className="w-full max-w-[200px] h-1.5 bg-white/10 rounded-full relative overflow-hidden mb-1.5">
                     {/* Slider thumb moves from left to center as teams balance */}
                     <motion.div
@@ -302,37 +291,6 @@ function TeamBalanceWindow() {
 /* ─────────────────────────────────────────────────────────────
    Award badge – unlock animation
 ───────────────────────────────────────────────────────────── */
-interface AwardBadgeProps {
-    src: string;
-    alt: string;
-    label: string;
-    sublabel: string;
-    delay?: number;
-    color?: string;
-}
-
-function AwardBadge({ src, alt, label, sublabel, delay = 0, color = "#fbbf24" }: AwardBadgeProps) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0, rotate: -20 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay, type: "spring", stiffness: 200, damping: 15 }}
-            className="flex flex-col items-center gap-1.5"
-        >
-            <motion.div
-                whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
-                className="relative w-14 h-14 drop-shadow-2xl"
-                style={{ filter: `drop-shadow(0 0 12px ${color}44)` }}
-            >
-                <Image src={src} alt={alt} fill className="object-contain" />
-            </motion.div>
-            <span className="text-[11px] font-bold text-white/80">{label}</span>
-            <span className="text-[10px] text-white/35">{sublabel}</span>
-        </motion.div>
-    );
-}
-
 function AnimatedRating() {
     const [rating, setRating] = React.useState(4.4);
     const [flyingSigns, setFlyingSigns] = React.useState<{ id: number, type: 'plus' | 'minus' }[]>([]);
@@ -369,13 +327,13 @@ function AnimatedRating() {
     }, []);
 
     return (
-        <div className="relative flex items-center justify-center w-24 h-16">
+        <div className="relative flex h-14 w-20 items-center justify-center sm:h-16 sm:w-24">
             <motion.span
                 key={rating}
                 initial={{ scale: 1.15, color: "#ffffff", filter: "brightness(1.5)" }}
                 animate={{ scale: 1, color: "#facc15", filter: "brightness(1)" }}
                 transition={{ duration: 0.4, type: "spring", bounce: 0.4 }}
-                className="text-5xl text-center font-black tracking-tighter italic drop-shadow-lg z-10 w-full"
+                className="z-10 w-full text-center text-4xl font-black italic tracking-tighter drop-shadow-lg sm:text-5xl"
             >
                 {rating.toFixed(1)}
             </motion.span>
@@ -388,7 +346,7 @@ function AnimatedRating() {
                         initial={{ opacity: 0, x: isPlus ? 40 : -40, y: isPlus ? 20 : -20, scale: 0.5 }}
                         animate={{ opacity: [0, 1, 1, 0], x: 0, y: 0, scale: [0.5, 1.2, 1.5, 0] }}
                         transition={{ duration: 0.6, ease: "easeIn", times: [0, 0.4, 0.8, 1] }}
-                        className={`absolute z-20 text-3xl font-black italic drop-shadow-[0_0_10px_currentColor] blur-[0.5px] ${isPlus ? 'text-green-400 right-[-10px]' : 'text-red-400 left-[-10px]'}`}
+                        className={`absolute z-20 text-2xl font-black italic drop-shadow-[0_0_10px_currentColor] blur-[0.5px] sm:text-3xl ${isPlus ? 'text-green-400 right-[-8px]' : 'text-red-400 left-[-8px]'}`}
                     >
                         {isPlus ? '+' : '-'}
                     </motion.div>
@@ -404,10 +362,10 @@ function AnimatedRating() {
 export function Features() {
     return (
         <Section id="features" className="bg-background">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="mb-20 text-center md:text-left">
+            <div className="container mx-auto">
+                <div className="mb-12 text-center [@media(max-width:430px)]:mb-10 md:mb-20 md:text-left">
                     <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">Features</span>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-2xl mx-auto md:mx-0">
+                    <h2 className="mx-auto mb-5 max-w-2xl text-[clamp(2rem,8vw,3rem)] font-bold text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.4vw,2.25rem)] md:mx-0 md:mb-6 md:text-6xl">
                         Todo lo que necesitás para{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary-glow">
                             profesionalizar
@@ -416,19 +374,19 @@ export function Features() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
+                <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
 
                     {/* ── Feature 1: Balance Democrático (Large) ── */}
-                    <Card className="md:col-span-2 row-span-2 bg-gradient-to-br from-surface/80 to-surface-highlight/50 border-white/10 relative overflow-hidden group">
-                        <div className="relative z-10 p-8 flex flex-col md:flex-row h-full gap-8">
+                    <Card className="relative row-span-2 overflow-hidden border-white/10 bg-gradient-to-br from-surface/80 to-surface-highlight/50 group md:col-span-2">
+                        <div className="relative z-10 flex h-full flex-col gap-6 p-5 [@media(max-width:430px)]:gap-4 [@media(max-width:430px)]:p-4 sm:p-6 md:flex-row md:gap-8 md:p-8">
                             {/* Left Column (Text + Voting) */}
                             <div className="flex-[0.8] flex flex-col justify-between h-full">
                                 {/* Header */}
-                                <div className="flex flex-col mb-8">
+                                <div className="mb-6 flex flex-col md:mb-8">
                                     <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
                                         <ZapSVG />
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Balance Democrático</h3>
+                                    <h3 className="mb-2 text-xl font-bold text-white [@media(max-width:430px)]:text-lg sm:text-2xl md:text-3xl">Balance Democrático</h3>
                                     <p className="text-text-secondary text-sm md:text-base leading-relaxed">
                                         Los jugadores se distribuyen en equipos parejos según la evaluación del grupo.
                                     </p>
@@ -452,22 +410,22 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 2: Tu Perfil de Jugador ── */}
-                    <Card className="md:row-span-2 bg-surface-highlight/20 relative overflow-hidden group flex flex-col h-full border-white/5">
-                        <div className="p-6 pb-2 flex items-center gap-4">
-                            <div className="w-12 h-12 shrink-0 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center backdrop-blur-sm group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all">
+                    <Card className="relative flex h-full flex-col overflow-hidden border-white/5 bg-surface-highlight/20 group md:row-span-2">
+                        <div className="flex items-center gap-3 p-5 pb-2 [@media(max-width:430px)]:p-4 [@media(max-width:430px)]:pb-2 sm:gap-4 sm:p-6">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 backdrop-blur-sm transition-all group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] sm:h-12 sm:w-12">
                                 <UserRound className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold text-white mb-1">Tu Perfil de Jugador</h3>
+                                <h3 className="mb-1 text-lg font-bold text-white sm:text-xl">Tu Perfil de Jugador</h3>
                                 <p className="text-text-secondary text-[13px] leading-tight">
                                     Construí identidad, acumulá premios y mostrá tu reputación.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="relative flex-1 flex flex-col md:flex-row items-center justify-center p-6 gap-6 md:gap-6">
+                        <div className="relative flex flex-1 flex-col items-center justify-center gap-5 p-5 [@media(max-width:430px)]:gap-4 [@media(max-width:430px)]:p-4 sm:gap-6 sm:p-6 md:flex-row md:gap-6">
                             {/* Awards - Row on mobile, Column on desktop */}
-                            <div className="flex flex-row md:flex-col justify-center gap-8 md:gap-8 z-10">
+                            <div className="z-10 flex flex-row justify-center gap-5 [@media(max-width:430px)]:gap-4 sm:gap-8 md:flex-col md:gap-8">
                                 {[
                                     { src: "/mvp_award.png", label: "Figura", count: "3X", color: "#fbbf24" },
                                     { src: "/goalkeeper_award.png", label: "Arquero", count: "1X", color: "#38bdf8" },
@@ -494,7 +452,7 @@ export function Features() {
                             </div>
 
                             {/* Profile card image - MUCH BIGGER */}
-                            <div className="relative flex-1 w-full max-w-[220px] md:max-w-[280px] lg:max-w-[320px] aspect-[4/5] flex items-center justify-center mx-auto">
+                            <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[180px] flex-1 items-center justify-center [@media(max-width:430px)]:max-w-[155px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[320px]">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                                     whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
@@ -514,13 +472,13 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 3: Comunidad ── */}
-                    <Card className="bg-surface-highlight/20 relative overflow-hidden group border-white/5 h-full">
-                        <div className="h-full flex flex-col p-6">
-                            <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                        <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
+                            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Users2 className="w-6 h-6 text-blue-500" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Comunidad</h3>
-                            <p className="text-text-secondary text-sm mb-6">
+                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">Comunidad</h3>
+                            <p className="mb-5 text-sm text-text-secondary sm:mb-6">
                                 Mantené a tu equipo informado en tiempo real sobre desafíos y resultados.
                             </p>
 
@@ -576,18 +534,18 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 4: Encuesta Post-Partido ── */}
-                    <Card className="bg-surface-highlight/20 relative overflow-hidden group border-white/5 h-full">
-                        <div className="h-full flex flex-col p-6">
-                            <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
+                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                        <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
+                            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Smartphone className="w-6 h-6 text-purple-500" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Encuesta Post-Partido</h3>
-                            <p className="text-text-secondary text-sm mb-6">
+                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">Encuesta Post-Partido</h3>
+                            <p className="mb-5 text-sm text-text-secondary sm:mb-6">
                                 Votación rápida al finalizar. Elegí las figuras y sancioná la falta de compromiso.
                             </p>
 
                             {/* Mini Survey Simulation - Step by Step */}
-                            <div className="mt-auto bg-white/5 rounded-lg border border-white/5 p-4 flex flex-col gap-4 relative overflow-hidden">
+                            <div className="relative mt-auto flex flex-col gap-4 overflow-hidden rounded-lg border border-white/5 bg-white/5 p-4 [@media(max-width:430px)]:gap-3 [@media(max-width:430px)]:p-3">
                                 {/* Progress Indicator */}
                                 <div className="flex justify-between items-center px-4">
                                     {[1, 2, 3].map((i) => (
@@ -666,13 +624,13 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 5: Premios y Sanciones ── */}
-                    <Card className="bg-surface-highlight/20 relative overflow-hidden group border-white/5 h-full">
-                        <div className="h-full flex flex-col p-6">
-                            <div className="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-6 backdrop-blur-sm group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] transition-all">
+                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                        <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
+                            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-yellow-500/20 bg-yellow-500/10 backdrop-blur-sm transition-all group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] sm:mb-6 sm:h-12 sm:w-12">
                                 <Trophy className="w-6 h-6 text-yellow-500" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2 text-center">Premios y Sanciones</h3>
-                            <p className="text-text-secondary text-sm mb-6 text-center">
+                            <h3 className="mb-2 text-center text-lg font-bold text-white sm:text-xl">Premios y Sanciones</h3>
+                            <p className="mb-5 text-center text-sm text-text-secondary sm:mb-6">
                                 Los premios quedan en tu historia. Las tarjetas también.
                             </p>
 
@@ -680,7 +638,7 @@ export function Features() {
                             <motion.div
                                 animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.05, 1] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                className="flex items-center gap-3 mb-10 bg-white/5 self-center px-6 py-3 rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(251,191,36,0.1)]"
+                                className="mb-8 flex items-center gap-3 self-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-[0_0_30px_rgba(251,191,36,0.1)] sm:mb-10 sm:px-6 sm:py-3"
                             >
                                 <div className="w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-[0_0_15px_#fbbf24]">
                                     <Star className="w-4 h-4 text-black" fill="currentColor" />
@@ -688,7 +646,7 @@ export function Features() {
                                 <AnimatedRating />
                             </motion.div>
 
-                            <div className="mt-auto flex justify-center items-center gap-8 py-5 border-t border-white/5 bg-white/[0.03] rounded-2xl">
+                            <div className="mt-auto flex items-center justify-center gap-4 rounded-2xl border-t border-white/5 bg-white/[0.03] py-4 [@media(max-width:430px)]:gap-3 sm:gap-8 sm:py-5">
                                 {[
                                     { src: "/mvp_award.png", label: "Trophy", color: "rgba(251,191,36,0.4)" },
                                     { src: "/goalkeeper_award.png", label: "Glove", color: "rgba(56,189,248,0.4)" },
@@ -703,7 +661,7 @@ export function Features() {
                                         className="relative group/icon"
                                     >
                                         <div
-                                            className="relative w-14 h-14 transition-transform group-hover/icon:scale-125 duration-500"
+                                            className="relative h-14 w-14 transition-transform duration-500 group-hover/icon:scale-125 [@media(max-width:430px)]:h-12 [@media(max-width:430px)]:w-12"
                                             style={{ filter: `drop-shadow(0 0 15px ${item.color})` }}
                                         >
                                             <Image src={item.src} alt={item.label} fill className="object-contain" />
