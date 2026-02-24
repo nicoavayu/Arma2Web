@@ -35,12 +35,12 @@ export function Hero() {
 
                         <motion.div
                             initial={{ opacity: 0, x: -20, scale: 0.95 }}
-                            animate={{ opacity: 1, x: 0, scale: 1 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
                             // Mobile: Centered, Gigantic scale. Desktop: Balanced large scale and subtle vertical lift for full visibility.
                             // Small screens refinement: Scale down to 1.1 on heights < 700px
-                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[1.3] [@media(max-height:700px)]:scale-[1.2] md:scale-[1.65]"
+                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[2.5] [@media(max-height:750px)]:scale-[1.2] md:scale-[1.65]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -48,7 +48,7 @@ export function Hero() {
                                     src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl top-[30px] [@media(max-height:700px)]:!top-[30px]"
+                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl top-[30px] [@media(max-height:750px)]:!top-[30px]"
                                     priority
                                 />
                             </div>
