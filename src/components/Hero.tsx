@@ -10,7 +10,7 @@ export function Hero() {
     return (
         <Section
             id="home"
-            className="hero-mobile-vh relative flex min-h-[100dvh] min-h-[100svh] items-start overflow-hidden pt-[calc(var(--nav-height-mobile)+0.5rem+env(safe-area-inset-top))] pb-[max(0.5rem,env(safe-area-inset-bottom))] [@media(max-width:430px)]:pt-[calc(var(--nav-height-mobile)+0.35rem+env(safe-area-inset-top))] [@media(max-width:430px)]:pb-[max(0.4rem,env(safe-area-inset-bottom))] md:min-h-screen md:items-center md:pt-32 md:pb-16"
+            className="hero-mobile-vh relative isolate flex min-h-[100dvh] min-h-[100svh] items-start overflow-hidden bg-background pt-[calc(var(--nav-height-mobile)+0.5rem+env(safe-area-inset-top))] pb-[max(0.5rem,env(safe-area-inset-bottom))] [@media(max-width:430px)]:pt-[calc(var(--nav-height-mobile)+0.35rem+env(safe-area-inset-top))] [@media(max-width:430px)]:pb-[max(0.4rem,env(safe-area-inset-bottom))] md:min-h-screen md:items-center md:pt-32 md:pb-16"
         >
             {/* Tech Grid Background */}
             <div
@@ -23,7 +23,7 @@ export function Hero() {
             />
 
             {/* Background gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none -z-10" />
+            <div className="absolute top-0 left-1/2 hidden h-[600px] w-[1000px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px] pointer-events-none -z-10 md:block" />
             <div className="absolute bottom-0 right-0 hidden h-[600px] w-[800px] rounded-full bg-accent/10 blur-[120px] pointer-events-none -z-10 md:block" />
 
             <div className="container relative mx-auto">
@@ -90,7 +90,7 @@ export function Hero() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Descargar Armá2 en App Store"
-                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
+                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 22.773 22.773">
                                     <path
@@ -109,7 +109,7 @@ export function Hero() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Descargar Armá2 en Google Play"
-                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
+                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 64 64">
                                     <path fill="#57cef3" d="M7 3v58l33-29z" />
