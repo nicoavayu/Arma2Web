@@ -64,7 +64,7 @@ export function Hero() {
                             className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-2 md:mb-4 leading-[1.1] md:leading-tight"
                         >
                             Organizá partidos. <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-glow via-sky-300 to-white">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-300 to-accent-secondary">
                                 Armá equipos parejos.
                             </span> <br />
                             Jugá.
