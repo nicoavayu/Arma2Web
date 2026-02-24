@@ -48,7 +48,7 @@ export function Hero() {
                                     src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl"
+                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl [@media(max-height:700px)]:!top-[30px]"
                                     priority
                                 />
                             </div>
