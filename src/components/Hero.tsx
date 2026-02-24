@@ -45,7 +45,9 @@ export function Hero() {
                                     src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-none md:drop-shadow-2xl"
+                                    unoptimized
+                                    sizes="(max-width: 430px) 92vw, (max-width: 768px) 78vw, (max-width: 1280px) 54vw, 46vw"
+                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-none md:drop-shadow-2xl [backface-visibility:hidden] [transform:translateZ(0)]"
                                     priority
                                 />
                             </div>
