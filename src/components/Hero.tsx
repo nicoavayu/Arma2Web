@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative h-[100svh] min-h-[100svh] md:h-auto md:min-h-screen flex items-center pt-24 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-y-auto overflow-x-hidden md:overflow-hidden">
+        <Section id="home" className="relative h-[100svh] min-h-[100svh] md:h-auto md:min-h-screen flex items-start md:items-center pt-24 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-y-auto overflow-x-hidden md:overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-1 md:order-1 relative h-[48vh] min-h-[300px] max-h-[420px] md:h-[600px] flex items-center justify-center mt-4 mb-3 md:mt-0 md:mb-0">
+                    <div className="order-1 md:order-1 relative h-[48vh] min-h-[320px] max-h-[420px] md:h-[600px] flex items-center justify-center mt-6 mb-4 md:mt-0 md:mb-0">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
