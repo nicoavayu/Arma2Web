@@ -99,6 +99,18 @@ section[id] {
   padding-right: clamp(1rem, 4vw, 1.5rem);
 }
 
+.hero-grid-layer {
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
+
+@media (max-width: 430px) {
+  .hero-grid-layer {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
 @media (min-width: 768px) {
   section[id] {
     scroll-margin-top: var(--nav-height-desktop);

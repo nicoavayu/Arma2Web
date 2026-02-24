@@ -14,19 +14,18 @@ export function Hero() {
         >
             {/* Tech Grid Background */}
             <div
-                className="absolute inset-0 pointer-events-none opacity-[0.2]"
+                className="hero-grid-layer absolute inset-0 pointer-events-none opacity-[0.2]"
                 style={{
                     backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                                       linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px',
-                    maskImage: 'radial-gradient(circle at center, black 60%, transparent 100%)',
-                    WebkitMaskImage: 'radial-gradient(circle at center, black 60%, transparent 100%)'
+                    backgroundSize: '40px 40px'
                 }}
             />
 
             {/* Background gradients */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none -z-10" />
-            <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-accent/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+            <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-accent/15 via-primary/8 to-transparent pointer-events-none -z-10 md:hidden" />
+            <div className="absolute bottom-0 right-0 hidden h-[600px] w-[800px] rounded-full bg-accent/10 blur-[120px] pointer-events-none -z-10 md:block" />
 
             <div className="container relative mx-auto">
                 <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0 lg:grid-cols-[1fr_1.15fr]">
