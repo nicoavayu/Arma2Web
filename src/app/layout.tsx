@@ -15,6 +15,20 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: "Arma2 - Organizá partidos. Armá equipos parejos.",
   description: "La forma más simple de organizar tus partidos de fútbol. Crea equipos parejos, llevá estadísticas y votá al mejor jugador.",
+  openGraph: {
+    title: "Arma2 – Organizá partidos. Armá equipos parejos.",
+    description: "La forma más simple de organizar tus partidos de fútbol. Creá equipos parejos, llevá estadísticas y votá al mejor jugador.",
+    url: "https://arma2.com.ar",
+    type: "website",
+    images: [
+      {
+        url: "https://arma2.com.ar/og-image.jpg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
