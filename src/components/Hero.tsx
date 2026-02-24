@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
     return (
-        <Section id="home" className="relative h-[100svh] min-h-[100svh] md:h-auto md:min-h-screen flex items-start md:items-center pt-24 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-y-auto overflow-x-hidden md:overflow-hidden">
+        <Section id="home" className="relative h-[100svh] min-h-[100svh] md:h-auto md:min-h-screen flex items-start md:items-center pt-16 md:pt-20 pb-[calc(2rem+env(safe-area-inset-bottom))] md:pb-12 overflow-y-auto overflow-x-hidden md:overflow-hidden">
             {/* Tech Grid Background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.2]"
@@ -29,7 +29,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left Column: Image */}
-                    <div className="order-1 md:order-1 relative h-[48vh] min-h-[320px] max-h-[420px] md:h-[600px] flex items-center justify-center mt-6 mb-1 [@media(max-height:700px)]:mb-4 md:mt-0 md:mb-0">
+                    <div className="order-1 md:order-1 relative h-[48vh] min-h-[320px] max-h-[420px] md:h-[600px] flex items-center justify-center mt-6 mb-8 md:mt-0 md:mb-0">
                         {/* Premium Glow Effect - Increased visibility */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-indigo-500/40 blur-[100px] rounded-full pointer-events-none -z-10" />
 
@@ -40,7 +40,7 @@ export function Hero() {
                             // Desktop: Centered and scaled to fit the space without rotation or excessive offset
                             // Mobile: Centered, Gigantic scale. Desktop: Balanced large scale and subtle vertical lift for full visibility.
                             // Small screens refinement: Scale down to 1.1 on heights < 700px
-                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[1.4] [@media(max-height:667px)]:scale-[1.6] md:scale-[1.65]"
+                            className="relative w-full max-w-[320px] md:max-w-none md:w-full h-full flex items-center justify-center md:justify-end md:translate-x-0 md:-translate-y-2 z-10 scale-[2.1] [@media(max-height:667px)]:scale-[1.7] md:scale-[1.65]"
                         >
                             {/* Phone Image Container */}
                             <div className="relative w-full h-full">
@@ -48,7 +48,7 @@ export function Hero() {
                                     src="/HERO3.png"
                                     alt="Arma2 App Interface"
                                     fill
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl top-[30px] [@media(max-height:667px)]:!top-[30px]"
+                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-2xl !top-[-15px] [@media(max-height:667px)]:!top-[20px]"
                                     priority
                                 />
                             </div>
@@ -62,7 +62,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-[10px] [@media(max-height:700px)]:mb-1 md:mb-4 leading-[1.1] md:leading-tight"
+                            className="text-[32px] md:text-7xl font-bold tracking-tight text-white mb-6 md:mb-4 leading-[1.1] md:leading-tight"
                         >
                             Organizá partidos. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-300 to-accent-secondary">
@@ -75,7 +75,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-base md:text-xl text-text-secondary max-w-xl mb-2 md:mb-6 leading-tight md:leading-relaxed"
+                            className="text-base md:text-xl text-text-secondary max-w-xl mb-10 md:mb-6 leading-tight md:leading-relaxed"
                         >
                             Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados.
                             Olvidate de las discusiones y concentrate en jugar con Armá2.
