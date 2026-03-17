@@ -87,7 +87,7 @@ export function Navbar() {
                         </nav>
 
                         <div
-                            className="inline-flex items-center rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-sm"
+                            className="inline-flex items-center rounded-full border border-accent-secondary/30 bg-gradient-to-r from-accent/20 to-primary-glow/15 p-0.5 shadow-[0_0_18px_rgba(124,58,237,0.2)] backdrop-blur-md"
                             role="group"
                             aria-label={t.nav.languageLabel}
                         >
@@ -100,9 +100,9 @@ export function Navbar() {
                                         type="button"
                                         onClick={() => setLocale(value)}
                                         aria-pressed={active}
-                                        className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-all ${active
-                                            ? "bg-white text-background shadow-[0_0_14px_rgba(255,255,255,0.14)]"
-                                            : "text-white/65 hover:text-white"
+                                        className={`min-w-[2.2rem] rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 ${active
+                                            ? "bg-gradient-to-r from-accent-secondary to-primary-glow text-white shadow-[0_0_16px_rgba(139,92,246,0.45)]"
+                                            : "text-white/65 hover:bg-white/5 hover:text-white"
                                             }`}
                                     >
                                         {value}
