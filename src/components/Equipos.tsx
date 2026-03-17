@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useLanguage } from "@/components/LanguageProvider";
 
 /* ─────────────────────────────────────────────────────────────
    Ghost team cards – marketplace background with varied timing
@@ -59,9 +60,11 @@ interface HeroTeamCardProps {
     initials: string;
     color: string;
     glowColor: string;
+    status: string;
 }
 
-function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardProps) {
+function HeroTeamCard({ side, name, initials, color, glowColor, status }: HeroTeamCardProps) {
+    const { t } = useLanguage();
     const isLeft = side === "left";
     const badgeShadows = [`0 0 15px ${color}44`, `0 0 5px ${color}22`, `0 0 15px ${color}44`];
 
@@ -154,28 +157,22 @@ function HeroTeamCard({ side, name, initials, color, glowColor }: HeroTeamCardPr
                             border: `1px solid ${color}44`,
                         }}
                     >
-                        {isLeft ? "En el mercado" : "Disponible"}
+                        {status}
                     </motion.span>
                 </div>
 
                 {/* Mini Roster */}
                 <div className="mt-5 flex flex-wrap justify-center gap-2 border-t border-white/5 pt-4 sm:mt-6 sm:pt-5">
-                    {[
-                        { n: "Nico", p: "DEL" },
-                        { n: "Santi", p: "MED" },
-                        { n: "Fran", p: "DEF" },
-                        { n: "Agus", p: "ARQ" },
-                        { n: "Lucho", p: "MED" },
-                    ].map((p, i) => (
+                    {t.equipos.roster.map((player, i) => (
                         <div key={i} className="flex flex-col items-center gap-1 group/player">
                             <div
                                 className="h-7 w-7 rounded-full border border-white/10 flex items-center justify-center text-[9px] font-bold bg-white/5 group-hover/player:border-white/30 transition-colors"
                                 style={{ color: color + "99" }}
                             >
-                                {p.n[0]}
+                                {player.name[0]}
                             </div>
                             <span className="text-[8px] font-medium text-white/40 uppercase tracking-tighter group-hover/player:text-white/70 transition-colors">
-                                {p.p}
+                                {player.position}
                             </span>
                         </div>
                     ))}
@@ -326,16 +323,17 @@ const LightningSVG = () => (
     </svg>
 );
 
-const bullets = [
-    { icon: <ShieldSVG />, label: "Armá tu equipo" },
-    { icon: <SignalSVG />, label: "Publicalo en el mercado" },
-    { icon: <LightningSVG />, label: "Desafiá o aceptá desafíos" },
-];
-
 /* ─────────────────────────────────────────────────────────────
    Main section
 ───────────────────────────────────────────────────────────── */
 export function Equipos() {
+    const { t } = useLanguage();
+    const bullets = [
+        { icon: <ShieldSVG />, label: t.equipos.bullets[0] },
+        { icon: <SignalSVG />, label: t.equipos.bullets[1] },
+        { icon: <LightningSVG />, label: t.equipos.bullets[2] },
+    ] as const;
+
     return (
         <section
             id="equipos"
@@ -376,7 +374,7 @@ export function Equipos() {
                     transition={{ duration: 0.5 }}
                     className="mb-6 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-400 [@media(max-width:430px)]:px-3 [@media(max-width:430px)]:tracking-[0.14em]"
                 >
-                    Nuevo · Equipos y Desafíos
+                    {t.equipos.eyebrow}
                 </motion.span>
 
                 {/* Headline */}
@@ -387,9 +385,9 @@ export function Equipos() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="mb-5 text-[clamp(2rem,8vw,3.5rem)] font-black leading-[1.05] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.75rem,7.4vw,2.5rem)] md:text-6xl lg:text-7xl"
                 >
-                    Tu equipo.{" "}
+                    {t.equipos.title.lineOne}{" "}
                     <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                        El mercado.
+                        {t.equipos.title.highlight}
                     </span>
                 </motion.h2>
 
@@ -401,28 +399,29 @@ export function Equipos() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="mx-auto mb-12 max-w-xl text-base text-white/55 [@media(max-width:430px)]:mb-10 [@media(max-width:430px)]:text-[15px] md:mb-16 md:text-lg"
                 >
-                    Publicá tu equipo, buscá rivales y confirmá el partido en segundos.
-                    Una red activa de equipos esperando el desafío.
+                    {t.equipos.description}
                 </motion.p>
 
                 {/* ── Two team cards + connector ── */}
                 <div className="mb-12 flex flex-col items-center justify-center gap-2 md:mb-16 md:flex-row md:gap-4">
                     <HeroTeamCard
                         side="left"
-                        name="Los Galácticos"
-                        initials="LG"
+                        name={t.equipos.cards.left.name}
+                        initials={t.equipos.cards.left.initials}
                         color="#3B82F6"
                         glowColor="linear-gradient(135deg, #3B82F6, #6366f1)"
+                        status={t.equipos.cards.left.status}
                     />
 
                     <EnergyConnector />
 
                     <HeroTeamCard
                         side="right"
-                        name="Deportivo Tapita"
-                        initials="DT"
+                        name={t.equipos.cards.right.name}
+                        initials={t.equipos.cards.right.initials}
                         color="#7c3aed"
                         glowColor="linear-gradient(135deg, #7c3aed, #ec4899)"
+                        status={t.equipos.cards.right.status}
                     />
                 </div>
 

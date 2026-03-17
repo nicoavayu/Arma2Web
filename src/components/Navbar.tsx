@@ -3,10 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function Navbar() {
+    const router = useRouter();
+    const pathname = usePathname();
+    const { locale, setLocale, t } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -25,11 +30,22 @@ export function Navbar() {
         };
     }, [mobileMenuOpen]);
 
-    const navLinks = [
-        { name: "Cómo funciona", href: "/#how-it-works" },
-        { name: "Features", href: "/#features" },
-        { name: "FAQ", href: "/#faq" },
-    ];
+    const navLinks = t.nav.links;
+
+    const handleHomeClick = () => {
+        setMobileMenuOpen(false);
+
+        if (pathname !== "/") {
+            router.push("/");
+            return;
+        }
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+        });
+    };
 
     return (
         <>
@@ -40,8 +56,13 @@ export function Navbar() {
                     }`}
                 style={{ paddingTop: "max(env(safe-area-inset-top), 0px)" }}
             >
-                <div className="container mx-auto flex items-center justify-between">
-                    <Link href="/" className="z-50 flex items-center gap-2 translate-y-[2px] md:translate-y-[3px]">
+                <div className="container mx-auto flex items-center justify-between gap-4">
+                    <button
+                        type="button"
+                        onClick={handleHomeClick}
+                        aria-label={t.nav.homeAria}
+                        className="z-50 inline-flex items-center justify-center"
+                    >
                         <div className="relative h-9 w-9 [@media(max-width:360px)]:h-8 [@media(max-width:360px)]:w-8 md:h-10 md:w-10">
                             <Image
                                 src="/logo_navbar.png"
@@ -50,27 +71,50 @@ export function Navbar() {
                                 className="object-contain brightness-0 invert"
                             />
                         </div>
-                    </Link>
+                    </button>
 
-                    {/* Desktop Nav - Moved to the right */}
-                    <div className="flex items-center gap-3 md:gap-8">
+                    <div className="flex items-center gap-2 md:gap-6">
                         <nav className="hidden md:flex items-center gap-8">
                             {navLinks.map((link) => (
                                 <Link
-                                    key={link.name}
+                                    key={link.label}
                                     href={link.href}
                                     className="text-sm font-medium text-text-secondary hover:text-white transition-colors"
                                 >
-                                    {link.name}
+                                    {link.label}
                                 </Link>
                             ))}
                         </nav>
 
-                        {/* Mobile Menu Toggle */}
+                        <div
+                            className="inline-flex items-center rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-sm"
+                            role="group"
+                            aria-label={t.nav.languageLabel}
+                        >
+                            {(["es", "en"] as const).map((value) => {
+                                const active = locale === value;
+
+                                return (
+                                    <button
+                                        key={value}
+                                        type="button"
+                                        onClick={() => setLocale(value)}
+                                        aria-pressed={active}
+                                        className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-all ${active
+                                            ? "bg-white text-background shadow-[0_0_14px_rgba(255,255,255,0.14)]"
+                                            : "text-white/65 hover:text-white"
+                                            }`}
+                                    >
+                                        {value}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
                         <button
                             className="md:hidden z-50 inline-flex h-10 w-10 items-center justify-center rounded-lg text-white [@media(max-width:360px)]:h-9 [@media(max-width:360px)]:w-9"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                            aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
                         >
                             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -93,12 +137,12 @@ export function Navbar() {
                     >
                         {navLinks.map((link) => (
                             <Link
-                                key={link.name}
+                                key={link.label}
                                 href={link.href}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="text-center text-xl font-medium text-white sm:text-2xl"
                             >
-                                {link.name}
+                                {link.label}
                             </Link>
                         ))}
                     </motion.div>

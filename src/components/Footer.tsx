@@ -1,9 +1,13 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
+    const { t } = useLanguage();
 
     return (
         <footer className="border-t border-white/5 bg-surface/30 pt-12 pb-8 backdrop-blur-sm md:pt-16">
@@ -21,48 +25,47 @@ export function Footer() {
                             </div>
                         </Link>
                         <p className="mx-auto max-w-xs text-sm text-text-secondary md:mx-0">
-                            La plataforma definitiva para organizar partidos de fútbol con amigos.
-                            Equipos balanceados, estadísticas y cero complicaciones.
+                            {t.footer.description}
                         </p>
                     </div>
 
                     <div className="text-center md:text-left">
-                        <h4 className="mb-4 font-semibold text-white">Producto</h4>
+                        <h4 className="mb-4 font-semibold text-white">{t.footer.productTitle}</h4>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="#how-it-works" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    Cómo funciona
+                                <Link href="/#how-it-works" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.howItWorks}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#features" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    Features
+                                <Link href="/#features" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.features}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#faq" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    FAQ
+                                <Link href="/#faq" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.faq}
                                 </Link>
                             </li>
                         </ul>
                     </div>
 
                     <div className="text-center md:text-left">
-                        <h4 className="mb-4 font-semibold text-white">Legal</h4>
+                        <h4 className="mb-4 font-semibold text-white">{t.footer.legalTitle}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="/privacy" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    Privacidad
+                                    {t.footer.links.privacy}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/terms" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    Términos
+                                    {t.footer.links.terms}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/contact" className="text-text-secondary hover:text-white text-sm transition-colors">
-                                    Contacto
+                                    {t.footer.links.contact}
                                 </Link>
                             </li>
                         </ul>
@@ -71,7 +74,7 @@ export function Footer() {
 
                 <div className="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 md:flex-row md:pt-8">
                     <p className="text-center text-xs text-text-secondary md:text-left">
-                        © {currentYear} Arma2. Todos los derechos reservados.
+                        © {currentYear} Arma2. {t.footer.rights}
                     </p>
                     <div className="flex gap-4">
                         {/* Social icons could go here */}

@@ -3,8 +3,11 @@
 import React from "react";
 import { Section } from "@/components/Section";
 import { STORE_LINKS } from "@/lib/store-links";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function CTA() {
+    const { t } = useLanguage();
+
     return (
         <Section className="relative overflow-hidden py-16 text-center md:py-24">
             {/* Glow Effect */}
@@ -13,11 +16,11 @@ export function CTA() {
             <div className="container mx-auto">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="mb-5 text-[clamp(2rem,8vw,3rem)] font-bold text-white md:mb-6 md:text-6xl">
-                        Competí de verdad. <br />
-                        <span className="text-primary-glow">Dejá historia.</span>
+                        {t.cta.title.lineOne} <br />
+                        <span className="text-primary-glow">{t.cta.title.highlight}</span>
                     </h2>
                     <p className="mx-auto mb-8 max-w-2xl text-base text-text-secondary md:mb-10 md:text-lg">
-                        Armá tu equipo, publicalo en el mercado y construí reputación partido a partido. Es gratis.
+                        {t.cta.description}
                     </p>
 
                     <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -26,7 +29,7 @@ export function CTA() {
                             href={STORE_LINKS.appStore}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Descargar Arma2 en App Store"
+                            aria-label={t.stores.appStore.ariaLabel}
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
@@ -35,8 +38,8 @@ export function CTA() {
                                 />
                             </svg>
                             <div>
-                                <p className="text-[10px] text-white leading-none text-left font-medium">Download on the</p>
-                                <span className="text-sm font-semibold">App Store</span>
+                                <p className="text-[10px] text-white leading-none text-left font-medium">{t.stores.appStore.eyebrow}</p>
+                                <span className="text-sm font-semibold">{t.stores.appStore.label}</span>
                             </div>
                         </a>
 
@@ -45,7 +48,7 @@ export function CTA() {
                             href={STORE_LINKS.googlePlay}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Descargar Arma2 en Google Play"
+                            aria-label={t.stores.googlePlay.ariaLabel}
                             className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
@@ -58,14 +61,14 @@ export function CTA() {
                                 <path fill="#314a52" d="M8.3 4.3c.2-.2.5-.3.8-.3.2 0 .4.1.6.2l45.5 26.6c.5.2.8.7.8 1.2s-.3 1-.7 1.3l-11.4 6.6 2.9 2.9 10.4-6.1c1.7-1 2.7-2.8 2.7-4.7s-1-3.8-2.7-4.7L11.7.7C11 .2 10.1 0 9.1 0 7.7 0 6.4.6 5.5 1.5z" />
                             </svg>
                             <div>
-                                <p className="text-[10px] text-white leading-none text-left font-medium">Get it on</p>
-                                <span className="text-sm font-semibold">Google Play</span>
+                                <p className="text-[10px] text-white leading-none text-left font-medium">{t.stores.googlePlay.eyebrow}</p>
+                                <span className="text-sm font-semibold">{t.stores.googlePlay.label}</span>
                             </div>
                         </a>
                     </div>
 
                     <p className="mt-7 text-sm text-text-secondary/60 md:mt-8">
-                        No requiere tarjeta de crédito. Es gratis.
+                        {t.cta.disclaimer}
                     </p>
                 </div>
             </div>

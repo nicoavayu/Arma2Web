@@ -6,6 +6,7 @@ import { Card } from "@/components/Card";
 import { Users2, Smartphone, Swords, Trophy, Star, UserRound, Check } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 
 /* ─────────────────────────────────────────────────────────────
    Custom SVG icons
@@ -54,6 +55,7 @@ const votingPlayers = [
 ];
 
 function LiveVotingWindow() {
+    const { t } = useLanguage();
     const [cycle, setCycle] = React.useState(0);
     const [voted, setVoted] = React.useState(false);
     const [clicked, setClicked] = React.useState(false);
@@ -190,7 +192,7 @@ function LiveVotingWindow() {
             </div>
 
             <div className="absolute bottom-3 rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-center text-[10px] font-bold uppercase tracking-wider text-primary-glow [@media(max-width:430px)]:bottom-2 [@media(max-width:430px)]:text-[9px] sm:px-3 sm:text-xs sm:tracking-widest">
-                Votación Democrática
+                {t.features.balance.badge}
             </div>
         </div>
     );
@@ -238,6 +240,7 @@ function getOrganizedEnd(isMobile: boolean) {
 }
 
 function TeamBalanceWindow() {
+    const { t } = useLanguage();
     const [isMobile, setIsMobile] = React.useState(false);
     const reduceMotion = useReducedMotion();
 
@@ -318,7 +321,7 @@ function TeamBalanceWindow() {
                     />
                 </div>
                 <div className="text-[10px] text-white/40 font-bold uppercase tracking-[0.2em]">
-                    Equilibrio
+                    {t.features.balance.sliderLabel}
                 </div>
             </div>
         </div>
@@ -404,19 +407,20 @@ function AnimatedRating() {
    Main Features section
 ───────────────────────────────────────────────────────────── */
 export function Features() {
+    const { t } = useLanguage();
     const reduceMotion = useReducedMotion();
 
     return (
         <Section id="features" className="bg-background">
             <div className="container mx-auto">
                 <div className="mb-12 text-center [@media(max-width:430px)]:mb-10 md:mb-20 md:text-left">
-                    <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">Features</span>
+                    <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">{t.features.eyebrow}</span>
                     <h2 className="mx-auto mb-5 max-w-2xl text-[clamp(2rem,8vw,3rem)] font-bold text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.4vw,2.25rem)] md:mx-0 md:mb-6 md:text-6xl">
-                        Todo lo que necesitás para{" "}
+                        {t.features.title.start}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary-glow">
-                            profesionalizar
+                            {t.features.title.highlight}
                         </span>{" "}
-                        tu amateurismo.
+                        {t.features.title.end}
                     </h2>
                 </div>
 
@@ -432,9 +436,9 @@ export function Features() {
                                     <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
                                         <ZapSVG />
                                     </div>
-                                    <h3 className="mb-2 text-xl font-bold text-white [@media(max-width:430px)]:text-lg sm:text-2xl md:text-3xl">Balance Democrático</h3>
+                                    <h3 className="mb-2 text-xl font-bold text-white [@media(max-width:430px)]:text-lg sm:text-2xl md:text-3xl">{t.features.balance.title}</h3>
                                     <p className="text-text-secondary text-sm md:text-base leading-relaxed">
-                                        Los jugadores se distribuyen en equipos parejos según la evaluación del grupo.
+                                        {t.features.balance.description}
                                     </p>
                                 </div>
 
@@ -462,9 +466,9 @@ export function Features() {
                                 <UserRound className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <h3 className="mb-1 text-lg font-bold text-white sm:text-xl">Tu Perfil de Jugador</h3>
+                                <h3 className="mb-1 text-lg font-bold text-white sm:text-xl">{t.features.playerProfile.title}</h3>
                                 <p className="text-text-secondary text-[13px] leading-tight">
-                                    Construí identidad, acumulá premios y mostrá tu reputación.
+                                    {t.features.playerProfile.description}
                                 </p>
                             </div>
                         </div>
@@ -473,9 +477,9 @@ export function Features() {
                             {/* Awards - Row on mobile, Column on desktop */}
                             <div className="z-10 flex flex-row justify-center gap-5 [@media(max-width:430px)]:gap-4 sm:gap-8 md:flex-col md:gap-8">
                                 {[
-                                    { src: "/mvp_award.png", label: "Figura", count: "3X", color: "#fbbf24" },
-                                    { src: "/goalkeeper_award.png", label: "Arquero", count: "1X", color: "#38bdf8" },
-                                    { src: "/redcard_award.png", label: "Tarjeta", count: "5X", color: "#ef4444" },
+                                    { src: "/mvp_award.png", color: "#fbbf24", ...t.features.playerProfile.awards[0] },
+                                    { src: "/goalkeeper_award.png", color: "#38bdf8", ...t.features.playerProfile.awards[1] },
+                                    { src: "/redcard_award.png", color: "#ef4444", ...t.features.playerProfile.awards[2] },
                                 ].map((award, i) => (
                                     <motion.div
                                         key={award.label}
@@ -523,9 +527,9 @@ export function Features() {
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Users2 className="w-6 h-6 text-blue-500" />
                             </div>
-                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">Comunidad</h3>
+                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{t.features.community.title}</h3>
                             <p className="mb-5 text-sm text-text-secondary sm:mb-6">
-                                Mantené a tu equipo informado en tiempo real sobre desafíos y resultados.
+                                {t.features.community.description}
                             </p>
 
                             {/* Mini Floating Notification */}
@@ -540,8 +544,8 @@ export function Features() {
                                     <Swords className="w-3.5 h-3.5 text-blue-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">Desafío Grupal</p>
-                                    <p className="text-[11px] text-white/90 truncate font-medium">¡Te desafiaron a jugar!</p>
+                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">{t.features.community.notifications[0].eyebrow}</p>
+                                    <p className="text-[11px] text-white/90 truncate font-medium">{t.features.community.notifications[0].title}</p>
                                 </div>
                             </motion.div>
 
@@ -556,8 +560,8 @@ export function Features() {
                                     <Smartphone className="w-3.5 h-3.5 text-purple-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">Votación</p>
-                                    <p className="text-[11px] text-white/90 truncate font-medium">Armá los equipos ahora</p>
+                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">{t.features.community.notifications[1].eyebrow}</p>
+                                    <p className="text-[11px] text-white/90 truncate font-medium">{t.features.community.notifications[1].title}</p>
                                 </div>
                             </motion.div>
 
@@ -572,8 +576,8 @@ export function Features() {
                                     <Check className="w-3.5 h-3.5 text-green-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">Confirmación</p>
-                                    <p className="text-[11px] text-white/90 truncate font-medium">Partido confirmado</p>
+                                    <p className="text-[10px] text-white/50 leading-none mb-1 uppercase font-bold tracking-tighter">{t.features.community.notifications[2].eyebrow}</p>
+                                    <p className="text-[11px] text-white/90 truncate font-medium">{t.features.community.notifications[2].title}</p>
                                 </div>
                             </motion.div>
                         </div>
@@ -585,9 +589,9 @@ export function Features() {
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Smartphone className="w-6 h-6 text-purple-500" />
                             </div>
-                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">Encuesta Post-Partido</h3>
+                            <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{t.features.survey.title}</h3>
                             <p className="mb-5 text-sm text-text-secondary sm:mb-6">
-                                Votación rápida al finalizar. Elegí las figuras y sancioná la falta de compromiso.
+                                {t.features.survey.description}
                             </p>
 
                             {/* Mini Survey Simulation - Step by Step */}
@@ -606,7 +610,7 @@ export function Features() {
                                     {/* Step 1: Trophy (Done) */}
                                     <div className="flex flex-col items-center gap-2 opacity-30">
                                         <div className="relative w-6 h-6">
-                                            <Image src="/mvp_award.png" alt="Figura" fill className="object-contain" />
+                                            <Image src="/mvp_award.png" alt={t.features.survey.awardAlts.mvp} fill className="object-contain" />
                                         </div>
                                         <div className="flex -space-x-1">
                                             <div className="w-2.5 h-2.5 rounded-full border border-white/10 bg-white/5" />
@@ -622,7 +626,7 @@ export function Features() {
                                             transition={reduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                             className="relative w-9 h-9 drop-shadow-[0_0_12px_rgba(59,130,246,0.3)]"
                                         >
-                                            <Image src="/goalkeeper_award.png" alt="Arquero" fill className="object-contain" />
+                                            <Image src="/goalkeeper_award.png" alt={t.features.survey.awardAlts.goalkeeper} fill className="object-contain" />
                                         </motion.div>
                                         <div className="flex -space-x-1.5">
                                             <div className="w-3.5 h-3.5 rounded-full border border-white/20 bg-white/5 transition-colors" />
@@ -634,7 +638,7 @@ export function Features() {
                                     {/* Step 3: Card (Next) */}
                                     <div className="flex flex-col items-center gap-2 opacity-30">
                                         <div className="relative w-6 h-6">
-                                            <Image src="/redcard_award.png" alt="Sanción" fill className="object-contain" />
+                                            <Image src="/redcard_award.png" alt={t.features.survey.awardAlts.card} fill className="object-contain" />
                                         </div>
                                         <div className="flex -space-x-1">
                                             <div className="w-2.5 h-2.5 rounded-full border border-white/10 bg-white/5" />
@@ -645,7 +649,7 @@ export function Features() {
                                 </div>
 
                                 <div className="h-8 rounded bg-primary/20 border border-primary/30 flex items-center justify-center text-[10px] font-bold text-primary-glow uppercase tracking-widest gap-2">
-                                    Confirmar Votos
+                                    {t.features.survey.submit}
                                     <motion.div
                                         animate={reduceMotion ? { opacity: 1 } : { opacity: [0.4, 1, 0.4] }}
                                         transition={reduceMotion ? { duration: 0 } : { duration: 1.5, repeat: Infinity }}
@@ -660,7 +664,7 @@ export function Features() {
                                     transition={{ delay: 2.5 }}
                                     className="absolute bottom-1 left-0 right-0 flex justify-center items-center gap-1.5"
                                 >
-                                    <span className="text-[8px] text-white/40 uppercase font-bold tracking-tighter">Encuesta registrada</span>
+                                    <span className="text-[8px] text-white/40 uppercase font-bold tracking-tighter">{t.features.survey.saved}</span>
                                     <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" className="text-blue-400">
                                         <polyline points="20 6 9 17 4 12" />
                                     </svg>
@@ -675,9 +679,9 @@ export function Features() {
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-yellow-500/20 bg-yellow-500/10 backdrop-blur-sm transition-all group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] sm:mb-6 sm:h-12 sm:w-12">
                                 <Trophy className="w-6 h-6 text-yellow-500" />
                             </div>
-                            <h3 className="mb-2 text-center text-lg font-bold text-white sm:text-xl">Premios y Sanciones</h3>
+                            <h3 className="mb-2 text-center text-lg font-bold text-white sm:text-xl">{t.features.awards.title}</h3>
                             <p className="mb-5 text-center text-sm text-text-secondary sm:mb-6">
-                                Los premios quedan en tu historia. Las tarjetas también.
+                                {t.features.awards.description}
                             </p>
 
                             {/* Rating badge simulation - CENTERED and BIGGER */}
@@ -694,9 +698,9 @@ export function Features() {
 
                             <div className="mt-auto flex items-center justify-center gap-4 rounded-2xl border-t border-white/5 bg-white/[0.03] py-4 [@media(max-width:430px)]:gap-3 sm:gap-8 sm:py-5">
                                 {[
-                                    { src: "/mvp_award.png", label: "Trophy", color: "rgba(251,191,36,0.4)" },
-                                    { src: "/goalkeeper_award.png", label: "Glove", color: "rgba(56,189,248,0.4)" },
-                                    { src: "/redcard_award.png", label: "Tarjeta", color: "rgba(239,68,68,0.4)" },
+                                    { src: "/mvp_award.png", color: "rgba(251,191,36,0.4)", ...t.features.awards.icons[0] },
+                                    { src: "/goalkeeper_award.png", color: "rgba(56,189,248,0.4)", ...t.features.awards.icons[1] },
+                                    { src: "/redcard_award.png", color: "rgba(239,68,68,0.4)", ...t.features.awards.icons[2] },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.label}

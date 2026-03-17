@@ -5,8 +5,11 @@ import Image from "next/image";
 import { Section } from "@/components/Section";
 import { motion } from "framer-motion";
 import { STORE_LINKS } from "@/lib/store-links";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function Hero() {
+    const { t } = useLanguage();
+
     return (
         <Section
             id="home"
@@ -63,11 +66,11 @@ export function Hero() {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="mb-5 text-[clamp(1.85rem,8vw,2.85rem)] font-bold leading-[1.08] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.6vw,2.35rem)] md:mb-4 md:text-[clamp(3.15rem,5.2vw,4.5rem)] md:leading-[1.06] xl:text-[clamp(3.25rem,3.9vw,4.25rem)] xl:leading-[1.04] 2xl:text-7xl 2xl:leading-tight"
                         >
-                            Organizá partidos. <br />
+                            {t.hero.title.lineOne} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-secondary lg:whitespace-nowrap">
-                                Armá equipos parejos.
+                                {t.hero.title.highlight}
                             </span> <br />
-                            Jugá.
+                            {t.hero.title.lineThree}
                         </motion.h1>
 
                         <motion.p
@@ -76,8 +79,7 @@ export function Hero() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="mb-7 max-w-xl text-[15px] leading-relaxed text-text-secondary [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-6 md:text-[clamp(1.12rem,1.55vw,1.35rem)] md:leading-relaxed xl:text-[1.18rem] 2xl:text-xl"
                         >
-                            Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados.
-                            Olvidate de las discusiones y concentrate en jugar con Arma2.
+                            {t.hero.description}
                         </motion.p>
 
                         <motion.div
@@ -91,7 +93,7 @@ export function Hero() {
                                 href={STORE_LINKS.appStore}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Descargar Arma2 en App Store"
+                                aria-label={t.stores.appStore.ariaLabel}
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 22.773 22.773">
@@ -100,8 +102,8 @@ export function Hero() {
                                     />
                                 </svg>
                                 <div>
-                                    <p className="text-[10px] text-white leading-none text-left font-medium">Download on the</p>
-                                    <span className="text-sm font-semibold">App Store</span>
+                                    <p className="text-[10px] text-white leading-none text-left font-medium">{t.stores.appStore.eyebrow}</p>
+                                    <span className="text-sm font-semibold">{t.stores.appStore.label}</span>
                                 </div>
                             </a>
 
@@ -110,7 +112,7 @@ export function Hero() {
                                 href={STORE_LINKS.googlePlay}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Descargar Arma2 en Google Play"
+                                aria-label={t.stores.googlePlay.ariaLabel}
                                 className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 64 64">
@@ -123,8 +125,8 @@ export function Hero() {
                                     <path fill="#314a52" d="M8.3 4.3c.2-.2.5-.3.8-.3.2 0 .4.1.6.2l45.5 26.6c.5.2.8.7.8 1.2s-.3 1-.7 1.3l-11.4 6.6 2.9 2.9 10.4-6.1c1.7-1 2.7-2.8 2.7-4.7s-1-3.8-2.7-4.7L11.7.7C11 .2 10.1 0 9.1 0 7.7 0 6.4.6 5.5 1.5z" />
                                 </svg>
                                 <div>
-                                    <p className="text-[10px] text-white leading-none text-left font-medium">Get it on</p>
-                                    <span className="text-sm font-semibold">Google Play</span>
+                                    <p className="text-[10px] text-white leading-none text-left font-medium">{t.stores.googlePlay.eyebrow}</p>
+                                    <span className="text-sm font-semibold">{t.stores.googlePlay.label}</span>
                                 </div>
                             </a>
                         </motion.div>
