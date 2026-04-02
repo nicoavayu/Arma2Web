@@ -64,6 +64,11 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/delete-account" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.deleteAccount}
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/contact" className="text-text-secondary hover:text-white text-sm transition-colors">
                                     {t.footer.links.contact}
                                 </Link>

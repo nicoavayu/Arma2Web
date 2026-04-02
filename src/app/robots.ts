@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "/",
         },
-        sitemap: "https://arma2.vercel.app/sitemap.xml",
+        sitemap: "https://www.arma2.com.ar/sitemap.xml",
     };
 }

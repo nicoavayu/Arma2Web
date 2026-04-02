@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://arma2.vercel.app"; // Replace with actual domain when deployed
+    const baseUrl = "https://www.arma2.com.ar";
 
     return [
         {
@@ -27,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/delete-account`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.7,
         },
         {
             url: `${baseUrl}/press`,
