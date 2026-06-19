@@ -337,7 +337,7 @@ export function Equipos() {
     return (
         <section
             id="equipos"
-            className="relative w-full overflow-hidden bg-[#070712] py-20 [@media(max-width:430px)]:py-16 md:py-32"
+            className="premium-section relative w-full overflow-hidden bg-[#070712] py-20 [@media(max-width:430px)]:py-16 md:py-32"
         >
             {/* ── Ambient radial glow ── */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -372,7 +372,7 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mb-6 inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-400 [@media(max-width:430px)]:px-3 [@media(max-width:430px)]:tracking-[0.14em]"
+                    className="premium-eyebrow mb-6 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 [@media(max-width:430px)]:px-3"
                 >
                     {t.equipos.eyebrow}
                 </motion.span>
@@ -383,10 +383,10 @@ export function Equipos() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="mb-5 text-[clamp(2rem,8vw,3.5rem)] font-black leading-[1.05] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.75rem,7.4vw,2.5rem)] md:text-6xl lg:text-7xl"
+                    className="premium-section-title mb-5 text-white"
                 >
-                    {t.equipos.title.lineOne}{" "}
-                    <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                    <span className="premium-metal">{t.equipos.title.lineOne}</span>{" "}
+                    <span className="premium-gradient-text">
                         {t.equipos.title.highlight}
                     </span>
                 </motion.h2>

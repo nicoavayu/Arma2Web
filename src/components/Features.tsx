@@ -411,23 +411,23 @@ export function Features() {
     const reduceMotion = useReducedMotion();
 
     return (
-        <Section id="features" className="bg-background">
+        <Section id="features" className="premium-section bg-background/70">
             <div className="container mx-auto">
                 <div className="mb-12 text-center [@media(max-width:430px)]:mb-10 md:mb-20 md:text-left">
-                    <span className="text-primary font-medium tracking-wider uppercase text-sm mb-4 block">{t.features.eyebrow}</span>
-                    <h2 className="mx-auto mb-5 max-w-2xl text-[clamp(2rem,8vw,3rem)] font-bold text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.4vw,2.25rem)] md:mx-0 md:mb-6 md:text-6xl">
-                        {t.features.title.start}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary-glow">
+                    <span className="premium-eyebrow mb-4 block">{t.features.eyebrow}</span>
+                    <h2 className="premium-section-title mx-auto mb-5 max-w-4xl text-white md:mx-0 md:mb-6">
+                        <span className="premium-metal">{t.features.title.start}</span>
+                        <span className="premium-gradient-text">
                             {t.features.title.highlight}
                         </span>{" "}
-                        {t.features.title.end}
+                        <span className="premium-metal">{t.features.title.end}</span>
                     </h2>
                 </div>
 
                 <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
 
                     {/* ── Feature 1: Balance Democrático (Large) ── */}
-                    <Card className="relative row-span-2 overflow-hidden border-white/10 bg-gradient-to-br from-surface/80 to-surface-highlight/50 group md:col-span-2">
+                    <Card className="relative row-span-2 overflow-hidden border-primary/15 bg-gradient-to-br from-surface/85 to-surface-highlight/55 group md:col-span-2">
                         <div className="relative z-10 flex h-full flex-col gap-6 p-5 [@media(max-width:430px)]:gap-4 [@media(max-width:430px)]:p-4 sm:p-6 md:flex-row md:gap-8 md:p-8">
                             {/* Left Column (Text + Voting) */}
                             <div className="flex-[0.8] flex flex-col justify-between h-full">
@@ -460,7 +460,7 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 2: Tu Perfil de Jugador ── */}
-                    <Card className="relative flex h-full flex-col overflow-hidden border-white/5 bg-surface-highlight/20 group md:row-span-2">
+                    <Card className="relative flex h-full flex-col overflow-hidden border-white/10 bg-surface-highlight/25 group md:row-span-2">
                         <div className="flex items-center gap-3 p-5 pb-2 [@media(max-width:430px)]:p-4 [@media(max-width:430px)]:pb-2 sm:gap-4 sm:p-6">
                             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 backdrop-blur-sm transition-all group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] sm:h-12 sm:w-12">
                                 <UserRound className="w-6 h-6 text-blue-400" />
@@ -522,7 +522,7 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 3: Comunidad ── */}
-                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                    <Card className="relative h-full overflow-hidden border-white/10 bg-surface-highlight/25 group">
                         <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Users2 className="w-6 h-6 text-blue-500" />
@@ -584,7 +584,7 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 4: Encuesta Post-Partido ── */}
-                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                    <Card className="relative h-full overflow-hidden border-white/10 bg-surface-highlight/25 group">
                         <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-purple-500/20 bg-purple-500/10 sm:mb-6 sm:h-12 sm:w-12">
                                 <Smartphone className="w-6 h-6 text-purple-500" />
@@ -674,7 +674,7 @@ export function Features() {
                     </Card>
 
                     {/* ── Feature 5: Premios y Sanciones ── */}
-                    <Card className="relative h-full overflow-hidden border-white/5 bg-surface-highlight/20 group">
+                    <Card className="relative h-full overflow-hidden border-white/10 bg-surface-highlight/25 group">
                         <div className="flex h-full flex-col p-5 [@media(max-width:430px)]:p-4 sm:p-6">
                             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-yellow-500/20 bg-yellow-500/10 backdrop-blur-sm transition-all group-hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] sm:mb-6 sm:h-12 sm:w-12">
                                 <Trophy className="w-6 h-6 text-yellow-500" />

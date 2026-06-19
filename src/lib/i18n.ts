@@ -34,13 +34,15 @@ export const translations = {
       },
     },
     hero: {
+      eyebrow: "Fútbol amateur · Nivel pro",
       title: {
         lineOne: "Organizá partidos.",
         highlight: "Armá equipos parejos.",
         lineThree: "Jugá.",
       },
       description:
-        "Todos votan el nivel de cada jugador. El sistema calcula promedios y arma equipos balanceados. Olvidate de las discusiones y concentrate en jugar con Arma2.",
+        "Convocá jugadores, equilibrá equipos, registrá resultados y competí con estadísticas reales.",
+      benefits: ["Gratis", "Equipos balanceados", "MVP y premios", "Desafíos entre equipos"],
     },
     howItWorks: {
       eyebrow: "Cómo funciona",
@@ -115,6 +117,44 @@ export const translations = {
         { name: "Lucho", position: "MED" },
       ],
       bullets: ["Armá tu equipo", "Publicalo en el mercado", "Desafiá o aceptá desafíos"],
+    },
+    teamRanking: {
+      eyebrow: "Nuevo · Rendimiento de equipos",
+      title: {
+        lineOne: "Ranking y rating",
+        highlight: "de equipos.",
+      },
+      description:
+        "Medí el rendimiento de tu equipo, compará resultados y seguí la evolución contra otros rivales.",
+      bullets: [
+        "Partidos ganados, empatados y perdidos",
+        "Porcentaje de victorias",
+        "Historial contra rivales",
+        "Ranking por formato de juego",
+        "Desafíos entre equipos",
+      ],
+      leaderboard: {
+        title: "Ranking F7 · Zona Norte",
+        ratingLabel: "Rating",
+        winLabel: "Vict.",
+        liveLabel: "En vivo",
+        footnote: "Se actualiza después de cada desafío.",
+        rows: [
+          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, rating: "1860", trend: "up" },
+          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, rating: "1745", trend: "up" },
+          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, rating: "1680", trend: "down" },
+          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, rating: "1610", trend: "up" },
+        ],
+      },
+      versus: {
+        eyebrow: "Historial contra rivales",
+        teamA: "Los Galácticos",
+        teamB: "Deportivo Tapita",
+        scoreA: "5",
+        scoreB: "3",
+        draws: "2 empates",
+        footnote: "Últimos 10 partidos entre ambos.",
+      },
     },
     features: {
       eyebrow: "Features",
@@ -307,13 +347,15 @@ export const translations = {
       },
     },
     hero: {
+      eyebrow: "Amateur football · Pro level",
       title: {
         lineOne: "Stop uneven matches.",
         highlight: "Create balanced teams.",
         lineThree: "Just play.",
       },
       description:
-        "Everyone rates each player's level. Arma2 averages the votes and builds fair teams in seconds, so you can skip the debate and get straight into the game.",
+        "Invite players, balance teams, record results, and compete with real stats.",
+      benefits: ["Free", "Balanced teams", "MVP and awards", "Team challenges"],
     },
     howItWorks: {
       eyebrow: "How it works",
@@ -388,6 +430,44 @@ export const translations = {
         { name: "Lucho", position: "MID" },
       ],
       bullets: ["Build your squad", "List it on the marketplace", "Challenge or accept matches"],
+    },
+    teamRanking: {
+      eyebrow: "New · Team performance",
+      title: {
+        lineOne: "Team ranking",
+        highlight: "and rating.",
+      },
+      description:
+        "Track your team's performance, compare results, and follow how you stack up against your rivals.",
+      bullets: [
+        "Wins, draws, and losses",
+        "Win percentage",
+        "Head-to-head history",
+        "Ranking by match format",
+        "Team challenges",
+      ],
+      leaderboard: {
+        title: "7-a-side Ranking · North Zone",
+        ratingLabel: "Rating",
+        winLabel: "Win%",
+        liveLabel: "Live",
+        footnote: "Updated after every challenge.",
+        rows: [
+          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, rating: "1860", trend: "up" },
+          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, rating: "1745", trend: "up" },
+          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, rating: "1680", trend: "down" },
+          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, rating: "1610", trend: "up" },
+        ],
+      },
+      versus: {
+        eyebrow: "Head-to-head history",
+        teamA: "Los Galácticos",
+        teamB: "Deportivo Tapita",
+        scoreA: "5",
+        scoreB: "3",
+        draws: "2 draws",
+        footnote: "Last 10 matches between them.",
+      },
     },
     features: {
       eyebrow: "Features",

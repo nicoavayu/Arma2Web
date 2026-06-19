@@ -11,10 +11,10 @@ export function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <Section id="faq" className="bg-background">
+        <Section id="faq" className="premium-section bg-background">
             <div className="container mx-auto px-4 md:px-6">
-                <h2 className="mb-10 text-center text-3xl font-bold text-white md:mb-16 md:text-5xl">
-                    {t.faq.title}
+                <h2 className="premium-section-title mb-10 text-center text-white md:mb-16">
+                    <span className="premium-metal">{t.faq.title}</span>
                 </h2>
 
                 <div className="mx-auto max-w-3xl space-y-3 md:space-y-4">
