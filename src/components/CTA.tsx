@@ -9,15 +9,14 @@ export function CTA() {
     const { t } = useLanguage();
 
     return (
-        <Section className="relative overflow-hidden py-16 text-center md:py-24">
-            {/* Glow Effect */}
-            <div className="absolute top-1/2 left-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[90px] pointer-events-none md:h-[600px] md:w-[600px] md:blur-[100px]" />
+        <Section className="premium-section relative overflow-hidden py-16 text-center md:py-24">
+            <div className="absolute left-1/2 top-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(39,184,255,0.2),rgba(236,77,255,0.14)_42%,transparent_70%)] blur-3xl pointer-events-none md:h-[520px] md:w-[920px]" />
 
             <div className="container mx-auto">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="mb-5 text-[clamp(2rem,8vw,3rem)] font-bold text-white md:mb-6 md:text-6xl">
-                        {t.cta.title.lineOne} <br />
-                        <span className="text-primary-glow">{t.cta.title.highlight}</span>
+                    <h2 className="premium-section-title mb-5 text-white md:mb-6">
+                        <span className="premium-metal block">{t.cta.title.lineOne}</span>
+                        <span className="premium-gradient-text block">{t.cta.title.highlight}</span>
                     </h2>
                     <p className="mx-auto mb-8 max-w-2xl text-base text-text-secondary md:mb-10 md:text-lg">
                         {t.cta.description}
@@ -30,7 +29,7 @@ export function CTA() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={t.stores.appStore.ariaLabel}
-                            className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
+                            className="premium-store-button inline-flex min-h-14 w-full cursor-pointer items-center justify-center px-4 py-3 text-white tracking-wide outline-none transition-all duration-300 active:scale-[0.99] backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
                                 <path
@@ -49,7 +48,7 @@ export function CTA() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={t.stores.googlePlay.ariaLabel}
-                            className="inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-4 py-3 text-white tracking-wide outline-none transition-colors hover:bg-white/10 active:bg-white/5 backdrop-blur-sm sm:w-auto"
+                            className="premium-store-button inline-flex min-h-14 w-full cursor-pointer items-center justify-center px-4 py-3 text-white tracking-wide outline-none transition-all duration-300 active:scale-[0.99] backdrop-blur-sm sm:w-auto"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
                                 <path fill="#57cef3" d="M7 3v58l33-29z" />

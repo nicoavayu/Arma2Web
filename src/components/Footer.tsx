@@ -10,7 +10,9 @@ export function Footer() {
     const { t } = useLanguage();
 
     return (
-        <footer className="border-t border-white/5 bg-surface/30 pt-12 pb-8 backdrop-blur-sm md:pt-16">
+        <footer className="relative overflow-hidden border-t border-white/10 bg-[#070711]/95 pt-12 pb-8 backdrop-blur-sm md:pt-16">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
+            <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_top,rgba(39,184,255,0.12),rgba(236,77,255,0.08)_42%,transparent_70%)] blur-3xl" />
             <div className="container mx-auto">
                 <div className="mb-10 grid grid-cols-1 gap-10 md:mb-12 md:grid-cols-4 md:gap-12">
                     <div className="col-span-1 text-center md:col-span-2 md:text-left">

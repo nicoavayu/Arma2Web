@@ -7,77 +7,97 @@ import { motion } from "framer-motion";
 import { STORE_LINKS } from "@/lib/store-links";
 import { useLanguage } from "@/components/LanguageProvider";
 
+function DeviceShowcase({ className = "" }: { className?: string }) {
+    return (
+        <div className={`hero-device-stage relative flex items-center justify-center ${className}`}>
+            <div className="hero-device-halo" />
+
+            <motion.div
+                initial={{ opacity: 0, x: -22, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className="hero-device-frame relative w-[min(80vw,330px)] max-w-none shrink-0 [@media(max-width:430px)]:w-[min(82vw,310px)] sm:w-[min(58vw,360px)] md:w-[min(48vw,520px)] lg:w-[min(46vw,580px)] xl:w-[min(44vw,640px)]"
+            >
+                <div className="premium-drift relative aspect-[1093/1145] w-full">
+                    <Image
+                        src="/HERO4.png"
+                        alt="Arma2 app en celulares mostrando el inicio y la actividad reciente"
+                        fill
+                        sizes="(max-width: 768px) 82vw, (max-width: 1280px) 48vw, 640px"
+                        className="hero-device-image select-none object-contain drop-shadow-[0_36px_90px_rgba(0,0,0,0.6)] [backface-visibility:hidden] [transform:translateZ(0)]"
+                        priority
+                    />
+                </div>
+            </motion.div>
+        </div>
+    );
+}
+
 export function Hero() {
     const { t } = useLanguage();
 
     return (
         <Section
             id="home"
-            className="hero-mobile-vh relative isolate flex min-h-[100dvh] min-h-[100svh] items-start overflow-hidden bg-background pt-[calc(var(--nav-height-mobile)+0.5rem+env(safe-area-inset-top))] pb-[max(0.5rem,env(safe-area-inset-bottom))] [@media(max-width:430px)]:pt-[calc(var(--nav-height-mobile)+0.35rem+env(safe-area-inset-top))] [@media(max-width:430px)]:pb-[max(0.4rem,env(safe-area-inset-bottom))] md:min-h-screen md:items-center md:pt-32 md:pb-16"
+            className="hero-mobile-vh premium-section relative isolate flex min-h-[100dvh] min-h-[100svh] items-start overflow-hidden bg-background pt-[calc(var(--nav-height-mobile)+1rem+env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] [@media(max-width:430px)]:pt-[calc(var(--nav-height-mobile)+0.7rem+env(safe-area-inset-top))] md:min-h-screen md:items-center md:pt-32 md:pb-20"
         >
-            {/* Tech Grid Background */}
+            {/* Photographic stadium background */}
+            <div className="absolute inset-0 -z-30 pointer-events-none">
+                <Image
+                    src="/BG_HERO.png"
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    quality={60}
+                    sizes="100vw"
+                    className="hero-photo-img"
+                    priority
+                />
+            </div>
+            <div className="hero-photo-overlay absolute inset-0 -z-20 pointer-events-none" />
+
+            {/* Subtle tech grid (kept from existing design) */}
             <div
-                className="hero-grid-layer absolute inset-0 pointer-events-none opacity-[0.2]"
+                className="hero-grid-layer absolute inset-0 -z-10 pointer-events-none opacity-[0.16]"
                 style={{
-                    backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                                      linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px'
+                    backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
+                    backgroundSize: "44px 44px"
                 }}
             />
 
-            {/* Background gradients */}
-            <div className="absolute top-0 left-1/2 hidden h-[600px] w-[1000px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px] pointer-events-none -z-10 md:block" />
-            <div className="absolute bottom-0 right-0 hidden h-[600px] w-[800px] rounded-full bg-accent/10 blur-[120px] pointer-events-none -z-10 md:block" />
+            <div className="container relative mx-auto max-w-[92rem]">
+                <div className="grid grid-cols-1 items-center gap-5 md:grid-cols-[1.08fr_1fr] md:gap-8 lg:grid-cols-[1.12fr_1fr] lg:gap-12 xl:grid-cols-[1.16fr_1fr]">
+                    {/* Left: phones (protagonist) */}
+                    <DeviceShowcase className="order-1 w-full md:min-h-[520px] lg:min-h-[600px] xl:min-h-[660px]" />
 
-            <div className="container relative mx-auto">
-                <div className="grid grid-cols-1 items-center gap-5 [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:-translate-y-2 [@media(max-width:360px)]:gap-4 md:grid-cols-2 md:gap-10 md:translate-y-0 lg:grid-cols-[1.14fr_1fr] xl:grid-cols-[1.22fr_1fr] 2xl:grid-cols-[1fr_1.15fr]">
-                    {/* Left Column: Image */}
-                    <div className="order-1 relative mt-0 mb-0 flex h-[50vh] min-h-[340px] max-h-[500px] items-center justify-center [@media(max-width:430px)]:h-[48vh] [@media(max-width:430px)]:min-h-[330px] [@media(max-width:430px)]:max-h-[480px] [@media(max-width:360px)]:h-[46vh] [@media(max-width:360px)]:min-h-[300px] [@media(max-width:360px)]:max-h-[430px] sm:h-[46vh] sm:min-h-[300px] sm:max-h-[420px] md:mt-0 md:mb-0 md:h-[580px] lg:h-[640px] xl:h-[700px] 2xl:h-[600px]">
-                        {/* Premium Glow Effect - Increased visibility */}
-                        <div className="absolute top-1/2 left-1/2 -z-10 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/35 blur-[90px] pointer-events-none [@media(max-width:430px)]:h-[280px] [@media(max-width:430px)]:w-[280px] [@media(max-width:430px)]:blur-[80px] [@media(max-width:360px)]:h-[250px] [@media(max-width:360px)]:w-[250px] sm:h-[320px] sm:w-[320px] md:h-[600px] md:w-[600px] md:bg-indigo-500/40 md:blur-[100px]" />
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -20, scale: 0.95 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="relative z-10 flex h-full w-full max-w-[340px] scale-[1.55] items-center justify-center [@media(max-width:430px)]:max-w-[380px] [@media(max-width:430px)]:scale-[1.8] [@media(max-width:430px)]:-translate-y-3 [@media(max-width:360px)]:max-w-[340px] [@media(max-width:360px)]:scale-[1.64] [@media(max-width:360px)]:-translate-y-2 sm:max-w-[320px] sm:scale-[1.49] md:w-full md:max-w-none md:translate-x-0 md:-translate-y-2 md:scale-[1.62] md:justify-end lg:-translate-x-1 lg:scale-[1.98] lg:justify-end xl:translate-x-1 xl:scale-[2.08] xl:justify-end 2xl:-translate-x-20 2xl:scale-[1.82] 2xl:justify-center"
+                    {/* Right: copy */}
+                    <div className="order-2 relative z-20 flex min-w-0 flex-col items-center text-center md:items-start md:text-left">
+                        <motion.span
+                            initial={{ opacity: 0, y: 14 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.45 }}
+                            className="premium-eyebrow mb-3 inline-flex md:mb-4"
                         >
-                            {/* Phone Image Container */}
-                            <div className="relative w-full h-full">
-                                <Image
-                                    src="/HERO3.png"
-                                    alt="Arma2 App Interface"
-                                    fill
-                                    unoptimized
-                                    sizes="(max-width: 430px) 92vw, (max-width: 768px) 78vw, (max-width: 1280px) 54vw, 46vw"
-                                    className="object-contain object-center md:object-right select-none pointer-events-none drop-shadow-none md:drop-shadow-2xl [backface-visibility:hidden] [transform:translateZ(0)]"
-                                    priority
-                                />
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Column: Text & Buttons */}
-                    <div className="order-2 relative z-20 flex flex-col items-center text-center [@media(max-width:430px)]:-mt-6 [@media(max-width:360px)]:-mt-4 md:mt-0 md:items-start md:text-left lg:-translate-x-1 xl:translate-x-1 2xl:-translate-x-14">
+                            {t.hero.eyebrow}
+                        </motion.span>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="mb-5 text-[clamp(1.85rem,8vw,2.85rem)] font-bold leading-[1.08] tracking-tight text-white [@media(max-width:430px)]:text-[clamp(1.7rem,7.6vw,2.35rem)] md:mb-4 md:text-[clamp(3.15rem,5.2vw,4.5rem)] md:leading-[1.06] xl:text-[clamp(3.25rem,3.9vw,4.25rem)] xl:leading-[1.04] 2xl:text-7xl 2xl:leading-tight"
+                            className="premium-display mb-4 w-full max-w-[38rem] text-white md:mb-6"
                         >
-                            {t.hero.title.lineOne} <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-secondary lg:whitespace-nowrap">
-                                {t.hero.title.highlight}
-                            </span> <br />
-                            {t.hero.title.lineThree}
+                            <span className="premium-metal block">{t.hero.title.lineOne}</span>
+                            <span className="premium-gradient-text premium-title-long block">{t.hero.title.highlight}</span>
+                            <span className="premium-metal premium-title-close block">{t.hero.title.lineThree}</span>
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="mb-7 max-w-xl text-[15px] leading-relaxed text-text-secondary [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-6 md:text-[clamp(1.12rem,1.55vw,1.35rem)] md:leading-relaxed xl:text-[1.18rem] 2xl:text-xl"
+                            className="mb-6 w-full max-w-xl text-[15px] leading-relaxed text-white/72 [@media(max-width:430px)]:mb-5 [@media(max-width:430px)]:text-[14px] sm:text-base md:mb-7 md:text-lg xl:text-xl"
                         >
                             {t.hero.description}
                         </motion.p>
@@ -88,13 +108,12 @@ export function Hero() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex w-full flex-col items-center justify-center gap-2.5 [@media(max-width:430px)]:gap-2 sm:flex-row md:w-auto md:justify-start md:gap-4"
                         >
-                            {/* App Store Button */}
                             <a
                                 href={STORE_LINKS.appStore}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={t.stores.appStore.ariaLabel}
-                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
+                                className="premium-store-button group inline-flex min-h-14 w-full cursor-pointer items-center justify-center px-5 py-3 text-white tracking-wide outline-none transition-all duration-300 backdrop-blur-md [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 22.773 22.773">
                                     <path
@@ -107,13 +126,12 @@ export function Hero() {
                                 </div>
                             </a>
 
-                            {/* Google Play Button */}
                             <a
                                 href={STORE_LINKS.googlePlay}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={t.stores.googlePlay.ariaLabel}
-                                className="group inline-flex min-h-14 w-full cursor-pointer items-center justify-center rounded-none border border-white/10 bg-white/5 px-5 py-3 text-white tracking-wide outline-none transition-all hover:bg-white/10 backdrop-blur-none md:backdrop-blur-sm [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
+                                className="premium-store-button group inline-flex min-h-14 w-full cursor-pointer items-center justify-center px-5 py-3 text-white tracking-wide outline-none transition-all duration-300 backdrop-blur-md [@media(max-width:430px)]:min-h-12 [@media(max-width:430px)]:px-4 [@media(max-width:430px)]:py-2.5 sm:w-auto"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36px" fill="#fff" className="mr-2 inline [@media(max-width:430px)]:w-8" viewBox="0 0 64 64">
                                     <path fill="#57cef3" d="M7 3v58l33-29z" />

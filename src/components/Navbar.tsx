@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/components/LanguageProvider";
+import { STORE_LINKS } from "@/lib/store-links";
 
 export function Navbar() {
     const router = useRouter();
@@ -50,13 +51,13 @@ export function Navbar() {
     return (
         <>
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-background/85 backdrop-blur-md border-b border-white/5 py-3 [@media(max-width:430px)]:py-2.5 md:py-4"
-                    : "bg-transparent py-4 [@media(max-width:430px)]:py-3 md:py-6"
+                className={`fixed top-0 left-0 right-0 z-50 px-0 transition-all duration-300 ${isScrolled
+                    ? "border-b border-white/[0.06] bg-background/45 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-2xl [@media(max-width:430px)]:py-2.5 md:py-4"
+                    : "border-b border-transparent bg-transparent py-4 [@media(max-width:430px)]:py-3 md:py-5"
                     }`}
                 style={{ paddingTop: "max(env(safe-area-inset-top), 0px)" }}
             >
-                <div className="container mx-auto flex items-center justify-between gap-4">
+                <div className="container mx-auto flex max-w-[92rem] items-center justify-between gap-4 px-4 py-1.5 transition-all duration-300 md:px-5">
                     <button
                         type="button"
                         onClick={handleHomeClick}
@@ -74,20 +75,29 @@ export function Navbar() {
                     </button>
 
                     <div className="flex items-center gap-2 md:gap-6">
-                        <nav className="hidden md:flex items-center gap-8">
+                        <nav className="hidden md:flex items-center gap-7 lg:gap-8">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className="text-sm font-medium text-text-secondary hover:text-white transition-colors"
+                                    className="text-sm font-semibold text-white/62 transition-colors hover:text-white"
                                 >
                                     {link.label}
                                 </Link>
                             ))}
                         </nav>
 
+                        <a
+                            href={STORE_LINKS.appStore}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="premium-download-button hidden min-h-9 items-center justify-center px-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition-all duration-300 lg:inline-flex"
+                        >
+                            {locale === "es" ? "Descargar" : "Download"}
+                        </a>
+
                         <div
-                            className="inline-flex items-center rounded-full border border-accent-secondary/30 bg-gradient-to-r from-accent/20 to-primary-glow/15 p-0.5 shadow-[0_0_18px_rgba(124,58,237,0.2)] backdrop-blur-md"
+                            className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.055] p-0.5 shadow-[0_0_18px_rgba(39,184,255,0.12)] backdrop-blur-md"
                             role="group"
                             aria-label={t.nav.languageLabel}
                         >
@@ -101,7 +111,7 @@ export function Navbar() {
                                         onClick={() => setLocale(value)}
                                         aria-pressed={active}
                                         className={`min-w-[2.2rem] rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 ${active
-                                            ? "bg-gradient-to-r from-accent-secondary to-primary-glow text-white shadow-[0_0_16px_rgba(139,92,246,0.45)]"
+                                            ? "bg-gradient-to-r from-primary to-accent-secondary text-white shadow-[0_0_16px_rgba(39,184,255,0.25)]"
                                             : "text-white/65 hover:bg-white/5 hover:text-white"
                                             }`}
                                     >
@@ -112,7 +122,7 @@ export function Navbar() {
                         </div>
 
                         <button
-                            className="md:hidden z-50 inline-flex h-10 w-10 items-center justify-center rounded-lg text-white [@media(max-width:360px)]:h-9 [@media(max-width:360px)]:w-9"
+                            className="md:hidden z-50 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-white backdrop-blur-md [@media(max-width:360px)]:h-9 [@media(max-width:360px)]:w-9"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
                         >

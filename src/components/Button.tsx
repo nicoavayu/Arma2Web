@@ -27,11 +27,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) => {
         const variants = {
             primary:
-                "bg-primary text-white shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:bg-blue-600 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] border border-blue-500/50",
+                "border border-primary/50 bg-gradient-to-r from-primary via-primary-glow to-accent-secondary text-white shadow-[0_0_22px_rgba(91,75,255,0.38)] hover:shadow-[0_0_28px_rgba(236,77,255,0.32)]",
             secondary:
-                "bg-surface-highlight text-white border border-white/10 hover:bg-white/10 hover:border-white/20",
+                "bg-surface-highlight text-white border border-white/10 hover:bg-white/10 hover:border-primary/30",
             accent:
-                "bg-accent text-white shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:bg-violet-600 border border-violet-500/50",
+                "bg-accent text-white shadow-[0_0_20px_rgba(168,85,247,0.45)] hover:bg-violet-600 border border-violet-500/50",
             ghost:
                 "bg-transparent text-text-secondary hover:text-white hover:bg-white/5",
             outline:

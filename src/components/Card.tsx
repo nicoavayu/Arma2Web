@@ -52,8 +52,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
                     perspective: "1000px"
                 }}
                 className={cn(
-                    "group relative overflow-hidden rounded-2xl border border-white/10 bg-surface/50 backdrop-blur-md p-6 transition-all duration-300",
-                    hoverEffect && "hover:border-primary/40 hover:bg-surface-highlight/60 hover:shadow-2xl hover:shadow-primary/10",
+                    "premium-card group relative overflow-hidden rounded-2xl p-6 backdrop-blur-md transition-all duration-300",
+                    hoverEffect && "hover:border-primary/45 hover:bg-surface-highlight/70 hover:shadow-2xl hover:shadow-primary/10",
                     className
                 )}
                 {...props}
@@ -62,7 +62,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
                     <motion.div
                         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
-                            background: `radial-gradient(350px circle at ${spotlightX}px ${spotlightY}px, rgba(99, 102, 241, 0.4), transparent 80%)`,
+                            background: `radial-gradient(350px circle at ${spotlightX}px ${spotlightY}px, rgba(39, 184, 255, 0.2), rgba(236, 77, 255, 0.12), transparent 78%)`,
                         }}
                     />
                 )}

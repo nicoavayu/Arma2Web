@@ -36,7 +36,7 @@ export function ImpactStats() {
   ] as const;
 
   return (
-    <Section id="impact" className="border-t border-white/5 bg-[#07071280]">
+    <Section id="impact" className="premium-section border-t border-white/5 bg-[#07071280]">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -45,11 +45,11 @@ export function ImpactStats() {
           transition={{ duration: 0.5 }}
           className="mb-10 text-center [@media(max-width:430px)]:mb-8 md:mb-14"
         >
-          <span className="mb-4 block text-sm font-medium uppercase tracking-wider text-primary">
+          <span className="premium-eyebrow mb-4 block">
             {t.impact.eyebrow}
           </span>
-          <h2 className="mb-4 text-[clamp(2rem,8vw,3rem)] font-black tracking-tight text-white md:mb-5 md:text-6xl">
-            {t.impact.title}
+          <h2 className="premium-section-title mb-4 text-white md:mb-5">
+            <span className="premium-metal">{t.impact.title}</span>
           </h2>
           <p className="mx-auto max-w-3xl text-sm font-medium leading-relaxed text-white/55 sm:text-base md:text-xl">
             {t.impact.description}

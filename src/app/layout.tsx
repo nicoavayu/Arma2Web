@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const oswald = Oswald({
-  variable: "--font-oswald",
   subsets: ["latin"],
 });
 
@@ -52,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${oswald.variable} antialiased bg-background text-text-primary selection:bg-primary/30 selection:text-white`}
+        className={`${inter.variable} antialiased bg-background text-text-primary selection:bg-primary/30 selection:text-white`}
       >
         <LanguageProvider>
           <Navbar />

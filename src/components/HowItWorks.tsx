@@ -48,15 +48,15 @@ export function HowItWorks() {
   ] as const;
 
   return (
-    <Section id="how-it-works" className="bg-surface/30">
+    <Section id="how-it-works" className="premium-section bg-surface/20">
       <div className="container mx-auto">
         <div className="mx-auto mb-10 max-w-3xl text-center [@media(max-width:430px)]:mb-8 md:mb-14">
-          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm">
+          <span className="premium-eyebrow mb-3 block">
             {t.howItWorks.eyebrow}
           </span>
-          <h2 className="mb-4 text-[clamp(1.9rem,8vw,3.15rem)] font-bold leading-tight text-white md:mb-5">
-            {t.howItWorks.title.lineOne}
-            <span className="block text-primary-glow">{t.howItWorks.title.highlight}</span>
+          <h2 className="premium-section-title mb-4 text-white md:mb-5">
+            <span className="premium-metal block">{t.howItWorks.title.lineOne}</span>
+            <span className="premium-gradient-text block">{t.howItWorks.title.highlight}</span>
           </h2>
           <p className="text-sm leading-relaxed text-text-secondary sm:text-base md:text-lg">
             {t.howItWorks.description}
