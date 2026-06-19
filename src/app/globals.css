@@ -239,31 +239,35 @@ section[id] {
 }
 
 .premium-display {
-  font-size: clamp(2.5rem, 4vw, 3.7rem);
-  line-height: 1.08;
+  font-size: clamp(2.25rem, 3.2vw, 3.05rem);
+  line-height: 1.14;
   text-transform: none;
 }
 
 .premium-display>span {
   overflow: visible;
-  padding-block: 0.04em;
+  padding-top: 0.08em;
+  padding-bottom: 0.16em;
 }
 
-.premium-title-long {
-  font-size: 0.96em;
-}
-
-.premium-title-close {
-  color: #ffffff;
-  font-size: 0.72em;
-  letter-spacing: -0.01em;
+/* Hero highlight line: keep "Armá equipos parejos." on one line on
+   desktop/notebook where there is room; allow wrapping on smaller screens. */
+@media (min-width: 1024px) {
+  .premium-hero-line {
+    white-space: nowrap;
+  }
 }
 
 .premium-section-title {
   font-size: clamp(2.1rem, 4.8vw, 4.2rem);
-  line-height: 1.04;
+  line-height: 1.12;
   letter-spacing: -0.025em;
   text-transform: none;
+}
+
+.premium-section-title>span {
+  overflow: visible;
+  padding-bottom: 0.1em;
 }
 
 .premium-metal {
@@ -465,25 +469,17 @@ section[id] {
 
   .premium-display {
     font-size: clamp(1.95rem, 8vw, 2.4rem);
-    line-height: 1.12;
+    line-height: 1.16;
   }
 
   .premium-display>span {
-    padding-block: 0.03em;
-  }
-
-  .premium-title-long {
-    font-size: 0.92em;
-  }
-
-  .premium-title-close {
-    font-size: 0.72em;
-    letter-spacing: -0.01em;
+    padding-top: 0.06em;
+    padding-bottom: 0.14em;
   }
 
   .premium-section-title {
     font-size: clamp(1.85rem, 7.6vw, 2.8rem);
-    line-height: 1.06;
+    line-height: 1.12;
   }
 
   .hero-device-halo {

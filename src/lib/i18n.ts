@@ -41,7 +41,7 @@ export const translations = {
         lineThree: "Jugá.",
       },
       description:
-        "Convocá jugadores, equilibrá equipos, registrá resultados y competí con estadísticas reales.",
+        "Convocá jugadores, equilibrá equipos, registrá resultados y seguí el rendimiento de tu equipo.",
       benefits: ["Gratis", "Equipos balanceados", "MVP y premios", "Desafíos entre equipos"],
     },
     howItWorks: {
@@ -121,13 +121,13 @@ export const translations = {
     teamRanking: {
       eyebrow: "Nuevo · Rendimiento de equipos",
       title: {
-        lineOne: "Ranking y rating",
+        lineOne: "Ranking y rendimiento",
         highlight: "de equipos.",
       },
       description:
-        "Medí el rendimiento de tu equipo, compará resultados y seguí la evolución contra otros rivales.",
+        "Medí cómo le va a tu equipo, compará resultados y seguí el historial contra otros rivales.",
       bullets: [
-        "Partidos ganados, empatados y perdidos",
+        "Partidos jugados, ganados, empatados y perdidos",
         "Porcentaje de victorias",
         "Historial contra rivales",
         "Ranking por formato de juego",
@@ -135,15 +135,14 @@ export const translations = {
       ],
       leaderboard: {
         title: "Ranking F7 · Zona Norte",
-        ratingLabel: "Rating",
-        winLabel: "Vict.",
+        winRateLabel: "% Vict.",
         liveLabel: "En vivo",
         footnote: "Se actualiza después de cada desafío.",
         rows: [
-          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, rating: "1860", trend: "up" },
-          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, rating: "1745", trend: "up" },
-          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, rating: "1680", trend: "down" },
-          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, rating: "1610", trend: "up" },
+          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, trend: "up" },
+          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, trend: "up" },
+          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, trend: "down" },
+          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, trend: "up" },
         ],
       },
       versus: {
@@ -354,7 +353,7 @@ export const translations = {
         lineThree: "Just play.",
       },
       description:
-        "Invite players, balance teams, record results, and compete with real stats.",
+        "Invite players, balance teams, record results, and track your team's performance.",
       benefits: ["Free", "Balanced teams", "MVP and awards", "Team challenges"],
     },
     howItWorks: {
@@ -435,12 +434,12 @@ export const translations = {
       eyebrow: "New · Team performance",
       title: {
         lineOne: "Team ranking",
-        highlight: "and rating.",
+        highlight: "and performance.",
       },
       description:
-        "Track your team's performance, compare results, and follow how you stack up against your rivals.",
+        "See how your team is doing, compare results, and follow the head-to-head history against your rivals.",
       bullets: [
-        "Wins, draws, and losses",
+        "Matches played, won, drawn, and lost",
         "Win percentage",
         "Head-to-head history",
         "Ranking by match format",
@@ -448,15 +447,14 @@ export const translations = {
       ],
       leaderboard: {
         title: "7-a-side Ranking · North Zone",
-        ratingLabel: "Rating",
-        winLabel: "Win%",
+        winRateLabel: "Win %",
         liveLabel: "Live",
         footnote: "Updated after every challenge.",
         rows: [
-          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, rating: "1860", trend: "up" },
-          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, rating: "1745", trend: "up" },
-          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, rating: "1680", trend: "down" },
-          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, rating: "1610", trend: "up" },
+          { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, trend: "up" },
+          { name: "Deportivo Tapita", initials: "DT", record: "15-6-4", winRate: 60, trend: "up" },
+          { name: "El Tanque", initials: "ET", record: "13-5-7", winRate: 52, trend: "down" },
+          { name: "Tiki-Taka", initials: "TT", record: "11-7-7", winRate: 44, trend: "up" },
         ],
       },
       versus: {
