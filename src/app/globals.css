@@ -564,5 +564,10 @@ section[id] {
 @media (prefers-reduced-motion: no-preference) {
   .premium-drift {
     animation: premiumDrift 8s ease-in-out infinite;
+    /* Promote to its own compositor layer so the heavy drop-shadow on the
+       phones image is rasterized once instead of every frame (smooth float). */
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 }
