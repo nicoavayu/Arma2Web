@@ -89,8 +89,8 @@ export function Hero() {
                             className="premium-display mb-4 w-full max-w-[38rem] text-white md:mb-6"
                         >
                             <span className="premium-metal block">{t.hero.title.lineOne}</span>
-                            <span className="premium-gradient-text premium-title-long block">{t.hero.title.highlight}</span>
-                            <span className="premium-metal premium-title-close block">{t.hero.title.lineThree}</span>
+                            <span className="premium-gradient-text premium-hero-line block">{t.hero.title.highlight}</span>
+                            <span className="premium-metal block">{t.hero.title.lineThree}</span>
                         </motion.h1>
 
                         <motion.p

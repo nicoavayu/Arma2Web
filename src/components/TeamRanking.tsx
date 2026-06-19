@@ -20,7 +20,7 @@ const BULLET_ICONS = [BarChart3, Percent, History, Trophy, Swords] as const;
 const ROW_ACCENTS = ["#fbbf24", "#27b8ff", "#a855f7", "#20e39b"] as const;
 
 /* ─────────────────────────────────────────────────────────────
-   Leaderboard card – ranked teams with rating, record and win %
+   Leaderboard card – ranked teams with record and win %
 ───────────────────────────────────────────────────────────── */
 function LeaderboardCard() {
     const { t } = useLanguage();
@@ -54,8 +54,8 @@ function LeaderboardCard() {
             <div className="relative mb-2 flex items-center gap-3 px-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
                 <span className="w-5 text-center">#</span>
                 <span className="flex-1">{/* team */}</span>
-                <span className="hidden w-20 text-right sm:block">{lb.winLabel}</span>
-                <span className="w-14 text-right">{lb.ratingLabel}</span>
+                <span className="hidden w-20 sm:block">{/* win% bar */}</span>
+                <span className="w-14 text-right">{lb.winRateLabel}</span>
             </div>
 
             {/* Rows */}
@@ -106,10 +106,9 @@ function LeaderboardCard() {
                                 <p className="text-[11px] font-medium tabular-nums text-white/45">{row.record}</p>
                             </div>
 
-                            {/* Win % bar */}
-                            <div className="hidden w-20 shrink-0 sm:block">
-                                <div className="mb-1 text-right text-[11px] font-bold tabular-nums text-white/70">{row.winRate}%</div>
-                                <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                            {/* Win % bar (visual) */}
+                            <div className="hidden w-20 shrink-0 items-center sm:flex">
+                                <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         whileInView={{ width: `${row.winRate}%` }}
@@ -121,9 +120,9 @@ function LeaderboardCard() {
                                 </div>
                             </div>
 
-                            {/* Rating + trend */}
+                            {/* Win % + trend */}
                             <div className="flex w-14 shrink-0 flex-col items-end">
-                                <span className="text-sm font-black tabular-nums text-white">{row.rating}</span>
+                                <span className="text-sm font-black tabular-nums text-white">{row.winRate}%</span>
                                 <span className={`flex items-center gap-0.5 text-[10px] font-bold ${row.trend === "down" ? "text-red-400" : "text-emerald-400"}`}>
                                     <TrendIcon className="h-3 w-3" />
                                 </span>
