@@ -51,6 +51,7 @@ export function Hero() {
                     quality={60}
                     sizes="100vw"
                     className="hero-photo-img"
+                    style={{ objectFit: "cover" }}
                     priority
                 />
             </div>
