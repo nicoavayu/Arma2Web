@@ -16,15 +16,31 @@ function DeviceShowcase({ className = "" }: { className?: string }) {
                 initial={{ opacity: 0, x: -22, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.25 }}
-                className="hero-device-frame relative w-[min(80vw,330px)] max-w-none shrink-0 [@media(max-width:430px)]:w-[min(82vw,310px)] sm:w-[min(58vw,360px)] md:w-[min(48vw,520px)] lg:w-[min(46vw,580px)] xl:w-[min(44vw,640px)]"
+                className="hero-device-frame relative aspect-[1093/1145] w-[min(80vw,330px)] max-w-none shrink-0 [@media(max-width:430px)]:w-[min(82vw,310px)] sm:w-[min(58vw,360px)] md:w-[min(48vw,520px)] lg:w-[min(46vw,580px)] xl:w-[min(44vw,640px)]"
             >
-                <div className="premium-drift relative aspect-[1093/1145] w-full">
+                {/* Static grounding shadow: a silhouette of the phones that is
+                    painted once and does NOT float. Keeping the heavy blur off the
+                    animated element means the float is a plain composited translate,
+                    smooth on every browser (Safari re-rasterizes drop-shadow each
+                    frame otherwise, which caused the judder). */}
+                <div className="hero-device-shadow absolute inset-0" aria-hidden="true">
+                    <Image
+                        src="/HERO4.png"
+                        alt=""
+                        aria-hidden="true"
+                        fill
+                        sizes="(max-width: 768px) 82vw, (max-width: 1280px) 48vw, 640px"
+                        className="select-none object-contain"
+                    />
+                </div>
+
+                <div className="premium-drift relative h-full w-full">
                     <Image
                         src="/HERO4.png"
                         alt="Arma2 app en celulares mostrando el inicio y la actividad reciente"
                         fill
                         sizes="(max-width: 768px) 82vw, (max-width: 1280px) 48vw, 640px"
-                        className="hero-device-image select-none object-contain drop-shadow-[0_36px_90px_rgba(0,0,0,0.6)] [backface-visibility:hidden] [transform:translateZ(0)]"
+                        className="hero-device-image select-none object-contain [backface-visibility:hidden] [transform:translateZ(0)]"
                         priority
                     />
                 </div>
