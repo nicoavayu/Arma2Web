@@ -354,6 +354,24 @@ section[id] {
   mix-blend-mode: normal;
 }
 
+/* Static grounding shadow (silhouette of the phones), painted once.
+   Lives behind the floating image so the float never re-rasterizes a blur. */
+.hero-device-shadow {
+  z-index: -1;
+  pointer-events: none;
+  transform: translate3d(0, 34px, 0);
+  filter: brightness(0) blur(44px);
+  opacity: 0.55;
+}
+
+@media (max-width: 430px) {
+  .hero-device-shadow {
+    transform: translate3d(0, 22px, 0);
+    filter: brightness(0) blur(28px);
+    opacity: 0.5;
+  }
+}
+
 /* Photographic hero background (BG_HERO.png) */
 .hero-photo-img {
   object-fit: cover;
@@ -564,10 +582,8 @@ section[id] {
 @media (prefers-reduced-motion: no-preference) {
   .premium-drift {
     animation: premiumDrift 8s ease-in-out infinite;
-    /* Promote to its own compositor layer so the heavy drop-shadow on the
-       phones image is rasterized once instead of every frame (smooth float). */
+    /* Floating element is a plain alpha image (no filter), so this translate
+       runs on the compositor and stays smooth across browsers. */
     will-change: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
   }
 }
