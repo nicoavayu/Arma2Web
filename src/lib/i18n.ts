@@ -8,7 +8,7 @@ export const translations = {
     seo: {
       title: "Arma2 - Organizá partidos. Armá equipos parejos.",
       description:
-        "La forma más simple de organizar tus partidos de fútbol. Creá equipos parejos, llevá estadísticas y votá al mejor jugador.",
+        "Encontrá jugadores cerca, organizá partidos de fútbol 5 y fútbol 7, y armá equipos parejos con Arma2, incluso si no tenés grupo.",
     },
     nav: {
       links: [
@@ -35,6 +35,7 @@ export const translations = {
     },
     hero: {
       eyebrow: "Fútbol amateur · Nivel pro",
+      newFeature: "Nuevo · Partido automático",
       title: {
         lineOne: "Organizá partidos.",
         highlight: "Armá equipos parejos.",
@@ -43,6 +44,52 @@ export const translations = {
       description:
         "Convocá jugadores, equilibrá equipos, registrá resultados y seguí el rendimiento de tu equipo.",
       benefits: ["Gratis", "Equipos balanceados", "MVP y premios", "Desafíos entre equipos"],
+    },
+    autoMatch: {
+      eyebrow: "Nuevo · Partido automático",
+      title: {
+        lineOne: "Vos decís cuándo.",
+        highlight: "Arma2 encuentra con quién.",
+      },
+      description:
+        "Elegí los días, el rango horario, el formato y la distancia. Arma2 reúne jugadores compatibles cerca tuyo. Cuando aparece una oportunidad, confirmás con un toque y el partido se crea cuando el grupo está listo.",
+      cta: "Probar partido automático",
+      controlNote: "Vos elegís si sumarte, rechazar o ayudar a organizar. El horario se define cuando el grupo está listo.",
+      steps: [
+        {
+          title: "Marcá tu disponibilidad",
+          description: "Elegí cuándo podés jugar, qué formato buscás y hasta dónde querés moverte.",
+        },
+        {
+          title: "Recibí una oportunidad",
+          description: "Arma2 encuentra jugadores compatibles y forma un grupo.",
+        },
+        {
+          title: "Confirmá y jugá",
+          description: "Cuando el grupo está listo, se define un horario compatible y se crea el partido.",
+        },
+      ],
+      demo: {
+        ariaLabel:
+          "Demostración de Partido automático: la disponibilidad se conecta con jugadores compatibles, forma una oportunidad con siete confirmaciones y luego crea un partido con horario definido.",
+        title: "Partido automático",
+        active: "Búsqueda activa",
+        availabilityEyebrow: "Tu búsqueda",
+        availabilityTitle: "Disponibilidad",
+        days: ["LU", "MA", "MI"],
+        time: "20:00–23:00",
+        formats: "F5 · F7",
+        distance: "8 KM",
+        compatiblePlayers: "Jugadores compatibles",
+        opportunityStatus: "Oportunidad en formación",
+        confirmed: "7 jugadores confirmados",
+        timeLabel: "Horario",
+        timePending: "A confirmar",
+        createdStatus: "Partido creado",
+        createdTime: "Lun · 21:30",
+        createdFormat: "F7 · 10 jugadores",
+        chatActive: "Chat activo",
+      },
     },
     howItWorks: {
       eyebrow: "Cómo funciona",
@@ -168,6 +215,13 @@ export const translations = {
         badge: "Votación Democrática",
         sliderLabel: "Equilibrio",
       },
+      autoMatch: {
+        title: "Partido automático",
+        description: "Indicá cuándo podés jugar y Arma2 encuentra jugadores compatibles para formar el partido.",
+        search: "Búsqueda activa",
+        opportunity: "Grupo en formación",
+        ready: "Partido creado",
+      },
       playerProfile: {
         title: "Tu Perfil de Jugador",
         description: "Construí identidad, acumulá premios y mostrá tu reputación.",
@@ -261,7 +315,7 @@ export const translations = {
         {
           question: "¿Puedo jugar si no tengo equipo?",
           answer:
-            "Sí. El mercado de jugadores te permite postularte de forma individual para que otros capitanes vean tu ficha y te sumen a sus partidos.",
+            "Sí. Con Partido automático indicás cuándo podés jugar, qué formato buscás y hasta dónde querés moverte. Arma2 encuentra personas con búsquedas compatibles y te avisa cuando aparece una oportunidad para formar el partido.",
         },
         {
           question: "¿Cómo se eligen los capitanes?",
@@ -320,7 +374,7 @@ export const translations = {
     seo: {
       title: "Arma2 - Stop uneven matches. Create balanced teams.",
       description:
-        "The easiest way to organize football matches with friends. Build balanced teams, track stats, and let the group decide who stood out.",
+        "Find football players nearby, organize 5-a-side and 7-a-side matches, and build balanced teams with Arma2—even when you don't have a group.",
     },
     nav: {
       links: [
@@ -347,6 +401,7 @@ export const translations = {
     },
     hero: {
       eyebrow: "Amateur football · Pro level",
+      newFeature: "New · Automatic match",
       title: {
         lineOne: "Stop uneven matches.",
         highlight: "Create balanced teams.",
@@ -355,6 +410,52 @@ export const translations = {
       description:
         "Invite players, balance teams, record results, and track your team's performance.",
       benefits: ["Free", "Balanced teams", "MVP and awards", "Team challenges"],
+    },
+    autoMatch: {
+      eyebrow: "New · Automatic match",
+      title: {
+        lineOne: "You choose when.",
+        highlight: "Arma2 finds your people.",
+      },
+      description:
+        "Choose your days, time range, match formats, and distance. Arma2 brings together compatible players nearby. When an opportunity appears, you confirm with one tap and the match is created once the group is ready.",
+      cta: "Try automatic match",
+      controlNote: "You decide whether to join, decline, or help organize. The time is set once the group is ready.",
+      steps: [
+        {
+          title: "Set your availability",
+          description: "Choose when you can play, which formats work, and how far you're willing to travel.",
+        },
+        {
+          title: "Get an opportunity",
+          description: "Arma2 finds compatible players and forms a group.",
+        },
+        {
+          title: "Confirm and play",
+          description: "Once the group is ready, a compatible time is set and the match is created.",
+        },
+      ],
+      demo: {
+        ariaLabel:
+          "Automatic match demonstration: availability connects with compatible players, forms an opportunity with seven confirmations, and then creates a match with a set time.",
+        title: "Automatic match",
+        active: "Search active",
+        availabilityEyebrow: "Your search",
+        availabilityTitle: "Availability",
+        days: ["MO", "TU", "WE"],
+        time: "20:00–23:00",
+        formats: "5V5 · 7V7",
+        distance: "8 KM",
+        compatiblePlayers: "Compatible players",
+        opportunityStatus: "Opportunity forming",
+        confirmed: "7 players confirmed",
+        timeLabel: "Time",
+        timePending: "To be confirmed",
+        createdStatus: "Match created",
+        createdTime: "Mon · 21:30",
+        createdFormat: "7V7 · 10 players",
+        chatActive: "Chat active",
+      },
     },
     howItWorks: {
       eyebrow: "How it works",
@@ -480,6 +581,13 @@ export const translations = {
         badge: "Democratic voting",
         sliderLabel: "Balance",
       },
+      autoMatch: {
+        title: "Automatic match",
+        description: "Tell Arma2 when you can play and it finds compatible players to form the match.",
+        search: "Search active",
+        opportunity: "Group forming",
+        ready: "Match created",
+      },
       playerProfile: {
         title: "Your Player Profile",
         description: "Build your identity, stack up awards, and show the reputation you've earned.",
@@ -573,7 +681,7 @@ export const translations = {
         {
           question: "Can I play if I don't have a team?",
           answer:
-            "Yes. The player marketplace lets you join as an individual so captains can discover your profile and bring you into their matches.",
+            "Yes. With Automatic match, you choose when you can play, which formats work, and how far you're willing to travel. Arma2 finds people with compatible searches and lets you know when there's an opportunity to form a match.",
         },
         {
           question: "How are captains chosen?",

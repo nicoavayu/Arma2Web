@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { AutoMatch } from "@/components/AutoMatch";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Features } from "@/components/Features";
 import { Equipos } from "@/components/Equipos";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main className="premium-page-bg min-h-screen relative overflow-x-hidden">
       <Hero />
+      <AutoMatch />
       <HowItWorks />
       <Equipos />
       <TeamRanking />
