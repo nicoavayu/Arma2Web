@@ -3,7 +3,7 @@
 import React from "react";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
-import { Users2, Smartphone, Swords, Trophy, Star, UserRound, Check } from "lucide-react";
+import { ArrowRight, CalendarClock, Check, CheckCircle2, Smartphone, Star, Swords, Trophy, UserRound, Users2, UsersRound } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -425,6 +425,45 @@ export function Features() {
                 </div>
 
                 <div className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+
+                    {/* ── Partido automático (compact reference) ── */}
+                    <Card spotlight={false} className="relative overflow-hidden border-accent/20 bg-gradient-to-br from-surface/80 to-surface-highlight/45 p-0 md:col-span-3">
+                        <div className="grid items-center gap-5 p-5 [@media(max-width:430px)]:p-4 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8 lg:p-7">
+                            <div className="flex items-start gap-3.5 sm:gap-4">
+                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-violet-200 sm:h-12 sm:w-12">
+                                    <CalendarClock className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+                                </div>
+                                <div>
+                                    <h3 className="mb-1.5 text-lg font-bold text-white sm:text-xl">{t.features.autoMatch.title}</h3>
+                                    <p className="max-w-lg text-[13px] leading-relaxed text-text-secondary sm:text-sm">
+                                        {t.features.autoMatch.description}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+                                {[
+                                    { icon: CalendarClock, label: t.features.autoMatch.search, detail: "LU · 20:00–23:00", color: "text-primary" },
+                                    { icon: UsersRound, label: t.features.autoMatch.opportunity, detail: "7 / 10", color: "text-violet-300" },
+                                    { icon: CheckCircle2, label: t.features.autoMatch.ready, detail: "F7", color: "text-emerald-300" },
+                                ].map((item, index) => (
+                                    <React.Fragment key={item.label}>
+                                        <div className="flex flex-1 items-center gap-2.5 rounded-xl border border-white/10 bg-black/20 p-3">
+                                            <item.icon className={`h-4 w-4 shrink-0 ${item.color}`} aria-hidden="true" />
+                                            <div className="min-w-0">
+                                                <p className="truncate text-[10px] font-bold uppercase tracking-[0.1em] text-white/62">{item.label}</p>
+                                                <p className="mt-0.5 text-xs font-semibold text-white/88">{item.detail}</p>
+                                            </div>
+                                        </div>
+                                        {index < 2 && (
+                                            <ArrowRight className="mx-auto h-3.5 w-3.5 shrink-0 rotate-90 text-white/28 sm:rotate-0" aria-hidden="true" />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="pointer-events-none absolute -right-16 -top-20 h-52 w-52 rounded-full bg-accent/10 blur-3xl" />
+                    </Card>
 
                     {/* ── Feature 1: Balance Democrático (Large) ── */}
                     <Card className="relative row-span-2 overflow-hidden border-primary/15 bg-gradient-to-br from-surface/85 to-surface-highlight/55 group md:col-span-2">

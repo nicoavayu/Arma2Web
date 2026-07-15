@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { Section } from "@/components/Section";
 import { Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function FAQ() {
     const { t } = useLanguage();
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const reduceMotion = useReducedMotion();
 
     return (
         <Section id="faq" className="premium-section bg-background">
@@ -24,13 +25,16 @@ export function FAQ() {
                             className="border border-white/5 rounded-2xl bg-surface/30 overflow-hidden"
                         >
                             <button
+                                id={`faq-trigger-${index}`}
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                aria-expanded={openIndex === index}
+                                aria-controls={`faq-panel-${index}`}
                                 className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-white/5 sm:p-5 md:p-6"
                             >
                                 <span className="pr-4 text-base font-medium text-white sm:text-lg">
                                     {faq.question}
                                 </span>
-                                <span className="text-white/50">
+                                <span className="text-white/50" aria-hidden="true">
                                     {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
                                 </span>
                             </button>
@@ -38,10 +42,13 @@ export function FAQ() {
                             <AnimatePresence>
                                 {openIndex === index && (
                                     <motion.div
+                                        id={`faq-panel-${index}`}
+                                        role="region"
+                                        aria-labelledby={`faq-trigger-${index}`}
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
+                                        transition={{ duration: reduceMotion ? 0 : 0.3 }}
                                     >
                                         <div className="border-t border-white/5 p-4 pt-0 leading-relaxed text-text-secondary sm:p-5 sm:pt-0 md:p-6 md:pt-0">
                                             {faq.answer}
