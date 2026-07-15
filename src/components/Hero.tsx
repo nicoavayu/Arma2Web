@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { Section } from "@/components/Section";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { STORE_LINKS } from "@/lib/store-links";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -91,21 +90,14 @@ export function Hero() {
 
                     {/* Right: copy */}
                     <div className="order-2 relative z-20 flex min-w-0 flex-col items-center text-center md:items-start md:text-left">
-                        <motion.div
+                        <motion.span
                             initial={{ opacity: 0, y: 14 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.45 }}
-                            className="mb-3 flex flex-wrap items-center justify-center gap-2 md:mb-4 md:justify-start"
+                            className="premium-eyebrow mb-3 inline-flex md:mb-4"
                         >
-                            <span className="premium-eyebrow">{t.hero.eyebrow}</span>
-                            <a
-                                href="#partido-automatico"
-                                className="group inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/10 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-violet-100 transition-colors hover:border-primary/40 hover:bg-primary/10"
-                            >
-                                {t.hero.newFeature}
-                                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                            </a>
-                        </motion.div>
+                            {t.hero.eyebrow}
+                        </motion.span>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}

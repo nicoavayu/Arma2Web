@@ -15,7 +15,6 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "@/components/Section";
 import { useLanguage } from "@/components/LanguageProvider";
-import { APP_LINKS } from "@/lib/app-links";
 
 const PLAYER_COLORS = [
   "from-[#27b8ff] to-[#5269ff]",
@@ -234,19 +233,12 @@ export function AutoMatch() {
               <span className="premium-metal block">{t.autoMatch.title.lineOne}</span>
               <span className="premium-gradient-text block">{t.autoMatch.title.highlight}</span>
             </h2>
-            <p className="mx-auto mb-7 max-w-lg text-[15px] leading-relaxed text-white/68 sm:text-base md:text-lg lg:mx-0">
+            <p className="mx-auto mb-5 max-w-lg text-[15px] leading-relaxed text-white/68 sm:text-base md:text-lg lg:mx-0">
               {t.autoMatch.description}
             </p>
-            <a
-              href={APP_LINKS.autoMatch}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-xl border border-primary/45 bg-gradient-to-r from-primary via-primary-glow to-accent-secondary px-5 py-3.5 text-xs font-black uppercase tracking-[0.12em] text-white shadow-[0_0_28px_rgba(91,75,255,0.3)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_36px_rgba(236,77,255,0.28)] sm:w-auto sm:px-7"
-            >
-              {t.autoMatch.cta}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <p className="mt-3 text-xs leading-relaxed text-white/42">{t.autoMatch.controlNote}</p>
+            <p className="mx-auto max-w-lg border-l-2 border-primary/35 pl-3 text-left text-xs leading-relaxed text-white/48 lg:mx-0">
+              {t.autoMatch.controlNote}
+            </p>
           </motion.div>
 
           <AutoMatchDemo />

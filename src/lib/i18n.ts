@@ -35,7 +35,6 @@ export const translations = {
     },
     hero: {
       eyebrow: "Fútbol amateur · Nivel pro",
-      newFeature: "Nuevo · Partido automático",
       title: {
         lineOne: "Organizá partidos.",
         highlight: "Armá equipos parejos.",
@@ -46,14 +45,13 @@ export const translations = {
       benefits: ["Gratis", "Equipos balanceados", "MVP y premios", "Desafíos entre equipos"],
     },
     autoMatch: {
-      eyebrow: "Nuevo · Partido automático",
+      eyebrow: "Partido automático",
       title: {
         lineOne: "Vos decís cuándo.",
         highlight: "Arma2 encuentra con quién.",
       },
       description:
         "Elegí los días, el rango horario, el formato y la distancia. Arma2 reúne jugadores compatibles cerca tuyo. Cuando aparece una oportunidad, confirmás con un toque y el partido se crea cuando el grupo está listo.",
-      cta: "Probar partido automático",
       controlNote: "Vos elegís si sumarte, rechazar o ayudar a organizar. El horario se define cuando el grupo está listo.",
       steps: [
         {
@@ -145,7 +143,7 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "Nuevo · Equipos y Desafíos",
+      eyebrow: "Equipos y Desafíos",
       title: {
         lineOne: "Tu equipo.",
         highlight: "El mercado.",
@@ -166,7 +164,7 @@ export const translations = {
       bullets: ["Armá tu equipo", "Publicalo en el mercado", "Desafiá o aceptá desafíos"],
     },
     teamRanking: {
-      eyebrow: "Nuevo · Rendimiento de equipos",
+      eyebrow: "Rendimiento de equipos",
       title: {
         lineOne: "Ranking y rendimiento",
         highlight: "de equipos.",
@@ -401,7 +399,6 @@ export const translations = {
     },
     hero: {
       eyebrow: "Amateur football · Pro level",
-      newFeature: "New · Automatic match",
       title: {
         lineOne: "Stop uneven matches.",
         highlight: "Create balanced teams.",
@@ -412,14 +409,13 @@ export const translations = {
       benefits: ["Free", "Balanced teams", "MVP and awards", "Team challenges"],
     },
     autoMatch: {
-      eyebrow: "New · Automatic match",
+      eyebrow: "Automatic match",
       title: {
         lineOne: "You choose when.",
         highlight: "Arma2 finds your people.",
       },
       description:
         "Choose your days, time range, match formats, and distance. Arma2 brings together compatible players nearby. When an opportunity appears, you confirm with one tap and the match is created once the group is ready.",
-      cta: "Try automatic match",
       controlNote: "You decide whether to join, decline, or help organize. The time is set once the group is ready.",
       steps: [
         {
@@ -511,7 +507,7 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "New · Teams and Challenges",
+      eyebrow: "Teams and Challenges",
       title: {
         lineOne: "Your squad.",
         highlight: "The marketplace.",
@@ -532,7 +528,7 @@ export const translations = {
       bullets: ["Build your squad", "List it on the marketplace", "Challenge or accept matches"],
     },
     teamRanking: {
-      eyebrow: "New · Team performance",
+      eyebrow: "Team performance",
       title: {
         lineOne: "Team ranking",
         highlight: "and performance.",

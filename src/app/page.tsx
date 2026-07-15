@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <main className="premium-page-bg min-h-screen relative overflow-x-hidden">
       <Hero />
-      <AutoMatch />
       <HowItWorks />
+      <AutoMatch />
       <Equipos />
       <TeamRanking />
       <Features />
