@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.arma2.com.ar"),
   title: "Arma2 - Organizá partidos. Armá equipos parejos.",
-  description: "Encontrá jugadores cerca, organizá partidos de fútbol 5 y fútbol 7, y armá equipos parejos con Arma2, incluso si no tenés grupo.",
+  description: "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
   keywords: [
     "encontrar jugadores de fútbol",
     "organizar partidos",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Arma2 – Encontrá jugadores y organizá tu próximo partido",
-    description: "Decí cuándo podés jugar y encontrá jugadores compatibles cerca tuyo. Organizá fútbol 5 y fútbol 7 con Arma2.",
+    description: "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
     url: "https://www.arma2.com.ar",
     type: "website",
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Arma2 – Encontrá jugadores y organizá tu próximo partido",
-    description: "Decí cuándo podés jugar y encontrá jugadores compatibles cerca tuyo con Partido automático.",
+    description: "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
     images: ["https://www.arma2.com.ar/og-image.jpg?v=20260224"],
   },
   icons: {

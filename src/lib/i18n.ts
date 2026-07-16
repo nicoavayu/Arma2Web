@@ -8,12 +8,12 @@ export const translations = {
     seo: {
       title: "Arma2 - Organizá partidos. Armá equipos parejos.",
       description:
-        "Encontrá jugadores cerca, organizá partidos de fútbol 5 y fútbol 7, y armá equipos parejos con Arma2, incluso si no tenés grupo.",
+        "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
     },
     nav: {
       links: [
         { label: "Cómo funciona", href: "/#how-it-works" },
-        { label: "Features", href: "/#features" },
+        { label: "Funciones", href: "/#features" },
         { label: "FAQ", href: "/#faq" },
       ],
       homeAria: "Volver al inicio",
@@ -41,30 +41,30 @@ export const translations = {
         lineThree: "Jugá.",
       },
       description:
-        "Convocá jugadores, equilibrá equipos, registrá resultados y seguí el rendimiento de tu equipo.",
+        "Creá un partido con tu grupo o activá una búsqueda. Arma2 reúne a los jugadores, arma equipos parejos y registra cada fecha.",
       benefits: ["Gratis", "Equipos balanceados", "MVP y premios", "Desafíos entre equipos"],
     },
     autoMatch: {
       eyebrow: "Partido automático",
       title: {
         lineOne: "Vos decís cuándo.",
-        highlight: "Arma2 encuentra con quién.",
+        highlight: "Arma2 encuentra el partido.",
       },
       description:
-        "Elegí los días, el rango horario, el formato y la distancia. Arma2 reúne jugadores compatibles cerca tuyo. Cuando aparece una oportunidad, confirmás con un toque y el partido se crea cuando el grupo está listo.",
-      controlNote: "Vos elegís si sumarte, rechazar o ayudar a organizar. El horario se define cuando el grupo está listo.",
+        "Elegí los días, horarios, zona y formato que te sirven. Cuando se reúnen suficientes jugadores que buscan lo mismo, Arma2 propone el partido y los primeros en confirmar aseguran su lugar.",
+      controlNote: "Sin grupo fijo. Sin perseguir gente. Sin organizar todo vos.",
       steps: [
         {
-          title: "Marcá tu disponibilidad",
-          description: "Elegí cuándo podés jugar, qué formato buscás y hasta dónde querés moverte.",
+          title: "Elegí tus preferencias",
+          description: "Definí los días, horarios, zona y formato que te sirven.",
         },
         {
-          title: "Recibí una oportunidad",
-          description: "Arma2 encuentra jugadores compatibles y forma un grupo.",
+          title: "Arma2 reúne al grupo",
+          description: "Cuando hay suficientes jugadores compatibles, Arma2 propone el partido.",
         },
         {
-          title: "Confirmá y jugá",
-          description: "Cuando el grupo está listo, se define un horario compatible y se crea el partido.",
+          title: "Confirmá tu lugar",
+          description: "Los primeros en confirmar aseguran su lugar y el partido queda listo.",
         },
       ],
       demo: {
@@ -95,31 +95,31 @@ export const translations = {
         lineOne: "En 30 segundos ya estás",
         highlight: "organizando el partido.",
       },
-      description: "Arma2 ordena la previa y también el post partido. Menos fricción, más fútbol.",
+      description: "Arma2 ordena todo: desde la convocatoria hasta lo que pasa después del partido. Menos vueltas, más fútbol.",
       steps: [
         {
           title: "Creá el partido",
-          description: "Definí fecha, hora y cancha. Compartís el link y el grupo se suma al toque.",
+          description: "Definí fecha, hora y cancha. Compartí el link y el grupo se suma al toque.",
         },
         {
-          title: "Voten niveles",
-          description: "Todos puntúan a todos. Sin decisiones unilaterales ni discusiones eternas.",
+          title: "El grupo evalúa",
+          description: "Cada jugador evalúa a quienes conoce. Sin decisiones unilaterales ni discusiones eternas.",
         },
         {
           title: "Equipos parejos y a jugar",
-          description: "Con la votación, Arma2 arma equipos balanceados para arrancar rápido.",
+          description: "Con los votos del grupo, Arma2 arma equipos equilibrados y deja todo listo para jugar.",
         },
       ],
       stepLabel: "Paso",
       postMatch: {
         title: "Qué pasa después del partido",
         description:
-          "La app te notifica que hay una encuesta post partido. Es breve: 5 preguntas. Si todos la contestan en serio, Arma2 promedia los votos del grupo y usa ese resultado para definir premios, sanciones y perfiles cada vez más representativos.",
-        chips: ["Notificación post partido", "Encuesta de 5 preguntas", "Promedio comunitario"],
+          "Después del partido, cada jugador responde una encuesta breve. Los votos del grupo registran el resultado, reconocen a las figuras y señalan ausencias o conductas antideportivas.",
+        chips: ["Notificación pospartido", "Encuesta breve", "Votos del grupo"],
         notification: {
           eyebrow: "Notificación",
           title: "Ya podés completar la encuesta del partido",
-          description: "Te toma menos de 1 minuto y mejora la calidad del ranking del grupo.",
+          description: "Te toma menos de un minuto y ayuda a registrar lo que pasó.",
         },
         survey: {
           eyebrow: "Encuesta en curso",
@@ -129,11 +129,11 @@ export const translations = {
         signals: [
           {
             title: "Premios y sanciones más justos",
-            description: "El promedio de la encuesta define figuras y tarjetas con criterio colectivo.",
+            description: "Los votos del grupo definen las figuras y las sanciones.",
           },
           {
             title: "Perfiles más confiables",
-            description: "Cuanto más en serio vota la comunidad, más precisos son los perfiles.",
+            description: "Cada partido suma información y hace que los perfiles reflejen mejor lo que pasa en la cancha.",
           },
           {
             title: "Historial útil de verdad",
@@ -143,13 +143,13 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "Equipos y Desafíos",
+      eyebrow: "Nuevo · Equipos y desafíos",
       title: {
-        lineOne: "Tu equipo.",
-        highlight: "El mercado.",
+        lineOne: "Armá tu equipo.",
+        highlight: "Encontrá un rival.",
       },
       description:
-        "Publicá tu equipo, buscá rivales y confirmá el partido en segundos. Una red activa de equipos esperando el desafío.",
+        "Publicá tu equipo, encontrá rivales de tu zona y coordiná el desafío desde Arma2.",
       cards: {
         left: { name: "Los Galácticos", initials: "LG", status: "En el mercado" },
         right: { name: "Deportivo Tapita", initials: "DT", status: "Disponible" },
@@ -170,7 +170,7 @@ export const translations = {
         highlight: "de equipos.",
       },
       description:
-        "Medí cómo le va a tu equipo, compará resultados y seguí el historial contra otros rivales.",
+        "Seguí el rendimiento de tu equipo, compará resultados y revisá el historial contra cada rival.",
       bullets: [
         "Partidos jugados, ganados, empatados y perdidos",
         "Porcentaje de victorias",
@@ -181,7 +181,7 @@ export const translations = {
       leaderboard: {
         title: "Ranking F7 · Zona Norte",
         winRateLabel: "% Vict.",
-        liveLabel: "En vivo",
+        liveLabel: "Actualizado",
         footnote: "Se actualiza después de cada desafío.",
         rows: [
           { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, trend: "up" },
@@ -201,17 +201,17 @@ export const translations = {
       },
     },
     features: {
-      eyebrow: "Features",
+      eyebrow: "Funciones",
       title: {
         start: "Todo lo que necesitás para ",
         highlight: "profesionalizar",
         end: " tu amateurismo.",
       },
       balance: {
-        title: "Balance Democrático",
-        description: "Los jugadores se distribuyen en equipos parejos según la evaluación del grupo.",
-        badge: "Votación Democrática",
-        sliderLabel: "Equilibrio",
+        title: "Balance democrático",
+        description: "Los jugadores evalúan al grupo y Arma2 usa esos votos para crear equipos parejos.",
+        badge: "Votación del grupo",
+        sliderLabel: "Equipos parejos",
       },
       autoMatch: {
         title: "Partido automático",
@@ -221,8 +221,8 @@ export const translations = {
         ready: "Partido creado",
       },
       playerProfile: {
-        title: "Tu Perfil de Jugador",
-        description: "Construí identidad, acumulá premios y mostrá tu reputación.",
+        title: "Tu perfil de jugador",
+        description: "Cada partido construye tu perfil: nivel, premios, sanciones e historial.",
         awards: [
           { label: "Figura", count: "3X" },
           { label: "Arquero", count: "1X" },
@@ -230,17 +230,17 @@ export const translations = {
         ],
       },
       community: {
-        title: "Comunidad",
-        description: "Mantené a tu equipo informado en tiempo real sobre desafíos y resultados.",
+        title: "Todo el grupo, al día",
+        description: "Invitaciones, votaciones, confirmaciones y resultados en un mismo lugar.",
         notifications: [
-          { eyebrow: "Desafío Grupal", title: "¡Te desafiaron a jugar!" },
+          { eyebrow: "Desafío grupal", title: "¡Te desafiaron a jugar!" },
           { eyebrow: "Votación", title: "Armá los equipos ahora" },
           { eyebrow: "Confirmación", title: "Partido confirmado" },
         ],
       },
       survey: {
-        title: "Encuesta Post-Partido",
-        description: "Votación rápida al finalizar. Elegí las figuras y sancioná la falta de compromiso.",
+        title: "Encuesta pospartido",
+        description: "Reconocé a las figuras y registrá ausencias o conductas antideportivas.",
         submit: "Confirmar Votos",
         saved: "Encuesta registrada",
         awardAlts: {
@@ -250,7 +250,7 @@ export const translations = {
         },
       },
       awards: {
-        title: "Premios y Sanciones",
+        title: "Premios y sanciones",
         description: "Los premios quedan en tu historia. Las tarjetas también.",
         icons: [
           { label: "Premio" },
@@ -263,11 +263,11 @@ export const translations = {
       eyebrow: "Estadísticas y continuidad",
       title: "Tu temporada queda registrada.",
       description:
-        "Arma2 te deja ver tu evolución futbolística en el tiempo: volumen de partidos, lesiones, partidos recurrentes y balance anual completo.",
+        "Seguí tu actividad, tu constancia, tus lesiones y el historial de cada temporada.",
       activityBadge: "Balance de actividad",
       activityTitle: "Seguí tu ritmo semanal, mensual y anual",
       activityDescription:
-        "Todo se acumula automáticamente en tu historial para que a fin de año puedas ver cómo te fue futbolísticamente con datos reales.",
+        "Cada partido se suma automáticamente a tu historial para que puedas seguir tu evolución durante todo el año.",
       annualMetrics: [
         { label: "Semana", value: "2 partidos" },
         { label: "Mes", value: "9 partidos" },
@@ -276,44 +276,44 @@ export const translations = {
       statCards: [
         {
           title: "Actividad por período",
-          description: "Seguí cuántos partidos jugaste en la semana, en el mes y en el año para medir constancia real.",
+          description: "Consultá cuántos partidos jugaste en la semana, en el mes y en el año para medir tu constancia.",
         },
         {
           title: "Registro de lesiones",
-          description: "Podés cargar molestias o lesiones y dejar trazabilidad de tu estado físico durante la temporada.",
+          description: "Registrá molestias o lesiones y llevá un seguimiento de tu estado físico durante la temporada.",
         },
         {
-          title: "Templates semanales",
-          description: "Guardá equipos base para partidos recurrentes y armá cada fecha en menos tiempo.",
+          title: "Plantillas para partidos recurrentes",
+          description: "Guardá el grupo base y armá cada nueva fecha en menos tiempo.",
         },
         {
           title: "Historial de cada fecha",
-          description: "Queda guardado cuándo se jugó, quiénes jugaron y cómo terminó el partido.",
+          description: "Queda registrado cuándo se jugó, quiénes participaron y cómo terminó el partido.",
         },
       ],
       recurring: {
         eyebrow: "Partidos recurrentes",
         description:
-          "Si jugás siempre con el mismo grupo, guardás el template del equipo y cada nueva fecha se suma al historial con fecha, jugadores y resultado.",
+          "Si jugás siempre con el mismo grupo, guardá una plantilla. Cada nueva fecha suma al historial el día, los jugadores y el resultado.",
       },
     },
     faq: {
-      title: "Preguntas Frecuentes",
+      title: "Preguntas frecuentes",
       items: [
         {
           question: "¿Es gratis?",
           answer:
-            "Sí, Arma2 es 100% gratuito para organizar partidos con amigos. En el futuro podríamos introducir funciones premium para ligas y torneos.",
+            "Sí. Arma2 es gratis para organizar partidos, encontrar jugadores y llevar el historial de tu grupo.",
         },
         {
           question: "¿Cómo funciona el balance de equipos?",
           answer:
-            "Todos los jugadores del partido votan entre sí para evaluar el nivel de cada uno. Con esos votos se calcula un puntaje promedio por jugador y el sistema arma dos equipos lo más parejos posible.",
+            "Cada jugador evalúa a quienes conoce. Con los votos del grupo, Arma2 calcula un puntaje por jugador y arma dos equipos lo más parejos posible.",
         },
         {
           question: "¿Puedo jugar si no tengo equipo?",
           answer:
-            "Sí. Con Partido automático indicás cuándo podés jugar, qué formato buscás y hasta dónde querés moverte. Arma2 encuentra personas con búsquedas compatibles y te avisa cuando aparece una oportunidad para formar el partido.",
+            "Sí. Con Partido automático indicás cuándo podés jugar, qué formato buscás y hasta dónde querés moverte. Arma2 encuentra jugadores con búsquedas compatibles y te avisa cuando aparece una oportunidad para formar el partido.",
         },
         {
           question: "¿Cómo se eligen los capitanes?",
@@ -333,7 +333,7 @@ export const translations = {
         {
           question: "¿Qué tipo de premios y sanciones existen?",
           answer:
-            "Al terminar cada partido, la comunidad premia desempeños destacados como 'Mejor arquero' o 'MVP del partido'. También hay sanciones como la tarjeta roja al jugador más sucio. Todo eso construye tu reputación histórica.",
+            "Al terminar cada partido, el grupo reconoce desempeños destacados como 'Mejor arquero' o 'Figura del partido'. También registra sanciones por conductas antideportivas. Todo eso construye tu historial.",
         },
         {
           question: "¿Puedo usarlo sin descargar la app?",
@@ -344,21 +344,21 @@ export const translations = {
     },
     cta: {
       title: {
-        lineOne: "Competí de verdad.",
-        highlight: "Dejá historia.",
+        lineOne: "Organizá tu próximo partido.",
+        highlight: "O dejá que Arma2 lo encuentre.",
       },
       description:
-        "Armá tu equipo, publicalo en el mercado y construí reputación partido a partido. Es gratis.",
-      disclaimer: "No requiere tarjeta de crédito. Es gratis.",
+        "Creá un partido con tu grupo o activá una búsqueda automática. Arma2 se ocupa de reunir a los jugadores, ordenar la previa y dejar todo listo para jugar.",
+      disclaimer: "Gratis para iOS y Android.",
     },
     footer: {
       description:
-        "La plataforma definitiva para organizar partidos de fútbol con amigos. Equipos balanceados, estadísticas y cero complicaciones.",
+        "La app para organizar partidos de fútbol, encontrar jugadores, armar equipos parejos y registrar cada fecha.",
       productTitle: "Producto",
       legalTitle: "Legal",
       links: {
         howItWorks: "Cómo funciona",
-        features: "Features",
+        features: "Funciones",
         faq: "FAQ",
         privacy: "Privacidad",
         terms: "Términos",
@@ -370,9 +370,9 @@ export const translations = {
   },
   en: {
     seo: {
-      title: "Arma2 - Stop uneven matches. Create balanced teams.",
+      title: "Arma2 - Organize matches. Build balanced teams.",
       description:
-        "Find football players nearby, organize 5-a-side and 7-a-side matches, and build balanced teams with Arma2—even when you don't have a group.",
+        "Organize football matches, find players, build balanced teams, and record results with Arma2. Free for iOS and Android.",
     },
     nav: {
       links: [
@@ -400,35 +400,35 @@ export const translations = {
     hero: {
       eyebrow: "Amateur football · Pro level",
       title: {
-        lineOne: "Stop uneven matches.",
-        highlight: "Create balanced teams.",
-        lineThree: "Just play.",
+        lineOne: "Organize matches.",
+        highlight: "Build balanced teams.",
+        lineThree: "Play.",
       },
       description:
-        "Invite players, balance teams, record results, and track your team's performance.",
+        "Create a match with your group or start a search. Arma2 brings players together, builds balanced teams, and records every matchday.",
       benefits: ["Free", "Balanced teams", "MVP and awards", "Team challenges"],
     },
     autoMatch: {
       eyebrow: "Automatic match",
       title: {
         lineOne: "You choose when.",
-        highlight: "Arma2 finds your people.",
+        highlight: "Arma2 finds the match.",
       },
       description:
-        "Choose your days, time range, match formats, and distance. Arma2 brings together compatible players nearby. When an opportunity appears, you confirm with one tap and the match is created once the group is ready.",
-      controlNote: "You decide whether to join, decline, or help organize. The time is set once the group is ready.",
+        "Choose the days, times, area, and format that work for you. When enough players are looking for the same thing, Arma2 suggests a match and the first to confirm secure their spot.",
+      controlNote: "No fixed group. No chasing people. No organizing everything yourself.",
       steps: [
         {
-          title: "Set your availability",
-          description: "Choose when you can play, which formats work, and how far you're willing to travel.",
+          title: "Choose your preferences",
+          description: "Set the days, times, area, and format that work for you.",
         },
         {
-          title: "Get an opportunity",
-          description: "Arma2 finds compatible players and forms a group.",
+          title: "Arma2 brings the group together",
+          description: "When there are enough compatible players, Arma2 suggests a match.",
         },
         {
-          title: "Confirm and play",
-          description: "Once the group is ready, a compatible time is set and the match is created.",
+          title: "Confirm your spot",
+          description: "The first players to confirm secure their spot and the match is ready.",
         },
       ],
       demo: {
@@ -456,34 +456,34 @@ export const translations = {
     howItWorks: {
       eyebrow: "How it works",
       title: {
-        lineOne: "In 30 seconds, your match is",
-        highlight: "ready to go.",
+        lineOne: "In 30 seconds, you're already",
+        highlight: "organizing the match.",
       },
-      description: "Arma2 handles the setup and the post-match flow. Less friction, more football.",
+      description: "Arma2 organizes everything, from the call-up to what happens after the match. Less hassle, more football.",
       steps: [
         {
           title: "Create the match",
-          description: "Set the date, time, and pitch. Share the link and your group can join right away.",
+          description: "Set the date, time, and pitch. Share the link and the group can join right away.",
         },
         {
-          title: "Rate every player",
-          description: "Everyone votes on everyone. No one-sided decisions and no endless debates.",
+          title: "The group rates",
+          description: "Each player rates the people they know. No one-sided decisions or endless debates.",
         },
         {
-          title: "Get balanced teams",
-          description: "Arma2 turns the group vote into fair teams so you can start playing faster.",
+          title: "Balanced teams, ready to play",
+          description: "Arma2 uses the group's votes to build balanced teams and get everything ready to play.",
         },
       ],
       stepLabel: "Step",
       postMatch: {
         title: "What happens after the match",
         description:
-          "The app prompts a quick post-match survey. It only takes 5 questions. When everyone answers honestly, Arma2 averages the group's votes and uses that result to assign awards, cards, and player profiles that get sharper over time.",
-        chips: ["Post-match alert", "5-question survey", "Community average"],
+          "After the match, each player completes a short survey. The group's votes record the result, recognize standout players, and flag absences or unsportsmanlike conduct.",
+        chips: ["Post-match notification", "Short survey", "Group votes"],
         notification: {
           eyebrow: "Notification",
-          title: "Your match survey is ready",
-          description: "It takes less than a minute and makes your group's rankings much more accurate.",
+          title: "You can now complete the match survey",
+          description: "It takes less than a minute and helps record what happened.",
         },
         survey: {
           eyebrow: "Survey live",
@@ -492,12 +492,12 @@ export const translations = {
         },
         signals: [
           {
-            title: "Fairer awards and cards",
-            description: "The group average decides standout performances and sanctions with real consensus.",
+            title: "Fairer awards and sanctions",
+            description: "The group's votes decide the standout players and sanctions.",
           },
           {
-            title: "Profiles you can trust",
-            description: "The more seriously the group votes, the more accurate every player profile becomes.",
+            title: "More reliable profiles",
+            description: "Every match adds information and helps profiles better reflect what happens on the pitch.",
           },
           {
             title: "A history that matters",
@@ -507,13 +507,13 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "Teams and Challenges",
+      eyebrow: "New · Teams and challenges",
       title: {
-        lineOne: "Your squad.",
-        highlight: "The marketplace.",
+        lineOne: "Build your team.",
+        highlight: "Find an opponent.",
       },
       description:
-        "List your team, find opponents, and lock in the match in seconds. An active network of squads ready for the next challenge.",
+        "List your team, find opponents in your area, and coordinate the challenge through Arma2.",
       cards: {
         left: { name: "Los Galácticos", initials: "LG", status: "On the market" },
         right: { name: "Deportivo Tapita", initials: "DT", status: "Available" },
@@ -534,7 +534,7 @@ export const translations = {
         highlight: "and performance.",
       },
       description:
-        "See how your team is doing, compare results, and follow the head-to-head history against your rivals.",
+        "Track your team's performance, compare results, and review the history against each opponent.",
       bullets: [
         "Matches played, won, drawn, and lost",
         "Win percentage",
@@ -545,7 +545,7 @@ export const translations = {
       leaderboard: {
         title: "7-a-side Ranking · North Zone",
         winRateLabel: "Win %",
-        liveLabel: "Live",
+        liveLabel: "Updated",
         footnote: "Updated after every challenge.",
         rows: [
           { name: "Los Galácticos", initials: "LG", record: "18-4-3", winRate: 72, trend: "up" },
@@ -573,9 +573,9 @@ export const translations = {
       },
       balance: {
         title: "Balanced Teams",
-        description: "The group rates each player and Arma2 turns that into teams that actually feel fair.",
-        badge: "Democratic voting",
-        sliderLabel: "Balance",
+        description: "Players rate the group and Arma2 uses those votes to build balanced teams.",
+        badge: "Group voting",
+        sliderLabel: "Balanced teams",
       },
       autoMatch: {
         title: "Automatic match",
@@ -585,8 +585,8 @@ export const translations = {
         ready: "Match created",
       },
       playerProfile: {
-        title: "Your Player Profile",
-        description: "Build your identity, stack up awards, and show the reputation you've earned.",
+        title: "Your player profile",
+        description: "Every match builds your profile: level, awards, sanctions, and history.",
         awards: [
           { label: "MVP", count: "3X" },
           { label: "Keeper", count: "1X" },
@@ -594,8 +594,8 @@ export const translations = {
         ],
       },
       community: {
-        title: "Community",
-        description: "Keep your squad in sync in real time with match challenges, votes, and confirmations.",
+        title: "Keep the whole group up to date",
+        description: "Invitations, votes, confirmations, and results all in one place.",
         notifications: [
           { eyebrow: "Team Challenge", title: "You've been challenged to play!" },
           { eyebrow: "Voting", title: "Build the teams now" },
@@ -603,8 +603,8 @@ export const translations = {
         ],
       },
       survey: {
-        title: "Post-Match Survey",
-        description: "Quick voting after the final whistle. Pick the standouts and call out the no-shows.",
+        title: "Post-match survey",
+        description: "Recognize standout players and record absences or unsportsmanlike conduct.",
         submit: "Submit Votes",
         saved: "Survey saved",
         awardAlts: {
@@ -614,7 +614,7 @@ export const translations = {
         },
       },
       awards: {
-        title: "Awards & Penalties",
+        title: "Awards and sanctions",
         description: "The trophies stay on your record. So do the cards.",
         icons: [
           { label: "Award" },
@@ -627,11 +627,11 @@ export const translations = {
       eyebrow: "Stats & consistency",
       title: "Your season stays on record.",
       description:
-        "Arma2 lets you track how your football year evolves: match volume, injuries, recurring fixtures, and your full yearly balance.",
+        "Track your activity, consistency, injuries, and the history of every season.",
       activityBadge: "Activity snapshot",
       activityTitle: "Track your weekly, monthly, and yearly rhythm",
       activityDescription:
-        "Everything is added to your history automatically, so by the end of the year you can see how your season really played out.",
+        "Every match is added to your history automatically so you can track your progress all year.",
       annualMetrics: [
         { label: "Week", value: "2 matches" },
         { label: "Month", value: "9 matches" },
@@ -640,44 +640,44 @@ export const translations = {
       statCards: [
         {
           title: "Activity over time",
-          description: "See how many matches you played each week, month, and year to measure real consistency.",
+          description: "See how many matches you played during the week, month, and year to measure your consistency.",
         },
         {
           title: "Injury log",
-          description: "Track injuries or physical issues and keep a clear record of your fitness during the season.",
+          description: "Record physical issues or injuries and track your fitness throughout the season.",
         },
         {
-          title: "Weekly templates",
-          description: "Save your base squads for recurring games and set up each new fixture in less time.",
+          title: "Templates for recurring matches",
+          description: "Save the core group and set up each new matchday in less time.",
         },
         {
           title: "Matchday history",
-          description: "Keep a record of when the game happened, who played, and how it ended.",
+          description: "Keep a record of when the match was played, who took part, and how it ended.",
         },
       ],
       recurring: {
         eyebrow: "Recurring fixtures",
         description:
-          "If you always play with the same group, save the team template and every new fixture is added to your history with date, players, and result.",
+          "If you always play with the same group, save a template. Every new matchday adds the date, players, and result to your history.",
       },
     },
     faq: {
-      title: "Frequently Asked Questions",
+      title: "Frequently asked questions",
       items: [
         {
           question: "Is it free?",
           answer:
-            "Yes. Arma2 is completely free to use for organizing matches with friends. We may add premium features later for leagues and tournaments.",
+            "Yes. Arma2 is free for organizing matches, finding players, and keeping your group's history.",
         },
         {
           question: "How does team balancing work?",
           answer:
-            "Every player in the match rates the others. Those votes generate an average score per player, and the system uses that to build the fairest teams possible.",
+            "Each player rates the people they know. Arma2 uses the group's votes to calculate a score for each player and build the most balanced teams possible.",
         },
         {
           question: "Can I play if I don't have a team?",
           answer:
-            "Yes. With Automatic match, you choose when you can play, which formats work, and how far you're willing to travel. Arma2 finds people with compatible searches and lets you know when there's an opportunity to form a match.",
+            "Yes. With Automatic match, you choose when you can play, which formats work, and how far you're willing to travel. Arma2 finds players with compatible searches and lets you know when there's an opportunity to form a match.",
         },
         {
           question: "How are captains chosen?",
@@ -697,7 +697,7 @@ export const translations = {
         {
           question: "What kind of awards and sanctions are there?",
           answer:
-            "After each match, the group can reward standout performances like Best Goalkeeper or Match MVP. It can also assign cards for poor discipline. That all becomes part of your long-term reputation.",
+            "After each match, the group recognizes standout performances like Best Goalkeeper or Player of the Match. It also records sanctions for unsportsmanlike conduct. That all becomes part of your history.",
         },
         {
           question: "Can I use it without downloading the app?",
@@ -708,16 +708,16 @@ export const translations = {
     },
     cta: {
       title: {
-        lineOne: "Compete for real.",
-        highlight: "Leave a legacy.",
+        lineOne: "Organize your next match.",
+        highlight: "Or let Arma2 find it.",
       },
       description:
-        "Build your squad, list it on the marketplace, and grow your reputation one match at a time. Free to use.",
-      disclaimer: "No credit card needed. It's free.",
+        "Create a match with your group or start an automatic search. Arma2 brings the players together, organizes the setup, and gets everything ready to play.",
+      disclaimer: "Free for iOS and Android.",
     },
     footer: {
       description:
-        "The easiest way to organize football matches with friends. Balanced teams, stats, and zero hassle.",
+        "The app for organizing football matches, finding players, building balanced teams, and recording every matchday.",
       productTitle: "Product",
       legalTitle: "Legal",
       links: {
