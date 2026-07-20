@@ -13,6 +13,7 @@ export const translations = {
     nav: {
       links: [
         { label: "Cómo funciona", href: "/#how-it-works" },
+        { label: "Arqueros", href: "/#mercado-arqueros" },
         { label: "Funciones", href: "/#features" },
         { label: "FAQ", href: "/#faq" },
       ],
@@ -87,6 +88,59 @@ export const translations = {
         createdTime: "Lun · 21:30",
         createdFormat: "F7 · 10 jugadores",
         chatActive: "Chat activo",
+      },
+    },
+    arqueros: {
+      eyebrow: "Mercado de arqueros",
+      title: {
+        lineOne: "Encontrá el arquero",
+        highlight: "que te falta.",
+      },
+      description:
+        "Explorá arqueros disponibles cerca tuyo, invitalos directamente a tus partidos o activá tu disponibilidad para encontrar oportunidades para atajar.",
+      positionsNote:
+        "Elegí hasta dos posiciones en tu perfil y sumate a cada partido como jugador o como arquero.",
+      benefits: [
+        {
+          title: "Arqueros cerca tuyo",
+          description: "Explorá perfiles disponibles según la distancia y encontrá una opción para tu próximo partido.",
+        },
+        {
+          title: "Invitaciones directas",
+          description: "Elegí uno de tus partidos e invitá al arquero directamente desde Arma2.",
+        },
+        {
+          title: "Disponible para atajar",
+          description: "Indicá en tu perfil que estás disponible y recibí oportunidades de partidos cercanos.",
+        },
+        {
+          title: "Partidos que buscan arquero",
+          description: "Filtrá oportunidades, encontrá partidos que necesiten arquero y solicitá sumarte específicamente para atajar.",
+        },
+      ],
+      demo: {
+        ariaLabel:
+          "Sección de arqueros en Arma2: la pestaña Arqueros muestra la disponibilidad para atajar activada y una lista de arqueros cercanos con su distancia, la posición ARQ y un botón para invitarlos a un partido que busca arquero.",
+        tabs: {
+          matches: "Partidos",
+          players: "Jugadores",
+          keepers: "Arqueros",
+        },
+        nearbyLabel: "Arqueros cerca",
+        availabilityTitle: "Disponible para atajar",
+        availabilityState: "Activado",
+        positionBadge: "ARQ",
+        inviteLabel: "Invitar",
+        keepers: [
+          { initials: "SA", name: "Santi", distance: "1,2 km", positions: "ARQ · DEF" },
+          { initials: "FE", name: "Fede", distance: "2,8 km", positions: "ARQ" },
+          { initials: "EM", name: "Emi", distance: "4,5 km", positions: "ARQ · MED" },
+        ],
+        openMatch: {
+          label: "Tu partido busca arquero",
+          detail: "F7 · Sáb 20:00",
+          action: "Solicitudes",
+        },
       },
     },
     howItWorks: {
@@ -316,6 +370,11 @@ export const translations = {
             "Sí. Con Partido automático indicás cuándo podés jugar, qué formato buscás y hasta dónde querés moverte. Arma2 encuentra jugadores con búsquedas compatibles y te avisa cuando aparece una oportunidad para formar el partido.",
         },
         {
+          question: "¿Cómo consigo un arquero si me falta uno?",
+          answer:
+            "En el Mercado de arqueros ves perfiles disponibles cerca tuyo y los invitás directamente a tu partido. Si preferís atajar, activás tu disponibilidad en el perfil y filtrás los partidos que buscan arquero para sumarte.",
+        },
+        {
           question: "¿Cómo se eligen los capitanes?",
           answer:
             "Cualquiera puede crear un partido y convertirse en capitán, o un capitán existente puede delegar el rol a otro integrante del grupo.",
@@ -377,6 +436,7 @@ export const translations = {
     nav: {
       links: [
         { label: "How it works", href: "/#how-it-works" },
+        { label: "Goalkeepers", href: "/#mercado-arqueros" },
         { label: "Features", href: "/#features" },
         { label: "FAQ", href: "/#faq" },
       ],
@@ -451,6 +511,59 @@ export const translations = {
         createdTime: "Mon · 21:30",
         createdFormat: "7V7 · 10 players",
         chatActive: "Chat active",
+      },
+    },
+    arqueros: {
+      eyebrow: "Goalkeeper market",
+      title: {
+        lineOne: "Find the goalkeeper",
+        highlight: "you're missing.",
+      },
+      description:
+        "Browse available goalkeepers near you, invite them straight to your matches, or turn on your availability to find chances to play in goal.",
+      positionsNote:
+        "Pick up to two positions on your profile and join each match as an outfield player or as a goalkeeper.",
+      benefits: [
+        {
+          title: "Goalkeepers near you",
+          description: "Browse available profiles by distance and find an option for your next match.",
+        },
+        {
+          title: "Direct invitations",
+          description: "Pick one of your matches and invite the goalkeeper directly from Arma2.",
+        },
+        {
+          title: "Available to play in goal",
+          description: "Show on your profile that you're available and get opportunities from nearby matches.",
+        },
+        {
+          title: "Matches looking for a goalkeeper",
+          description: "Filter opportunities, find matches that need a goalkeeper, and request to join specifically in goal.",
+        },
+      ],
+      demo: {
+        ariaLabel:
+          "Goalkeepers section in Arma2: the Goalkeepers tab shows availability to play in goal turned on and a list of nearby goalkeepers with their distance, the GK position, and a button to invite them to a match that needs a goalkeeper.",
+        tabs: {
+          matches: "Matches",
+          players: "Players",
+          keepers: "Goalkeepers",
+        },
+        nearbyLabel: "Goalkeepers nearby",
+        availabilityTitle: "Available to play in goal",
+        availabilityState: "On",
+        positionBadge: "GK",
+        inviteLabel: "Invite",
+        keepers: [
+          { initials: "SA", name: "Santi", distance: "1.2 km", positions: "GK · DEF" },
+          { initials: "FE", name: "Fede", distance: "2.8 km", positions: "GK" },
+          { initials: "EM", name: "Emi", distance: "4.5 km", positions: "GK · MID" },
+        ],
+        openMatch: {
+          label: "Your match needs a goalkeeper",
+          detail: "7v7 · Sat 20:00",
+          action: "Requests",
+        },
       },
     },
     howItWorks: {
@@ -678,6 +791,11 @@ export const translations = {
           question: "Can I play if I don't have a team?",
           answer:
             "Yes. With Automatic match, you choose when you can play, which formats work, and how far you're willing to travel. Arma2 finds players with compatible searches and lets you know when there's an opportunity to form a match.",
+        },
+        {
+          question: "How do I find a goalkeeper if I'm missing one?",
+          answer:
+            "In the goalkeeper market you can see available profiles near you and invite them straight to your match. If you'd rather play in goal, turn on your availability in your profile and filter the matches looking for a goalkeeper to join.",
         },
         {
           question: "How are captains chosen?",
