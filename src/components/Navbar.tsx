@@ -7,7 +7,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/components/LanguageProvider";
-import { STORE_LINKS } from "@/lib/store-links";
 
 export function Navbar() {
     const router = useRouter();
@@ -86,15 +85,6 @@ export function Navbar() {
                                 </Link>
                             ))}
                         </nav>
-
-                        <a
-                            href={STORE_LINKS.appStore}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="premium-download-button hidden min-h-9 items-center justify-center px-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition-all duration-300 lg:inline-flex"
-                        >
-                            {locale === "es" ? "Descargar" : "Download"}
-                        </a>
 
                         <div
                             className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.055] p-0.5 shadow-[0_0_18px_rgba(39,184,255,0.12)] backdrop-blur-md"
