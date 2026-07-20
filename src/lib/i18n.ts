@@ -97,13 +97,13 @@ export const translations = {
         highlight: "que te falta.",
       },
       description:
-        "Explorá arqueros disponibles cerca tuyo, invitalos directamente a tus partidos o activá tu disponibilidad para encontrar oportunidades para atajar.",
+        "Encontrá arqueros disponibles cerca tuyo, invitalos directamente a tus partidos o indicá que estás disponible para atajar y recibí oportunidades cercanas.",
       positionsNote:
-        "Elegí hasta dos posiciones en tu perfil y sumate a cada partido como jugador o como arquero.",
+        "Elegí hasta dos posiciones en tu perfil y decidí si querés sumarte a cada partido como jugador o como arquero.",
       benefits: [
         {
           title: "Arqueros cerca tuyo",
-          description: "Explorá perfiles disponibles según la distancia y encontrá una opción para tu próximo partido.",
+          description: "Encontrá arqueros disponibles según la distancia y descubrí quién puede sumarse a tu próximo partido.",
         },
         {
           title: "Invitaciones directas",
@@ -153,7 +153,7 @@ export const translations = {
       steps: [
         {
           title: "Creá el partido",
-          description: "Definí fecha, hora y cancha. Compartí el link y el grupo se suma al toque.",
+          description: "Definí fecha, hora y cancha. Compartí el link en tu grupo de WhatsApp y todos se suman al toque.",
         },
         {
           title: "El grupo evalúa",
@@ -183,7 +183,7 @@ export const translations = {
         signals: [
           {
             title: "Premios y sanciones más justos",
-            description: "Los votos del grupo definen las figuras y las sanciones.",
+            description: "Los votos del grupo reconocen a las figuras y ayudan a registrar ausencias o conductas antideportivas.",
           },
           {
             title: "Perfiles más confiables",
@@ -197,7 +197,7 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "Nuevo · Equipos y desafíos",
+      eyebrow: "Equipos y desafíos",
       title: {
         lineOne: "Armá tu equipo.",
         highlight: "Encontrá un rival.",
@@ -257,9 +257,9 @@ export const translations = {
     features: {
       eyebrow: "Funciones",
       title: {
-        start: "Todo lo que necesitás para ",
-        highlight: "profesionalizar",
-        end: " tu amateurismo.",
+        start: "Todo lo que necesitás para llevar tu ",
+        highlight: "fútbol amateur",
+        end: " a otro nivel.",
       },
       balance: {
         title: "Balance democrático",
@@ -315,9 +315,9 @@ export const translations = {
     },
     impact: {
       eyebrow: "Estadísticas y continuidad",
-      title: "Tu temporada queda registrada.",
+      title: "Toda tu temporada en un solo lugar.",
       description:
-        "Seguí tu actividad, tu constancia, tus lesiones y el historial de cada temporada.",
+        "Seguí tu actividad, tu constancia, tus lesiones y el historial de cada fecha durante todo el año.",
       activityBadge: "Balance de actividad",
       activityTitle: "Seguí tu ritmo semanal, mensual y anual",
       activityDescription:
@@ -520,13 +520,13 @@ export const translations = {
         highlight: "you're missing.",
       },
       description:
-        "Browse available goalkeepers near you, invite them straight to your matches, or turn on your availability to find chances to play in goal.",
+        "Find available goalkeepers near you, invite them directly to your matches, or show that you're available to play in goal and receive nearby opportunities.",
       positionsNote:
-        "Pick up to two positions on your profile and join each match as an outfield player or as a goalkeeper.",
+        "Choose up to two positions in your profile and decide whether you want to join each match as a player or as a goalkeeper.",
       benefits: [
         {
           title: "Goalkeepers near you",
-          description: "Browse available profiles by distance and find an option for your next match.",
+          description: "Find available goalkeepers by distance and discover who can join your next match.",
         },
         {
           title: "Direct invitations",
@@ -576,7 +576,7 @@ export const translations = {
       steps: [
         {
           title: "Create the match",
-          description: "Set the date, time, and pitch. Share the link and the group can join right away.",
+          description: "Set the date, time, and pitch. Share the link in your WhatsApp group and everyone can join right away.",
         },
         {
           title: "The group rates",
@@ -606,7 +606,7 @@ export const translations = {
         signals: [
           {
             title: "Fairer awards and sanctions",
-            description: "The group's votes decide the standout players and sanctions.",
+            description: "Group votes recognize standout players and help record absences or unsporting conduct.",
           },
           {
             title: "More reliable profiles",
@@ -620,7 +620,7 @@ export const translations = {
       },
     },
     equipos: {
-      eyebrow: "New · Teams and challenges",
+      eyebrow: "Teams and challenges",
       title: {
         lineOne: "Build your team.",
         highlight: "Find an opponent.",
@@ -680,9 +680,9 @@ export const translations = {
     features: {
       eyebrow: "Features",
       title: {
-        start: "Everything you need to ",
-        highlight: "level up",
-        end: " your pickup game.",
+        start: "Everything you need to take your ",
+        highlight: "amateur football",
+        end: " to the next level.",
       },
       balance: {
         title: "Balanced Teams",
@@ -738,9 +738,9 @@ export const translations = {
     },
     impact: {
       eyebrow: "Stats & consistency",
-      title: "Your season stays on record.",
+      title: "Your entire season in one place.",
       description:
-        "Track your activity, consistency, injuries, and the history of every season.",
+        "Track your activity, consistency, injuries, and match history throughout the year.",
       activityBadge: "Activity snapshot",
       activityTitle: "Track your weekly, monthly, and yearly rhythm",
       activityDescription:
