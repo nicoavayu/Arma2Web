@@ -1,0 +1,802 @@
+/**
+ * Copy for the Arma2 Torneos marketing landing (/torneos).
+ *
+ * Kept out of `src/lib/i18n.ts` on purpose: that dictionary serves the
+ * institutional homepage and is already large. This module reuses the same
+ * `Locale` type and the same LanguageProvider, so the navbar ES/EN toggle
+ * drives this page too.
+ *
+ * COPY RULES (do not relax without product sign-off):
+ * - Marketing page only. No pricing, no currency, no commercial limits.
+ * - Do not promise features that sit behind flags/entitlements as if they were
+ *   generally available (Social Studio pieces, multimedia scope, PRO catalog).
+ * - Public tournament pages are shareable without an account or the app; public
+ *   PHOTOS are deliberately NOT promised here.
+ */
+
+import type { Locale } from "@/lib/i18n";
+
+interface TitlePair {
+  lineOne: string;
+  highlight: string;
+}
+
+interface TitledItem {
+  title: string;
+  description: string;
+}
+
+export interface TorneosContent {
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    audienceNote: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    bullets: string[];
+    panel: {
+      ariaLabel: string;
+      tournamentName: string;
+      formatLabel: string;
+      roundLabel: string;
+      statusLabel: string;
+      standingsTitle: string;
+      pointsLabel: string;
+      rows: { initials: string; name: string; played: string; points: string }[];
+      nextMatchLabel: string;
+      nextMatchDetail: string;
+    };
+  };
+  problem: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    chaosTitle: string;
+    chaos: string[];
+    orderTitle: string;
+    order: TitledItem[];
+  };
+  management: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    modules: TitledItem[];
+    board: {
+      ariaLabel: string;
+      tabs: string[];
+      fixtureTitle: string;
+      roundLabel: string;
+      matches: { home: string; away: string; score: string | null; time: string }[];
+      pendingLabel: string;
+      loadResultLabel: string;
+      standingsTitle: string;
+      columns: { team: string; played: string; goalDiff: string; points: string };
+      standings: { initials: string; name: string; played: string; goalDiff: string; points: string }[];
+      scorersTitle: string;
+      scorers: { name: string; team: string; goals: string }[];
+      disciplineTitle: string;
+      discipline: { label: string; detail: string }[];
+    };
+  };
+  publicPage: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    noAccountNote: string;
+    items: TitledItem[];
+    mock: {
+      ariaLabel: string;
+      shareLabel: string;
+      copyLabel: string;
+      tabs: string[];
+      resultsTitle: string;
+      results: { home: string; away: string; score: string }[];
+      scorersTitle: string;
+      scorers: { name: string; goals: string }[];
+      footnote: string;
+    };
+  };
+  players: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    platforms: string[];
+    points: TitledItem[];
+    note: string;
+  };
+  socialStudio: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    pieces: string[];
+    previews: { label: string; caption: string }[];
+    note: string;
+  };
+  media: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    points: TitledItem[];
+    galleryLabel: string;
+    galleryCaption: string;
+    note: string;
+  };
+  plans: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    free: PlanCopy;
+    pro: PlanCopy;
+    footnote: string;
+  };
+  platforms: {
+    eyebrow: string;
+    title: TitlePair;
+    description: string;
+    cards: TitledItem[];
+    note: string;
+  };
+  finalCta: {
+    title: TitlePair;
+    description: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    storesTitle: string;
+    disclaimer: string;
+  };
+  faq: {
+    eyebrow: string;
+    title: string;
+    items: { question: string; answer: string }[];
+  };
+}
+
+interface PlanCopy {
+  name: string;
+  badge: string | null;
+  tagline: string;
+  description: string;
+  /**
+   * PLACEHOLDER — intentionally empty until the definitive commercial catalog is
+   * signed off. The plans section renders `description` alone while this is
+   * empty, so no "TBD"-style placeholder is ever shown to a visitor. Once the
+   * catalog is final, fill these arrays (ES + EN) and the bullets appear with no
+   * component changes required.
+   */
+  features: string[];
+  cta: string;
+}
+
+const es: TorneosContent = {
+  seo: {
+    title: "Arma2 Torneos — Organizá tu campeonato de fútbol",
+    description:
+      "Gestioná tu torneo de fútbol amateur en un solo lugar: equipos, fixture, resultados, tabla de posiciones, estadísticas y una página pública para compartir tu competencia.",
+  },
+  hero: {
+    eyebrow: "Arma2 Torneos",
+    title: {
+      lineOne: "Todo tu torneo.",
+      highlight: "En un solo lugar.",
+    },
+    description:
+      "Fixture, resultados, tabla, estadísticas, equipos y una web pública para tu competencia.",
+    audienceNote: "Para ligas, complejos, clubes y organizadores de campeonatos amateur.",
+    ctaPrimary: "Crear torneo gratis",
+    ctaSecondary: "Ver cómo funciona",
+    bullets: ["Fixture y fechas", "Tabla automática", "Estadísticas y goleadores", "Página pública"],
+    panel: {
+      ariaLabel:
+        "Vista del torneo en Arma2: encabezado con el nombre del campeonato y la fecha en curso, tabla de posiciones con los primeros equipos y el próximo partido programado.",
+      tournamentName: "Copa Primavera",
+      formatLabel: "F7 · 12 equipos",
+      roundLabel: "Fecha 7 de 12",
+      statusLabel: "En curso",
+      standingsTitle: "Tabla de posiciones",
+      pointsLabel: "PTS",
+      rows: [
+        { initials: "LG", name: "Los Galácticos", played: "7 PJ", points: "17" },
+        { initials: "DT", name: "Deportivo Tapita", played: "7 PJ", points: "15" },
+        { initials: "ET", name: "El Tanque", played: "7 PJ", points: "12" },
+      ],
+      nextMatchLabel: "Próximo partido",
+      nextMatchDetail: "Sáb 20:00 · Los Galácticos vs El Tanque",
+    },
+  },
+  problem: {
+    eyebrow: "El día a día del organizador",
+    title: {
+      lineOne: "Organizar un torneo",
+      highlight: "no debería ser esto.",
+    },
+    description:
+      "Los resultados llegan por WhatsApp, la tabla se rehace a mano y cada consulta de un equipo termina en un mensaje más para responder.",
+    chaosTitle: "Cómo se lleva hoy",
+    chaos: [
+      "Resultados sueltos en WhatsApp",
+      "Planillas de Excel que quedan desactualizadas",
+      "Tabla rehecha a mano cada fecha",
+      "Fixture en fotos de papel",
+      "Goleadores anotados aparte",
+      "Publicaciones armadas una por una",
+    ],
+    orderTitle: "Con Arma2 Torneos",
+    order: [
+      {
+        title: "Cargás el resultado una vez",
+        description: "La tabla, las estadísticas y los goleadores se actualizan a partir de ese dato.",
+      },
+      {
+        title: "Todo en un mismo lugar",
+        description:
+          "Equipos, planteles, fechas, partidos y sanciones dejan de estar repartidos en cinco archivos distintos.",
+      },
+      {
+        title: "Un link para compartir",
+        description:
+          "Los equipos consultan el torneo cuando quieren, sin escribirte para preguntar cómo salió la fecha.",
+      },
+    ],
+  },
+  management: {
+    eyebrow: "Gestión completa",
+    title: {
+      lineOne: "Del plantel a la tabla,",
+      highlight: "sin salir de Arma2.",
+    },
+    description:
+      "Cada parte de la competencia en un mismo lugar, y conectada con la anterior: lo que cargás en el partido se refleja en la tabla, en las estadísticas y en la página pública.",
+    modules: [
+      { title: "Equipos y planteles", description: "Cargá los equipos del torneo y armá el plantel de cada uno." },
+      { title: "Fixture", description: "Organizá las fechas de tu competencia y definí los cruces." },
+      { title: "Partidos", description: "Cada partido con su fecha, su horario y sus equipos." },
+      { title: "Resultados", description: "Cargá el resultado del partido y cerrá la fecha." },
+      { title: "Tabla de posiciones", description: "Se ordena con los resultados que vas cargando." },
+      { title: "Estadísticas", description: "Seguí el rendimiento de los equipos a lo largo del torneo." },
+      { title: "Goleadores", description: "La tabla de goleadores del campeonato, siempre al día." },
+      { title: "Disciplina", description: "Registrá amarillas, rojas y sanciones de tu competencia." },
+    ],
+    board: {
+      ariaLabel:
+        "Panel de gestión del torneo: fecha 7 con tres partidos, uno de ellos pendiente de resultado, tabla de posiciones con partidos jugados, diferencia de gol y puntos, tabla de goleadores y registro de disciplina.",
+      tabs: ["Fixture", "Tabla", "Goleadores", "Disciplina"],
+      fixtureTitle: "Fixture",
+      roundLabel: "Fecha 7",
+      matches: [
+        { home: "Los Galácticos", away: "Tiki-Taka", score: "3 - 1", time: "Sáb 18:00" },
+        { home: "Deportivo Tapita", away: "El Tanque", score: "2 - 2", time: "Sáb 19:30" },
+        { home: "La Nuestra", away: "Ferro FC", score: null, time: "Dom 11:00" },
+      ],
+      pendingLabel: "Pendiente",
+      loadResultLabel: "Cargar resultado",
+      standingsTitle: "Tabla de posiciones",
+      columns: { team: "Equipo", played: "PJ", goalDiff: "DG", points: "PTS" },
+      standings: [
+        { initials: "LG", name: "Los Galácticos", played: "7", goalDiff: "+9", points: "17" },
+        { initials: "DT", name: "Deportivo Tapita", played: "7", goalDiff: "+6", points: "15" },
+        { initials: "ET", name: "El Tanque", played: "7", goalDiff: "+2", points: "12" },
+        { initials: "TT", name: "Tiki-Taka", played: "7", goalDiff: "-1", points: "10" },
+      ],
+      scorersTitle: "Goleadores",
+      scorers: [
+        { name: "M. Álvarez", team: "Los Galácticos", goals: "11" },
+        { name: "J. Ferreyra", team: "El Tanque", goals: "9" },
+        { name: "N. Ríos", team: "Deportivo Tapita", goals: "8" },
+      ],
+      disciplineTitle: "Disciplina",
+      discipline: [
+        { label: "Amarillas", detail: "Fecha 7 · 6" },
+        { label: "Rojas", detail: "Fecha 7 · 1" },
+        { label: "Suspendidos", detail: "Próxima fecha · 2" },
+      ],
+    },
+  },
+  publicPage: {
+    eyebrow: "Página pública del torneo",
+    title: {
+      lineOne: "Compartí un solo link.",
+      highlight: "Todos ven el torneo.",
+    },
+    description:
+      "Tu competencia tiene una página pública con la información que vas cargando. La compartís una vez y los equipos, los jugadores y sus familias la consultan cuando quieren.",
+    noAccountNote: "Sin crear una cuenta y sin instalar la app.",
+    items: [
+      { title: "Fixture", description: "Las fechas del torneo y cuándo juega cada equipo." },
+      { title: "Resultados", description: "Cómo terminó cada partido de cada fecha." },
+      { title: "Tabla", description: "Las posiciones actualizadas del campeonato." },
+      { title: "Goleadores", description: "Quiénes convierten en el torneo." },
+      { title: "Equipos", description: "Los equipos de la competencia y sus planteles." },
+      { title: "Disciplina", description: "Las sanciones que hacés públicas." },
+    ],
+    mock: {
+      ariaLabel:
+        "Página pública del torneo abierta en un navegador: un link público para compartir, resultados de la última fecha y la tabla de goleadores.",
+      shareLabel: "Link público del torneo",
+      copyLabel: "Copiar",
+      tabs: ["Fixture", "Resultados", "Tabla", "Goleadores", "Equipos"],
+      resultsTitle: "Última fecha",
+      results: [
+        { home: "Los Galácticos", away: "Tiki-Taka", score: "3 - 1" },
+        { home: "Deportivo Tapita", away: "El Tanque", score: "2 - 2" },
+      ],
+      scorersTitle: "Goleadores",
+      scorers: [
+        { name: "M. Álvarez", goals: "11" },
+        { name: "J. Ferreyra", goals: "9" },
+      ],
+      footnote: "Cualquiera con el link puede ver el torneo.",
+    },
+  },
+  players: {
+    eyebrow: "Para los jugadores",
+    title: {
+      lineOne: "Tus equipos siguen el torneo",
+      highlight: "desde su teléfono.",
+    },
+    description:
+      "Los participantes pueden seguir la competencia desde Arma2 en iPhone, Android y Web Torneos, sin que tengas que reenviar la información fecha por fecha.",
+    platforms: ["iPhone", "Android", "Web Torneos"],
+    points: [
+      { title: "Cuándo juegan", description: "Cada equipo ve su próxima fecha, el horario y el rival." },
+      { title: "Cómo va el torneo", description: "Resultados y tabla después de cada fecha." },
+      { title: "Estadísticas del campeonato", description: "Goleadores y rendimiento de la competencia." },
+    ],
+    note: "Los jugadores no pagan para seguir un torneo.",
+  },
+  socialStudio: {
+    eyebrow: "Social Studio",
+    title: {
+      lineOne: "Contá tu torneo",
+      highlight: "en redes.",
+    },
+    description:
+      "Con la información que ya cargaste en el torneo, Arma2 te ayuda a generar piezas para publicar. En lugar de armar cada imagen a mano, partís de los datos de tu competencia.",
+    pieces: [
+      "Próxima fecha",
+      "Resultados",
+      "Tabla",
+      "Goleadores",
+      "Sancionados",
+      "Equipo ideal",
+      "MVP",
+      "Semifinales",
+      "Final",
+      "Campeón",
+    ],
+    previews: [
+      { label: "Resultados", caption: "Fecha 7" },
+      { label: "Tabla", caption: "Copa Primavera" },
+      { label: "Goleadores", caption: "Top del torneo" },
+    ],
+    note: "Las piezas disponibles pueden variar según el plan y la etapa de lanzamiento.",
+  },
+  media: {
+    eyebrow: "Multimedia",
+    title: {
+      lineOne: "Las fotos del torneo,",
+      highlight: "junto al torneo.",
+    },
+    description:
+      "Sumá las fotos de tu competencia y mantenelas ordenadas en el mismo lugar donde ya están el fixture, los resultados y la tabla.",
+    points: [
+      { title: "Galerías del torneo", description: "Las fotos quedan asociadas a tu competencia." },
+      { title: "Ordenadas por fecha", description: "Cada fecha con sus imágenes, sin carpetas sueltas." },
+      { title: "En el mismo lugar", description: "Dejás de repartir el material entre chats y links." },
+    ],
+    galleryLabel: "Galería de la fecha",
+    galleryCaption: "Fecha 7 · Copa Primavera",
+    note: "Estamos definiendo el alcance final de multimedia en cada plan.",
+  },
+  plans: {
+    eyebrow: "Planes",
+    title: {
+      lineOne: "Empezá gratis.",
+      highlight: "Crecé cuando lo necesites.",
+    },
+    description:
+      "Podés poner tu torneo en marcha sin pagar nada. Si tu organización necesita más, hay un plan pensado para eso.",
+    free: {
+      name: "FREE",
+      badge: null,
+      tagline: "Para empezar a organizar tu torneo.",
+      description:
+        "Creá tu competencia y empezá a trabajarla: equipos, fechas, partidos y resultados en un solo lugar.",
+      features: [],
+      cta: "Crear torneo gratis",
+    },
+    pro: {
+      name: "PRO",
+      badge: "Para organizaciones",
+      tagline: "Para organizaciones que quieren más herramientas, historial y capacidad.",
+      description:
+        "Pensado para ligas, complejos y clubes que gestionan competencias de forma sostenida a lo largo del tiempo.",
+      features: [],
+      cta: "Quiero saber más",
+    },
+    footnote:
+      "Estamos terminando de definir el detalle de cada plan. Vas a poder verlo completo antes de activar cualquier función paga.",
+  },
+  platforms: {
+    eyebrow: "Web + App",
+    title: {
+      lineOne: "Administrá desde donde",
+      highlight: "te resulte más cómodo.",
+    },
+    description:
+      "Arma2 Torneos funciona en la web, en iPhone y en Android. Entrás con la misma cuenta y seguís donde lo dejaste.",
+    cards: [
+      { title: "Web", description: "Cómodo para cargar una fecha completa desde la computadora." },
+      { title: "iPhone", description: "Resolvé desde el teléfono, en la cancha o volviendo a casa." },
+      { title: "Android", description: "La misma gestión, desde tu Android." },
+    ],
+    note: "Cada persona de tu organización ve y edita según su rol.",
+  },
+  finalCta: {
+    title: {
+      lineOne: "Tu próximo torneo",
+      highlight: "puede empezar acá.",
+    },
+    description: "Creá tu competencia, cargá los equipos y compartí el link con todo tu torneo.",
+    ctaPrimary: "Crear torneo gratis",
+    ctaSecondary: "Hablar con nosotros",
+    storesTitle: "También podés administrar desde la app",
+    disclaimer: "Crear tu torneo es gratis.",
+  },
+  faq: {
+    eyebrow: "Preguntas frecuentes",
+    title: "Preguntas frecuentes",
+    items: [
+      {
+        question: "¿Necesito instalar una app?",
+        answer:
+          "No. Podés administrar tu torneo desde la web, y también desde Arma2 en iPhone o Android si te resulta más cómodo. Y para consultar la página pública del torneo no hace falta instalar nada.",
+      },
+      {
+        question: "¿Los jugadores tienen que pagar?",
+        answer: "No. Los participantes pueden seguir el torneo sin pagar.",
+      },
+      {
+        question: "¿Puedo compartir el torneo públicamente?",
+        answer:
+          "Sí. Tu competencia tiene una página pública que compartís con un link: fixture, resultados, tabla, goleadores, equipos y la disciplina que decidas hacer pública. Quien la abre no necesita cuenta ni la app.",
+      },
+      {
+        question: "¿Funciona desde la computadora?",
+        answer:
+          "Sí. Podés gestionar todo el torneo desde la web, que suele ser lo más cómodo para cargar una fecha completa.",
+      },
+      {
+        question: "¿Puedo administrar varios torneos?",
+        answer:
+          "Sí. Tu organización puede tener más de una competencia. La capacidad de cada plan la estamos terminando de definir.",
+      },
+      {
+        question: "¿FREE tiene costo?",
+        answer: "No. Podés crear tu torneo y empezar a organizarlo sin pagar.",
+      },
+      {
+        question: "¿Qué incluye PRO?",
+        answer:
+          "PRO está pensado para organizaciones que necesitan más herramientas, historial y capacidad. Estamos terminando de definir el detalle y vas a poder verlo completo antes de activar cualquier función paga.",
+      },
+    ],
+  },
+};
+
+const en: TorneosContent = {
+  seo: {
+    title: "Arma2 Tournaments — Run your football league",
+    description:
+      "Run your amateur football tournament in one place: teams, fixtures, results, standings, stats and a public page to share your competition.",
+  },
+  hero: {
+    eyebrow: "Arma2 Tournaments",
+    title: {
+      lineOne: "Your whole tournament.",
+      highlight: "In one place.",
+    },
+    description: "Fixtures, results, standings, stats, teams and a public page for your competition.",
+    audienceNote: "For leagues, sports centres, clubs and amateur tournament organisers.",
+    ctaPrimary: "Create a tournament for free",
+    ctaSecondary: "See how it works",
+    bullets: ["Fixtures and rounds", "Automatic standings", "Stats and top scorers", "Public page"],
+    panel: {
+      ariaLabel:
+        "Tournament view in Arma2: a header with the competition name and current round, a standings table with the leading teams, and the next scheduled match.",
+      tournamentName: "Spring Cup",
+      formatLabel: "7-a-side · 12 teams",
+      roundLabel: "Round 7 of 12",
+      statusLabel: "In progress",
+      standingsTitle: "Standings",
+      pointsLabel: "PTS",
+      rows: [
+        { initials: "LG", name: "Los Galácticos", played: "7 GP", points: "17" },
+        { initials: "DT", name: "Deportivo Tapita", played: "7 GP", points: "15" },
+        { initials: "ET", name: "El Tanque", played: "7 GP", points: "12" },
+      ],
+      nextMatchLabel: "Next match",
+      nextMatchDetail: "Sat 8:00 PM · Los Galácticos vs El Tanque",
+    },
+  },
+  problem: {
+    eyebrow: "An organiser's week",
+    title: {
+      lineOne: "Running a tournament",
+      highlight: "shouldn't feel like this.",
+    },
+    description:
+      "Results arrive over WhatsApp, the table gets rebuilt by hand, and every question from a team turns into one more message to answer.",
+    chaosTitle: "How it usually works",
+    chaos: [
+      "Results scattered across WhatsApp",
+      "Spreadsheets that fall out of date",
+      "Standings rebuilt by hand every round",
+      "Fixtures living in photos of paper",
+      "Top scorers tracked somewhere else",
+      "Social posts built one by one",
+    ],
+    orderTitle: "With Arma2 Tournaments",
+    order: [
+      {
+        title: "Enter the result once",
+        description: "Standings, stats and top scorers are built from that same entry.",
+      },
+      {
+        title: "Everything in one place",
+        description: "Teams, squads, rounds, matches and sanctions stop living in five separate files.",
+      },
+      {
+        title: "One link to share",
+        description: "Teams check the tournament whenever they want, instead of messaging you for the score.",
+      },
+    ],
+  },
+  management: {
+    eyebrow: "Full management",
+    title: {
+      lineOne: "From the squad to the table,",
+      highlight: "without leaving Arma2.",
+    },
+    description:
+      "Every part of the competition in one place, connected to the next: what you enter in a match shows up in the standings, the stats and the public page.",
+    modules: [
+      { title: "Teams and squads", description: "Add the teams in your tournament and build each squad." },
+      { title: "Fixtures", description: "Organise the rounds of your competition and set the matchups." },
+      { title: "Matches", description: "Every match with its date, kick-off time and teams." },
+      { title: "Results", description: "Enter the result and close out the round." },
+      { title: "Standings", description: "Ordered from the results you enter." },
+      { title: "Stats", description: "Follow how teams perform across the tournament." },
+      { title: "Top scorers", description: "The tournament's scoring chart, always current." },
+      { title: "Discipline", description: "Record yellows, reds and sanctions in your competition." },
+    ],
+    board: {
+      ariaLabel:
+        "Tournament management panel: round 7 with three matches, one still awaiting a result, a standings table with games played, goal difference and points, a top-scorer chart and a discipline summary.",
+      tabs: ["Fixtures", "Standings", "Scorers", "Discipline"],
+      fixtureTitle: "Fixtures",
+      roundLabel: "Round 7",
+      matches: [
+        { home: "Los Galácticos", away: "Tiki-Taka", score: "3 - 1", time: "Sat 6:00 PM" },
+        { home: "Deportivo Tapita", away: "El Tanque", score: "2 - 2", time: "Sat 7:30 PM" },
+        { home: "La Nuestra", away: "Ferro FC", score: null, time: "Sun 11:00 AM" },
+      ],
+      pendingLabel: "Pending",
+      loadResultLabel: "Enter result",
+      standingsTitle: "Standings",
+      columns: { team: "Team", played: "GP", goalDiff: "GD", points: "PTS" },
+      standings: [
+        { initials: "LG", name: "Los Galácticos", played: "7", goalDiff: "+9", points: "17" },
+        { initials: "DT", name: "Deportivo Tapita", played: "7", goalDiff: "+6", points: "15" },
+        { initials: "ET", name: "El Tanque", played: "7", goalDiff: "+2", points: "12" },
+        { initials: "TT", name: "Tiki-Taka", played: "7", goalDiff: "-1", points: "10" },
+      ],
+      scorersTitle: "Top scorers",
+      scorers: [
+        { name: "M. Álvarez", team: "Los Galácticos", goals: "11" },
+        { name: "J. Ferreyra", team: "El Tanque", goals: "9" },
+        { name: "N. Ríos", team: "Deportivo Tapita", goals: "8" },
+      ],
+      disciplineTitle: "Discipline",
+      discipline: [
+        { label: "Yellows", detail: "Round 7 · 6" },
+        { label: "Reds", detail: "Round 7 · 1" },
+        { label: "Suspended", detail: "Next round · 2" },
+      ],
+    },
+  },
+  publicPage: {
+    eyebrow: "Public tournament page",
+    title: {
+      lineOne: "Share one link.",
+      highlight: "Everyone sees the tournament.",
+    },
+    description:
+      "Your competition gets a public page built from what you enter. You share it once, and teams, players and their families check it whenever they want.",
+    noAccountNote: "No account to create, no app to install.",
+    items: [
+      { title: "Fixtures", description: "The rounds of the tournament and when each team plays." },
+      { title: "Results", description: "How every match of every round ended." },
+      { title: "Standings", description: "The current table of the competition." },
+      { title: "Top scorers", description: "Who is scoring in the tournament." },
+      { title: "Teams", description: "The teams in the competition and their squads." },
+      { title: "Discipline", description: "The sanctions you choose to make public." },
+    ],
+    mock: {
+      ariaLabel:
+        "Public tournament page open in a browser: a public link to share, the latest round's results and the top-scorer chart.",
+      shareLabel: "Public tournament link",
+      copyLabel: "Copy",
+      tabs: ["Fixtures", "Results", "Standings", "Scorers", "Teams"],
+      resultsTitle: "Latest round",
+      results: [
+        { home: "Los Galácticos", away: "Tiki-Taka", score: "3 - 1" },
+        { home: "Deportivo Tapita", away: "El Tanque", score: "2 - 2" },
+      ],
+      scorersTitle: "Top scorers",
+      scorers: [
+        { name: "M. Álvarez", goals: "11" },
+        { name: "J. Ferreyra", goals: "9" },
+      ],
+      footnote: "Anyone with the link can follow the tournament.",
+    },
+  },
+  players: {
+    eyebrow: "For the players",
+    title: {
+      lineOne: "Your teams follow the tournament",
+      highlight: "from their phone.",
+    },
+    description:
+      "Participants can follow the competition from Arma2 on iPhone, Android and Tournaments on the web — so you don't have to forward everything round by round.",
+    platforms: ["iPhone", "Android", "Tournaments on web"],
+    points: [
+      { title: "When they play", description: "Each team sees its next round, kick-off time and opponent." },
+      { title: "How the tournament is going", description: "Results and standings after every round." },
+      { title: "Competition stats", description: "Top scorers and how the tournament is unfolding." },
+    ],
+    note: "Players don't pay to follow a tournament.",
+  },
+  socialStudio: {
+    eyebrow: "Social Studio",
+    title: {
+      lineOne: "Tell your tournament's story",
+      highlight: "on social.",
+    },
+    description:
+      "Using what you already entered in the tournament, Arma2 helps you generate pieces to post. Instead of building every image by hand, you start from your competition's own data.",
+    pieces: [
+      "Next round",
+      "Results",
+      "Standings",
+      "Top scorers",
+      "Sanctions",
+      "Team of the week",
+      "MVP",
+      "Semi-finals",
+      "Final",
+      "Champion",
+    ],
+    previews: [
+      { label: "Results", caption: "Round 7" },
+      { label: "Standings", caption: "Spring Cup" },
+      { label: "Top scorers", caption: "Tournament leaders" },
+    ],
+    note: "Available pieces may vary by plan and rollout stage.",
+  },
+  media: {
+    eyebrow: "Media",
+    title: {
+      lineOne: "The tournament's photos,",
+      highlight: "next to the tournament.",
+    },
+    description:
+      "Add your competition's photos and keep them organised in the same place as the fixtures, the results and the table.",
+    points: [
+      { title: "Tournament galleries", description: "Photos stay attached to your competition." },
+      { title: "Organised by round", description: "Each round with its images, no loose folders." },
+      { title: "All in one place", description: "Stop splitting the material between chats and links." },
+    ],
+    galleryLabel: "Round gallery",
+    galleryCaption: "Round 7 · Spring Cup",
+    note: "We're still defining the final scope of media on each plan.",
+  },
+  plans: {
+    eyebrow: "Plans",
+    title: {
+      lineOne: "Start for free.",
+      highlight: "Grow when you need to.",
+    },
+    description:
+      "You can get your tournament running without paying anything. If your organisation needs more, there's a plan for that.",
+    free: {
+      name: "FREE",
+      badge: null,
+      tagline: "To start organising your tournament.",
+      description: "Create your competition and get to work: teams, rounds, matches and results in one place.",
+      features: [],
+      cta: "Create a tournament for free",
+    },
+    pro: {
+      name: "PRO",
+      badge: "For organisations",
+      tagline: "For organisations that want more tools, more history and more capacity.",
+      description: "Built for leagues, sports centres and clubs running competitions season after season.",
+      features: [],
+      cta: "Tell me more",
+    },
+    footnote:
+      "We're finalising what each plan includes. You'll see the full detail before activating anything paid.",
+  },
+  platforms: {
+    eyebrow: "Web + app",
+    title: {
+      lineOne: "Manage it wherever",
+      highlight: "suits you best.",
+    },
+    description:
+      "Arma2 Tournaments works on the web, on iPhone and on Android. Same account, and you pick up where you left off.",
+    cards: [
+      { title: "Web", description: "Handy for entering a full round from your computer." },
+      { title: "iPhone", description: "Sort things out from your phone, at the pitch or on the way home." },
+      { title: "Android", description: "The same management, from your Android." },
+    ],
+    note: "Everyone in your organisation sees and edits according to their role.",
+  },
+  finalCta: {
+    title: {
+      lineOne: "Your next tournament",
+      highlight: "can start here.",
+    },
+    description: "Create your competition, add the teams and share the link with everyone in it.",
+    ctaPrimary: "Create a tournament for free",
+    ctaSecondary: "Talk to us",
+    storesTitle: "You can also manage from the app",
+    disclaimer: "Creating your tournament is free.",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Frequently asked questions",
+    items: [
+      {
+        question: "Do I need to install an app?",
+        answer:
+          "No. You can manage your tournament from the web, and also from Arma2 on iPhone or Android if that's easier. And nothing needs to be installed to open the tournament's public page.",
+      },
+      {
+        question: "Do players have to pay?",
+        answer: "No. Participants can follow the tournament without paying.",
+      },
+      {
+        question: "Can I share the tournament publicly?",
+        answer:
+          "Yes. Your competition gets a public page you share with a link: fixtures, results, standings, top scorers, teams and whatever discipline information you choose to make public. Whoever opens it needs no account and no app.",
+      },
+      {
+        question: "Does it work from a computer?",
+        answer:
+          "Yes. You can manage the whole tournament from the web, which is usually the most comfortable way to enter a full round.",
+      },
+      {
+        question: "Can I manage several tournaments?",
+        answer:
+          "Yes. Your organisation can run more than one competition. We're still defining the capacity of each plan.",
+      },
+      {
+        question: "Is FREE really free?",
+        answer: "Yes. You can create your tournament and start organising it without paying.",
+      },
+      {
+        question: "What does PRO include?",
+        answer:
+          "PRO is built for organisations that need more tools, more history and more capacity. We're finalising the detail, and you'll see it in full before activating anything paid.",
+      },
+    ],
+  },
+};
+
+export const torneosContent: Record<Locale, TorneosContent> = { es, en };
