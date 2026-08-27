@@ -40,6 +40,11 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/torneos" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.tournaments}
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/#features" className="text-text-secondary hover:text-white text-sm transition-colors">
                                     {t.footer.links.features}
                                 </Link>

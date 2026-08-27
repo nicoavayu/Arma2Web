@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 
 const BASE =
-  "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 active:scale-[0.98] outline-none";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl font-semibold transition-all duration-300 active:scale-[0.98] outline-none max-[360px]:px-4 max-[360px]:text-[13px]";
 
 const SIZES = {
   md: "min-h-11 px-5 text-sm",
@@ -57,8 +57,8 @@ export function TorneosLinkButton({
 
 /**
  * Primary landing CTA ("Crear torneo gratis").
- * Destination resolves through `@/lib/torneos-links` — see the audit note there:
- * the authenticated Torneos destination is not defined in this repo yet.
+ * Destination resolves through `@/lib/torneos-links` and always opens the
+ * authenticated Torneos web experience.
  */
 export function CreateTournamentCta({
   label,

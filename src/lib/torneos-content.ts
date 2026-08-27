@@ -6,10 +6,10 @@
  * `Locale` type and the same LanguageProvider, so the navbar ES/EN toggle
  * drives this page too.
  *
- * COPY RULES (do not relax without product sign-off):
- * - Marketing page only. No pricing, no currency, no commercial limits.
- * - Do not promise features that sit behind flags/entitlements as if they were
- *   generally available (Social Studio pieces, multimedia scope, PRO catalog).
+ * COPY RULES:
+ * - Marketing page only. Pricing is informative and checkout stays in the
+ *   authenticated Torneos product.
+ * - Do not promise future features as generally available.
  * - Public tournament pages are shareable without an account or the app; public
  *   PHOTOS are deliberately NOT promised here.
  */
@@ -131,7 +131,7 @@ export interface TorneosContent {
     title: TitlePair;
     description: string;
     free: PlanCopy;
-    pro: PlanCopy;
+    premium: PlanCopy;
     footnote: string;
   };
   platforms: {
@@ -146,7 +146,6 @@ export interface TorneosContent {
     description: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    storesTitle: string;
     disclaimer: string;
   };
   faq: {
@@ -161,22 +160,21 @@ interface PlanCopy {
   badge: string | null;
   tagline: string;
   description: string;
-  /**
-   * PLACEHOLDER — intentionally empty until the definitive commercial catalog is
-   * signed off. The plans section renders `description` alone while this is
-   * empty, so no "TBD"-style placeholder is ever shown to a visitor. Once the
-   * catalog is final, fill these arrays (ES + EN) and the bullets appear with no
-   * component changes required.
-   */
+  price: string;
+  priceDetail: string;
+  regularPriceLabel: string | null;
+  regularPrice: string | null;
   features: string[];
+  upcomingLabel: string | null;
+  upcoming: string[];
   cta: string;
 }
 
 const es: TorneosContent = {
   seo: {
-    title: "Arma2 Torneos — Organizá tu campeonato de fútbol",
+    title: "Arma2 Torneos — Organizá todo tu torneo en un solo lugar",
     description:
-      "Gestioná tu torneo de fútbol amateur en un solo lugar: equipos, fixture, resultados, tabla de posiciones, estadísticas y una página pública para compartir tu competencia.",
+      "Gestioná tu torneo de fútbol amateur en un solo lugar. Empezá gratis y sumá Premium con un pago único por edición.",
   },
   hero: {
     eyebrow: "Arma2 Torneos",
@@ -185,9 +183,9 @@ const es: TorneosContent = {
       highlight: "En un solo lugar.",
     },
     description:
-      "Fixture, resultados, tabla, estadísticas, equipos y una web pública para tu competencia.",
+      "Organizá todo el torneo en un solo lugar: equipos, fixture, resultados, tabla, comunicación y una página pública para tu competencia.",
     audienceNote: "Para ligas, complejos, clubes y organizadores de campeonatos amateur.",
-    ctaPrimary: "Crear torneo gratis",
+    ctaPrimary: "Empezar gratis",
     ctaSecondary: "Ver cómo funciona",
     bullets: ["Fixture y fechas", "Tabla automática", "Estadísticas y goleadores", "Página pública"],
     panel: {
@@ -373,7 +371,7 @@ const es: TorneosContent = {
       { label: "Tabla", caption: "Copa Primavera" },
       { label: "Goleadores", caption: "Top del torneo" },
     ],
-    note: "Las piezas disponibles pueden variar según el plan y la etapa de lanzamiento.",
+    note: "FREE incluye una opción para empezar. Premium suma más estilos y opciones visuales.",
   },
   media: {
     eyebrow: "Multimedia",
@@ -390,7 +388,7 @@ const es: TorneosContent = {
     ],
     galleryLabel: "Galería de la fecha",
     galleryCaption: "Fecha 7 · Copa Primavera",
-    note: "Estamos definiendo el alcance final de multimedia en cada plan.",
+    note: "Premium amplía la capacidad multimedia de esta edición.",
   },
   plans: {
     eyebrow: "Planes",
@@ -399,27 +397,56 @@ const es: TorneosContent = {
       highlight: "Crecé cuando lo necesites.",
     },
     description:
-      "Podés poner tu torneo en marcha sin pagar nada. Si tu organización necesita más, hay un plan pensado para eso.",
+      "Cada edición puede empezar con el núcleo de gestión completo. Premium suma capacidad y herramientas visuales con un único pago.",
     free: {
       name: "FREE",
       badge: null,
-      tagline: "Para empezar a organizar tu torneo.",
+      tagline: "Ideal para empezar.",
       description:
-        "Creá tu competencia y empezá a trabajarla: equipos, fechas, partidos y resultados en un solo lugar.",
-      features: [],
-      cta: "Crear torneo gratis",
+        "Organizá y publicá lo esencial de tu competencia sin pagar.",
+      price: "Gratis",
+      priceDetail: "por torneo/edición",
+      regularPriceLabel: null,
+      regularPrice: null,
+      features: [
+        "Equipos y planteles",
+        "Fixture, programación, partidos y resultados",
+        "Tabla, disciplina y estadísticas básicas",
+        "Identidad esencial y página pública básica",
+        "Comunicados básicos",
+        "Una opción gratuita en Social Studio",
+      ],
+      upcomingLabel: null,
+      upcoming: [],
+      cta: "Empezar gratis",
     },
-    pro: {
-      name: "PRO",
-      badge: "Para organizaciones",
-      tagline: "Para organizaciones que quieren más herramientas, historial y capacidad.",
+    premium: {
+      name: "PREMIUM",
+      badge: "Precio lanzamiento",
+      tagline: "Más capacidad para profesionalizar esta edición.",
       description:
-        "Pensado para ligas, complejos y clubes que gestionan competencias de forma sostenida a lo largo del tiempo.",
-      features: [],
-      cta: "Quiero saber más",
+        "Un solo pago y acceso permanente para este torneo.",
+      price: "$39.900",
+      priceDetail: "pago único por torneo",
+      regularPriceLabel: "Precio habitual",
+      regularPrice: "$49.900",
+      features: [
+        "Todo lo incluido en FREE",
+        "Multimedia ampliada",
+        "Más estilos y opciones en Social Studio",
+        "Mayor capacidad para colaboradores y contenido multimedia",
+        "Experiencia Premium permanente para esta edición",
+      ],
+      upcomingLabel: "Próximamente",
+      upcoming: [
+        "Estadísticas avanzadas",
+        "Personalización avanzada y sponsors",
+        "Exportaciones profesionales",
+      ],
+      cta: "Ver Premium en Torneos",
     },
     footnote:
-      "Estamos terminando de definir el detalle de cada plan. Vas a poder verlo completo antes de activar cualquier función paga.",
+      "El upgrade se hace desde Plan dentro de tu torneo. Esta landing no inicia el checkout.",
   },
   platforms: {
     eyebrow: "Web + App",
@@ -442,10 +469,9 @@ const es: TorneosContent = {
       highlight: "puede empezar acá.",
     },
     description: "Creá tu competencia, cargá los equipos y compartí el link con todo tu torneo.",
-    ctaPrimary: "Crear torneo gratis",
+    ctaPrimary: "Empezar gratis",
     ctaSecondary: "Hablar con nosotros",
-    storesTitle: "También podés administrar desde la app",
-    disclaimer: "Crear tu torneo es gratis.",
+    disclaimer: "Entrás a Arma2 Torneos en la web. Premium se activa desde el Plan de cada edición.",
   },
   faq: {
     eyebrow: "Preguntas frecuentes",
@@ -473,16 +499,17 @@ const es: TorneosContent = {
       {
         question: "¿Puedo administrar varios torneos?",
         answer:
-          "Sí. Tu organización puede tener más de una competencia. La capacidad de cada plan la estamos terminando de definir.",
+          "Sí. Tu organización puede tener más de una competencia y cada torneo o edición tiene su propio plan.",
       },
       {
         question: "¿FREE tiene costo?",
-        answer: "No. Podés crear tu torneo y empezar a organizarlo sin pagar.",
+        answer:
+          "No. Incluye equipos y planteles, fixture, programación, partidos, resultados, tabla, disciplina, identidad esencial, página pública, estadísticas y comunicados básicos, además de una opción gratuita en Social Studio.",
       },
       {
-        question: "¿Qué incluye PRO?",
+        question: "¿Cómo funciona Premium?",
         answer:
-          "PRO está pensado para organizaciones que necesitan más herramientas, historial y capacidad. Estamos terminando de definir el detalle y vas a poder verlo completo antes de activar cualquier función paga.",
+          "Premium cuesta $39.900 ARS como precio de lanzamiento —el precio habitual es $49.900— y se paga una sola vez por torneo. El acceso queda activo de forma permanente para esa edición. El upgrade se inicia desde Plan dentro del torneo, no desde esta landing.",
       },
     ],
   },
@@ -490,9 +517,9 @@ const es: TorneosContent = {
 
 const en: TorneosContent = {
   seo: {
-    title: "Arma2 Tournaments — Run your football league",
+    title: "Arma2 Tournaments — Run your whole tournament in one place",
     description:
-      "Run your amateur football tournament in one place: teams, fixtures, results, standings, stats and a public page to share your competition.",
+      "Run your amateur football tournament in one place. Start free and add Premium with one payment per edition.",
   },
   hero: {
     eyebrow: "Arma2 Tournaments",
@@ -500,9 +527,10 @@ const en: TorneosContent = {
       lineOne: "Your whole tournament.",
       highlight: "In one place.",
     },
-    description: "Fixtures, results, standings, stats, teams and a public page for your competition.",
+    description:
+      "Run the whole tournament in one place: teams, fixtures, results, standings, communications and a public page for your competition.",
     audienceNote: "For leagues, sports centres, clubs and amateur tournament organisers.",
-    ctaPrimary: "Create a tournament for free",
+    ctaPrimary: "Start for free",
     ctaSecondary: "See how it works",
     bullets: ["Fixtures and rounds", "Automatic standings", "Stats and top scorers", "Public page"],
     panel: {
@@ -686,7 +714,7 @@ const en: TorneosContent = {
       { label: "Standings", caption: "Spring Cup" },
       { label: "Top scorers", caption: "Tournament leaders" },
     ],
-    note: "Available pieces may vary by plan and rollout stage.",
+    note: "FREE includes one option to get started. Premium adds more styles and visual options.",
   },
   media: {
     eyebrow: "Media",
@@ -703,7 +731,7 @@ const en: TorneosContent = {
     ],
     galleryLabel: "Round gallery",
     galleryCaption: "Round 7 · Spring Cup",
-    note: "We're still defining the final scope of media on each plan.",
+    note: "Premium expands the media capacity for that edition.",
   },
   plans: {
     eyebrow: "Plans",
@@ -712,25 +740,54 @@ const en: TorneosContent = {
       highlight: "Grow when you need to.",
     },
     description:
-      "You can get your tournament running without paying anything. If your organisation needs more, there's a plan for that.",
+      "Every edition can start with the complete management core. Premium adds capacity and visual tools with a single payment.",
     free: {
       name: "FREE",
       badge: null,
-      tagline: "To start organising your tournament.",
-      description: "Create your competition and get to work: teams, rounds, matches and results in one place.",
-      features: [],
-      cta: "Create a tournament for free",
+      tagline: "Ideal for getting started.",
+      description: "Organise and publish the essentials of your competition at no cost.",
+      price: "Free",
+      priceDetail: "per tournament edition",
+      regularPriceLabel: null,
+      regularPrice: null,
+      features: [
+        "Teams and squads",
+        "Fixtures, scheduling, matches and results",
+        "Standings, discipline and basic statistics",
+        "Essential identity and a basic public page",
+        "Basic announcements",
+        "One free Social Studio option",
+      ],
+      upcomingLabel: null,
+      upcoming: [],
+      cta: "Start for free",
     },
-    pro: {
-      name: "PRO",
-      badge: "For organisations",
-      tagline: "For organisations that want more tools, more history and more capacity.",
-      description: "Built for leagues, sports centres and clubs running competitions season after season.",
-      features: [],
-      cta: "Tell me more",
+    premium: {
+      name: "PREMIUM",
+      badge: "Launch price",
+      tagline: "More capacity to take this edition further.",
+      description: "One payment and permanent access for this tournament.",
+      price: "$39,900",
+      priceDetail: "one-time payment per tournament",
+      regularPriceLabel: "Regular price",
+      regularPrice: "$49,900",
+      features: [
+        "Everything in FREE",
+        "Expanded media",
+        "More Social Studio styles and options",
+        "More capacity for collaborators and media content",
+        "Permanent Premium experience for this edition",
+      ],
+      upcomingLabel: "Coming soon",
+      upcoming: [
+        "Advanced statistics",
+        "Advanced customisation and sponsors",
+        "Professional exports",
+      ],
+      cta: "View Premium in Tournaments",
     },
     footnote:
-      "We're finalising what each plan includes. You'll see the full detail before activating anything paid.",
+      "Upgrade from the Plan page inside your tournament. This landing does not start checkout.",
   },
   platforms: {
     eyebrow: "Web + app",
@@ -753,10 +810,9 @@ const en: TorneosContent = {
       highlight: "can start here.",
     },
     description: "Create your competition, add the teams and share the link with everyone in it.",
-    ctaPrimary: "Create a tournament for free",
+    ctaPrimary: "Start for free",
     ctaSecondary: "Talk to us",
-    storesTitle: "You can also manage from the app",
-    disclaimer: "Creating your tournament is free.",
+    disclaimer: "Open Arma2 Tournaments on the web. Premium is activated from each edition's Plan page.",
   },
   faq: {
     eyebrow: "FAQ",
@@ -784,16 +840,17 @@ const en: TorneosContent = {
       {
         question: "Can I manage several tournaments?",
         answer:
-          "Yes. Your organisation can run more than one competition. We're still defining the capacity of each plan.",
+          "Yes. Your organisation can run more than one competition, and each tournament edition has its own plan.",
       },
       {
         question: "Is FREE really free?",
-        answer: "Yes. You can create your tournament and start organising it without paying.",
+        answer:
+          "Yes. It includes teams and squads, fixtures, scheduling, matches, results, standings, discipline, essential identity, a public page, basic statistics and announcements, plus one free Social Studio option.",
       },
       {
-        question: "What does PRO include?",
+        question: "How does Premium work?",
         answer:
-          "PRO is built for organisations that need more tools, more history and more capacity. We're finalising the detail, and you'll see it in full before activating anything paid.",
+          "Premium has a launch price of $39,900 ARS —normally $49,900— and is a one-time payment per tournament. Access stays active permanently for that edition. Upgrade from the Plan page inside the tournament, not from this landing.",
       },
     ],
   },

@@ -5,17 +5,11 @@ import { motion } from "framer-motion";
 import { Section } from "@/components/Section";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { CreateTournamentCta, TorneosLinkButton } from "@/components/torneos/TorneosCta";
-import { TorneosStoreButtons } from "@/components/torneos/TorneosStoreButtons";
-import { TORNEOS_CONTACT_HREF, isCreateTournamentPending } from "@/lib/torneos-links";
+import { TORNEOS_CONTACT_HREF } from "@/lib/torneos-links";
 
-/**
- * Closing CTA. Also the fallback landing spot for the primary CTA while
- * NEXT_PUBLIC_TORNEOS_APP_URL is unset — which is why the store buttons live
- * here: they are the only real, verifiable way to start today.
- */
+/** Closing CTA. Tournament creation continues in the authenticated web product. */
 export function TorneosFinalCta() {
   const { finalCta } = useTorneosContent();
-  const showStores = isCreateTournamentPending();
 
   return (
     <Section
@@ -59,21 +53,6 @@ export function TorneosFinalCta() {
               {finalCta.ctaSecondary}
             </TorneosLinkButton>
           </motion.div>
-
-          {showStores && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.26 }}
-              className="mt-10 border-t border-white/8 pt-8"
-            >
-              <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-white/40">
-                {finalCta.storesTitle}
-              </p>
-              <TorneosStoreButtons className="justify-center" />
-            </motion.div>
-          )}
 
           <p className="mt-7 text-sm text-white/35 md:mt-8">{finalCta.disclaimer}</p>
         </div>
