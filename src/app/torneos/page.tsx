@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
 
 import { torneosContent } from "@/lib/torneos-content";
-import { TorneosHero } from "@/components/torneos/TorneosHero";
-import { TorneosProblem } from "@/components/torneos/TorneosProblem";
-import { TorneosManagement } from "@/components/torneos/TorneosManagement";
-import { TorneosPublicPage } from "@/components/torneos/TorneosPublicPage";
-import { TorneosPlayers } from "@/components/torneos/TorneosPlayers";
-import { TorneosSocialStudio } from "@/components/torneos/TorneosSocialStudio";
-import { TorneosMedia } from "@/components/torneos/TorneosMedia";
-import { TorneosPlans } from "@/components/torneos/TorneosPlans";
-import { TorneosPlatforms } from "@/components/torneos/TorneosPlatforms";
-import { TorneosFinalCta } from "@/components/torneos/TorneosFinalCta";
-import { TorneosFaq } from "@/components/torneos/TorneosFaq";
+import { TorneosEditorial } from "@/components/torneos/TorneosEditorial";
 
 /**
- * Server component so the page ships real metadata; the sections below are
- * client components because they use the shared LanguageProvider and framer-motion.
+ * Server component so the page ships real metadata. The editorial experience
+ * below is client-rendered because it follows the site-wide ES/EN switch.
  * Metadata is emitted in the default locale (es), matching the rest of the site.
  */
 const seo = torneosContent.es.seo;
@@ -72,24 +62,14 @@ const faqJsonLd = {
 
 export default function TorneosPage() {
   return (
-    <main className="premium-page-bg relative min-h-screen overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden">
       <script
         type="application/ld+json"
         // Static, locally-built object — no user or remote input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <TorneosHero />
-      <TorneosProblem />
-      <TorneosManagement />
-      <TorneosPublicPage />
-      <TorneosPlayers />
-      <TorneosSocialStudio />
-      <TorneosMedia />
-      <TorneosPlans />
-      <TorneosPlatforms />
-      <TorneosFinalCta />
-      <TorneosFaq />
+      <TorneosEditorial />
     </main>
   );
 }

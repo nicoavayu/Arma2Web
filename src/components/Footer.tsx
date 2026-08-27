@@ -22,6 +22,7 @@ export function Footer() {
                                     src="/logo_navbar.png"
                                     alt="Arma2 Logo"
                                     fill
+                                    sizes="32px"
                                     className="object-contain brightness-0 invert"
                                 />
                             </div>

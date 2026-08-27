@@ -68,6 +68,7 @@ export function Navbar() {
                                 src="/logo_navbar.png"
                                 alt="Arma2 Logo"
                                 fill
+                                sizes="40px"
                                 className="object-contain brightness-0 invert"
                             />
                         </div>
