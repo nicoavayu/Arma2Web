@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowUpRight, Check, Circle, Monitor, Smartphone } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, Circle, Monitor, Smartphone } from "lucide-react";
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
@@ -10,39 +10,53 @@ import styles from "./TorneosEditorial.module.css";
 
 const editorialCopy = {
   es: {
-    heroKicker: "La cancha cambia. El torneo también.",
+    heroKicker: "Cargalo una vez. Usalo en todo el torneo.",
     heroTitle: ["Todo tu", "torneo.", "Un solo lugar."],
     heroBody:
-      "Fixture, resultados, tabla, comunicación y una página pública que todos pueden seguir. Vos organizás. Arma2 ordena el resto.",
+      "Equipos, fixture, resultados, tabla, comunicación y contenido, trabajando sobre la misma información. Menos tareas repetidas. Más torneo.",
     start: "Empezar gratis",
     explore: "Ver cómo funciona",
     freeNote: "Gratis por torneo · Sin tarjeta",
     live: "EN JUEGO",
     round: "FECHA 07 / 12",
     next: "PRÓXIMO PARTIDO",
-    flowKicker: "Una carga. Todo conectado.",
-    flowTitle: "Dejá de correr atrás del torneo.",
+    stageFlow: ["RESULTADO", "TABLA", "PÁGINA PÚBLICA", "SOCIAL"],
+    flowKicker: "Gestión conectada",
+    flowTitle: "Hacé una vez el trabajo que hoy hacés cinco.",
     flowBody:
-      "Cargás un resultado una vez. La tabla se acomoda, las estadísticas avanzan y el torneo queda listo para compartir.",
+      "Cargás un resultado. La competencia se actualiza, los jugadores lo ven y el mismo dato queda listo para comunicar. Todo vive en una misma edición.",
     flowSteps: ["Armá", "Jugá", "Publicá"],
     flowDescriptions: [
       "Equipos, planteles, fixture y programación.",
       "Partidos, resultados, tabla, disciplina y estadísticas.",
-      "Página pública, comunicados y seguimiento desde web o app.",
+      "Página pública, comunicados y piezas para redes.",
     ],
+    connectedKicker: "El mismo dato sigue su camino",
+    connectedTitle: "Todo sale de la misma edición.",
+    connectedBody: "No son herramientas separadas. Cada paso alimenta al siguiente.",
+    connectedSteps: ["Cargás el resultado", "Se actualiza la tabla", "El torneo queda público", "Generás la placa", "La fecha guarda sus fotos"],
     publicLabel: "arma2.com.ar/torneos/copa-primavera",
-    publicTitle: "El torneo se explica solo.",
+    publicTitle: "Compartí un link. El torneo se consulta solo.",
     publicBody:
       "Compartí un link y listo. Jugadores, equipos y familias ven fixture, resultados, tabla, goleadores y disciplina sin pedirte nada por WhatsApp.",
     noAccount: "Sin cuenta. Sin instalar nada. Sin perseguir al organizador.",
-    socialKicker: "Social Studio + Multimedia",
-    socialTitle: "Que tu torneo también se vea grande.",
+    socialKicker: "Social Studio",
+    socialTitle: "Del resultado a la placa, sin volver a escribirlo.",
     socialBody:
-      "Los datos que ya cargaste se convierten en piezas listas para contar la fecha. Y las fotos quedan con el torneo, no perdidas entre chats y carpetas.",
+      "Usá los datos que ya cargaste para crear piezas listas para publicar. Sin abrir otra herramienta y volver a copiar equipos, resultados o posiciones.",
     studioNote: "FREE incluye una opción. Premium suma más estilos y capacidad multimedia.",
+    studioInput: "DATA DEL TORNEO",
+    studioOutput: "LISTO PARA PUBLICAR",
     scorePoster: "RESULTADOS",
     tablePoster: "LA TABLA",
     photoPoster: "LA FECHA",
+    mediaKicker: "Multimedia",
+    mediaTitle: "Las fotos de cada fecha quedan con el torneo.",
+    mediaBody: "Dejá de buscar el material entre WhatsApp, Drive, celulares y carpetas. Organizalo por edición y fecha, junto a la competencia a la que pertenece.",
+    mediaNote: "Premium amplía la capacidad multimedia de esa edición.",
+    mediaRound: "FECHA 07",
+    mediaMatch: "Los Galácticos 3—1 Tiki-Taka",
+    mediaCount: "CONTENIDO ASOCIADO",
     plansKicker: "Elegí por edición, no por suscripción.",
     plansTitle: "Empezá gratis. Hacé Premium el torneo que lo pida.",
     freeLead: "Todo lo necesario para poner la competencia en marcha.",
@@ -55,46 +69,60 @@ const editorialCopy = {
     upgrade: "El upgrade se hace desde Plan, dentro del torneo.",
     upcoming: "PRÓXIMAMENTE",
     viewPremium: "Ver Premium en Torneos",
-    platforms: "Gestioná en web. Resolvé en iPhone o Android. Todo con la misma cuenta.",
+    platforms: "Gestioná en web o app. Los jugadores consultan sin depender de vos.",
     faqKicker: "Antes de arrancar",
     finalTitle: "La próxima fecha puede estar ordenada.",
     finalBody: "Creá el torneo, cargá los equipos y compartí el link. El primer paso es gratis.",
     contact: "Hablar con nosotros",
   },
   en: {
-    heroKicker: "The pitch changed. Tournaments should too.",
+    heroKicker: "Enter it once. Use it across the tournament.",
     heroTitle: ["Your whole", "tournament.", "One place."],
     heroBody:
-      "Fixtures, results, standings, communications and a public page everyone can follow. You run it. Arma2 keeps it together.",
+      "Teams, fixtures, results, standings, communications and content, all working from the same information. Less repeated work. More tournament.",
     start: "Start for free",
     explore: "See how it works",
     freeNote: "Free per tournament · No card required",
     live: "LIVE",
     round: "ROUND 07 / 12",
     next: "NEXT MATCH",
-    flowKicker: "One entry. Everything connected.",
-    flowTitle: "Stop chasing your own tournament.",
+    stageFlow: ["RESULT", "STANDINGS", "PUBLIC PAGE", "SOCIAL"],
+    flowKicker: "Connected management",
+    flowTitle: "Do once what currently takes five separate jobs.",
     flowBody:
-      "Enter a result once. The standings update, the stats move and the tournament is ready to share.",
+      "Enter a result. The competition updates, players can see it and the same data is ready to communicate. It all lives in one edition.",
     flowSteps: ["Build", "Play", "Publish"],
     flowDescriptions: [
       "Teams, squads, fixtures and scheduling.",
       "Matches, results, standings, discipline and statistics.",
-      "Public page, announcements and following from web or app.",
+      "Public page, announcements and social content.",
     ],
+    connectedKicker: "The same data keeps moving",
+    connectedTitle: "Everything starts from the same edition.",
+    connectedBody: "These are not separate tools. Each step feeds the next.",
+    connectedSteps: ["Enter the result", "Standings update", "The tournament goes public", "Create the post", "Photos stay with the round"],
     publicLabel: "arma2.com.ar/tournaments/spring-cup",
-    publicTitle: "The tournament explains itself.",
+    publicTitle: "Share one link. Let the tournament answer for itself.",
     publicBody:
       "Share one link and you’re done. Players, teams and families see fixtures, results, standings, scorers and discipline without chasing you on WhatsApp.",
     noAccount: "No account. No install. No chasing the organiser.",
-    socialKicker: "Social Studio + Media",
-    socialTitle: "Make the tournament look as big as it feels.",
+    socialKicker: "Social Studio",
+    socialTitle: "From result to post, without typing it twice.",
     socialBody:
-      "The data you already entered becomes content for the next round. And the photos stay with the tournament, not lost across chats and folders.",
+      "Turn the data you already entered into content that is ready to publish. No second tool and no retyping teams, results or standings.",
     studioNote: "FREE includes one option. Premium adds more styles and media capacity.",
+    studioInput: "TOURNAMENT DATA",
+    studioOutput: "READY TO PUBLISH",
     scorePoster: "RESULTS",
     tablePoster: "STANDINGS",
     photoPoster: "MATCHDAY",
+    mediaKicker: "Media",
+    mediaTitle: "Every round's photos stay with the tournament.",
+    mediaBody: "Stop hunting through WhatsApp, Drive, phones and folders. Organise the material by edition and round, next to the competition it belongs to.",
+    mediaNote: "Premium expands media capacity for that edition.",
+    mediaRound: "ROUND 07",
+    mediaMatch: "Los Galácticos 3—1 Tiki-Taka",
+    mediaCount: "ATTACHED CONTENT",
     plansKicker: "Choose per edition, not by subscription.",
     plansTitle: "Start free. Make Premium the tournament that needs it.",
     freeLead: "Everything you need to get the competition moving.",
@@ -107,7 +135,7 @@ const editorialCopy = {
     upgrade: "Upgrade from Plan inside your tournament.",
     upcoming: "COMING SOON",
     viewPremium: "View Premium in Tournaments",
-    platforms: "Manage on web. Handle the moment on iPhone or Android. One account throughout.",
+    platforms: "Manage on web or app. Players can follow without relying on you.",
     faqKicker: "Before you start",
     finalTitle: "Your next round can already be organised.",
     finalBody: "Create the tournament, add the teams and share the link. The first step is free.",
@@ -158,6 +186,11 @@ function ProductStage() {
           <strong>{board.matches[2]?.away}</strong>
           <small>{board.matches[2]?.time}</small>
         </div>
+      </div>
+      <div className={styles.stageFlow} aria-hidden="true">
+        {copy.stageFlow.map((step, index) => (
+          <span key={step}>{step}{index < copy.stageFlow.length - 1 ? <ArrowRight /> : null}</span>
+        ))}
       </div>
       <div className={styles.stageStamp}>ARMA2 / TORNEOS</div>
     </div>
@@ -222,25 +255,63 @@ function StudioPosters() {
   const copy = editorialCopy[locale];
 
   return (
-    <div className={styles.posterStage} aria-label={content.socialStudio.description} role="img">
-      <div className={`${styles.poster} ${styles.posterScore}`}>
-        <span>{copy.scorePoster}</span>
-        <b>03—01</b>
-        <small>FECHA 07</small>
+    <div className={styles.studioVisual} aria-label={content.socialStudio.description} role="img">
+      <div className={styles.studioSource}>
+        <span>{copy.studioInput}</span>
+        <strong>Los Galácticos</strong>
+        <div><b>03</b><i>—</i><b>01</b></div>
+        <strong>Tiki-Taka</strong>
+        <small>{copy.round}</small>
       </div>
-      <div className={`${styles.poster} ${styles.posterTable}`}>
-        <span>{copy.tablePoster}</span>
-        <ol>
-          <li><b>01</b> Los Galácticos <em>17</em></li>
-          <li><b>02</b> Dep. Tapita <em>15</em></li>
-          <li><b>03</b> El Tanque <em>12</em></li>
-        </ol>
+      <div className={styles.studioBridge} aria-hidden="true">
+        <span>{copy.studioOutput}</span>
+        <ArrowRight />
       </div>
-      <div className={`${styles.poster} ${styles.posterPhoto}`}>
-        <span>{copy.photoPoster}</span>
-        <div className={styles.posterBall} />
-        <b>COPA<br />PRIMAVERA</b>
-        <small>07 / 12</small>
+      <div className={styles.posterStage}>
+        <div className={`${styles.poster} ${styles.posterScore}`}>
+          <span>{copy.scorePoster}</span>
+          <b>03—01</b>
+          <small>{copy.round}</small>
+        </div>
+        <div className={`${styles.poster} ${styles.posterTable}`}>
+          <span>{copy.tablePoster}</span>
+          <ol>
+            <li><b>01</b> Los Galácticos <em>17</em></li>
+            <li><b>02</b> Dep. Tapita <em>15</em></li>
+            <li><b>03</b> El Tanque <em>12</em></li>
+          </ol>
+        </div>
+        <div className={`${styles.poster} ${styles.posterPhoto}`}>
+          <span>{copy.photoPoster}</span>
+          <div className={styles.posterBall} />
+          <b>COPA<br />PRIMAVERA</b>
+          <small>07 / 12</small>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MediaGallery() {
+  const content = useTorneosContent();
+  const { locale } = useLanguage();
+  const copy = editorialCopy[locale];
+
+  return (
+    <div className={styles.gallery} role="img" aria-label={content.media.description}>
+      <div className={styles.galleryHeader}>
+        <div><span>{copy.mediaRound}</span><strong>{content.media.galleryLabel}</strong></div>
+        <small>{copy.mediaCount}</small>
+      </div>
+      <div className={styles.galleryGrid}>
+        <div className={`${styles.galleryPhoto} ${styles.galleryPhotoMain}`}><span>01</span></div>
+        <div className={`${styles.galleryPhoto} ${styles.galleryPhotoTeam}`}><span>02</span></div>
+        <div className={`${styles.galleryPhoto} ${styles.galleryPhotoDetail}`}><span>03</span></div>
+        <div className={`${styles.galleryPhoto} ${styles.galleryPhotoCrowd}`}><span>04</span></div>
+      </div>
+      <div className={styles.galleryFooter}>
+        <span>{content.media.galleryCaption}</span>
+        <strong>{copy.mediaMatch}</strong>
       </div>
     </div>
   );
@@ -297,6 +368,23 @@ export function TorneosEditorial() {
           ))}
         </div>
 
+        <div className={styles.connectedMoment}>
+          <div className={styles.connectedIntro}>
+            <p className={styles.kicker}>{copy.connectedKicker}</p>
+            <h2>{copy.connectedTitle}</h2>
+            <p>{copy.connectedBody}</p>
+          </div>
+          <ol className={styles.connectedRail}>
+            {copy.connectedSteps.map((step, index) => (
+              <li key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{step}</strong>
+                {index < copy.connectedSteps.length - 1 ? <ArrowRight aria-hidden="true" /> : null}
+              </li>
+            ))}
+          </ol>
+        </div>
+
         <div className={styles.publicMoment}>
           <div className={styles.publicCopy}>
             <span className={styles.marginNumber}>02</span>
@@ -322,6 +410,16 @@ export function TorneosEditorial() {
         <StudioPosters />
         <div className={styles.studioMarquee} aria-hidden="true">
           {content.socialStudio.pieces.map((piece) => <span key={piece}>{piece}</span>)}
+        </div>
+
+        <div className={styles.mediaMoment} id="torneos-multimedia">
+          <div className={styles.mediaCopy}>
+            <p className={styles.kicker}>{copy.mediaKicker}</p>
+            <h2>{copy.mediaTitle}</h2>
+            <p>{copy.mediaBody}</p>
+            <small>{copy.mediaNote}</small>
+          </div>
+          <MediaGallery />
         </div>
       </section>
 
