@@ -3,11 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
     const { t } = useLanguage();
+    const pathname = usePathname();
+
+    if (pathname === "/torneos" || pathname.startsWith("/torneos/")) {
+        return null;
+    }
 
     return (
         <footer className="relative overflow-hidden border-t border-white/10 bg-[#070711]/95 pt-12 pb-8 backdrop-blur-sm md:pt-16">
@@ -22,6 +28,7 @@ export function Footer() {
                                     src="/logo_navbar.png"
                                     alt="Arma2 Logo"
                                     fill
+                                    sizes="32px"
                                     className="object-contain brightness-0 invert"
                                 />
                             </div>
@@ -37,6 +44,11 @@ export function Footer() {
                             <li>
                                 <Link href="/#how-it-works" className="text-text-secondary hover:text-white text-sm transition-colors">
                                     {t.footer.links.howItWorks}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/torneos" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                    {t.footer.links.tournaments}
                                 </Link>
                             </li>
                             <li>

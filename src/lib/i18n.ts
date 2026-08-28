@@ -14,6 +14,7 @@ export const translations = {
       links: [
         { label: "Cómo funciona", href: "/#how-it-works" },
         { label: "Arqueros", href: "/#mercado-arqueros" },
+        { label: "Torneos", href: "/torneos" },
         { label: "Funciones", href: "/#features" },
         { label: "FAQ", href: "/#faq" },
       ],
@@ -417,6 +418,7 @@ export const translations = {
       legalTitle: "Legal",
       links: {
         howItWorks: "Cómo funciona",
+        tournaments: "Torneos",
         features: "Funciones",
         faq: "FAQ",
         privacy: "Privacidad",
@@ -437,6 +439,7 @@ export const translations = {
       links: [
         { label: "How it works", href: "/#how-it-works" },
         { label: "Goalkeepers", href: "/#mercado-arqueros" },
+        { label: "Tournaments", href: "/torneos" },
         { label: "Features", href: "/#features" },
         { label: "FAQ", href: "/#faq" },
       ],
@@ -840,6 +843,7 @@ export const translations = {
       legalTitle: "Legal",
       links: {
         howItWorks: "How it works",
+        tournaments: "Tournaments",
         features: "Features",
         faq: "FAQ",
         privacy: "Privacy",
