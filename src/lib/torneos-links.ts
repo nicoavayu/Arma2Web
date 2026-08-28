@@ -42,3 +42,10 @@ export interface CtaTarget {
 export function getCreateTournamentTarget(): CtaTarget {
   return { href: TORNEOS_APP_URL, isExternal: true };
 }
+
+/** Premium CTA keeps the commercial intent explicit until the product Plan page. */
+export function getPremiumTournamentTarget(): CtaTarget {
+  const url = new URL(TORNEOS_APP_URL);
+  url.searchParams.set("intent", "premium");
+  return { href: url.toString(), isExternal: true };
+}

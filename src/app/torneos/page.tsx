@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: "https://www.arma2.com.ar/og-image.jpg?v=20260224",
         width: 1200,
         height: 630,
-        alt: "Arma2 Torneos — todo tu torneo en un solo lugar",
+        alt: "Arma2 Torneos — todo el torneo, sin hacer el mismo trabajo dos veces",
       },
     ],
   },

@@ -32,6 +32,10 @@ export function Navbar() {
 
     const navLinks = t.nav.links;
 
+    if (pathname === "/torneos" || pathname.startsWith("/torneos/")) {
+        return null;
+    }
+
     const handleHomeClick = () => {
         setMobileMenuOpen(false);
 

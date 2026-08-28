@@ -7,7 +7,7 @@ import { Section } from "@/components/Section";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { CreateTournamentCta } from "@/components/torneos/TorneosCta";
 
-/** FREE / Premium comparison using the signed-off per-edition commercial model. */
+/** FREE / Premium comparison using the signed-off per-season commercial model. */
 function PlanCard({
   plan,
   highlighted,
@@ -161,7 +161,7 @@ export function TorneosPlans() {
           </PlanCard>
 
           <PlanCard plan={plans.premium} highlighted>
-            {/* Premium is purchased from Plan inside an authenticated tournament. */}
+            {/* Premium is purchased from Plan inside an authenticated season. */}
             <CreateTournamentCta label={plans.premium.cta} variant="secondary" className="w-full" />
           </PlanCard>
         </div>
