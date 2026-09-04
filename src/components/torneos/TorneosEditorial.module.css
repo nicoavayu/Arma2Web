@@ -51,8 +51,8 @@
 .languageSwitch button[aria-pressed="true"] { background: linear-gradient(110deg, var(--brand-deep), var(--brand-hot)); color: #fff; }
 .mobileMenuButton { display: none; width: 2.8rem; height: 2.8rem; border: 1px solid rgba(255,255,255,.14); border-radius: .75rem; background: rgba(10,12,28,.72); color: #fff; place-items: center; }
 .mobileMenuButton svg { width: 1.25rem; }
-.mobileMenu { position: absolute; inset: 100% 0 auto; z-index: 1; width: 100%; height: calc(100dvh - 5.5rem); padding: 1rem 1.4rem 1.4rem; background: #050711; }
-.mobileMenu nav { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.mobileMenu { position: absolute; inset: 100% 0 auto; z-index: 1; width: 100%; height: calc(100dvh - 5.5rem); padding: 1rem 1.4rem 1.4rem; background: #050711; overflow-y: auto; }
+.mobileMenu nav { min-height: 100%; display: flex; flex-direction: column; justify-content: safe center; }
 .mobileMenu a { min-height: 4.5rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,.11); color: #fff; font-size: clamp(1.4rem, 8vw, 2.2rem); font-weight: 800; letter-spacing: -.03em; }
 .mobileMenu a span { color: var(--brand); font-size: .62rem; letter-spacing: .12em; }
 .mobileMenu a:last-child { margin-top: auto; min-height: 3.5rem; justify-content: space-between; color: #78a7ff; font-size: .9rem; font-weight: 700; }
@@ -1047,4 +1047,100 @@
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* --- "Entrar / gestionar" access, distinct from "Empezar gratis" --- */
+.navEnter {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2.5rem;
+  padding: 0 1.05rem;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: .7rem;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.navEnter svg { width: .9rem; color: var(--brand); }
+.navEnter:hover { transform: translateY(-1px); border-color: rgba(39,184,255,.5); background: rgba(39,184,255,.12); }
+
+.mobileMenu a.mobileEnter {
+  min-height: 3.7rem;
+  margin-top: 1.1rem;
+  justify-content: center;
+  gap: .55rem;
+  border: 1px solid var(--brand);
+  border-bottom: 1px solid var(--brand);
+  border-radius: .85rem;
+  background: linear-gradient(120deg, var(--brand-deep), var(--brand) 58%, var(--brand-hot));
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.mobileMenu a.mobileEnter svg { width: 1.1rem; }
+
+/* --- Social Studio style range (final Social Studio, no fabricated mocks) --- */
+.studioStyles {
+  position: relative;
+  z-index: 1;
+  width: min(88rem, 100%);
+  margin: clamp(2rem, 3.2vw, 3rem) auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem clamp(.7rem, 1.4vw, 1.1rem);
+}
+.studioStylesLabel {
+  color: rgba(241,240,232,.5);
+  font-size: .6rem;
+  font-weight: 850;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.studioStyleChips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.studioStyleChip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .85rem;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.studioStyleChip small {
+  color: rgba(241,240,232,.5);
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.studioStyleChip[data-tier="free"] { border-color: rgba(39,184,255,.5); background: rgba(39,184,255,.1); }
+.studioStyleChip[data-tier="free"] small { color: var(--brand); }
+.studioStyleChip[data-tier="premium"] { border-color: rgba(152,125,255,.42); }
+.studioStyleChip[data-tier="premium"] small { color: #c9b6ff; }
+.studioStylesNote {
+  flex-basis: 100%;
+  margin-top: .3rem;
+  color: rgba(241,240,232,.5);
+  font-size: .74rem;
+  letter-spacing: .04em;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .navEnter { min-height: 2.35rem; padding: 0 .8rem; font-size: .72rem; }
+}
+
+@media (max-width: 360px) {
+  .navEnter { display: none; }
 }

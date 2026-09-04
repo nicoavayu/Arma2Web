@@ -35,6 +35,8 @@ const editorialCopy = {
       plans: "Planes",
       faq: "FAQ",
       back: "Volver a Arma2",
+      enter: "Entrar",
+      enterAria: "Entrar a gestionar mi torneo",
       open: "Abrir menú de Torneos",
       close: "Cerrar menú de Torneos",
       language: "Idioma",
@@ -79,7 +81,12 @@ const editorialCopy = {
     socialKicker: "Estudio Social · Placas para redes",
     socialTitle: "Convertí cada fecha en contenido listo para publicar.",
     socialBody:
-      "Usá los resultados, la tabla y los datos del torneo para generar placas sin volver a cargar la información.",
+      "Cargás los datos del torneo una vez y generás las piezas listas para redes, sin rearmar cada imagen a mano.",
+    studioStylesLabel: "Estilos de placa",
+    studioStyles: ["Base", "Heritage", "Street", "Scoreboard", "Editorial"],
+    studioFreeTag: "En FREE",
+    studioPremiumTag: "Premium",
+    studioStylesNote: "11 tipos de placa · formatos 4:5 y 9:16 · exportación white-label en Premium.",
     studioInput: "DATA DEL TORNEO",
     studioOutput: "LISTO PARA PUBLICAR",
     scorePoster: "RESULTADOS",
@@ -122,6 +129,8 @@ const editorialCopy = {
       plans: "Plans",
       faq: "FAQ",
       back: "Back to Arma2",
+      enter: "Log in",
+      enterAria: "Log in to manage my tournament",
       open: "Open Tournaments menu",
       close: "Close Tournaments menu",
       language: "Language",
@@ -166,7 +175,12 @@ const editorialCopy = {
     socialKicker: "Social Studio · Social media graphics",
     socialTitle: "Turn every round into content ready to publish.",
     socialBody:
-      "Use results, standings and tournament data to generate posts without entering the information again.",
+      "Enter your tournament data once and turn it into posts ready to share, without rebuilding every image by hand.",
+    studioStylesLabel: "Post styles",
+    studioStyles: ["Base", "Heritage", "Street", "Scoreboard", "Editorial"],
+    studioFreeTag: "In FREE",
+    studioPremiumTag: "Premium",
+    studioStylesNote: "11 post types · 4:5 and 9:16 formats · white-label export on Premium.",
     studioInput: "TOURNAMENT DATA",
     studioOutput: "READY TO PUBLISH",
     scorePoster: "RESULTS",
@@ -221,6 +235,7 @@ function TorneosNav() {
   const { locale, setLocale } = useLanguage();
   const copy = editorialCopy[locale];
   const [open, setOpen] = useState(false);
+  const enterTarget = getCreateTournamentTarget();
   const links = [
     { label: copy.nav.how, href: "#torneos-como-funciona" },
     { label: copy.nav.management, href: "#torneos-gestion" },
@@ -254,6 +269,15 @@ function TorneosNav() {
           ))}
         </div>
         <Link className={styles.backLink} href="/">{copy.nav.back}<ArrowRight aria-hidden="true" /></Link>
+        <a
+          className={styles.navEnter}
+          href={enterTarget.href}
+          target={enterTarget.isExternal ? "_blank" : undefined}
+          rel={enterTarget.isExternal ? "noopener noreferrer" : undefined}
+          aria-label={copy.nav.enterAria}
+        >
+          {copy.nav.enter}<ArrowUpRight aria-hidden="true" />
+        </a>
         <button
           type="button"
           className={styles.mobileMenuButton}
@@ -273,6 +297,16 @@ function TorneosNav() {
                 <span>{String(index + 1).padStart(2, "0")}</span>{link.label}
               </a>
             ))}
+            <a
+              className={styles.mobileEnter}
+              href={enterTarget.href}
+              target={enterTarget.isExternal ? "_blank" : undefined}
+              rel={enterTarget.isExternal ? "noopener noreferrer" : undefined}
+              onClick={() => setOpen(false)}
+              aria-label={copy.nav.enterAria}
+            >
+              {copy.nav.enter}<ArrowUpRight aria-hidden="true" />
+            </a>
             <Link href="/" onClick={() => setOpen(false)}>{copy.nav.back}<ArrowRight aria-hidden="true" /></Link>
           </nav>
         </div>
@@ -390,6 +424,26 @@ function StudioPosters() {
           </figure>
         ))}
       </div>
+    </div>
+  );
+}
+
+function StudioStyles() {
+  const { locale } = useLanguage();
+  const copy = editorialCopy[locale];
+
+  return (
+    <div className={styles.studioStyles}>
+      <span className={styles.studioStylesLabel}>{copy.studioStylesLabel}</span>
+      <div className={styles.studioStyleChips}>
+        {copy.studioStyles.map((style, index) => (
+          <span className={styles.studioStyleChip} data-tier={index === 0 ? "free" : "premium"} key={style}>
+            {style}
+            <small>{index === 0 ? copy.studioFreeTag : copy.studioPremiumTag}</small>
+          </span>
+        ))}
+      </div>
+      <p className={styles.studioStylesNote}>{copy.studioStylesNote}</p>
     </div>
   );
 }
@@ -584,6 +638,7 @@ export function TorneosEditorial() {
           <p>{copy.socialBody}</p>
         </div>
         <StudioPosters />
+        <StudioStyles />
 
         <div className={styles.mediaMoment} id="torneos-multimedia">
           <div className={styles.mediaCopy}>
