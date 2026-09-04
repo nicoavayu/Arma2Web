@@ -64,12 +64,11 @@ precio de una compra.
 - Pago único por temporada.
 - Acceso permanente para esa temporada, incluidas todas sus categorías y
   competencias.
-- Las 11 familias Base de Social Studio y Street/Editorial para Resultados.
-- Exportaciones Base con branding Arma2 opcional.
+- Las 11 familias de placas de Social Studio, en 4:5 y 9:16.
+- Estilos premium más allá de Base: Heritage, Street, Scoreboard y Editorial.
+- Exportación white-label (sin la firma de Arma2); branding en Base opcional.
 - Hasta 1.000 archivos multimedia por temporada.
 - Owner + hasta 10 colaboradores administrativos.
-- Más vistas y estilos para exportar desde Social Studio: Street y Editorial para
-  piezas de Resultados.
 
 No se incluyen en el packaging comercial actual estadísticas avanzadas,
 personalización avanzada, Sponsors, exportaciones profesionales ni estilos aún
@@ -97,7 +96,62 @@ por temporada.
   los cuatro outputs vigentes seleccionados.
 - Premium todavía no tiene una matriz completa de themes/familias/formatos:
   Street y Editorial están disponibles para Resultados; la expansión completa
-  sigue pendiente.
+  sigue pendiente. **Superado por Social Studio V2 — ver actualización 2026-09-03.**
+
+## Actualización Social Studio V2 (2026-09-03)
+
+La copy de esta landing quedó preparada para el estado final de Social Studio V2,
+que **ya está MERGED** en `nicoavayu/Armado_Equipos` (PR #154 — "Torneos:
+integrate Social Studio V2 Premium themes", merge normal, merge commit
+`032f4da8d40b61ad4379c49384c7314525ac58ae`, el `main` de Armado_Equipos en
+ese momento). Ese estado incorpora los estilos Base, Heritage, Street,
+Scoreboard y Editorial sobre las 11 familias de placas, formatos 4:5 y 9:16, y
+exportación white-label en Premium; ya no aplica el recorte "Street y Editorial
+sólo para Resultados".
+
+- Placas de la landing (`public/torneos/social-studio/base/`): siguen siendo los
+  cuatro exports **Base** vigentes (Resultados, Tabla, Goleadores, Próxima fecha).
+  No se fabricaron mocks de Heritage/Street/Scoreboard/Editorial. Los estilos
+  premium se comunican como texto (chips) hasta contar con exports reales.
+- Mejora visual opcional (no bloqueante): exports reales de Heritage, Street,
+  Scoreboard y Editorial (portrait 4:5, mismo fixture QA). Es una mejora visual
+  pendiente, no un blocker funcional de la landing.
+
+### Estado de lanzamiento
+
+El bloqueo ya no es el diseño de la landing, ni Social Studio, ni Production
+Enablement. El único blocker de lanzamiento relevante hoy es completar y
+certificar la promoción real del backend/DB de Production en
+`nicoavayu/Armado_Equipos` y, recién después, habilitar Torneos de forma
+controlada.
+
+- **Social Studio V2:** MERGED y certificado en `nicoavayu/Armado_Equipos`
+  (PR #154).
+- **Production Enablement:** MERGED y certificado mediante PR #155. Merge
+  commit / `main` posterior:
+  `f6dafb6b755f5d5337a7dc90066c849047cb6109`.
+- **Production Backend Upgrade Path:** MERGED mediante PR #156. `main` actual
+  de Armado_Equipos: `e61f089d873d00e8a2a62b9d41ecf26b6c820c53`.
+- **Rehearsal local del backend:** PASS (*production backend upgrade prep
+  pass*), ejecutado íntegramente fuera de `Arma2Web`.
+- **Production DB Promotion:** todavía **BLOCKED** en preflight. Blockers
+  vigentes: reconciliar las diferencias entre el Production real y el BEFORE
+  restaurado; acreditar backup/recovery real antes de escribir; y la ausencia
+  de una autorización explícita de promoción real.
+- **Supabase Production:** todavía sin migrations de Torneos aplicadas.
+- **Torneos Production:** todavía CLOSED.
+- **Landing PR #9 (`nicoavayu/Arma2Web` #9):** en hold. No mergear ni deployar
+  todavía.
+
+Recertificaciones previas (resumen histórico): build PASS · smoke local PASS ·
+Social Studio 382/382 · Auth/returnTo/Production flags 32/32 · route isolation
+6/6 · DB Social Studio 45/45 · season-commercial 35/35 · grants 877/877 ·
+migration guard 8/8 · lint PASS · `git diff --check` PASS · Auto-Match SHA
+intacto. Toda esa promoción ocurre fuera de `Arma2Web`.
+
+Los exports reales Premium de Heritage, Street, Scoreboard y Editorial siguen
+siendo una **mejora visual opcional** y **no** un blocker funcional de la
+landing ni del lanzamiento.
 
 Sponsors, estadísticas avanzadas, personalización avanzada y exportaciones
 profesionales no se presentan como beneficios disponibles ni como promesas en
