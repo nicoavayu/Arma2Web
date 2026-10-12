@@ -1,7 +1,19 @@
-# Arma2 Torneos — landing comercial (`/torneos`)
+# Arma2 Torneos — portal comercial (`torneos.arma2.com.ar`)
 
-Estado: **lista para revisión visual**, sin checkout ni integraciones comerciales
-dentro de `Arma2Web`.
+Estado (2026-10-12): **rediseñado y listo para revisión** dentro del rediseño de
+ambos sitios (spec `docs/superpowers/specs/2026-10-12-arma2-sitios-rediseno-design.md`).
+El PR del rediseño **reemplaza al PR #9**, que queda en hold y se cierra cuando
+se mergee este. Sin checkout ni integraciones comerciales dentro de `Arma2Web`.
+
+- Dominio propio: `torneos.arma2.com.ar`, servido por `src/proxy.ts` (ver
+  `docs/dominios-y-deploy.md`). `arma2.com.ar/torneos` redirige con 308.
+- Secciones: hero con captura real del gestor, demo "una carga, todo
+  actualizado", gestión (fixture, resultados, tabla, disciplina) con capturas
+  reales, página pública, Social Studio, multimedia, planes con comparativa,
+  preguntas y cierre. Layout, nav y footer propios.
+- Las capturas del gestor y de la página pública son pantallas reales de
+  `Armado_Equipos` (main `2c1c071`) con datos ficticios; ver
+  `public/shots/manifest.json`.
 
 ## Alcance
 
@@ -41,41 +53,30 @@ Landing → Arma2 Torneos → organización → temporada → Plan → Premium �
 La landing no crea preferencias de pago, no abre Mercado Pago y no decide el
 precio de una compra.
 
-## Modelo comercial comunicado
+## Modelo comercial comunicado (aprobado el 2026-10-12)
 
-### FREE
+Reemplaza al modelo anterior ($39.900 de lanzamiento / $49.900 habitual,
+"acceso permanente" y 1.000 archivos). **Todavía no está implementado** en
+`Armado_Equipos` (lo prepara un PR de integración aparte) y **los pagos siguen
+apagados**. Todo el copy comercial vive en `plans` y en las respuestas de plan
+de `faq` dentro de `src/lib/torneos-content.ts`.
 
-- Gratis por temporada y sin vencimiento.
-- Equipos y planteles.
-- Fixture, programación, partidos, actas y resultados.
-- Tabla, goleadores, disciplina, sanciones y estadísticas básicas.
-- Logo, portada, escudos, fotos y retratos, además de la página pública.
-- Comunicados básicos.
-- Social Studio Base: 3 familias en 4:5 y 9:16 —Resultados, Tabla y Próxima
-  fecha— con firma Arma2 Torneos obligatoria.
-- Hasta 25 archivos multimedia agregados entre todas las competencias de la
-  temporada.
-- Owner + 1 colaborador administrativo.
+| | FREE | Premium |
+| --- | --- | --- |
+| Precio | $0 | ARS 20.000 finales, pago único por temporada |
+| Duración de la temporada | hasta 6 meses | hasta 6 meses |
+| Fotos | hasta 25 por temporada | hasta 100 por temporada |
+| Fotos al terminar | se eliminan, con aviso y descarga previa | ídem |
+| Colaboradores | owner + 1 | owner + 10 |
+| Social Studio | 3 familias Base con firma Arma2 | 11 familias, 5 estilos, white-label |
 
-### Premium
+Cada temporada nueva vuelve a comenzar en FREE.
 
-- Precio lanzamiento: **$39.900 ARS**.
-- Precio habitual de referencia: **$49.900 ARS**.
-- Pago único por temporada.
-- Acceso permanente para esa temporada, incluidas todas sus categorías y
-  competencias.
-- Las 11 familias de placas de Social Studio, en 4:5 y 9:16.
-- Estilos premium más allá de Base: Heritage, Street, Scoreboard y Editorial.
-- Exportación white-label (sin la firma de Arma2); branding en Base opcional.
-- Hasta 1.000 archivos multimedia por temporada.
-- Owner + hasta 10 colaboradores administrativos.
+**Antes de publicar:** confirmar estos textos contra el PR de integración. Si
+algo difiere, gana lo implementado y se actualiza `plans`/`faq`.
 
-No se incluyen en el packaging comercial actual estadísticas avanzadas,
-personalización avanzada, Sponsors, exportaciones profesionales ni estilos aún
-no implementados.
-
-Cada temporada nueva vuelve a comenzar en FREE y elige su plan de forma
-independiente.
+> Nota: la página Plan del producto (captura del 2026-10-12) todavía muestra el
+> modelo anterior, por eso no se usa como captura en la landing.
 
 ## Auditoría focalizada del producto local (2026-08-28)
 
@@ -160,13 +161,15 @@ retratos— sí está disponible en FREE y, por herencia, Premium.
 
 ## SEO e i18n
 
-`/torneos` tiene title, description, keywords, canonical, Open Graph, Twitter
-Card, JSON-LD `FAQPage` y entrada en `sitemap.ts`. El contenido visible responde
-al toggle ES/EN compartido.
+El portal tiene metadata propia en `src/app/torneos/layout.tsx`: title,
+description, keywords, canonical `https://torneos.arma2.com.ar`, Open Graph
+(imagen generada en `opengraph-image.tsx`) y Twitter Card. Tiene además
+`sitemap.xml` y `robots.txt` propios en su host, y JSON-LD `FAQPage` +
+`SoftwareApplication` con las ofertas FREE y Premium. El contenido visible
+responde al toggle ES/EN, y `LocalizedMeta` actualiza el título por idioma.
 
-Como en las demás rutas institucionales sin prefijo de idioma, el metadata del
-servidor se publica en español. Una metadata inglesa indexable requeriría routing
-localizado (`/en/torneos`), fuera del alcance de esta landing.
+El metadata del servidor se publica en español. Una metadata inglesa indexable
+requeriría routing localizado, fuera de alcance.
 
 ## Fuera de alcance
 
