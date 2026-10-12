@@ -32,6 +32,16 @@ export function BalanceDemo() {
   const [result, setResult] = React.useState<BalanceResult | null>(null);
   const [seed, setSeed] = React.useState<number | undefined>(undefined);
   const [fixKeepers, setFixKeepers] = React.useState(false);
+  // The clicked button unmounts (build ⇄ again/reset); keep keyboard focus on its replacement.
+  const buildRef = React.useRef<HTMLButtonElement>(null);
+  const againRef = React.useRef<HTMLButtonElement>(null);
+  const moveFocus = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!moveFocus.current) return;
+    moveFocus.current = false;
+    (result ? againRef : buildRef).current?.focus();
+  }, [result]);
 
   const format = React.useMemo(() => {
     const formatter = new Intl.NumberFormat(locale === "es" ? "es-AR" : "en-GB", {
@@ -64,7 +74,7 @@ export function BalanceDemo() {
           onClick={toggleKeepers}
           aria-pressed={fixKeepers}
           className={cn(
-            "inline-flex min-h-10 items-center gap-2 rounded-lg border px-3 text-sm font-medium transition-colors",
+            "inline-flex min-h-11 items-center gap-2 rounded-lg border px-3 text-sm font-medium transition-colors",
             fixKeepers ? "border-[#f59e0b]/70 bg-[#f59e0b]/10 text-[#f59e0b]" : "border-white/15 text-white/70 hover:text-white",
           )}
         >
@@ -127,6 +137,7 @@ export function BalanceDemo() {
           <>
             <button
               type="button"
+              ref={againRef}
               onClick={() => build((seed ?? 0) + 1, fixKeepers)}
               className="inline-flex min-h-11 items-center rounded-lg bg-[#27b8ff] px-4 text-sm font-semibold text-[#070711] transition-colors hover:bg-[#27b8ff]/90"
             >
@@ -135,6 +146,7 @@ export function BalanceDemo() {
             <button
               type="button"
               onClick={() => {
+                moveFocus.current = true;
                 setResult(null);
                 setSeed(undefined);
               }}
@@ -146,13 +158,17 @@ export function BalanceDemo() {
         ) : (
           <button
             type="button"
-            onClick={() => build(undefined, fixKeepers)}
+            ref={buildRef}
+            onClick={() => {
+              moveFocus.current = true;
+              build(undefined, fixKeepers);
+            }}
             className="inline-flex min-h-11 items-center rounded-lg bg-[#27b8ff] px-5 text-sm font-semibold text-[#070711] transition-colors hover:bg-[#27b8ff]/90"
           >
             {copy.build}
           </button>
         )}
-        <span className="text-xs text-white/45">{t.common.demoNote}</span>
+        <span className="text-xs text-white/55">{t.common.demoNote}</span>
       </div>
     </div>
     </MotionConfig>

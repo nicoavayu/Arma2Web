@@ -21,7 +21,7 @@ export function TorneosFooter() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{copy.description}</p>
         </div>
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/45">{copy.product}</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{copy.product}</h2>
           <ul className="mt-4 space-y-3">
             {content.nav.links.map((link) => (
               <li key={link.href}>
@@ -31,12 +31,12 @@ export function TorneosFooter() {
           </ul>
         </div>
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/45">{copy.playersTitle}</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{copy.playersTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-white/60">{copy.playersBlurb}</p>
           <SiteSwitch to="jugadores" className="mt-3 text-sm font-semibold text-[#27b8ff] hover:text-white" />
         </div>
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/45">{copy.legal}</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{copy.legal}</h2>
           <ul className="mt-4 space-y-3">
             <li><a href={getSiteUrl("jugadores", "/privacy")} className={linkClass}>{copy.privacy}</a></li>
             <li><a href={getSiteUrl("jugadores", "/terms")} className={linkClass}>{copy.terms}</a></li>
@@ -44,7 +44,7 @@ export function TorneosFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1240px] border-t border-white/[0.08] px-4 py-6 text-xs text-white/45 md:px-6">
+      <div className="mx-auto max-w-[1240px] border-t border-white/[0.08] px-4 py-6 text-xs text-white/55 md:px-6">
         © {year} Arma2. {copy.rights}
       </div>
     </footer>

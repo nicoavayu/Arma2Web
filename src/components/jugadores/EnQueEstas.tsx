@@ -41,14 +41,18 @@ export function EnQueEstas() {
                 {item.title}
               </h3>
               <ul className="mt-7 space-y-4">
-                {item.points.map((point) => (
-                  <li key={point} className="grid grid-cols-[1.5rem_1fr] gap-3 leading-relaxed text-white/80">
+                {item.points.map((point, pointIndex) => (
+                  <li
+                    key={point}
+                    // Old shared links (/#mercado-arqueros) land on the goalkeeper-market point.
+                    id={item.id === "me-faltan-jugadores" && pointIndex === 2 ? "mercado-arqueros" : undefined}
+                    className="grid scroll-mt-36 grid-cols-[1.5rem_1fr] gap-3 leading-relaxed text-white/80"
+                  >
                     <Check aria-hidden="true" className="mt-1 h-4 w-4 text-[#20e39b]" />
                     <span>{point}</span>
                   </li>
                 ))}
               </ul>
-              {item.id === "me-faltan-jugadores" && <span id="mercado-arqueros" aria-hidden="true" />}
             </div>
             <div className="mx-auto grid w-full max-w-[30rem] grid-cols-2 items-start gap-4">
               {item.shots.map((shot, shotIndex) => (

@@ -9,7 +9,7 @@ import { getShot, type ShotId } from "@/lib/shots";
 /** A real desktop capture inside a minimal browser window. */
 export function BrowserFrame({
   id,
-  urlLabel = "torneos.arma2.com.ar",
+  urlLabel = "app.arma2.com.ar/torneos",
   priority = false,
   sizes = "(max-width: 1024px) 92vw, 720px",
   className,

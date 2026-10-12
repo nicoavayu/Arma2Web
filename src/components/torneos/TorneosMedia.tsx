@@ -40,7 +40,7 @@ export function TorneosMedia() {
               </div>
             ))}
           </div>
-          <figcaption className="mt-3 text-xs text-white/45">{copy.exampleNote}</figcaption>
+          <figcaption className="mt-3 text-xs text-white/55">{copy.exampleNote}</figcaption>
         </figure>
       </div>
     </section>

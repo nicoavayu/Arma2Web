@@ -1,4 +1,5 @@
 import { torneosContent } from "@/lib/torneos-content";
+import { torneosJsonLd } from "@/lib/torneos-jsonld";
 import { LocalizedMeta } from "@/components/shared/LocalizedMeta";
 import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
@@ -14,33 +15,7 @@ import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
  * The editorial experience is client-rendered because it follows the ES/EN switch.
  */
-/** FAQ structured data, generated from the same copy rendered on the page. */
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: torneosContent.es.faq.items.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
-/** Offers mirror `plans` (spec §6.1). */
-const appJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Arma2 Torneos",
-  applicationCategory: "SportsApplication",
-  operatingSystem: "Web",
-  description: torneosContent.es.seo.description,
-  offers: [
-    { "@type": "Offer", name: "FREE", price: "0", priceCurrency: "ARS" },
-    { "@type": "Offer", name: "Premium", price: "20000", priceCurrency: "ARS" },
-  ],
-};
+const { faq: faqJsonLd, app: appJsonLd } = torneosJsonLd();
 
 export default function TorneosPage() {
   return (

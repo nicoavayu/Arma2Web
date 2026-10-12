@@ -26,7 +26,7 @@ export function ChapterNav({
                 href={`#${item.id}`}
                 aria-current={current ? "true" : undefined}
                 className={cn(
-                  "inline-flex min-h-10 items-center rounded-lg px-3.5 text-sm font-semibold transition-colors",
+                  "inline-flex min-h-11 items-center rounded-lg px-3.5 text-sm font-semibold transition-colors",
                   current ? "bg-white text-[#070711]" : "text-white/65 hover:bg-white/[0.06] hover:text-white",
                 )}
               >

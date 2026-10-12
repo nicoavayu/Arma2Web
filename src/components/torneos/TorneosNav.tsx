@@ -50,7 +50,7 @@ export function TorneosNav() {
             target={enter.isExternal ? "_blank" : undefined}
             rel={enter.isExternal ? "noopener noreferrer" : undefined}
             aria-label={copy.enterAria}
-            className="inline-flex min-h-10 items-center gap-1 rounded-lg bg-[#5b4bff] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#6d5fff]"
+            className="inline-flex min-h-11 items-center gap-1 rounded-lg bg-[#5b4bff] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#6d5fff]"
           >
             {copy.enter}
             <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
@@ -61,7 +61,7 @@ export function TorneosNav() {
             aria-expanded={open}
             aria-controls="torneos-menu"
             aria-label={open ? copy.close : copy.open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-white xl:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-white xl:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

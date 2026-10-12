@@ -25,7 +25,7 @@ export function LanguageToggle({ tone = "ink" }: { tone?: "ink" | "paper" }) {
             onClick={() => setLocale(value)}
             aria-pressed={active}
             className={cn(
-              "min-h-8 min-w-[2.4rem] rounded-full px-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
+              "min-h-11 min-w-[2.4rem] rounded-full px-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
               active
                 ? tone === "ink"
                   ? "bg-[#27b8ff] text-[#070711]"

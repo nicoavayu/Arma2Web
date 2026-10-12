@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { MotionConfig, motion } from "framer-motion";
 import { Check, RotateCcw } from "lucide-react";
 
@@ -62,6 +61,16 @@ export function UnaCarga() {
   const copy = content.unaCarga;
   const [state, setState] = React.useState<DemoState>(INITIAL_DEMO_STATE);
   const loaded = state !== INITIAL_DEMO_STATE;
+  // The clicked button unmounts (load ⇄ reset); keep keyboard focus on its replacement.
+  const loadRef = React.useRef<HTMLButtonElement>(null);
+  const resetRef = React.useRef<HTMLButtonElement>(null);
+  const moveFocus = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!moveFocus.current) return;
+    moveFocus.current = false;
+    (loaded ? resetRef : loadRef).current?.focus();
+  }, [loaded]);
   const home = state.standings.find((row) => row.teamId === DEMO_RESULT.homeId)!;
   const away = state.standings.find((row) => row.teamId === DEMO_RESULT.awayId)!;
   const leader = state.standings[0];
@@ -101,8 +110,12 @@ export function UnaCarga() {
                     </span>
                     <button
                       type="button"
-                      onClick={() => setState(INITIAL_DEMO_STATE)}
-                      className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-white/15 px-3 text-sm font-medium text-white/80 hover:text-white"
+                      ref={resetRef}
+                      onClick={() => {
+                        moveFocus.current = true;
+                        setState(INITIAL_DEMO_STATE);
+                      }}
+                      className="inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-white/15 px-3 text-sm font-medium text-white/80 hover:text-white"
                     >
                       <RotateCcw aria-hidden="true" className="h-4 w-4" />
                       {copy.reset}
@@ -111,21 +124,25 @@ export function UnaCarga() {
                 ) : (
                   <button
                     type="button"
-                    onClick={() => setState(applyResult(INITIAL_DEMO_STATE, DEMO_RESULT))}
+                    ref={loadRef}
+                    onClick={() => {
+                      moveFocus.current = true;
+                      setState(applyResult(INITIAL_DEMO_STATE, DEMO_RESULT));
+                    }}
                     className="inline-flex min-h-11 items-center rounded-lg bg-[#5b4bff] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#6d5fff]"
                   >
                     {copy.load}
                   </button>
                 )}
               </div>
-              <p className="mt-3 text-xs text-white/45">{content.demoNote}</p>
+              <p className="mt-3 text-xs text-white/55">{content.demoNote}</p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <Panel title={copy.panels.table} updated={loaded} updatedLabel={copy.updated} delay={0}>
                 <table className="w-full text-sm tabular-nums">
                   <thead>
-                    <tr className="text-left text-xs text-white/45">
+                    <tr className="text-left text-xs text-white/55">
                       <th className="pb-1.5 font-medium">#</th>
                       <th className="pb-1.5 font-medium">{copy.columns.team}</th>
                       <th className="pb-1.5 text-right font-medium">{copy.columns.played}</th>
@@ -171,14 +188,22 @@ export function UnaCarga() {
               </Panel>
 
               <Panel title={copy.panels.plate} updated={loaded} updatedLabel={copy.updated} delay={STEP_MS * 3}>
-                <Image
-                  src="/torneos/social-studio/base/round_results--portrait--default.webp"
-                  alt={copy.panels.plate}
-                  width={1080}
-                  height={1350}
-                  sizes="200px"
-                  className={cn("mx-auto h-36 w-auto rounded-md transition-opacity duration-500", loaded ? "opacity-100" : "opacity-25")}
-                />
+                {/* Drawn from the demo state so the post matches the result just entered. */}
+                <div
+                  aria-hidden={!loaded}
+                  className={cn(
+                    "mx-auto flex aspect-[4/5] w-32 flex-col justify-between rounded-md bg-gradient-to-b from-[#1b1450] to-[#070711] p-2.5 text-white ring-1 ring-white/10 transition-opacity duration-500",
+                    loaded ? "opacity-100" : "opacity-25",
+                  )}
+                >
+                  <p className="text-[8px] font-bold uppercase tracking-[0.12em] text-[#8f84ff]">{copy.matchLabel}</p>
+                  <p className="text-[13px] font-extrabold uppercase leading-none">{copy.plateTitle}</p>
+                  <div className="space-y-1 text-[9px] font-semibold tabular-nums">
+                    <p className="flex justify-between"><span className="truncate">{home.name}</span><span>{loaded ? DEMO_RESULT.homeGoals : "–"}</span></p>
+                    <p className="flex justify-between"><span className="truncate">{away.name}</span><span>{loaded ? DEMO_RESULT.awayGoals : "–"}</span></p>
+                  </div>
+                  <p className="text-[7px] font-semibold uppercase tracking-[0.12em] text-white/55">Arma2 Torneos</p>
+                </div>
               </Panel>
             </div>
           </div>

@@ -74,7 +74,7 @@ export function JugadoresNav() {
           <a
             href={downloadHref}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="inline-flex min-h-10 items-center rounded-lg bg-white px-4 text-sm font-semibold text-[#070711] transition-colors hover:bg-white/90"
+            className="inline-flex min-h-11 items-center rounded-lg bg-white px-4 text-sm font-semibold text-[#070711] transition-colors hover:bg-white/90"
           >
             {t.common.download}
           </a>
@@ -84,7 +84,7 @@ export function JugadoresNav() {
             aria-expanded={open}
             aria-controls="jugadores-menu"
             aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-white lg:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

@@ -34,7 +34,7 @@ export function DespuesDelPartido() {
               </li>
             ))}
           </ol>
-          <p className="mt-1 text-xs text-white/40 lg:hidden">{copy.swipeHint}</p>
+          <p className="mt-1 text-xs text-white/55 lg:hidden">{copy.swipeHint}</p>
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-14">
