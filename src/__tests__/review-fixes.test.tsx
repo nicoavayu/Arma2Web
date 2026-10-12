@@ -4,7 +4,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { LanguageProvider } from "@/components/LanguageProvider";
-import { UnaCarga } from "@/components/torneos/UnaCarga";
 import NotFound from "@/app/not-found";
 import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
 import { torneosJsonLd } from "@/lib/torneos-jsonld";
@@ -28,22 +27,9 @@ describe("not-found page", () => {
   });
 });
 
-describe("una carga demo", () => {
-  it("does not show a results plate from another tournament", () => {
-    expect(render(<UnaCarga />)).not.toContain("round_results--portrait--default");
-  });
-});
-
 describe("product URLs shown in the Torneos portal", () => {
   it.each(["es", "en"] as const)("use the real app host and paths (%s)", (locale) => {
-    const copy = torneosContent[locale];
-    expect(copy.publica.urlLabel).toMatch(/^app\.arma2\.com\.ar\/torneos\/publico\//);
-    expect(copy.unaCarga.publicUrl).toMatch(/^app\.arma2\.com\.ar\/torneos\/publico\//);
-  });
-
-  it("frames manager captures with the manager's real host", () => {
-    const source = readFileSync(join(process.cwd(), "src/components/shared/BrowserFrame.tsx"), "utf8");
-    expect(source).toContain('urlLabel = "app.arma2.com.ar/torneos"');
+    expect(torneosContent[locale].story.publicPage.url).toMatch(/^app\.arma2\.com\.ar\/torneos\/publico\//);
   });
 });
 
@@ -71,9 +57,8 @@ describe("commercial model single source (spec §6.1)", () => {
 });
 
 describe("Social Studio poster labels", () => {
-  it.each(["es", "en"] as const)("mark the scorers post as a Premium family (%s)", (locale) => {
-    const scorers = torneosContent[locale].studio.posters.find((poster) => poster.src.includes("scorers"));
-    expect(scorers?.meta).toContain("Premium");
+  it.each(["es", "en"] as const)("mark the scorers post as Premium (%s)", (locale) => {
+    expect(torneosContent[locale].story.posters.scorersTag).toBe("Premium");
   });
 });
 

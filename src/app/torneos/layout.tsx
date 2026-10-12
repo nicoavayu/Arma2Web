@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Barlow_Condensed } from "next/font/google";
 
 import { TorneosFooter } from "@/components/torneos/TorneosFooter";
 import { TorneosNav } from "@/components/torneos/TorneosNav";
@@ -10,6 +11,14 @@ import { torneosContent } from "@/lib/torneos-content";
  * The Open Graph image comes from `opengraph-image.tsx` next to this file.
  */
 const seo = torneosContent.es.seo;
+
+/** Display face of the Torneos headlines (echoes the italic TORNEOS logotype). */
+const display = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["800", "900"],
+  style: ["italic"],
+  variable: "--font-torneos",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://torneos.arma2.com.ar"),
@@ -46,10 +55,10 @@ export default function TorneosLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className={display.variable}>
       <TorneosNav />
       {children}
       <TorneosFooter />
-    </>
+    </div>
   );
 }

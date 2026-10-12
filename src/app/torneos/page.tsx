@@ -3,13 +3,8 @@ import { torneosJsonLd } from "@/lib/torneos-jsonld";
 import { LocalizedMeta } from "@/components/shared/LocalizedMeta";
 import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
-import { TorneosHero } from "@/components/torneos/TorneosHero";
-import { UnaCarga } from "@/components/torneos/UnaCarga";
-import { TorneosGestion } from "@/components/torneos/TorneosGestion";
-import { TorneosPublica } from "@/components/torneos/TorneosPublica";
-import { TorneosStudio } from "@/components/torneos/TorneosStudio";
-import { TorneosMedia } from "@/components/torneos/TorneosMedia";
 import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
+import { TorneosStory } from "@/components/torneos/TorneosStory";
 
 /**
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
@@ -19,7 +14,7 @@ const { faq: faqJsonLd, app: appJsonLd } = torneosJsonLd();
 
 export default function TorneosPage() {
   return (
-    <main className="relative min-h-screen overflow-x-clip bg-[#070711] pt-16">
+    <main className="relative min-h-screen overflow-x-clip bg-[#04050d]">
       <script
         type="application/ld+json"
         // Static, locally-built object — no user or remote input.
@@ -27,12 +22,7 @@ export default function TorneosPage() {
       />
 
       <LocalizedMeta seo={{ es: torneosContent.es.seo, en: torneosContent.en.seo }} />
-      <TorneosHero />
-      <UnaCarga />
-      <TorneosGestion />
-      <TorneosPublica />
-      <TorneosStudio />
-      <TorneosMedia />
+      <TorneosStory />
       <TorneosPlanes />
       <TorneosFaq />
       <TorneosCierre />

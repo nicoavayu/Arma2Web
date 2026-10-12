@@ -1,5 +1,4 @@
 import type { Locale } from "@/lib/i18n";
-import type { ShotId } from "@/lib/shots";
 
 /**
  * Copy for the Torneos portal (torneos.arma2.com.ar), ES/EN.
@@ -49,13 +48,6 @@ const es = {
     start: "Empezar gratis",
     explore: "Ver cómo funciona",
     freeNote: "Empezás en FREE, sin tarjeta.",
-    benefits: [
-      ["Fixture", "Fechas, cruces y programación"],
-      ["Resultados", "Acta y resultado oficial"],
-      ["Tabla", "Se recalcula sola"],
-      ["Página pública", "Un link para todos"],
-      ["Social Studio", "Placas listas para redes"],
-    ],
   },
   story: {
     navLabel: "Capítulos de cómo funciona",
@@ -146,100 +138,6 @@ const es = {
         { name: "Fixture v1", meta: "12 sep · Nico", tag: "" },
       ],
     },
-  },
-  unaCarga: {
-    title: "Cargás el resultado una vez. Todo lo demás se actualiza.",
-    body: "La tabla, los goleadores, la página pública y la placa de resultados salen del mismo dato. No hay que copiar nada en otra planilla ni rearmar la imagen.",
-    matchLabel: "Fecha 7 · Copa Primavera",
-    load: "Cargar resultado",
-    loaded: "Resultado cargado",
-    reset: "Volver a empezar",
-    panels: { table: "Tabla", scorers: "Goleadores", publicPage: "Página pública", plate: "Placa de resultados" },
-    plateTitle: "Resultados",
-    columns: { team: "Equipo", played: "PJ", points: "Pts" },
-    publicUrl: "app.arma2.com.ar/torneos/publico/copa-primavera-2026",
-    publicPending: "Esperando el resultado",
-    updated: "Actualizada",
-    live: "Tabla actualizada: {team} queda 1.º con {points} puntos.",
-  },
-  gestion: {
-    title: "Todo lo que pasa en el torneo, en un solo gestor.",
-    body: "Lo que ves acá son pantallas reales del gestor, con un torneo de ejemplo.",
-    tabs: [
-      {
-        id: "fixture",
-        label: "Fixture",
-        shot: "torneos/fixture",
-        points: [
-          "Generás el fixture con fechas, cruces y fases: liga, grupos o eliminatorias.",
-          "Programás día, hora, sede y cancha de cada partido.",
-          "Cada versión publicada queda registrada en el historial de cambios.",
-        ],
-      },
-      {
-        id: "resultados",
-        label: "Resultados",
-        shot: "torneos/resultado",
-        points: [
-          "Cada partido tiene sus convocatorias, el acta y el resultado oficial.",
-          "El acta registra lo que pasó; la revisión cierra el resultado oficial.",
-          "Postergaciones e incidencias quedan en el historial del partido.",
-        ],
-      },
-      {
-        id: "tabla",
-        label: "Tabla",
-        shot: "torneos/tabla",
-        points: [
-          "La tabla se recalcula con cada resultado oficial: PJ, G, E, P, goles y diferencia.",
-          "Tabla general y por fase o grupo.",
-          "Estadísticas y clasificación del torneo.",
-        ],
-      },
-      {
-        id: "disciplina",
-        label: "Disciplina",
-        shot: "torneos/disciplina",
-        points: [
-          "Tarjetas y suspensiones por acumulación o por roja directa, con las fechas a cumplir.",
-          "Puntos disciplinarios por jugador.",
-          "Vos decidís qué parte de la disciplina se ve en la página pública.",
-        ],
-      },
-    ],
-    tabsLabel: "Secciones del gestor",
-    team: "Owner y colaboradores con permisos según su rol.",
-  },
-  publica: {
-    title: "Compartí el torneo. Todo en un solo link.",
-    body: "Fixture, resultados, tabla, goleadores, equipos y disciplina siempre a mano, sin responder las mismas preguntas por WhatsApp.",
-    noAccount: "Sin cuenta. Sin instalar nada.",
-    urlLabel: "app.arma2.com.ar/torneos/publico/copa-primavera-2026",
-  },
-  studio: {
-    title: "Convertí cada fecha en contenido listo para publicar.",
-    body: "Cargás los datos del torneo una vez y generás las placas para redes con los datos oficiales, sin rearmar cada imagen a mano.",
-    posters: [
-      { label: "Resultados", meta: "Base · 4:5", src: "/torneos/social-studio/base/round_results--portrait--default.webp" },
-      { label: "Tabla", meta: "Base · 4:5", src: "/torneos/social-studio/base/standings--portrait--default.webp" },
-      { label: "Goleadores", meta: "Base · 4:5 · Premium", src: "/torneos/social-studio/base/scorers--portrait--default.webp" },
-      { label: "Próxima fecha", meta: "Base · 4:5", src: "/torneos/social-studio/base/next_fixture--portrait--default.webp" },
-    ],
-    postersLabel: "Placas generadas con Social Studio",
-    stylesLabel: "Estilos de placa",
-    styles: ["Base", "Heritage", "Street", "Scoreboard", "Editorial"],
-    freeTag: "FREE",
-    premiumTag: "Premium",
-    note: "11 tipos de placa en 4:5 y 9:16. FREE incluye Resultados, Tabla y Próxima fecha en estilo Base, con la firma de Arma2.",
-  },
-  media: {
-    title: "Las fotos de cada fecha, ordenadas junto al partido.",
-    body: "Dejá de buscar el material entre WhatsApp, Drive y celulares. Las fotos se guardan junto a la fecha y al torneo al que pertenecen.",
-    round: "Fecha 7",
-    galleryLabel: "Galería de la fecha",
-    match: "Los Galácticos 3–1 Tiki-Taka",
-    photos: ["Partido de la fecha 7", "Disputa de pelota", "Foto del equipo", "Acción de la fecha 7", "Arquero durante el partido", "Festejo del equipo"],
-    exampleNote: "Fotos de ejemplo.",
   },
   plans: {
     title: "Empezá con FREE. Pasá a Premium cuando lo necesites.",
@@ -349,7 +247,7 @@ const es = {
 
 type TorneosCopy = typeof es;
 
-/** Same shape as `es`; ShotId fields keep their literal type. */
+/** Same shape as `es`. */
 const en: TorneosCopy = {
   seo: {
     title: "Arma2 Tournaments — Run the whole tournament without doing the same work twice",
@@ -375,13 +273,6 @@ const en: TorneosCopy = {
     start: "Start for free",
     explore: "See how it works",
     freeNote: "You start on FREE, no card needed.",
-    benefits: [
-      ["Fixtures", "Rounds, matchups and scheduling"],
-      ["Results", "Match report and official result"],
-      ["Standings", "Recalculated automatically"],
-      ["Public page", "One link for everyone"],
-      ["Social Studio", "Posts ready to publish"],
-    ],
   },
   story: {
     navLabel: "How it works, chapter by chapter",
@@ -472,100 +363,6 @@ const en: TorneosCopy = {
         { name: "Fixtures v1", meta: "Sep 12 · Nico", tag: "" },
       ],
     },
-  },
-  unaCarga: {
-    title: "Enter the result once. Everything else updates.",
-    body: "The standings, top scorers, public page and results post all come from the same data. Nothing to copy into another spreadsheet, no image to rebuild.",
-    matchLabel: "Round 7 · Copa Primavera",
-    load: "Enter result",
-    loaded: "Result entered",
-    reset: "Start over",
-    panels: { table: "Standings", scorers: "Top scorers", publicPage: "Public page", plate: "Results post" },
-    plateTitle: "Results",
-    columns: { team: "Team", played: "P", points: "Pts" },
-    publicUrl: "app.arma2.com.ar/torneos/publico/copa-primavera-2026",
-    publicPending: "Waiting for the result",
-    updated: "Updated",
-    live: "Standings updated: {team} moves to 1st with {points} points.",
-  },
-  gestion: {
-    title: "Everything that happens in the tournament, in one manager.",
-    body: "These are real manager screens, with an example tournament.",
-    tabs: [
-      {
-        id: "fixture",
-        label: "Fixtures",
-        shot: "torneos/fixture",
-        points: [
-          "Generate fixtures with rounds, matchups and phases: league, groups or knockout.",
-          "Schedule day, time, venue and pitch for every match.",
-          "Every published version is kept in the change history.",
-        ],
-      },
-      {
-        id: "resultados",
-        label: "Results",
-        shot: "torneos/resultado",
-        points: [
-          "Each match has its squad calls, the match report and the official result.",
-          "The report records what happened; the review closes the official result.",
-          "Postponements and incidents stay in the match history.",
-        ],
-      },
-      {
-        id: "tabla",
-        label: "Standings",
-        shot: "torneos/tabla",
-        points: [
-          "Standings recalculate with every official result: played, won, drawn, lost, goals and difference.",
-          "Overall table and per phase or group.",
-          "Tournament statistics and rankings.",
-        ],
-      },
-      {
-        id: "disciplina",
-        label: "Discipline",
-        shot: "torneos/disciplina",
-        points: [
-          "Cards and suspensions for accumulation or straight reds, with the matches to serve.",
-          "Disciplinary points per player.",
-          "You decide which discipline details show on the public page.",
-        ],
-      },
-    ],
-    tabsLabel: "Manager sections",
-    team: "Owner and collaborators with role-based permissions.",
-  },
-  publica: {
-    title: "Share the tournament. All in one link.",
-    body: "Fixtures, results, standings, top scorers, teams and discipline always at hand — no more answering the same questions on WhatsApp.",
-    noAccount: "No account. Nothing to install.",
-    urlLabel: "app.arma2.com.ar/torneos/publico/copa-primavera-2026",
-  },
-  studio: {
-    title: "Turn every round into content ready to post.",
-    body: "Enter the tournament data once and generate social posts from the official data, without rebuilding each image by hand.",
-    posters: [
-      { label: "Results", meta: "Base · 4:5", src: "/torneos/social-studio/base/round_results--portrait--default.webp" },
-      { label: "Standings", meta: "Base · 4:5", src: "/torneos/social-studio/base/standings--portrait--default.webp" },
-      { label: "Top scorers", meta: "Base · 4:5 · Premium", src: "/torneos/social-studio/base/scorers--portrait--default.webp" },
-      { label: "Next round", meta: "Base · 4:5", src: "/torneos/social-studio/base/next_fixture--portrait--default.webp" },
-    ],
-    postersLabel: "Posts generated with Social Studio",
-    stylesLabel: "Post styles",
-    styles: ["Base", "Heritage", "Street", "Scoreboard", "Editorial"],
-    freeTag: "FREE",
-    premiumTag: "Premium",
-    note: "11 post types in 4:5 and 9:16. FREE includes Results, Standings and Next round in the Base style, signed by Arma2.",
-  },
-  media: {
-    title: "Every round's photos, filed next to the match.",
-    body: "Stop hunting for photos across WhatsApp, Drive and phones. They are stored with the round and tournament they belong to.",
-    round: "Round 7",
-    galleryLabel: "Round gallery",
-    match: "Los Galácticos 3–1 Tiki-Taka",
-    photos: ["Round 7 match", "Challenge for the ball", "Team photo", "Round 7 action", "Goalkeeper during the match", "Team celebration"],
-    exampleNote: "Example photos.",
   },
   plans: {
     title: "Start on FREE. Move to Premium when you need it.",
@@ -674,6 +471,5 @@ const en: TorneosCopy = {
 };
 
 export type TorneosContent = TorneosCopy;
-export type GestionTab = TorneosCopy["gestion"]["tabs"][number] & { shot: ShotId };
 
 export const torneosContent: Record<Locale, TorneosContent> = { es, en };
