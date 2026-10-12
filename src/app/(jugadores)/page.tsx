@@ -1,6 +1,7 @@
 import { Hero } from "@/components/jugadores/Hero";
 import { ComoSeArman } from "@/components/jugadores/ComoSeArman";
 import { EnQueEstas } from "@/components/jugadores/EnQueEstas";
+import { DespuesDelPartido } from "@/components/jugadores/DespuesDelPartido";
 import { AutoMatch } from "@/components/AutoMatch";
 import { Arqueros } from "@/components/Arqueros";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <ComoSeArman />
       <EnQueEstas />
+      <DespuesDelPartido />
       <HowItWorks />
       <AutoMatch />
       <Arqueros />
