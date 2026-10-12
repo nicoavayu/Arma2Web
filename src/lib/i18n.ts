@@ -21,6 +21,21 @@ export const translations = {
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
     },
+    home: {
+      hero: {
+        eyebrow: "App gratis de fútbol amateur · iOS y Android",
+        title: ["Organizá partidos.", "Armá equipos parejos.", "Jugá."],
+        lead: "Convocás a tu grupo con un link, cada uno califica a los que conoce y Arma2 arma dos equipos parejos con esos votos. Si te faltan jugadores o arquero, te los encuentra.",
+        facts: ["Gratis", "Fútbol 5 a 11", "Equipos votados por el grupo", "Encuesta y premios después de cada partido"],
+        balance: {
+          teamA: "Equipo A",
+          teamB: "Equipo B",
+          diff: "Dif.",
+          verdict: "Muy parejo",
+          caption: "Así quedaron los equipos de la captura, con los votos del grupo.",
+        },
+      },
+    },
     common: {
       download: "Descargar",
       qrCaption: "Escaneá para descargar",
@@ -457,6 +472,21 @@ export const translations = {
       languageLabel: "Change language",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+    },
+    home: {
+      hero: {
+        eyebrow: "Free amateur football app · iOS and Android",
+        title: ["Organise matches.", "Build even teams.", "Play."],
+        lead: "Invite your group with a link, everyone rates the people they know and Arma2 builds two even teams from those votes. Short of players or a keeper? It finds them for you.",
+        facts: ["Free", "5- to 11-a-side", "Teams voted by the group", "Post-match survey and awards"],
+        balance: {
+          teamA: "Team A",
+          teamB: "Team B",
+          diff: "Diff.",
+          verdict: "Very even",
+          caption: "The teams from the screenshot, built from the group's votes.",
+        },
+      },
     },
     common: {
       download: "Download",

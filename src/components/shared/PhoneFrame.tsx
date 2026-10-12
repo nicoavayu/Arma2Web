@@ -27,11 +27,11 @@ export function PhoneFrame({
   return (
     <figure
       className={cn(
-        "relative overflow-hidden rounded-[2.6rem] border-[10px] border-[#0d0f1c] bg-[#0d0f1c] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)] ring-1 ring-white/10",
+        "relative overflow-hidden rounded-[2.6rem] border-[10px] border-[#0d0f1c] bg-[#0d0f1c] pt-[1.6rem] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)] ring-1 ring-white/10",
         className,
       )}
     >
-      <div aria-hidden="true" className="absolute left-1/2 top-2 z-10 h-[1.35rem] w-[26%] -translate-x-1/2 rounded-full bg-[#0d0f1c]" />
+      <div aria-hidden="true" className="absolute left-1/2 top-1 z-10 h-[1.1rem] w-[30%] -translate-x-1/2 rounded-full bg-black" />
       <Image
         src={shot.src}
         alt={shot.alt}
@@ -39,7 +39,7 @@ export function PhoneFrame({
         height={shot.height}
         sizes={sizes}
         priority={priority}
-        className="block h-auto w-full rounded-[1.9rem]"
+        className="block h-auto w-full rounded-b-[1.9rem]"
       />
     </figure>
   );

@@ -1,4 +1,4 @@
-import { Hero } from "@/components/Hero";
+import { Hero } from "@/components/jugadores/Hero";
 import { AutoMatch } from "@/components/AutoMatch";
 import { Arqueros } from "@/components/Arqueros";
 import { HowItWorks } from "@/components/HowItWorks";
