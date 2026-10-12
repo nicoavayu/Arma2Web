@@ -18,3 +18,14 @@ describe("StoreButtons (server render, no JS)", () => {
     expect(html).toContain(STORE_LINKS.googlePlay);
   });
 });
+
+describe("StoreButtons accessible names", () => {
+  it("does not override the visible text with a different aria-label (WCAG 2.5.3)", () => {
+    const html = renderToStaticMarkup(
+      <LanguageProvider>
+        <StoreButtons />
+      </LanguageProvider>,
+    );
+    expect(html).not.toMatch(/data-store="[a-zA-Z]+"[^>]*aria-label=/);
+  });
+});

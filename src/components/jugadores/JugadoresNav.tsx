@@ -53,7 +53,7 @@ export function JugadoresNav() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-4 md:h-[4.5rem] md:px-6">
-        <Link href="/" aria-label={t.nav.homeAria} onClick={close} className="flex items-center gap-2.5">
+        <Link href="/" onClick={close} className="flex items-center gap-2.5">
           <Image src="/logo_navbar.png" alt="" width={30} height={37} className="h-8 w-auto brightness-0 invert" priority />
           <span className="text-[15px] font-extrabold tracking-tight text-white">Arma2</span>
         </Link>

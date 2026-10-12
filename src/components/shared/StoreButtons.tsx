@@ -53,7 +53,6 @@ export function StoreButtons({ tone = "ink", className }: { tone?: "ink" | "pape
             href={STORE_LINKS[store]}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={copy.ariaLabel}
             className={cn(
               "inline-flex min-h-12 items-center gap-2.5 rounded-xl border px-4 py-2 transition-colors duration-200",
               tone === "ink"

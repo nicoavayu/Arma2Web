@@ -153,9 +153,9 @@ export const translations = {
       demoNote: "Ejemplo con datos ficticios",
       siteSwitch: {
         toTorneos: "Torneos",
-        toTorneosAria: "Ir a Arma2 Torneos, el sitio para organizadores",
+        toTorneosAria: "sitio de Arma2 para organizadores de ligas y torneos",
         toJugadores: "Arma2 para jugadores",
-        toJugadoresAria: "Ir a Arma2, el sitio para jugadores",
+        toJugadoresAria: "sitio de Arma2 para jugadores",
       },
       storeOther: "También en",
     },
@@ -339,9 +339,9 @@ export const translations = {
       demoNote: "Example with made-up data",
       siteSwitch: {
         toTorneos: "Tournaments",
-        toTorneosAria: "Go to Arma2 Tournaments, the site for organisers",
+        toTorneosAria: "Arma2 site for league and tournament organisers",
         toJugadores: "Arma2 for players",
-        toJugadoresAria: "Go to Arma2, the site for players",
+        toJugadoresAria: "Arma2 site for players",
       },
       storeOther: "Also on",
     },

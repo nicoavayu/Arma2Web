@@ -25,10 +25,10 @@ export function SiteSwitch({
   const { t } = useLanguage();
   const copy = t.common.siteSwitch;
   const text = label ?? (to === "torneos" ? copy.toTorneos : copy.toJugadores);
-  const aria = to === "torneos" ? copy.toTorneosAria : copy.toJugadoresAria;
+  const hint = to === "torneos" ? copy.toTorneosAria : copy.toJugadoresAria;
 
   return (
-    <a href={getSiteUrl(to, path)} aria-label={label ? undefined : aria} className={cn("inline-flex items-center gap-1", className)}>
+    <a href={getSiteUrl(to, path)} aria-label={label ? undefined : `${text} — ${hint}`} className={cn("inline-flex items-center gap-1", className)}>
       {text}
       <ArrowUpRight aria-hidden="true" className="h-[1em] w-[1em]" />
     </a>
