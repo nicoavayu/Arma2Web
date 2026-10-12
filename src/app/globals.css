@@ -209,3 +209,13 @@ section[id] {
   /* Italic display glyphs overhang their box; keep the gradient under them. */
   padding-right: 0.08em;
 }
+
+/* Torneos display face (Barlow Condensed italic, loaded in torneos/layout.tsx). */
+.disp-t {
+  font-family: var(--font-torneos), Inter, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.92;
+}

@@ -178,6 +178,7 @@ const es = {
     renewal: `Cada temporada dura hasta ${C.seasonMonths} meses. La siguiente vuelve a comenzar en FREE.`,
     photosNotice: "Las fotos se eliminan al terminar la temporada. Antes te avisamos para que puedas descargarlas.",
     comparison: {
+      toggle: "Ver comparación completa",
       caption: "Comparación entre FREE y Premium",
       scrollHint: "Deslizá la tabla para ver Premium →",
       plan: "Plan",
@@ -403,6 +404,7 @@ const en: TorneosCopy = {
     renewal: `Each season lasts up to ${C.seasonMonths} months. The next one starts again on FREE.`,
     photosNotice: "Photos are deleted when the season ends. We let you know beforehand so you can download them.",
     comparison: {
+      toggle: "See full comparison",
       caption: "FREE and Premium compared",
       scrollHint: "Swipe the table to see Premium →",
       plan: "Plan",

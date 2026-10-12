@@ -9,7 +9,7 @@ import { DeviceFrame } from "@/components/cinematic/DeviceFrame";
 import { LaptopFrame } from "@/components/cinematic/LaptopFrame";
 import { useProgressValue } from "@/components/cinematic/useProgressValue";
 import { useSceneProgress } from "@/components/cinematic/useSceneProgress";
-import { useStaticStory } from "@/components/jugadores/JugadoresStory";
+import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
 import { backOut, clamp, easeInOutCubic, easeOutCubic, lerp, seg } from "@/lib/motion-math";

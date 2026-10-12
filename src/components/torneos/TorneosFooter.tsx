@@ -14,8 +14,8 @@ export function TorneosFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/[0.08] bg-[#070711]">
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr] md:px-6">
+    <footer className="border-t border-white/[0.07] bg-[#04050d]">
+      <div className="grid gap-10 px-[clamp(20px,6vw,104px)] py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
           <TorneosLogo className="h-5 w-auto" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{copy.description}</p>
@@ -44,7 +44,7 @@ export function TorneosFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1240px] border-t border-white/[0.08] px-4 py-6 text-xs text-white/55 md:px-6">
+      <div className="border-t border-white/[0.07] px-[clamp(20px,6vw,104px)] py-6 text-xs text-white/55">
         © {year} Arma2. {copy.rights}
       </div>
     </footer>

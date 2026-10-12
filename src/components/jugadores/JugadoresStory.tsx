@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import React from "react";
-import { motionValue, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
+import { motionValue, useTransform, type MotionValue } from "framer-motion";
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { BrandMark } from "@/components/cinematic/BrandMark";
 import { DeviceFrame } from "@/components/cinematic/DeviceFrame";
-import { useMounted } from "@/components/cinematic/useMounted";
 import { useProgressValue } from "@/components/cinematic/useProgressValue";
 import { useSceneProgress } from "@/components/cinematic/useSceneProgress";
+import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { StoreButtons } from "@/components/shared/StoreButtons";
 import { BRAND } from "@/lib/brand-assets";
 import type { TranslationDictionary } from "@/lib/i18n";
@@ -39,13 +39,6 @@ const CHIP_POS = [[110, -0.34], [300, -0.2], [130, -0.04], [330, 0.1], [120, 0.2
 const AWARD_POS = { desktop: [[170, -0.22], [330, 0.06], [165, 0.29]], mobile: [[0, 0.27], [-0.27, 0.29], [0.27, 0.29]] } as const;
 
 export const chapterAnchor = (id: string) => `capitulo-${id}`;
-
-/** Static version (reduced motion) when the visitor asks for it. Always the scene on the server. */
-export function useStaticStory(): boolean {
-  const mounted = useMounted();
-  const reduce = useReducedMotion();
-  return mounted && reduce === true;
-}
 
 export function JugadoresStory() {
   return useStaticStory() ? <JugadoresStoryStatic /> : <JugadoresStoryScene />;

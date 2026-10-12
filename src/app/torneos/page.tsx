@@ -5,10 +5,11 @@ import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
 import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
 import { TorneosStory } from "@/components/torneos/TorneosStory";
+import { TorneosGallery } from "@/components/torneos/TorneosGallery";
 
 /**
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
- * The editorial experience is client-rendered because it follows the ES/EN switch.
+ * The scenes are client-rendered because they follow the ES/EN switch and the scroll.
  */
 const { faq: faqJsonLd, app: appJsonLd } = torneosJsonLd();
 
@@ -23,6 +24,7 @@ export default function TorneosPage() {
 
       <LocalizedMeta seo={{ es: torneosContent.es.seo, en: torneosContent.en.seo }} />
       <TorneosStory />
+      <TorneosGallery />
       <TorneosPlanes />
       <TorneosFaq />
       <TorneosCierre />
