@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { JugadoresNav } from "@/components/jugadores/JugadoresNav";
+import { JugadoresFooter } from "@/components/jugadores/JugadoresFooter";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.arma2.com.ar"),
@@ -48,9 +48,9 @@ export default function JugadoresLayout({
 }>) {
   return (
     <>
-      <Navbar />
+      <JugadoresNav />
       {children}
-      <Footer />
+      <JugadoresFooter />
     </>
   );
 }
