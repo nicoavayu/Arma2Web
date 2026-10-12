@@ -26,8 +26,12 @@
   --font-inter: var(--font-inter);
   --font-display: var(--font-inter);
 
-  /* Visual system ("cancha de noche"): color carries meaning, no glows. */
-  --paper: #f5f1e9;
+  /* Cinematic scenes (spec 2026-10-12-arma2-sitios-cinematico). */
+  --ink-jugadores: #05040d;
+  --ink-torneos: #04050d;
+  --grad-jugadores: linear-gradient(90deg, #27b8ff 0%, #7b5cff 52%, #ec4dff 100%);
+  --grad-torneos: linear-gradient(90deg, #27b8ff 0%, #6c4dff 60%, #a35bff 100%);
+  --brand-conic: conic-gradient(from var(--brand-angle), #27b8ff, #7b5cff, #ec4dff, #2ee59d, #27b8ff);
 }
 
 @theme inline {
@@ -154,4 +158,54 @@ section[id] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---------- Cinematic brand helpers ---------- */
+
+@property --brand-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes brand-hue {
+  to {
+    --brand-angle: 360deg;
+  }
+}
+
+@keyframes brand-breath {
+  0%,
+  100% {
+    transform: scale(0.97);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* The ball mark, masked from /logo_navbar.png, with the brand gradient turning. */
+.brand-mark {
+  display: block;
+  -webkit-mask: url(/logo_navbar.png) center / contain no-repeat;
+  mask: url(/logo_navbar.png) center / contain no-repeat;
+  background: var(--brand-conic);
+  animation: brand-hue 6s linear infinite;
+}
+
+.text-grad-j,
+.text-grad-t {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-grad-j {
+  background-image: var(--grad-jugadores);
+}
+
+.text-grad-t {
+  background-image: var(--grad-torneos);
+  /* Italic display glyphs overhang their box; keep the gradient under them. */
+  padding-right: 0.08em;
 }

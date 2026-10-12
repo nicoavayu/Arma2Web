@@ -1,0 +1,195 @@
+/* Device frames for the cinematic scenes. Sizes use container query units
+   (cqw = 1% of the frame width), so a frame scales as a whole. */
+
+.phone {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 0.485;
+}
+
+.shell {
+  position: absolute;
+  inset: 0;
+  border-radius: 16.5cqw;
+  padding: 3.1cqw;
+  background: linear-gradient(150deg, #6a6390 0%, #262139 12%, #0b0a13 42%, #15121f 72%, #5a5380 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 4px rgba(0, 0, 0, 0.55),
+    0 60px 110px -30px rgba(0, 0, 0, 0.95),
+    0 30px 70px -25px rgba(70, 40, 190, 0.65);
+}
+
+.shell::before,
+.shell::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(#4a4462, #2b2740);
+}
+
+.shell::before {
+  left: -3px;
+  top: 21%;
+  height: 6.5%;
+  box-shadow: 0 19.6cqw 0 #3b3650;
+}
+
+.shell::after {
+  right: -3px;
+  top: 27%;
+  height: 11%;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 13.6cqw;
+  overflow: hidden;
+  background: #0d0a22;
+  font-size: calc(100cqw / 25.5);
+  color: #fff;
+  isolation: isolate;
+}
+
+.island {
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  width: 7.4em;
+  height: 2.15em;
+  margin-left: -3.7em;
+  background: #000;
+  border-radius: 2em;
+  z-index: 20;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 21;
+  pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.035) 26%, rgba(255, 255, 255, 0) 38%);
+}
+
+.sbar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4.15em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.1em 0 2.7em;
+  z-index: 19;
+  font-weight: 600;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.38em;
+}
+
+.signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.12em;
+  height: 0.8em;
+}
+
+.signal i {
+  width: 0.2em;
+  background: #fff;
+  border-radius: 0.1em;
+}
+
+.signal i:nth-child(1) { height: 35%; }
+.signal i:nth-child(2) { height: 55%; }
+.signal i:nth-child(3) { height: 75%; }
+.signal i:nth-child(4) { height: 100%; }
+
+.battery {
+  position: relative;
+  width: 1.85em;
+  height: 0.9em;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 0.3em;
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px 28% 1.5px 1.5px;
+  background: #fff;
+  border-radius: 0.1em;
+}
+
+/* Laptop */
+
+.laptop {
+  container-type: inline-size;
+  position: relative;
+}
+
+.lid {
+  position: relative;
+  border-radius: 2.2cqw;
+  padding: 1.6cqw 1.6cqw 2.2cqw;
+  background: linear-gradient(180deg, #1b1c26, #0a0a10);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 50px 100px -30px rgba(0, 0, 0, 0.95),
+    0 30px 80px -30px rgba(108, 77, 255, 0.55);
+}
+
+.lid::before {
+  content: "";
+  position: absolute;
+  top: 0.5cqw;
+  left: 50%;
+  width: 1cqw;
+  height: 1cqw;
+  margin-left: -0.5cqw;
+  border-radius: 50%;
+  background: #26262f;
+}
+
+.lscreen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.6cqw;
+  overflow: hidden;
+  background: #0b0e1d;
+  font-size: calc(100cqw / 60);
+  color: #fff;
+}
+
+.lglare {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 35%);
+}
+
+.base {
+  position: relative;
+  height: 2.6cqw;
+  margin: 0 -7%;
+  border-radius: 0 0 4cqw 4cqw / 0 0 2cqw 2cqw;
+  background: linear-gradient(180deg, #d9dce4 0%, #a7abb7 40%, #6d717d 100%);
+}
+
+.base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16%;
+  height: 38%;
+  margin-left: -8%;
+  border-radius: 0 0 0.6em 0.6em;
+  background: #8b8f9b;
+}
