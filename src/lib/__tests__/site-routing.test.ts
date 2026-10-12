@@ -19,6 +19,7 @@ describe("resolveSiteRoute", () => {
     ["torneos.arma2.com.ar", "/opengraph-image", "", rewrite("/torneos/opengraph-image")],
     ["torneos.arma2.com.ar", "/torneos/x", "?a=1", redirect("/x?a=1")],
     ["torneos.arma2.com.ar", "/torneos", "", redirect("/")],
+    ["torneos.arma2.com.ar", "/torneos/opengraph-image", "?b5d3", next],
     ["Torneos.Arma2.com.ar:443", "/", "", rewrite("/torneos")],
     ["torneos.localhost:3000", "/", "", rewrite("/torneos")],
     ["torneos.arma2.com.ar", "/torneos/gallery/match-01.png", "", next],

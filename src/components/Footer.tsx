@@ -3,17 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
+import { getSiteUrl } from "@/lib/site-urls";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
     const { t } = useLanguage();
-    const pathname = usePathname();
 
-    if (pathname === "/torneos" || pathname.startsWith("/torneos/")) {
-        return null;
-    }
 
     return (
         <footer className="relative overflow-hidden border-t border-white/10 bg-[#070711]/95 pt-12 pb-8 backdrop-blur-sm md:pt-16">
@@ -47,9 +43,9 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/torneos" className="text-text-secondary hover:text-white text-sm transition-colors">
+                                <a href={getSiteUrl("torneos")} className="text-text-secondary hover:text-white text-sm transition-colors">
                                     {t.footer.links.tournaments}
-                                </Link>
+                                </a>
                             </li>
                             <li>
                                 <Link href="/#features" className="text-text-secondary hover:text-white text-sm transition-colors">

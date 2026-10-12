@@ -29,6 +29,12 @@ const TORNEOS_PREFIX = "/torneos";
 const LOCAL_TORNEOS_HOST = "torneos.localhost";
 /** Metadata files that must resolve to the Torneos versions on its host. */
 const TORNEOS_METADATA_FILES = new Set(["/robots.txt", "/sitemap.xml"]);
+/**
+ * Generated metadata routes keep their `/torneos/...` URL (Next writes it into
+ * og:image), so they are served as-is instead of redirected: link-preview
+ * crawlers are not guaranteed to follow redirects.
+ */
+const TORNEOS_GENERATED_METADATA = /^\/torneos\/(opengraph-image|twitter-image)(\/|$)/;
 
 function normalizeHost(host: string | null | undefined): string {
   return (host ?? "").trim().toLowerCase().replace(/:\d+$/, "");
@@ -84,6 +90,9 @@ export function resolveSiteRoute(
   const torneosRest = stripTorneosPrefix(pathname);
 
   if (isTorneosHost) {
+    if (TORNEOS_GENERATED_METADATA.test(pathname)) {
+      return { kind: "next" };
+    }
     if (torneosRest !== null) {
       return { kind: "redirect", url: `${torneosRest || "/"}${search}`, status: 308 };
     }
