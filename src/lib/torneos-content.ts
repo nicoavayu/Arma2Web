@@ -178,6 +178,7 @@ const es = {
     photosNotice: "Las fotos se eliminan al terminar la temporada. Antes te avisamos para que puedas descargarlas.",
     comparison: {
       caption: "Comparación entre FREE y Premium",
+      scrollHint: "Deslizá la tabla para ver Premium →",
       plan: "Plan",
       included: "Incluido",
       rows: [
@@ -414,6 +415,7 @@ const en: TorneosCopy = {
     photosNotice: "Photos are deleted when the season ends. We let you know beforehand so you can download them.",
     comparison: {
       caption: "FREE and Premium compared",
+      scrollHint: "Swipe the table to see Premium →",
       plan: "Plan",
       included: "Included",
       rows: [
