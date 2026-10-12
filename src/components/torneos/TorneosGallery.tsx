@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { HorizontalGallery, type HorizontalGalleryProps } from "@/components/cinematic/HorizontalGallery";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
@@ -90,7 +92,9 @@ function Illustration({ id, art }: { id: string; art: Art }) {
           <div className={g.stack}>
             <div className={g.photos}>
               {PHOTO_SPOTS.map((spot) => (
-                <span key={spot} style={{ backgroundImage: `url(${BRAND.bgStadium.src})`, backgroundPosition: spot }} />
+                <span key={spot}>
+                  <Image src={BRAND.bgStadium.src} alt="" fill sizes="140px" quality={65} style={{ objectFit: "cover", objectPosition: spot }} />
+                </span>
               ))}
             </div>
             <div className={g.row} style={{ width: "100%" }}>
@@ -137,7 +141,8 @@ function Illustration({ id, art }: { id: string; art: Art }) {
 
 /** "El torneo entero, en orden.": the rest of the manager, card by card. */
 export function TorneosGallery() {
-  const copy = useTorneosContent().gallery;
+  const content = useTorneosContent();
+  const copy = content.gallery;
   return (
     <HorizontalGallery
       id="torneos-funciones"
@@ -150,6 +155,7 @@ export function TorneosGallery() {
       }
       titleClassName="disp-t text-[clamp(2.8rem,5.6vw,5.4rem)]"
       cards={copy.cards.map((card) => ({ ...card, art: <Illustration id={card.id} art={copy.art} /> }))}
+      note={content.demoNote}
       theme={THEME}
     />
   );

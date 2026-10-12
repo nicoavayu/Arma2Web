@@ -67,7 +67,7 @@ export function DashboardResultado({ progress, copy }: { progress: MotionValue<n
   return (
     <div className={s.dash}>
       <aside className={s.side}>
-        <Image src="/torneos/logo-torneos.png" alt="" width={1452} height={168} />
+        <Image src="/torneos/logo-torneos.png" alt="" width={311} height={36} />
         {copy.nav.map((label, index) => {
           const Icon = NAV_ICONS[index];
           return (

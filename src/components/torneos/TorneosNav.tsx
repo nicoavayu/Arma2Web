@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 
 export function TorneosLogo({ className = "h-5 w-auto" }: { className?: string }) {
-  return <Image src="/torneos/logo-torneos.png" alt="Arma2 Torneos" width={1452} height={168} className={`${className} object-contain`} priority />;
+  return <Image src="/torneos/logo-torneos.png" alt="Arma2 Torneos" width={311} height={36} className={`${className} object-contain`} priority />;
 }
 
 export function TorneosNav() {

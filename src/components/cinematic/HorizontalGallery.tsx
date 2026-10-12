@@ -24,6 +24,8 @@ export interface HorizontalGalleryProps {
   title: ReactNode;
   titleClassName?: string;
   cards: GalleryCard[];
+  /** Small label under the cards ("Ejemplo con datos ficticios"). */
+  note?: string;
   /** Section background color, accent and progress gradient. */
   theme: { background: string; glow: string; accent: string; gradient: string };
 }
@@ -60,7 +62,7 @@ function Heading({ eyebrow, title, titleClassName }: Pick<HorizontalGalleryProps
   );
 }
 
-function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassName, cards, theme }: HorizontalGalleryProps) {
+function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassName, cards, note, theme }: HorizontalGalleryProps) {
   const sectionRef = React.useRef<HTMLElement>(null);
   const stageRef = React.useRef<HTMLDivElement>(null);
   const trackRef = React.useRef<HTMLDivElement>(null);
@@ -100,15 +102,18 @@ function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassNam
         <div ref={trackRef} className={s.track}>
           <Cards cards={cards} />
         </div>
-        <div className={s.progress} aria-hidden="true">
-          <i ref={barRef} />
+        <div className={s.footer}>
+          <div className={s.progress} aria-hidden="true">
+            <i ref={barRef} />
+          </div>
+          {note && <p className={s.note}>{note}</p>}
         </div>
       </div>
     </section>
   );
 }
 
-function StaticGallery({ id, anchors = [], eyebrow, title, titleClassName, cards, theme }: HorizontalGalleryProps) {
+function StaticGallery({ id, anchors = [], eyebrow, title, titleClassName, cards, note, theme }: HorizontalGalleryProps) {
   return (
     <section id={id} className={s.static} style={themeStyle(theme)}>
       {anchors.map((anchor) => (
@@ -118,6 +123,7 @@ function StaticGallery({ id, anchors = [], eyebrow, title, titleClassName, cards
       <div className={s.track}>
         <Cards cards={cards} />
       </div>
+      {note && <p className={s.note} style={{ marginLeft: "clamp(20px, 6vw, 104px)" }}>{note}</p>}
     </section>
   );
 }

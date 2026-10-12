@@ -25,6 +25,10 @@ describe("players hero + story scene", () => {
     expect(html).toContain("Quién viene, cómo quedan los equipos y quién fue la figura.");
   });
 
+  it("labels the example data", () => {
+    expect(html).toContain("Ejemplo con datos ficticios");
+  });
+
   it("is pinned and links each chapter from the chapter selector", () => {
     expect(html).toContain('data-scene="pinned"');
     expect(html).toMatch(/<nav[^>]*aria-label="Capítulos de cómo funciona"[\s\S]*href="#capitulo-se-juega"/);

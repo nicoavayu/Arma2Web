@@ -1,19 +1,23 @@
 # Arma2 Torneos — portal comercial (`torneos.arma2.com.ar`)
 
-Estado (2026-10-12): **rediseñado y listo para revisión** dentro del rediseño de
-ambos sitios (spec `docs/superpowers/specs/2026-10-12-arma2-sitios-rediseno-design.md`).
-El PR del rediseño **reemplaza al PR #9**, que queda en hold y se cierra cuando
-se mergee este. Sin checkout ni integraciones comerciales dentro de `Arma2Web`.
+Estado (2026-10-12): **rediseño cinemático aprobado por Nico** (spec
+`docs/superpowers/specs/2026-10-12-arma2-sitios-cinematico-design.md`). El PR del
+rediseño **reemplaza al PR #9**. Sin checkout ni integraciones comerciales dentro
+de `Arma2Web`.
 
 - Dominio propio: `torneos.arma2.com.ar`, servido por `src/proxy.ts` (ver
   `docs/dominios-y-deploy.md`). `arma2.com.ar/torneos` redirige con 308.
-- Secciones: hero con captura real del gestor, demo "una carga, todo
-  actualizado", gestión (fixture, resultados, tabla, disciplina) con capturas
-  reales, página pública, Social Studio, multimedia, planes con comparativa,
-  preguntas y cierre. Layout, nav y footer propios.
-- Las capturas del gestor y de la página pública son pantallas reales de
-  `Armado_Equipos` (main `2c1c071`) con datos ficticios; ver
-  `public/shots/manifest.json`.
+- Secciones: hero con la foto del estadio y el render del gestor; historia en
+  cuatro capítulos (cargás el resultado → la tabla se ordena → la página pública
+  se actualiza → salen las placas); galería (fixture, disciplina, multimedia,
+  colaboradores, historial); planes con comparativa plegable; preguntas y cierre.
+- El panel, la página pública y las placas están recreados en HTML con la liga
+  de ejemplo de `src/lib/torneos-demo.ts`, con el rótulo "Ejemplo con datos
+  ficticios". Ya no se usan capturas ni exports de Social Studio.
+- **Pendiente con Nico:** la sesión del producto usa "Precio de lanzamiento:
+  ARS 20.000 finales por temporada" (autorización del 2026-10-12). El sitio no
+  dice "lanzamiento" porque una nota anterior pedía no usar precio de
+  lanzamiento. Hasta que Nico confirme, el sitio queda como está.
 
 ## Alcance
 
@@ -78,8 +82,6 @@ Cada temporada nueva vuelve a comenzar en FREE.
 algo difiere, gana lo implementado: se cambia `COMMERCIAL` y, si cambia una
 regla (no un número), el texto de `plans`/`faq`.
 
-> Nota: la página Plan del producto (captura del 2026-10-12) todavía muestra el
-> modelo anterior, por eso no se usa como captura en la landing.
 
 ## Auditoría focalizada del producto local (2026-08-28)
 
@@ -113,10 +115,9 @@ Scoreboard y Editorial sobre las 11 familias de placas, formatos 4:5 y 9:16, y
 exportación white-label en Premium; ya no aplica el recorte "Street y Editorial
 sólo para Resultados".
 
-- Placas de la landing (`public/torneos/social-studio/base/`): siguen siendo los
-  cuatro exports **Base** vigentes (Resultados, Tabla, Goleadores, Próxima fecha).
-  No se fabricaron mocks de Heritage/Street/Scoreboard/Editorial. Los estilos
-  premium se comunican como texto (chips) hasta contar con exports reales.
+- Placas de la landing: desde el rediseño cinemático se recrean en HTML
+  (Resultado y Goleadores, esta última marcada Premium) con la liga de ejemplo.
+  Los estilos premium se comunican como texto en los planes.
 - Mejora visual opcional (no bloqueante): exports reales de Heritage, Street,
   Scoreboard y Editorial (portrait 4:5, mismo fixture QA). Es una mejora visual
   pendiente, no un blocker funcional de la landing.

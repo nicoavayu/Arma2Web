@@ -76,6 +76,11 @@ npm run dev
   resuelven `*.localhost` a 127.0.0.1)
 - Torneos por ruta: `http://localhost:3000/torneos`
 
+Chequeos de layout (con el server levantado): `npm run check:visual`. Revisa
+que el dispositivo del hero entre en pantalla en cinco viewports, que el inglés
+no se desborde, que las anclas viejas aterricen bien, la rotación del celular y
+la vista sin JavaScript.
+
 Limitación conocida de `torneos.localhost`: fuera de producción, los links
 cruzados usan rutas relativas (`/`, `/privacy`), así que desde ese host vuelven
 al propio portal o dan 404. Para revisar los cruces, usá `localhost:3000` y

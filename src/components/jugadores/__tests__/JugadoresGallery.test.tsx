@@ -18,6 +18,10 @@ describe("players gallery", () => {
     expect(html).toMatch(/<article[^>]*data-card="mercado-arqueros"[^>]*>[\s\S]*?Mercado de arqueros/);
   });
 
+  it("labels the example data", () => {
+    expect(html).toContain("Ejemplo con datos ficticios");
+  });
+
   it("keeps the section anchor and the old #features / #mercado-arqueros links", () => {
     for (const id of ["funciones", "features", "mercado-arqueros"]) expect(html).toContain(`id="${id}"`);
   });

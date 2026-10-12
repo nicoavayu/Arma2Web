@@ -25,12 +25,22 @@ npm run dev
 | --- | --- |
 | `npm run dev` / `build` / `start` | Next.js |
 | `npm run lint` | ESLint |
-| `npm test` | Vitest (ruteo por host, descarga, demos, manifest de capturas) |
+| `npm test` | Vitest (ruteo por host, descarga, datos de las historias, copy ES/EN, escenas por SSR) |
 | `npm run qr` | Regenera `public/descargar-qr.svg` (QR a `/descargar`) |
-| `npm run shots:optimize -- <dir>` | Convierte capturas `<grupo>__<nombre>.png` a WebP y actualiza `public/shots/manifest.json` |
+| `npm run brand:assets -- <dir>` | Convierte los masters de marca a WebP (`public/brand/`, `public/torneos/`) |
+| `npm run check:visual -- [url]` | Chequeos de layout con Playwright sobre un server levantado (viewports, inglés, anclas, rotación, sin JS) |
 
-## Capturas del producto
+## Cómo están armadas las home
 
-`public/shots/` contiene pantallas reales de `Armado_Equipos`, tomadas en un entorno
-local aislado con datos ficticios. El manifest registra la ruta, el texto alternativo
-(ES/EN) y el commit del producto de cada una.
+Las dos home son escenas cinemáticas: una sección fijada con el hero y una
+historia de cuatro capítulos, y una galería horizontal fijada. Referencia
+visual aprobada: `docs/superpowers/specs/prototipos-cinematicos/`.
+
+- Las pantallas de la app y del gestor están recreadas en HTML
+  (`src/components/*/screens/`) con datos de ejemplo de `src/lib/jugadores-story.ts`
+  y `src/lib/torneos-story.ts`. Llevan el rótulo "Ejemplo con datos ficticios".
+- El movimiento sale del progreso de scroll (framer-motion `useScroll`). Con
+  "reducir movimiento" activado, cada escena se muestra estática.
+- Las imágenes de marca (`src/lib/brand-assets.ts`) son WebP generados desde los
+  masters del sitio anterior y de Nico. El render corregido de Torneos está en
+  `docs/assets/pc-torneos-corregido.png`.

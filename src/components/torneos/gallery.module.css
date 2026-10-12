@@ -21,7 +21,7 @@
 .yellow { background: #ffd23f; box-shadow: 0 0 16px rgba(255, 210, 63, 0.5); }
 .red { background: #ff4d5e; box-shadow: 0 0 16px rgba(255, 77, 94, 0.5); }
 .photos { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-.photos span { aspect-ratio: 1; border-radius: 10px; background-size: 520% auto; background-repeat: no-repeat; }
+.photos span { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; }
 .avatars { display: flex; justify-content: center; }
 .avatars i { display: grid; place-items: center; width: 52px; height: 52px; margin-left: -12px; border-radius: 50%; border: 3px solid #0b0e1d; font-style: normal; font-weight: 800; color: #0b0820; }
 .stack { display: grid; gap: 16px; justify-items: center; width: 100%; }

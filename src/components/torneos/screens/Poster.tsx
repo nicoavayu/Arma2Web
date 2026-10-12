@@ -18,7 +18,7 @@ export function Poster({ kind, copy, className }: { kind: "results" | "scorers";
     <div className={cn(s.poster, className)}>
       <Image src={BRAND.bgStadium.src} alt="" fill sizes="300px" />
       <div className={s.posterTop}>
-        <Image src="/torneos/logo-torneos.png" alt="" width={1452} height={168} />
+        <Image src="/torneos/logo-torneos.png" alt="" width={311} height={36} />
         <span className={cn(s.tag, scorers && s.tagPremium)}>{scorers ? copy.scorersTag : copy.round}</span>
       </div>
       <div className={s.posterBody}>

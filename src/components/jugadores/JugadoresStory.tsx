@@ -128,6 +128,7 @@ function JugadoresStoryScene() {
   const c3 = useTransform(progress, (p) => seg(p, STORY_CHAPTERS[2][0], STORY_CHAPTERS[2][1]));
   const c4 = useTransform(progress, (p) => seg(p, STORY_CHAPTERS[3][0], STORY_CHAPTERS[3][1]));
   const active = useProgressValue(progress, (p) => STORY_CHAPTERS.findIndex(([a, b]) => p >= a && p < b));
+  const showAwards = useProgressValue(progress, (p) => p > STORY_CHAPTERS[2][0]);
 
   React.useEffect(() => {
     const stage = stageRef.current;
@@ -343,6 +344,7 @@ function JugadoresStoryScene() {
             <div
               ref={phoneRef}
               className={s.phone}
+              data-hero-device
               style={{ transform: `perspective(1800px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)` }}
             >
               <div className={s.phoneGlow} />
@@ -363,7 +365,7 @@ function JugadoresStoryScene() {
         </div>
 
         {story.chapters.map((chapter, i) => (
-          <div key={chapter.id} ref={(el) => { nodesRef.current.caps[i] = el; }} className={s.cap}>
+          <div key={chapter.id} ref={(el) => { nodesRef.current.caps[i] = el; }} className={s.cap} data-caption>
             <span className={s.step}>
               <i>{i + 1}</i>
               {chapter.step}
@@ -373,7 +375,8 @@ function JugadoresStoryScene() {
           </div>
         ))}
 
-        <StoryFloats copy={story} register={registerFloat} />
+        <StoryFloats copy={story} register={registerFloat} showAwards={showAwards} />
+        <p className={s.demoNote}>{t.common.demoNote}</p>
 
         <nav ref={chaptersRef} aria-label={story.navLabel} className={s.chapters}>
           {story.chapters.map((chapter, i) => (
@@ -405,6 +408,7 @@ export function JugadoresStoryStatic() {
           <ScreenHome copy={story.screens.home} />
         </DeviceFrame>
       </div>
+      <p className={s.staticNote}>{t.common.demoNote}</p>
       {story.chapters.map((chapter, i) => (
         <div key={chapter.id} id={chapterAnchor(chapter.id)} className={s.staticRow}>
           {i === 0 && <span id="como-funciona" />}

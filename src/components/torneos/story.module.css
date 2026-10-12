@@ -19,7 +19,8 @@
 .stage {
   --lw: min(52vw, 820px);
   --ph: min(60vh, 560px);
-  --poster: min(300px, 24vw);
+  /* Posters are designed at 300px; phones scale them down as a whole. */
+  --poster: 300px;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -368,7 +369,6 @@
   .stage {
     --lw: 92vw;
     --ph: min(34vh, 312px);
-    --poster: 28vw;
   }
 
   .heroLayout {
@@ -398,13 +398,29 @@
     min-height: 44px;
   }
 
+  .heroLayout {
+    height: 100%;
+  }
+
+  /* The render takes whatever height is left under the copy, so it never leaves the screen. */
   .render {
     position: relative;
     left: auto;
     bottom: auto;
     translate: none;
-    margin-top: 22px;
-    width: min(112vw, calc((100vh - 430px) * 1.78));
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    margin: 18px 0 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .render img {
+    width: auto;
+    max-width: min(112vw, 640px);
+    max-height: 100%;
   }
 
   .cap {
@@ -449,6 +465,7 @@
   .poster {
     left: 30vw;
     top: 63vh;
+    scale: 0.46;
   }
 
   .posterBack {
@@ -469,4 +486,32 @@
     grid-template-columns: 1fr;
     text-align: center;
   }
+}
+
+/* "Ejemplo con datos ficticios": visible on desktop, read by screen readers everywhere. */
+.demoNote {
+  position: absolute;
+  left: clamp(20px, 6vw, 104px);
+  bottom: 30px;
+  z-index: 8;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 899px) {
+  .demoNote {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.staticNote {
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
 }

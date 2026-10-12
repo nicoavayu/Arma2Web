@@ -31,6 +31,10 @@ describe("torneos hero + story scene", () => {
     expect(hero).not.toMatch(/opacity:\s*0[;"]/);
   });
 
+  it("labels the example data", () => {
+    expect(html).toContain("Ejemplo con datos ficticios");
+  });
+
   it("sends the start CTA to the Torneos product", () => {
     expect(html).toContain('href="https://app.arma2.com.ar/torneos"');
   });

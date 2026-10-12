@@ -69,7 +69,8 @@ function RenderImage({ priority = false }: { priority?: boolean }) {
       width={BRAND.pcTorneos.width}
       height={BRAND.pcTorneos.height}
       priority={priority}
-      sizes="(max-width: 900px) 100vw, 740px"
+      quality={70}
+      sizes="(max-width: 900px) 92vw, 740px"
     />
   );
 }
@@ -115,6 +116,8 @@ function TorneosStoryScene() {
   });
   const progress = useSceneProgress(sectionRef);
   const active = useProgressValue(progress, (p) => TORNEOS_STORY_CHAPTERS.findIndex(([a, b]) => p >= a && p < b));
+  // The public-page phone and the posters (and their photos) mount once the story starts.
+  const started = useProgressValue(progress, (p) => p > 0.05);
 
   React.useEffect(() => {
     const stage = stageRef.current;
@@ -201,7 +204,7 @@ function TorneosStoryScene() {
       window.removeEventListener("resize", refresh);
       window.removeEventListener("orientationchange", refresh);
     };
-  }, [progress]);
+  }, [progress, started]);
 
   const n = nodesRef;
   const howHref = `#${chapterAnchor(story.chapters[0].id)}`;
@@ -220,7 +223,8 @@ function TorneosStoryScene() {
 
       <div ref={stageRef} className={s.stage} data-scene="pinned">
         <div ref={(el) => { n.current.bg = el; }} className={s.bg}>
-          <Image src={BRAND.bgStadium.src} alt="" fill priority sizes="100vw" />
+          {/* The render is the hero's main image; the photo behind it can arrive a moment later. */}
+          <Image src={BRAND.bgStadium.src} alt="" fill loading="eager" fetchPriority="low" sizes="100vw" quality={65} />
           <div className={s.shade} />
         </div>
         <div ref={(el) => { n.current.glow = el; }} className={s.glow} />
@@ -230,13 +234,13 @@ function TorneosStoryScene() {
           <div ref={(el) => { n.current.heroCopy = el; }} className={s.heroCopy} data-hero-copy>
             <HeroCopy copy={copy} howHref={howHref} />
           </div>
-          <div ref={(el) => { n.current.render = el; }} className={s.render}>
+          <div ref={(el) => { n.current.render = el; }} className={s.render} data-hero-device>
             <RenderImage priority />
           </div>
         </div>
 
         {story.chapters.map((chapter, i) => (
-          <div key={chapter.id} ref={(el) => { n.current.caps[i] = el; }} className={s.cap}>
+          <div key={chapter.id} ref={(el) => { n.current.caps[i] = el; }} className={s.cap} data-caption>
             <ChapterCopy chapter={chapter} index={i} />
           </div>
         ))}
@@ -247,21 +251,27 @@ function TorneosStoryScene() {
           </LaptopFrame>
         </div>
 
-        <div ref={(el) => { n.current.phone = el; }} className={s.phone}>
-          <DeviceFrame time="9:41">
-            <PublicPagePhone copy={story.publicPage} />
-          </DeviceFrame>
-          <div ref={(el) => { n.current.chip = el; }} className={s.chip} aria-hidden="true" style={{ opacity: 0 }}>
-            {story.linkChip}
-          </div>
-        </div>
+        {started && (
+          <>
+            <div ref={(el) => { n.current.phone = el; }} className={s.phone}>
+              <DeviceFrame time="9:41">
+                <PublicPagePhone copy={story.publicPage} />
+              </DeviceFrame>
+              <div ref={(el) => { n.current.chip = el; }} className={s.chip} aria-hidden="true" style={{ opacity: 0 }}>
+                {story.linkChip}
+              </div>
+            </div>
 
-        <div ref={(el) => { n.current.posters[1] = el; }} className={cn(s.poster, s.posterBack)} aria-hidden="true">
-          <Poster kind="scorers" copy={story.posters} />
-        </div>
-        <div ref={(el) => { n.current.posters[0] = el; }} className={s.poster} aria-hidden="true">
-          <Poster kind="results" copy={story.posters} />
-        </div>
+            <div ref={(el) => { n.current.posters[1] = el; }} className={cn(s.poster, s.posterBack)} aria-hidden="true">
+              <Poster kind="scorers" copy={story.posters} />
+            </div>
+            <div ref={(el) => { n.current.posters[0] = el; }} className={s.poster} aria-hidden="true">
+              <Poster kind="results" copy={story.posters} />
+            </div>
+          </>
+        )}
+
+        <p className={s.demoNote}>{copy.demoNote}</p>
 
         <nav ref={(el) => { n.current.chapters = el; }} aria-label={story.navLabel} className={s.chapters}>
           {story.chapters.map((chapter, i) => (
@@ -304,6 +314,7 @@ export function TorneosStoryStatic() {
         <div className={s.render} aria-hidden="true">
           <RenderImage />
         </div>
+        <p className={s.staticNote}>{copy.demoNote}</p>
       </div>
       {story.chapters.map((chapter, i) => (
         <div key={chapter.id} id={chapterAnchor(chapter.id)} className={s.staticRow}>

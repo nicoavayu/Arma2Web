@@ -21,7 +21,6 @@ export default async function Image() {
   return new ImageResponse(
     (
       <div style={{ position: "relative", width: "100%", height: "100%", display: "flex", background: "#05040d", fontFamily: "Inter" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- next/og renders plain <img> */}
         <img src={dataUrl(background, "image/jpeg")} alt="" width={1200} height={630} style={{ position: "absolute", inset: 0, objectFit: "cover" }} />
         <div
           style={{
@@ -32,7 +31,6 @@ export default async function Image() {
           }}
         />
         <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 76px", width: "100%" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- next/og renders plain <img> */}
           <img src={dataUrl(wordmark, "image/png")} alt="" width={144} height={100} />
           <div style={{ display: "flex", flexDirection: "column", fontSize: 92, fontWeight: 800, lineHeight: 0.98, letterSpacing: -4, color: "#fff" }}>
             <span>Organizá partidos.</span>

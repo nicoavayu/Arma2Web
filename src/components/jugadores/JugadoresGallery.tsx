@@ -33,6 +33,7 @@ function useGalleryProps(): HorizontalGalleryProps {
     ),
     titleClassName: "text-[clamp(2.2rem,5vw,4.6rem)] font-extrabold leading-none tracking-[-0.045em]",
     cards: copy.cards.map((card) => ({ ...card, art: <GalleryArt id={card.id} art={copy.art} /> })),
+    note: t.common.demoNote,
     theme: THEME,
   };
 }

@@ -168,7 +168,6 @@ export const translations = {
         title: "¿Organizás un torneo?",
         body: "Fixture, tabla, página pública y placas para redes. Cargás el resultado una vez y se actualiza todo.",
         cta: "Conocé Arma2 Torneos",
-        players: "Si tu torneo ya usa Arma2 Torneos, el fixture y la tabla están en su página pública.",
       },
       download: {
         title: ["Tu próximo partido", "empieza acá."],
@@ -186,7 +185,6 @@ export const translations = {
         toJugadores: "Arma2 para jugadores",
         toJugadoresAria: "sitio de Arma2 para jugadores",
       },
-      storeOther: "También en",
     },
     stores: {
       appStore: {
@@ -383,7 +381,6 @@ export const translations = {
         title: "Running a tournament?",
         body: "Fixtures, standings, a public page and social posts. Enter the result once and everything updates.",
         cta: "Discover Arma2 Tournaments",
-        players: "If your tournament already uses Arma2 Tournaments, fixtures and standings are on its public page.",
       },
       download: {
         title: ["Your next match", "starts here."],
@@ -401,7 +398,6 @@ export const translations = {
         toJugadores: "Arma2 for players",
         toJugadoresAria: "Arma2 site for players",
       },
-      storeOther: "Also on",
     },
     stores: {
       appStore: {

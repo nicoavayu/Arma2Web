@@ -30,7 +30,16 @@ export const VOTE_CHIPS = ["8", "9", "7", null, "6", "10"] as const;
  * Decorative elements that pop around the phone (chat preview, confirmations,
  * votes, totals, awards). Positions and opacity are written by the scene.
  */
-export function StoryFloats({ copy, register }: { copy: TranslationDictionary["home"]["story"]; register: RegisterFloat }) {
+export function StoryFloats({
+  copy,
+  register,
+  showAwards,
+}: {
+  copy: TranslationDictionary["home"]["story"];
+  register: RegisterFloat;
+  /** The award images are only mounted when the story gets close to chapter 4. */
+  showAwards: boolean;
+}) {
   const floats = copy.floats;
   const hidden = { opacity: 0 };
 
@@ -90,17 +99,18 @@ export function StoryFloats({ copy, register }: { copy: TranslationDictionary["h
         <div className={s.dif}>{floats.diff.replace("{diff}", STORY_SPLIT.diff.toFixed(1))}</div>
       </div>
 
-      {[BRAND.awardMvp, BRAND.awardGoalkeeper, BRAND.awardRedcard].map((award, index) => (
-        <div
-          key={award.src}
-          ref={(el) => register("awards", index, el)}
-          className={cn(s.float, s.award, index > 0 && s.awardSmall)}
-          style={hidden}
-        >
-          <Image src={award.src} alt="" width={award.width} height={award.height} sizes="200px" />
-          <span>{floats.awards[index]}</span>
-        </div>
-      ))}
+      {showAwards &&
+        [BRAND.awardMvp, BRAND.awardGoalkeeper, BRAND.awardRedcard].map((award, index) => (
+          <div
+            key={award.src}
+            ref={(el) => register("awards", index, el)}
+            className={cn(s.float, s.award, index > 0 && s.awardSmall)}
+            style={hidden}
+          >
+            <Image src={award.src} alt="" width={award.width} height={award.height} sizes="200px" />
+            <span>{floats.awards[index]}</span>
+          </div>
+        ))}
     </div>
   );
 }
