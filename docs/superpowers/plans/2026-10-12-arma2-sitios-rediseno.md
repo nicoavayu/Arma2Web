@@ -37,9 +37,14 @@ real y lleva a las stores, y servir Arma2 Torneos como portal propio en
 - **Torneos:**
   - Todo CTA de producto usa `src/lib/torneos-links.ts`
     (`https://app.arma2.com.ar/torneos`, Premium con `?intent=premium`).
-  - El copy de planes y precios se mantiene literal: FREE / Premium **$39.900**
-    de lanzamiento, **$49.900** habitual, pago único por temporada, límites
-    25/1.000 archivos y owner+1 / owner+10 colaboradores.
+  - Modelo comercial (spec §6.1): FREE $0 / Premium **ARS 20.000 finales**,
+    pago único por temporada; temporada de **hasta 6 meses**; fotos **25 / 100**
+    por temporada, que se eliminan al terminar la temporada con aviso y descarga
+    previa; colaboradores owner+1 / owner+10.
+  - No existe precio de lanzamiento ni habitual, ni "acceso permanente".
+  - No está implementado y los pagos siguen apagados: la landing no activa
+    pagos ni promete funciones no publicadas, y el copy comercial vive solo en
+    `plans` de `torneos-content.ts`.
 - **Hosts por defecto:** `www.arma2.com.ar` (jugadores) y `torneos.arma2.com.ar`
   (Torneos). Se pueden pisar con `NEXT_PUBLIC_SITE_HOST` y `NEXT_PUBLIC_TORNEOS_HOST`.
 - **Paleta:** tinta `#070711`, superficie `#10142a`, azul `#27b8ff`, violeta
@@ -1038,21 +1043,27 @@ git add -A && git commit -m "feat: secciones de producto de Torneos con capturas
 
 - `<table>` con `<caption>` y `scope="col"`/`scope="row"`.
 - **Filas:**
-  - Precio ($0 / $39.900 lanzamiento, $49.900 habitual);
-  - Modalidad (sin vencimiento / pago único por temporada);
+  - Precio ($0 / ARS 20.000 finales);
+  - Modalidad (gratis / pago único por temporada);
+  - Duración de la temporada (hasta 6 meses / hasta 6 meses);
   - Gestión completa (✓ / ✓);
   - Página pública (✓ / ✓);
   - Familias de placas (3 / 11);
   - Formatos (4:5 y 9:16 / 4:5 y 9:16);
   - Estilos (Base / Base, Heritage, Street, Scoreboard, Editorial);
   - Firma Arma2 (obligatoria / white-label);
-  - Archivos multimedia (25 / 1.000);
+  - Fotos por temporada (25 / 100);
+  - Al terminar la temporada (las fotos se eliminan, con aviso y descarga previa / ídem);
   - Colaboradores (owner + 1 / owner + 10).
 - Los íconos ✓ llevan texto accesible ("Incluido").
 - En mobile, encabezado sticky y scroll horizontal dentro de la tabla, no de la
   página.
-- Se mantienen las dos cards y los textos "Cada nueva temporada vuelve a
-  comenzar en FREE." y "Activás Premium desde Plan, dentro de esa temporada."
+- Se mantienen las dos cards, actualizadas a spec §6.1.
+- Se borran de `torneos-content.ts` y `editorialCopy` todos los textos de
+  "precio lanzamiento", "Habitual $49.900", "permanentemente" y "1.000"
+  (`grep -rn "49.900\|39.900\|permanen\|1.000" src/` → sin resultados).
+- Se mantienen "Cada nueva temporada vuelve a comenzar en FREE." y "Activás
+  Premium desde Plan, dentro de esa temporada."
 - Botones: `getCreateTournamentTarget()` y `getPremiumTournamentTarget()`.
 
 - [ ] **Step 2: Cierre y JSON-LD**
@@ -1061,13 +1072,13 @@ git add -A && git commit -m "feat: secciones de producto de Torneos con capturas
   "¿Sos jugador? Arma2 para jugadores ↗".
 - `page.tsx`: `FAQPage` (existente) + `SoftwareApplication` con
   `name: "Arma2 Torneos"`, `applicationCategory: "SportsApplication"`,
-  `operatingSystem: "Web"` y `offers` (`price: "0"` FREE y `price: "39900"` con
+  `operatingSystem: "Web"` y `offers` (`price: "0"` FREE y `price: "20000"` con
   `priceCurrency: "ARS"` Premium).
 
 - [ ] **Step 3: Verificar**
 
 - `curl -s -H "Host: torneos.localhost:3000" localhost:3000/ | grep -c '"@type":"SoftwareApplication"'` → `1`.
-- `grep -c "39.900"` en el HTML ≥ `1`.
+- `grep -c "20.000"` en el HTML ≥ `1` y `grep -c "39.900\|49.900"` → `0`.
 - Tabla legible a 375 px.
 
 - [ ] **Step 4: Commit**
@@ -1109,13 +1120,20 @@ Run: `npm run lint && npm test && npm run build` → todo PASS.
 - [ ] **Step 4: Docs**
 
 `dominios-y-deploy.md`:
-1. Vercel → Project → Settings → Domains → agregar `torneos.arma2.com.ar`.
-2. DNS: `CNAME torneos → cname.vercel-dns.com`.
+1. Estado: el CNAME `torneos → arma2-web.vercel.app.` ya existe en la zona
+   Vercel. Falta asociar `torneos.arma2.com.ar` a Production del proyecto
+   `arma2-web`, y solo cuando el deploy con el ruteo por host esté verificado.
+2. Checklist post-asociación: HTTPS válido, `/` muestra el portal, las subrutas
+   (`/sitemap.xml`, `/robots.txt`, anchors) responden, el canonical y `og:url`
+   son `https://torneos.arma2.com.ar/`,
+   `curl -sIL https://torneos.arma2.com.ar/` termina en un `200` sin bucles, y
+   `https://www.arma2.com.ar/torneos` da un 308 al subdominio.
 3. Env vars opcionales (`NEXT_PUBLIC_TORNEOS_HOST`, `NEXT_PUBLIC_SITE_HOST`,
    `NEXT_PUBLIC_TORNEOS_APP_URL`).
 4. Cómo probar: `/torneos` en preview y `torneos.localhost:3000` en local.
 5. Recordatorio: no publicar Torneos hasta que esté habilitado Torneos
-   Production (ver gaps).
+   Production (ver gaps). Antes de publicar, confirmar el copy comercial contra
+   el PR de integración de `Armado_Equipos` (spec §6.1).
 
 - [ ] **Step 5: Commit, push y PR**
 
@@ -1125,3 +1143,13 @@ git push -u origin claude/armados-torneos-ux-redesign-cb3a43
 gh pr create --title "Rediseño de arma2.com.ar y portal Arma2 Torneos" --body "<resumen + checklist de verificación + 'Reemplaza a #9; no mergear hasta habilitar Torneos Production'>"
 ```
 Después del PR: `ccd_pr get_status` / `bind_pr`.
+
+- [ ] **Step 6: Candidato para asociar el dominio**
+
+- Cuando el preview de Vercel del PR esté verificado (Steps 1–3 sobre la URL
+  del preview, con `/torneos` y los redirects por host probados en local),
+  avisar al usuario que hay un candidato listo para asociar
+  `torneos.arma2.com.ar` a Production.
+- **Claude no hace la asociación ni el merge.**
+- Si el usuario confirma que ya lo asoció, correr el checklist post-asociación
+  de `docs/dominios-y-deploy.md` y reportar los resultados.

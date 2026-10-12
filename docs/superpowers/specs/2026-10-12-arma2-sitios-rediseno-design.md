@@ -293,10 +293,33 @@ imágenes de `public/` que queden sin referencias (incluido
 
 ## 6. torneos.arma2.com.ar — portal
 
-Parte de `TorneosEditorial` del branch `prep`. Se conservan **literalmente** el
-modelo comercial y el copy de planes (FREE / Premium $39.900 de lanzamiento,
-$49.900 de referencia, pago único por temporada, límites) porque ya están
-validados contra el producto.
+Parte de `TorneosEditorial` del branch `prep`. Del copy de planes del `prep`
+se conserva lo que no cambió (familias de placas, estilos, white-label,
+colaboradores). El modelo comercial se reemplaza por el de §6.1.
+
+### 6.1 Modelo comercial vigente (aprobado el 2026-10-12)
+
+Reemplaza a $39.900 / $49.900, "acceso permanente" y 1.000 archivos.
+
+| | FREE | Premium |
+| --- | --- | --- |
+| Precio | $0 | **ARS 20.000 finales**, pago único por temporada |
+| Duración de la temporada | hasta 6 meses | hasta 6 meses |
+| Fotos | hasta 25 por temporada | hasta 100 por temporada |
+| Fotos al finalizar | se eliminan al terminar la temporada, con aviso y opción de descarga previa | ídem |
+| Colaboradores | owner + 1 | owner + 10 |
+| Social Studio | 3 familias, estilo Base, firma Arma2 | 11 familias, 5 estilos, white-label |
+
+- Ya no hay "precio de lanzamiento" ni "precio habitual": hay un solo precio final.
+- **Todavía no está implementado** en `Armado_Equipos` (lo prepara un PR de
+  integración aparte) y **los pagos siguen apagados**.
+- Por lo tanto, la landing:
+  - no activa pagos: el CTA Premium sigue yendo a la app con `?intent=premium`;
+  - no promete nada que el producto no tenga publicado;
+  - concentra el copy comercial en un solo bloque (`plans` en
+    `src/lib/torneos-content.ts`) para ajustarlo fácil;
+  - **antes de publicarse**, se confirman esos textos contra el PR de
+    integración. Si algo difiere, gana lo que esté implementado.
 
 **Cambios:**
 
@@ -441,7 +464,7 @@ usuario antes de cambiar de plan.
 3. **Portal Torneos** (§6).
 4. **QA y cierre:**
    - verificación (§10);
-   - `docs/dominios-y-deploy.md` con los pasos de Vercel y DNS;
+   - `docs/dominios-y-deploy.md` con el estado del dominio y la verificación post-asociación;
    - actualización de `docs/torneos-landing-gaps.md`;
    - PR que reemplaza al #9.
 
@@ -458,12 +481,23 @@ usuario antes de cambiar de plan.
   Mitigación: el plan B de §7.
 - Los layouts raíz múltiples hacen recarga completa al cruzar entre sitios. Es
   aceptable porque son dominios distintos.
-- Torneos no se puede publicar en su subdominio hasta que el usuario configure
-  el dominio en Vercel.
+- El modelo comercial nuevo (§6.1) no está implementado todavía. Si la
+  integración cambia algún número, hay que actualizar el bloque `plans` antes
+  de publicar.
+
+**Dominio** (actualizado el 2026-10-12):
+- El CNAME `torneos → arma2-web.vercel.app.` (TTL 60) ya está creado en la zona
+  Vercel de `arma2.com.ar`, verificado con `dig`. `app`, la raíz y `www` no
+  cambiaron.
+- **Falta asociar** `torneos.arma2.com.ar` al entorno Production del proyecto
+  `arma2-web`. Eso se hace recién cuando haya un deploy verificado con el ruteo
+  por host. Claude avisa cuando el candidato está listo, pero no hace la
+  asociación.
+- Después de asociarlo se comprueban HTTPS, `/`, las subrutas, el canonical y
+  que no haya bucles de redirect.
 
 **Pendientes del usuario** (no bloquean la implementación):
-1. Agregar `torneos.arma2.com.ar` al proyecto de Vercel y el CNAME en el DNS
-   (los pasos quedan en `docs/dominios-y-deploy.md`).
+1. Asociar el dominio cuando Claude avise que hay candidato (ver arriba).
 2. Confirmar la respuesta a "¿Mis amigos necesitan la app?". Hoy un invitado
    puede votar desde el link sin tener la app, pero la indicación es no promover
    el uso web. **Propuesta:** "Para organizar y jugar, sí. Si invitás a alguien
