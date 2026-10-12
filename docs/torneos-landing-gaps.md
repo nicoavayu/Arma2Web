@@ -58,8 +58,10 @@ precio de una compra.
 Reemplaza al modelo anterior ($39.900 de lanzamiento / $49.900 habitual,
 "acceso permanente" y 1.000 archivos). **Todavía no está implementado** en
 `Armado_Equipos` (lo prepara un PR de integración aparte) y **los pagos siguen
-apagados**. Todo el copy comercial vive en `plans` y en las respuestas de plan
-de `faq` dentro de `src/lib/torneos-content.ts`.
+apagados**. Los números viven en una sola constante, `COMMERCIAL`
+(`src/lib/torneos-content.ts`). De ahí salen `plans`, las respuestas de plan de
+`faq` y el JSON-LD (`src/lib/torneos-jsonld.ts`). Un test (`src/__tests__/review-fixes.test.tsx`)
+falla si el copy y la constante se desalinean.
 
 | | FREE | Premium |
 | --- | --- | --- |
@@ -73,7 +75,8 @@ de `faq` dentro de `src/lib/torneos-content.ts`.
 Cada temporada nueva vuelve a comenzar en FREE.
 
 **Antes de publicar:** confirmar estos textos contra el PR de integración. Si
-algo difiere, gana lo implementado y se actualiza `plans`/`faq`.
+algo difiere, gana lo implementado: se cambia `COMMERCIAL` y, si cambia una
+regla (no un número), el texto de `plans`/`faq`.
 
 > Nota: la página Plan del producto (captura del 2026-10-12) todavía muestra el
 > modelo anterior, por eso no se usa como captura en la landing.

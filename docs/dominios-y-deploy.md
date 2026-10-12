@@ -75,3 +75,8 @@ npm run dev
 - Torneos como en producción: `http://torneos.localhost:3000/` (los navegadores
   resuelven `*.localhost` a 127.0.0.1)
 - Torneos por ruta: `http://localhost:3000/torneos`
+
+Limitación conocida de `torneos.localhost`: fuera de producción, los links
+cruzados usan rutas relativas (`/`, `/privacy`), así que desde ese host vuelven
+al propio portal o dan 404. Para revisar los cruces, usá `localhost:3000` y
+`localhost:3000/torneos`.
