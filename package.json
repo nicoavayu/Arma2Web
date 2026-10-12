@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "shots:optimize": "node scripts/optimize-shots.mjs"
+    "shots:optimize": "node scripts/optimize-shots.mjs",
+    "qr": "node scripts/generate-download-qr.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "qrcode": "^1.5.4",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5",

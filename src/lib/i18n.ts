@@ -23,6 +23,19 @@ export const translations = {
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
     },
+    common: {
+      download: "Descargar",
+      qrCaption: "Escaneá para descargar",
+      qrAlt: "Código QR para descargar Arma2",
+      demoNote: "Ejemplo con datos ficticios",
+      siteSwitch: {
+        toTorneos: "Torneos",
+        toTorneosAria: "Ir a Arma2 Torneos, el sitio para organizadores",
+        toJugadores: "Arma2 para jugadores",
+        toJugadoresAria: "Ir a Arma2, el sitio para jugadores",
+      },
+      storeOther: "También en",
+    },
     stores: {
       appStore: {
         eyebrow: "Descargala en el",
@@ -447,6 +460,19 @@ export const translations = {
       languageLabel: "Change language",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+    },
+    common: {
+      download: "Download",
+      qrCaption: "Scan to download",
+      qrAlt: "QR code to download Arma2",
+      demoNote: "Example with made-up data",
+      siteSwitch: {
+        toTorneos: "Tournaments",
+        toTorneosAria: "Go to Arma2 Tournaments, the site for organisers",
+        toJugadores: "Arma2 for players",
+        toJugadoresAria: "Go to Arma2, the site for players",
+      },
+      storeOther: "Also on",
     },
     stores: {
       appStore: {
