@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { StoreButtons } from "@/components/shared/StoreButtons";
+import { BRAND } from "@/lib/brand-assets";
 
 const linkClass = "text-sm text-white/60 transition-colors hover:text-white";
 
@@ -17,9 +18,8 @@ export function JugadoresFooter() {
     <footer className="border-t border-white/[0.07] bg-[#070711]">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-6">
         <div>
-          <Link href="/" className="inline-flex items-center gap-2.5">
-            <Image src="/logo_navbar.png" alt="" width={26} height={32} className="h-7 w-auto brightness-0 invert" />
-            <span className="text-[15px] font-extrabold tracking-tight text-white">Arma2</span>
+          <Link href="/" className="inline-flex items-center">
+            <Image src={BRAND.logoArma2.src} alt="Arma2" width={BRAND.logoArma2.width} height={BRAND.logoArma2.height} className="h-10 w-auto" />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{t.footer.description}</p>
           <StoreButtons className="mt-6" />

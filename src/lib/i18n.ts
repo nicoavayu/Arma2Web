@@ -202,7 +202,7 @@ export const translations = {
     },
     footer: {
       description: "La app para organizar partidos de fútbol amateur y armar equipos parejos votados por el grupo.",
-      productTitle: "Arma2",
+      productTitle: "Producto",
       torneosTitle: "Organizadores",
       torneosBlurb: "Fixture, resultados, tabla y página pública para ligas y torneos.",
       legalTitle: "Legal",
@@ -417,7 +417,7 @@ export const translations = {
     },
     footer: {
       description: "The app for organising amateur football matches and building even teams voted by the group.",
-      productTitle: "Arma2",
+      productTitle: "Product",
       torneosTitle: "Organisers",
       torneosBlurb: "Fixtures, results, standings and a public page for leagues and tournaments.",
       legalTitle: "Legal",
