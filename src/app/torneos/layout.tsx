@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { TorneosFooter } from "@/components/torneos/TorneosFooter";
+import { TorneosNav } from "@/components/torneos/TorneosNav";
 import { torneosContent } from "@/lib/torneos-content";
 
 /**
@@ -43,5 +45,11 @@ export default function TorneosLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <>
+      <TorneosNav />
+      {children}
+      <TorneosFooter />
+    </>
+  );
 }

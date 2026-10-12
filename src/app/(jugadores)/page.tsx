@@ -5,6 +5,7 @@ import { DespuesDelPartido } from "@/components/jugadores/DespuesDelPartido";
 import { Preguntas } from "@/components/jugadores/Preguntas";
 import { BandaTorneos } from "@/components/jugadores/BandaTorneos";
 import { Descargar } from "@/components/jugadores/Descargar";
+import { LocalizedMeta } from "@/components/shared/LocalizedMeta";
 import { translations } from "@/lib/i18n";
 import { STORE_LINKS } from "@/lib/store-links";
 
@@ -38,6 +39,7 @@ export default function Home() {
         // Static, locally-built objects — no user or remote input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, appJsonLd]) }}
       />
+      <LocalizedMeta seo={{ es: translations.es.seo, en: translations.en.seo }} />
       <Hero />
       <ComoSeArman />
       <EnQueEstas />
