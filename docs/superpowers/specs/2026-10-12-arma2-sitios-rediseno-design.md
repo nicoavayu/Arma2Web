@@ -46,20 +46,24 @@ Con el lanzamiento de Arma2 Torneos, rediseñar los dos sitios públicos para qu
 
 ### 3.1 Estructura
 
-Una sola app Next.js 16 (App Router) con **dos layouts raíz** mediante grupos de rutas:
+Una sola app Next.js 16 (App Router): **un layout raíz mínimo** (`<html>`, fuente,
+`LanguageProvider`, íconos) y **un layout por sitio**, cada uno con su
+navegación, footer y metadata. No se usan dos layouts raíz porque obligarían a
+usar `global-not-found`, que en Next 16 sigue siendo experimental.
 
 ```text
 src/app/
+  layout.tsx              ← <html> + Inter + LanguageProvider (sin nav)
+  robots.ts sitemap.ts    ← los de jugadores (ver 3.3)
   (jugadores)/
-    layout.tsx            ← <html> + Navbar/Footer de jugadores + metadata arma2.com.ar
+    layout.tsx            ← Navbar/Footer de jugadores + metadata arma2.com.ar
     page.tsx              ← home jugadores
     descargar/route.ts    ← redirect a la store según user agent
     privacy/ terms/ contact/ press/ delete-account/ eliminar-cuenta/
-    sitemap.ts robots.ts  ← (ver 3.3)
-  (torneos)/
-    torneos/
-      layout.tsx          ← <html> + nav/footer de Torneos + metadata del portal
-      page.tsx            ← home del portal
+  torneos/
+    layout.tsx            ← nav/footer de Torneos + metadata del portal
+    page.tsx              ← home del portal
+    sitemap.ts robots.txt/route.ts opengraph-image.tsx
 src/proxy.ts              ← ruteo por host
 ```
 
@@ -129,7 +133,7 @@ La lógica vive en una función pura `resolveSiteRoute({ host, pathname })` en
 
 ## 4. Sistema visual (dirección A · "Hermanos con carácter propio")
 
-### 4.1 Base compartida (`src/styles/tokens.css` + componentes en `src/components/shared/`)
+### 4.1 Base compartida (tokens en `src/app/globals.css` + componentes en `src/components/shared/`)
 
 - **Paleta Arma2 actual, sin cambios de marca:** tinta `#070711`, superficie
   `#10142a`, azul `#27b8ff`, violeta `#5b4bff`, magenta `#ec4dff`, verde cancha
