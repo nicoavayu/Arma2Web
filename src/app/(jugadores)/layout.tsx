@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { JugadoresNav } from "@/components/jugadores/JugadoresNav";
 import { JugadoresFooter } from "@/components/jugadores/JugadoresFooter";
@@ -24,22 +24,16 @@ export const metadata: Metadata = {
     description: "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
     url: "https://www.arma2.com.ar",
     type: "website",
-    images: [
-      {
-        url: "https://www.arma2.com.ar/og-image.jpg?v=20260224",
-        width: 1200,
-        height: 630,
-        alt: "Arma2 - Organizá partidos. Armá equipos parejos.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Arma2 – Encontrá jugadores y organizá tu próximo partido",
     description: "Organizá partidos de fútbol, encontrá jugadores, armá equipos parejos y registrá resultados con Arma2. Gratis para iOS y Android.",
-    images: ["https://www.arma2.com.ar/og-image.jpg?v=20260224"],
   },
 };
+
+/** Browser chrome color on phones (matches the scene background). */
+export const viewport: Viewport = { themeColor: "#05040d" };
 
 export default function JugadoresLayout({
   children,

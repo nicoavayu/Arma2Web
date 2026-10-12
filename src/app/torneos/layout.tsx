@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed } from "next/font/google";
 
 import { TorneosFooter } from "@/components/torneos/TorneosFooter";
@@ -48,6 +48,8 @@ export const metadata: Metadata = {
     description: seo.description,
   },
 };
+
+export const viewport: Viewport = { themeColor: "#04050d" };
 
 export default function TorneosLayout({
   children,
