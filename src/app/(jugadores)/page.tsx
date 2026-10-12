@@ -2,32 +2,49 @@ import { Hero } from "@/components/jugadores/Hero";
 import { ComoSeArman } from "@/components/jugadores/ComoSeArman";
 import { EnQueEstas } from "@/components/jugadores/EnQueEstas";
 import { DespuesDelPartido } from "@/components/jugadores/DespuesDelPartido";
-import { AutoMatch } from "@/components/AutoMatch";
-import { Arqueros } from "@/components/Arqueros";
-import { HowItWorks } from "@/components/HowItWorks";
-import { Features } from "@/components/Features";
-import { Equipos } from "@/components/Equipos";
-import { TeamRanking } from "@/components/TeamRanking";
-import { ImpactStats } from "@/components/ImpactStats";
-import { FAQ } from "@/components/FAQ";
-import { CTA } from "@/components/CTA";
+import { Preguntas } from "@/components/jugadores/Preguntas";
+import { BandaTorneos } from "@/components/jugadores/BandaTorneos";
+import { Descargar } from "@/components/jugadores/Descargar";
+import { translations } from "@/lib/i18n";
+import { STORE_LINKS } from "@/lib/store-links";
+
+/** Structured data built from the same copy the page renders (default locale). */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: translations.es.home.faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const appJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: "Arma2",
+  operatingSystem: "iOS, Android",
+  applicationCategory: "SportsApplication",
+  description: translations.es.home.hero.lead,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "ARS" },
+  downloadUrl: [STORE_LINKS.appStore, STORE_LINKS.googlePlay],
+};
 
 export default function Home() {
   return (
-    <main className="premium-page-bg min-h-screen relative overflow-x-clip">
+    <main className="relative min-h-screen overflow-x-clip">
+      <script
+        type="application/ld+json"
+        // Static, locally-built objects — no user or remote input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, appJsonLd]) }}
+      />
       <Hero />
       <ComoSeArman />
       <EnQueEstas />
       <DespuesDelPartido />
-      <HowItWorks />
-      <AutoMatch />
-      <Arqueros />
-      <Equipos />
-      <TeamRanking />
-      <Features />
-      <ImpactStats />
-      <FAQ />
-      <CTA />
+      <Preguntas />
+      <BandaTorneos />
+      <Descargar />
     </main>
   );
 }
