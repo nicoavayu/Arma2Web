@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "shots:optimize": "node scripts/optimize-shots.mjs",
-    "qr": "node scripts/generate-download-qr.mjs"
+    "qr": "node scripts/generate-download-qr.mjs",
+    "brand:assets": "node scripts/brand-assets.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
