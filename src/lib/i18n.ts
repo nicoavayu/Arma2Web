@@ -57,6 +57,48 @@ export const translations = {
           keeper: "ARQ",
         },
       },
+      chapters: {
+        title: "¿En qué estás?",
+        lead: "Arma2 sirve distinto según tu situación. Elegí la tuya.",
+        navLabel: "Situaciones",
+        items: [
+          {
+            id: "tengo-grupo",
+            label: "Tengo grupo",
+            title: "Organizá sin perseguir a nadie.",
+            points: [
+              "Creás el partido en pocos pasos: nombre, formato de F5 a F11, día y hora, cancha y precio por persona.",
+              "Lo compartís por WhatsApp y cada uno confirma su lugar. Si se llena, quedan suplentes.",
+              "Frecuentes: guardás el partido de siempre como plantilla y armás la próxima fecha con un toque.",
+              "Historial de cada fecha: quién jugó y cómo salió.",
+            ],
+            shots: ["jugadores/crear-partido", "jugadores/frecuentes"],
+          },
+          {
+            id: "me-faltan-jugadores",
+            label: "Me faltan jugadores",
+            title: "Arma2 los busca por vos.",
+            points: [
+              "Partido automático: elegís días, horario, formatos y hasta qué distancia te movés. Cuando hay suficientes jugadores compatibles, Arma2 propone el partido y los primeros en confirmar entran.",
+              "Quiero jugar: partidos abiertos con cupos cerca tuyo, filtrados por distancia.",
+              "Mercado de arqueros: arqueros disponibles cerca, con su puntaje y a cuántos kilómetros están, para invitarlos directo. Y si atajás, activás «Disponible para atajar».",
+            ],
+            shots: ["jugadores/partido-automatico", "jugadores/arqueros"],
+          },
+          {
+            id: "tengo-equipo",
+            label: "Tengo equipo",
+            title: "Armá tu equipo y buscá rival.",
+            points: [
+              "Armás el plantel con posiciones, números y capitán, y tienen su propio chat.",
+              "Publicás un desafío con día, cancha y formato, o aceptás el de otro equipo de tu zona.",
+              "Ranking por formato y zona: ganados, empatados, perdidos y porcentaje de victorias.",
+              "Historial contra cada rival.",
+            ],
+            shots: ["jugadores/equipo-desafio", "jugadores/ranking"],
+          },
+        ],
+      },
     },
     common: {
       download: "Descargar",
@@ -530,6 +572,48 @@ export const translations = {
           diff: "Difference",
           keeper: "GK",
         },
+      },
+      chapters: {
+        title: "Where are you at?",
+        lead: "Arma2 works differently depending on your situation. Pick yours.",
+        navLabel: "Situations",
+        items: [
+          {
+            id: "tengo-grupo",
+            label: "I have a group",
+            title: "Organise without chasing anyone.",
+            points: [
+              "Create the match in a few steps: name, format from 5- to 11-a-side, day and time, pitch and price per person.",
+              "Share it on WhatsApp and everyone confirms their spot. Once it's full, extra players become substitutes.",
+              "Recurring matches: save your usual game as a template and set up the next date in one tap.",
+              "History of every matchday: who played and how it went.",
+            ],
+            shots: ["jugadores/crear-partido", "jugadores/frecuentes"],
+          },
+          {
+            id: "me-faltan-jugadores",
+            label: "I'm short of players",
+            title: "Arma2 finds them for you.",
+            points: [
+              "Automatic Match: pick days, time range, formats and how far you'll travel. When enough compatible players turn up, Arma2 proposes the match and the first to confirm get in.",
+              "I want to play: open matches with free spots near you, filtered by distance.",
+              "Goalkeeper market: nearby available keepers with their rating and distance, ready to invite. If you play in goal, switch on \"Available to keep goal\".",
+            ],
+            shots: ["jugadores/partido-automatico", "jugadores/arqueros"],
+          },
+          {
+            id: "tengo-equipo",
+            label: "I have a team",
+            title: "Build your team and find an opponent.",
+            points: [
+              "Set up the squad with positions, shirt numbers and a captain, plus a team chat.",
+              "Post a challenge with day, pitch and format, or accept one from another team nearby.",
+              "Rankings by format and area: wins, draws, losses and win percentage.",
+              "Head-to-head record against every opponent.",
+            ],
+            shots: ["jugadores/equipo-desafio", "jugadores/ranking"],
+          },
+        ],
       },
     },
     common: {
