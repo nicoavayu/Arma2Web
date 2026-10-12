@@ -15,14 +15,14 @@ export function JugadoresFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/[0.07] bg-[#070711]">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-6">
+    <footer className="border-t border-white/[0.07] bg-[#05040d]">
+      <div className="grid gap-10 px-[clamp(20px,6vw,104px)] py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link href="/" className="inline-flex items-center">
             <Image src={BRAND.logoArma2.src} alt="Arma2" width={BRAND.logoArma2.width} height={BRAND.logoArma2.height} className="h-10 w-auto" />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{t.footer.description}</p>
-          <StoreButtons className="mt-6" />
+          <StoreButtons tone="glass" className="mt-6" />
         </div>
 
         <div>
@@ -50,7 +50,7 @@ export function JugadoresFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1200px] border-t border-white/[0.07] px-4 py-6 text-xs text-white/55 md:px-6">
+      <div className="border-t border-white/[0.07] px-[clamp(20px,6vw,104px)] py-6 text-xs text-white/55">
         © {year} Arma2. {t.footer.rights}
       </div>
     </footer>

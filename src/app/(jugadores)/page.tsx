@@ -1,4 +1,5 @@
 import { JugadoresStory } from "@/components/jugadores/JugadoresStory";
+import { JugadoresGallery } from "@/components/jugadores/JugadoresGallery";
 import { Preguntas } from "@/components/jugadores/Preguntas";
 import { BandaTorneos } from "@/components/jugadores/BandaTorneos";
 import { Descargar } from "@/components/jugadores/Descargar";
@@ -38,6 +39,7 @@ export default function Home() {
       />
       <LocalizedMeta seo={{ es: translations.es.seo, en: translations.en.seo }} />
       <JugadoresStory />
+      <JugadoresGallery />
       <Preguntas />
       <BandaTorneos />
       <Descargar />
