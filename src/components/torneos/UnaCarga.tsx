@@ -172,7 +172,7 @@ export function UnaCarga() {
 
               <Panel title={copy.panels.plate} updated={loaded} updatedLabel={copy.updated} delay={STEP_MS * 3}>
                 <Image
-                  src="/torneos/social-studio/base/round_results--portrait--default.png"
+                  src="/torneos/social-studio/base/round_results--portrait--default.webp"
                   alt={copy.panels.plate}
                   width={1080}
                   height={1350}

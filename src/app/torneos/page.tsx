@@ -4,6 +4,10 @@ import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
 import { TorneosHero } from "@/components/torneos/TorneosHero";
 import { UnaCarga } from "@/components/torneos/UnaCarga";
+import { TorneosGestion } from "@/components/torneos/TorneosGestion";
+import { TorneosPublica } from "@/components/torneos/TorneosPublica";
+import { TorneosStudio } from "@/components/torneos/TorneosStudio";
+import { TorneosMedia } from "@/components/torneos/TorneosMedia";
 
 /**
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
@@ -35,6 +39,10 @@ export default function TorneosPage() {
       <LocalizedMeta seo={{ es: torneosContent.es.seo, en: torneosContent.en.seo }} />
       <TorneosHero />
       <UnaCarga />
+      <TorneosGestion />
+      <TorneosPublica />
+      <TorneosStudio />
+      <TorneosMedia />
       <TorneosFaq />
       <TorneosCierre />
     </main>
