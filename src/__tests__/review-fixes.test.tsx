@@ -4,7 +4,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { LanguageProvider } from "@/components/LanguageProvider";
-import { EnQueEstas } from "@/components/jugadores/EnQueEstas";
 import { UnaCarga } from "@/components/torneos/UnaCarga";
 import NotFound from "@/app/not-found";
 import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
@@ -19,16 +18,6 @@ function sourceFiles(dir: string): string[] {
     return path.endsWith(".tsx") ? [path] : [];
   });
 }
-
-describe("old #mercado-arqueros links", () => {
-  it("land on the goalkeeper-market point itself, below the sticky header and chapter nav", () => {
-    const html = render(<EnQueEstas />);
-    const match = html.match(/<li[^>]*id="mercado-arqueros"[^>]*>([\s\S]*?)<\/li>/);
-    expect(match).not.toBeNull();
-    expect(match![0]).toMatch(/scroll-mt-/);
-    expect(match![1]).toContain("Mercado de arqueros");
-  });
-});
 
 describe("not-found page", () => {
   it("is branded and links back to both sites", () => {

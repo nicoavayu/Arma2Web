@@ -31,7 +31,7 @@ const ORDER: Store[] = ["appStore", "googlePlay"];
  * Both store buttons. Rendered equal on the server (no JS, desktop, unknown
  * device); after mount the visitor's own store becomes the primary button.
  */
-export function StoreButtons({ tone = "ink", className }: { tone?: "ink" | "paper"; className?: string }) {
+export function StoreButtons({ tone = "ink", className }: { tone?: "ink" | "paper" | "glass"; className?: string }) {
   const { t } = useLanguage();
   const [primary, setPrimary] = React.useState<Store | null>(null);
 
@@ -55,7 +55,9 @@ export function StoreButtons({ tone = "ink", className }: { tone?: "ink" | "pape
             rel="noopener noreferrer"
             className={cn(
               "inline-flex min-h-12 items-center gap-2.5 rounded-xl border px-4 py-2 transition-colors duration-200",
-              tone === "ink"
+              tone === "glass"
+                ? "min-h-14 border-white/25 bg-[#0a081a]/55 px-5 text-white backdrop-blur-md hover:-translate-y-0.5 hover:border-white/45 hover:bg-white/10"
+                : tone === "ink"
                 ? emphasized
                   ? "border-white bg-white text-[#070711] hover:bg-white/90"
                   : "border-white/20 text-white hover:border-white/50"

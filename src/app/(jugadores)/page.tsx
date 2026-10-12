@@ -1,7 +1,4 @@
-import { Hero } from "@/components/jugadores/Hero";
-import { ComoSeArman } from "@/components/jugadores/ComoSeArman";
-import { EnQueEstas } from "@/components/jugadores/EnQueEstas";
-import { DespuesDelPartido } from "@/components/jugadores/DespuesDelPartido";
+import { JugadoresStory } from "@/components/jugadores/JugadoresStory";
 import { Preguntas } from "@/components/jugadores/Preguntas";
 import { BandaTorneos } from "@/components/jugadores/BandaTorneos";
 import { Descargar } from "@/components/jugadores/Descargar";
@@ -33,17 +30,14 @@ const appJsonLd = {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-clip">
+    <main className="relative min-h-screen overflow-x-clip bg-[#05040d]">
       <script
         type="application/ld+json"
         // Static, locally-built objects — no user or remote input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, appJsonLd]) }}
       />
       <LocalizedMeta seo={{ es: translations.es.seo, en: translations.en.seo }} />
-      <Hero />
-      <ComoSeArman />
-      <EnQueEstas />
-      <DespuesDelPartido />
+      <JugadoresStory />
       <Preguntas />
       <BandaTorneos />
       <Descargar />
