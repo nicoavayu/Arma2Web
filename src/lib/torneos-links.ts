@@ -14,7 +14,7 @@
  */
 
 /** Anchor used by the hero's secondary CTA ("Ver cómo funciona"). */
-export const TORNEOS_HOW_ANCHOR = "#torneos-gestion";
+export const TORNEOS_HOW_ANCHOR = "#torneos-como-funciona";
 
 /** Verified canonical entry point of the authenticated Torneos web product. */
 const CANONICAL_TORNEOS_APP_URL = "https://app.arma2.com.ar/torneos";

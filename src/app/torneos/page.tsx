@@ -2,6 +2,7 @@ import { torneosContent } from "@/lib/torneos-content";
 import { LocalizedMeta } from "@/components/shared/LocalizedMeta";
 import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
+import { TorneosHero } from "@/components/torneos/TorneosHero";
 
 /**
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
@@ -31,6 +32,7 @@ export default function TorneosPage() {
       />
 
       <LocalizedMeta seo={{ es: torneosContent.es.seo, en: torneosContent.en.seo }} />
+      <TorneosHero />
       <TorneosFaq />
       <TorneosCierre />
     </main>
