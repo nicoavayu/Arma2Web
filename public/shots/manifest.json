@@ -1,0 +1,190 @@
+{
+  "product": {
+    "repo": "nicoavayu/Armado_Equipos",
+    "sha": "2c1c07160e3af1bb846d40c7aee2febea6a35b81"
+  },
+  "capturedAt": "2026-10-12",
+  "note": "Real product screens captured in an isolated local environment with fictional demo data. Regenerate with scripts/optimize-shots.mjs.",
+  "shots": {
+    "jugadores/votacion": {
+      "file": "jugadores/votacion.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/votar-equipos",
+      "alt": {
+        "es": "Pantalla de votación de Arma2: jugador 1 de 9, Santi, con una escala del 1 al 10 y la opción No lo conozco.",
+        "en": "Arma2 voting screen: player 1 of 9, Santi, with a 1-to-10 scale and an I don't know him option."
+      }
+    },
+    "jugadores/equipos": {
+      "file": "jugadores/equipos.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/admin/:partidoId?view=armar-equipos",
+      "alt": {
+        "es": "Equipos armados por Arma2: Equipo A con 25.6 puntos y Equipo B con 25.7, diferencia 0.1, marcado como muy parejo, con un arquero fijo en cada equipo.",
+        "en": "Teams built by Arma2: Team A with 25.6 points and Team B with 25.7, a 0.1 difference marked as very even, with a fixed goalkeeper on each side."
+      }
+    },
+    "jugadores/crear-partido": {
+      "file": "jugadores/crear-partido.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/nuevo-partido",
+      "alt": {
+        "es": "Creación de un partido en Arma2: elección del formato, de F5 a F11, y del tipo de partido masculino, femenino o mixto.",
+        "en": "Creating a match in Arma2: choosing the format, from 5-a-side to 11-a-side, and whether it is men's, women's or mixed."
+      }
+    },
+    "jugadores/frecuentes": {
+      "file": "jugadores/frecuentes.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/frecuentes",
+      "alt": {
+        "es": "Partidos frecuentes guardados en Arma2, como Fútbol de los jueves, con formato, precio, cancha y botones para crear la próxima fecha o ver el historial.",
+        "en": "Saved recurring matches in Arma2, such as Thursday football, with format, price, pitch and buttons to create the next date or see its history."
+      }
+    },
+    "jugadores/partido-automatico": {
+      "file": "jugadores/partido-automatico.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/quiero-jugar?auto=1",
+      "alt": {
+        "es": "Configuración de Partido automático: días de la semana, rango horario de 20 a 23, formatos F5 y F7 y distancia máxima de 8 km.",
+        "en": "Automatic Match setup: days of the week, an 8 to 11 pm time range, 5- and 7-a-side formats and a maximum distance of 8 km."
+      }
+    },
+    "jugadores/arqueros": {
+      "file": "jugadores/arqueros.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/quiero-jugar",
+      "alt": {
+        "es": "Pestaña Arqueros de Quiero jugar: cuatro arqueros disponibles cerca, con su puntaje, posiciones y distancia.",
+        "en": "Goalkeepers tab in I want to play: four nearby available goalkeepers with their rating, positions and distance."
+      }
+    },
+    "jugadores/equipo-desafio": {
+      "file": "jugadores/equipo-desafio.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/desafios",
+      "alt": {
+        "es": "Desafío público de Los Galácticos buscando rival: F7, nivel intermedio, sábado a las 20 en Club Atlético Palermo, con botón para aceptar.",
+        "en": "Public challenge from Los Galácticos looking for an opponent: 7-a-side, intermediate level, Saturday at 8 pm at Club Atlético Palermo, with an accept button."
+      }
+    },
+    "jugadores/ranking": {
+      "file": "jugadores/ranking.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/desafios",
+      "alt": {
+        "es": "Ranking de equipos de Arma2 en F7: partidos ganados, empatados y perdidos y porcentaje de victorias de cuatro equipos de Palermo.",
+        "en": "Arma2 7-a-side team ranking: wins, draws, losses and win percentage for four teams from Palermo."
+      }
+    },
+    "jugadores/encuesta-figura": {
+      "file": "jugadores/encuesta-figura.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/encuesta/:partidoId",
+      "alt": {
+        "es": "Encuesta pospartido, paso 3 de 7: ¿quién fue el mejor jugador?, con Juani elegido entre los diez jugadores.",
+        "en": "Post-match survey, step 3 of 7: who was the best player?, with Juani picked among the ten players."
+      }
+    },
+    "jugadores/perfil": {
+      "file": "jugadores/perfil.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/profile",
+      "alt": {
+        "es": "Carta de jugador de Nico: puntaje 4.4, delantero y mediocampista, pie derecho, 32 partidos jugados y 4 premios.",
+        "en": "Nico's player card: 4.4 rating, forward and midfielder, right-footed, 32 matches played and 4 awards."
+      }
+    },
+    "jugadores/estadisticas": {
+      "file": "jugadores/estadisticas.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/stats",
+      "alt": {
+        "es": "Estadísticas del año: 32 partidos, 26 amistosos, 6 de torneo y 1 lesión, con el estado físico actual.",
+        "en": "Yearly stats: 32 matches, 26 friendlies, 6 tournament games and 1 injury, with current fitness status."
+      }
+    },
+    "torneos/fixture": {
+      "file": "torneos/fixture.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/organizacion/:org/torneo/:torneo/fixture/jornadas",
+      "alt": {
+        "es": "Fixture de Copa Primavera 2026 en el gestor de Arma2 Torneos: fechas 1 a 3 con sus cruces y el estado de cada partido.",
+        "en": "Copa Primavera 2026 fixtures in the Arma2 Torneos manager: rounds 1 to 3 with their matchups and each match's status."
+      }
+    },
+    "torneos/resultado": {
+      "file": "torneos/resultado.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/organizacion/:org/torneo/:torneo/partidos/:partido",
+      "alt": {
+        "es": "Partido 23 en el gestor: Estrella del Sur 3, Villa Real 1912 0, resultado oficial, con fecha, sede, cancha y pestañas de convocatorias, acta e historial.",
+        "en": "Match 23 in the manager: Estrella del Sur 3, Villa Real 1912 0, official result, with date, venue, pitch and squad, match report and history tabs."
+      }
+    },
+    "torneos/tabla": {
+      "file": "torneos/tabla.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/organizacion/:org/torneo/:torneo/competencia/tabla",
+      "alt": {
+        "es": "Tabla de posiciones oficial de Copa Primavera 2026 con los ocho equipos, partidos jugados, goles y puntos.",
+        "en": "Official Copa Primavera 2026 standings with the eight teams, matches played, goals and points."
+      }
+    },
+    "torneos/disciplina": {
+      "file": "torneos/disciplina.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/organizacion/:org/torneo/:torneo/competencia/disciplina",
+      "alt": {
+        "es": "Disciplina del torneo: una suspensión cumplida por acumulación de amarillas y una roja directa con 2 fechas, activa.",
+        "en": "Tournament discipline: a served suspension for accumulated yellow cards and an active two-match ban for a straight red."
+      }
+    },
+    "torneos/publica-desktop": {
+      "file": "torneos/publica-desktop.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/publico/:slug",
+      "alt": {
+        "es": "Página pública de Copa Primavera 2026 en la compu: temporada, categoría, partidos oficiales y últimos resultados.",
+        "en": "Copa Primavera 2026 public page on desktop: season, category, official matches and latest results."
+      }
+    },
+    "torneos/publica-mobile": {
+      "file": "torneos/publica-mobile.webp",
+      "width": 780,
+      "height": 1688,
+      "route": "/torneos/publico/:slug",
+      "alt": {
+        "es": "Página pública de Copa Primavera 2026 en el celular, sin cuenta ni instalación.",
+        "en": "Copa Primavera 2026 public page on a phone, with no account or install needed."
+      }
+    },
+    "torneos/social-studio": {
+      "file": "torneos/social-studio.webp",
+      "width": 2880,
+      "height": 1800,
+      "route": "/torneos/organizacion/:org/estudio-social",
+      "alt": {
+        "es": "Estudio Social: placa de Tabla de posiciones generada con los datos oficiales, formatos 4:5 y 9:16 y estilos Base, Heritage, Street, Scoreboard y Editorial.",
+        "en": "Social Studio: a standings post generated from official data, 4:5 and 9:16 formats and Base, Heritage, Street, Scoreboard and Editorial styles."
+      }
+    }
+  }
+}
