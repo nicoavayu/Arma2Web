@@ -1,4 +1,5 @@
 import { Hero } from "@/components/jugadores/Hero";
+import { ComoSeArman } from "@/components/jugadores/ComoSeArman";
 import { AutoMatch } from "@/components/AutoMatch";
 import { Arqueros } from "@/components/Arqueros";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main className="premium-page-bg min-h-screen relative overflow-x-hidden">
       <Hero />
+      <ComoSeArman />
       <HowItWorks />
       <AutoMatch />
       <Arqueros />
