@@ -28,8 +28,8 @@ export function JugadoresFooter() {
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{t.footer.productTitle}</h2>
           <ul className="mt-4 space-y-3">
-            <li><Link href="/#como-se-arman" className={linkClass}>{t.footer.links.balance}</Link></li>
-            <li><Link href="/#en-que-estas" className={linkClass}>{t.footer.links.chapters}</Link></li>
+            <li><Link href="/#como-se-arman" className={linkClass}>{t.footer.links.howItWorks}</Link></li>
+            <li><Link href="/#funciones" className={linkClass}>{t.footer.links.features}</Link></li>
             <li><Link href="/#preguntas" className={linkClass}>{t.footer.links.faq}</Link></li>
           </ul>
         </div>
