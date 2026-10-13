@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "qr": "node scripts/generate-download-qr.mjs",
+    "brand:assets": "node scripts/brand-assets.mjs",
+    "check:visual": "node scripts/visual-check.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -25,7 +29,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "playwright-core": "^1.58.2",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.11"
   }
 }

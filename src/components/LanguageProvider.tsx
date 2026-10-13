@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
 import {
   DEFAULT_LOCALE,
   LOCALE_STORAGE_KEY,
@@ -19,15 +18,7 @@ interface LanguageContextValue {
 
 const LanguageContext = React.createContext<LanguageContextValue | null>(null);
 
-function updateMeta(selector: string, content: string) {
-  const meta = document.querySelector(selector);
-  if (meta) {
-    meta.setAttribute("content", content);
-  }
-}
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
   const [locale, setLocale] = React.useState<Locale>(DEFAULT_LOCALE);
 
   React.useEffect(() => {
@@ -41,20 +32,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
     document.documentElement.lang = locale;
   }, [locale]);
-
-  React.useEffect(() => {
-    if (pathname !== "/") {
-      return;
-    }
-
-    const { title, description } = translations[locale].seo;
-    document.title = title;
-    updateMeta('meta[name="description"]', description);
-    updateMeta('meta[property="og:title"]', title);
-    updateMeta('meta[property="og:description"]', description);
-    updateMeta('meta[name="twitter:title"]', title);
-    updateMeta('meta[name="twitter:description"]', description);
-  }, [locale, pathname]);
 
   return (
     <LanguageContext.Provider
