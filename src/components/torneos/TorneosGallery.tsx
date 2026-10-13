@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Bell } from "lucide-react";
 
 import { HorizontalGallery, type HorizontalGalleryProps } from "@/components/cinematic/HorizontalGallery";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -9,7 +8,7 @@ import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
 import type { Locale } from "@/lib/i18n";
 import type { TorneosContent } from "@/lib/torneos-content";
-import { EJEMPLO_FIXTURE, formatKickoff } from "@/lib/torneos-ejemplo";
+import { EJEMPLO_FIXTURE, formatKickoff } from "@/lib/torneos-ejemplo-calendar";
 import { cn } from "@/lib/utils";
 
 import { TEAM_NAMES } from "./screens/teams";
@@ -77,10 +76,7 @@ function Illustration({ id, content, locale }: { id: string; content: TorneosCon
       return (
         <div className={g.art} style={style}>
           <div className={g.list}>
-            <span className={g.inbox}>
-              <Bell size={14} />
-              {art.reschedule.inbox}
-            </span>
+            <span className={g.inbox}>{art.reschedule.inbox}</span>
             <div className={cn(g.row, g.notice)}>
               <span>
                 <b>{art.reschedule.title}</b>
