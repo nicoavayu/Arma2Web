@@ -9,6 +9,7 @@ import { torneosContent } from "@/lib/torneos-content";
  * Torneos portal, served at torneos.arma2.com.ar (see `src/proxy.ts`).
  * Metadata is emitted in the default locale (es), like the players site.
  * The Open Graph image comes from `opengraph-image.tsx` next to this file.
+ * Outside the home, the nav and footer point their section links back to it.
  */
 const seo = torneosContent.es.seo;
 

@@ -29,6 +29,9 @@ export const TORNEOS_APP_URL =
 /** Existing contact route used only by the secondary "Hablar con nosotros" CTA. */
 export const TORNEOS_CONTACT_HREF = "/contact";
 
+/** Where organisers can write for help (the same address as the contact page). */
+export const TORNEOS_CONTACT_EMAIL = "arma2app@gmail.com";
+
 export interface CtaTarget {
   href: string;
   /** True when the href leaves this site and needs target/rel. */

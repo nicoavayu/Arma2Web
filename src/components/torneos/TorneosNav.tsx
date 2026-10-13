@@ -2,29 +2,37 @@
 
 import React from "react";
 import Image from "next/image";
+import { useSelectedLayoutSegment } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
-import { useHomeStoryProgress } from "@/components/cinematic/useHomeStoryProgress";
-import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { cn } from "@/lib/utils";
+import { getSiteUrl } from "@/lib/site-urls";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 
 export function TorneosLogo({ className = "h-5 w-auto" }: { className?: string }) {
   return <Image src="/torneos/logo-torneos.png" alt="Arma2 Torneos" width={311} height={36} className={`${className} object-contain`} priority />;
 }
 
-export function TorneosNav() {
+/**
+ * Prefix for the home's section links: empty on the home, the home URL on other
+ * Torneos pages (e.g. /ejemplo), read from the route under the Torneos layout.
+ */
+export function useTorneosHomeHref(override?: string): string {
+  const segment = useSelectedLayoutSegment();
+  return override ?? (segment === null ? "" : getSiteUrl("torneos", "/"));
+}
+
+export function TorneosNav({ homeHref: override }: { homeHref?: string }) {
+  const homeHref = useTorneosHomeHref(override);
   const copy = useTorneosContent().nav;
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const enter = getCreateTournamentTarget();
-  // Transparent over the hero photo, glass once the story starts (or after scrolling on other pages).
-  const storyProgress = useHomeStoryProgress("torneos-como-funciona");
-  const story = useStaticStory() ? null : storyProgress;
-  const solid = open || (story === null ? scrolled : story > 0.14);
+  // Transparent over the hero photo, glass once the page scrolls.
+  const solid = open || scrolled;
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -49,13 +57,13 @@ export function TorneosNav() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="flex h-16 w-full items-center justify-between gap-4 px-[clamp(16px,4vw,56px)] md:h-[4.5rem]">
-        <a href="#torneos-hero" aria-label={copy.home} className="flex shrink-0 items-center">
+        <a href={`${homeHref}#torneos-hero`} aria-label={copy.home} className="flex shrink-0 items-center">
           <TorneosLogo className="h-[18px] w-auto md:h-5" />
         </a>
 
         <nav aria-label="Arma2 Torneos" className="hidden items-center gap-6 xl:flex">
           {copy.links.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-medium text-white/70 transition-colors hover:text-white">
+            <a key={link.href} href={`${homeHref}${link.href}`} className="text-sm font-medium text-white/70 transition-colors hover:text-white">
               {link.label}
             </a>
           ))}
@@ -93,7 +101,7 @@ export function TorneosNav() {
         <div id="torneos-menu" className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/[0.08] bg-[#070711] px-4 pb-8 xl:hidden">
           <nav aria-label="Arma2 Torneos" className="flex flex-col">
             {copy.links.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="border-b border-white/[0.08] py-4 text-xl font-bold tracking-tight text-white">
+              <a key={link.href} href={`${homeHref}${link.href}`} onClick={() => setOpen(false)} className="border-b border-white/[0.08] py-4 text-xl font-bold tracking-tight text-white">
                 {link.label}
               </a>
             ))}

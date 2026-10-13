@@ -7,15 +7,9 @@ import { cn } from "@/lib/utils";
 export function LanguageToggle({ tone = "ink" }: { tone?: "ink" | "paper" }) {
   const { locale, setLocale, t } = useLanguage();
 
+  // Subtle on purpose: plain letters, the active one on a soft violet chip; the hit area stays 44px tall.
   return (
-    <div
-      role="group"
-      aria-label={t.nav.languageLabel}
-      className={cn(
-        "inline-flex items-center rounded-full border p-0.5",
-        tone === "ink" ? "border-white/15" : "border-[#070711]/20",
-      )}
-    >
+    <div role="group" aria-label={t.nav.languageLabel} className="inline-flex items-center">
       {(["es", "en"] as const).map((value) => {
         const active = locale === value;
         return (
@@ -24,18 +18,22 @@ export function LanguageToggle({ tone = "ink" }: { tone?: "ink" | "paper" }) {
             type="button"
             onClick={() => setLocale(value)}
             aria-pressed={active}
-            className={cn(
-              "min-h-11 min-w-[2.4rem] rounded-full px-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
-              active
-                ? tone === "ink"
-                  ? "bg-[#27b8ff] text-[#070711]"
-                  : "bg-[#070711] text-white"
-                : tone === "ink"
-                  ? "text-white/65 hover:text-white"
-                  : "text-[#070711]/60 hover:text-[#070711]",
-            )}
+            className="group inline-flex min-h-11 min-w-9 items-center justify-center text-[11px] font-semibold uppercase tracking-[0.12em]"
           >
-            {value}
+            <span
+              className={cn(
+                "rounded-md px-1.5 py-1 transition-colors",
+                active
+                  ? tone === "ink"
+                    ? "bg-[#7b5cff]/30 text-white"
+                    : "bg-[#070711] text-white"
+                  : tone === "ink"
+                    ? "text-white/55 group-hover:text-white"
+                    : "text-[#070711]/55 group-hover:text-[#070711]",
+              )}
+            >
+              {value}
+            </span>
           </button>
         );
       })}

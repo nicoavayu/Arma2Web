@@ -9,17 +9,22 @@
  * Checks (plan Review Focus):
  *  1. Short/wide viewports: the hero device is fully on screen and doesn't
  *     overlap the h1 or the hero CTAs.
- *  2. English copy doesn't overflow the captions or the hero copy.
- *  3. Deep links (#mercado-arqueros, #faq, #torneos-planes) land on their
- *     target, and a reload mid-story shows that chapter's caption.
+ *  2. English copy doesn't overflow the step text or the hero copy.
+ *  3. Deep links (#como-funciona, step anchors, #mercado-arqueros, #faq,
+ *     #torneos-planes) land on their target, below the nav.
  *  4. Rotating a phone keeps the hero device on screen.
- *  5. Without JavaScript the h1 and the hero device are visible.
- *  Plus, per chapter (ES and EN, portrait and landscape phones, laptops): the
- *  caption never covers the device, the device stays on screen, posters are
- *  not clipped; awards show after a reload in chapter 4; the nav mark shows
- *  with reduced motion; galleries land pinned from their links; the hero mark
- *  doesn't jump at hydration; tablet store buttons are centered; the Torneos
- *  band doesn't move with reduced motion.
+ *  5. Without JavaScript the hero, every step (in its final state) and every
+ *     feature card are there.
+ *  Plus (ES and EN, portrait and landscape phones, laptops): every step's text
+ *  is visible at load, its illustration plays to the end on arrival, no phone
+ *  or laptop leaves the screen; nothing is pinned or sticky; the nav mark and
+ *  the final states show with reduced motion; the feature grids keep every
+ *  card within the page; the hero mark doesn't jump at hydration; tablet store
+ *  buttons are centered; the Torneos band doesn't move.
+ *  6. Phones: no stretch of a screen or more without new text (measured with
+ *     the viewport the page actually got, not just the one requested).
+ *  7. Example tournament (/torneos/ejemplo): no sideways scroll, the made-up
+ *     data label stays on screen, sections are reachable, nothing to submit.
  */
 import { readdirSync } from "node:fs";
 import { homedir } from "node:os";
@@ -50,6 +55,7 @@ const VIEWPORTS = [
   [1920, 1080],
   [390, 844],
   [375, 667],
+  [320, 568],
   [844, 390],
   [667, 375],
 ];
@@ -106,12 +112,12 @@ try {
       await page.goto(base + path, { waitUntil: "networkidle" });
       await settle(page);
       const overflow = await page.evaluate(() =>
-        [...document.querySelectorAll("[data-caption], [data-caption] *, [data-hero-copy], [data-hero-copy] h1, [data-hero-copy] p")]
+        [...document.querySelectorAll("[data-step] h3, [data-step] p, [data-hero-copy], [data-hero-copy] h1, [data-hero-copy] p")]
           .filter((el) => el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).overflowX !== "visible")
           .map((el) => el.textContent.slice(0, 40)),
       );
       const wide = await page.evaluate(() =>
-        [...document.querySelectorAll("[data-caption], [data-hero-copy]")].filter((el) => el.getBoundingClientRect().right > window.innerWidth + 1).length,
+        [...document.querySelectorAll("[data-step] h3, [data-step] p, [data-hero-copy]")].filter((el) => el.getBoundingClientRect().right > window.innerWidth + 1).length,
       );
       const english = await page.evaluate(() => document.documentElement.innerText.includes("Organise") || document.documentElement.innerText.includes("The whole tournament"));
       check(english && overflow.length === 0 && wide === 0, `${path} ${width}×${height} EN: no overflowing copy${overflow.length ? ` (${overflow.join(" | ")})` : ""}`);
@@ -120,69 +126,71 @@ try {
   }
 
 
-  // Per chapter: caption vs device, device on screen, posters inside the viewport.
+  // Steps: text readable at load, illustrations end in their final state on arrival, nothing off screen.
+  // [block to scroll to, block that holds the illustration, final-state marker per locale]
+  const FINAL = {
+    "/": ["#capitulo-convocas", "#capitulo-convocas", { es: "10/10", en: "10/10" }],
+    "/torneos": ["#capitulo-cargas", "#torneos-como-funciona", { es: "Resultado guardado", en: "Result saved" }],
+  };
   for (const path of PAGES) {
-    for (const [width, height] of [[1440, 900], [1280, 720], [1024, 768], [390, 844], [375, 667], [844, 390]]) {
+    for (const [width, height] of [[1440, 900], [1280, 720], [1024, 768], [390, 844], [375, 667], [320, 568], [844, 390]]) {
       for (const locale of ["es", "en"]) {
         const page = await browser.newPage({ viewport: { width, height } });
         await page.addInitScript((value) => localStorage.setItem("arma2-locale", value), locale);
         await page.goto(base + path, { waitUntil: "networkidle" });
         await settle(page);
-        const targets = await page.evaluate(() => {
-          const scene = document.querySelector('[data-scene="pinned"]').parentElement;
-          const range = scene.offsetHeight - window.innerHeight;
-          const anchors = [...scene.querySelectorAll(':scope > [id^="capitulo-"]')];
-          // Mid-chapter for the first three; the very end for the last one (final positions).
-          return anchors.map((anchor, i) => scene.offsetTop + anchor.offsetTop + range * (i === anchors.length - 1 ? 0.18 : 0.06));
-        });
-        for (const [index, top] of targets.entries()) {
-          await page.evaluate((y) => window.scrollTo(0, y), top);
-          await settle(page, 500);
-          const state = await page.evaluate(() => {
-            const rect = (el) => {
-              const r = el.getBoundingClientRect();
-              return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height };
-            };
-            const captions = [...document.querySelectorAll("[data-caption]")];
-            const caption = captions.reduce((best, el) => (Number(getComputedStyle(el).opacity) > Number(getComputedStyle(best).opacity) ? el : best));
-            const device = document.querySelector("[data-story-device]");
-            const posters = [...document.querySelectorAll("[data-poster]")].filter((el) => Number(getComputedStyle(el).opacity) > 0.5).map(rect);
-            return { caption: rect(caption), device: rect(device), posters, vw: window.innerWidth, vh: window.innerHeight };
-          });
-          const label = `${path} ${width}×${height} ${locale.toUpperCase()} chapter ${index + 1}`;
-          const overlap = state.caption && state.device
-            ? Math.max(0, Math.min(state.caption.bottom, state.device.bottom) - Math.max(state.caption.top, state.device.top)) *
-              (Math.min(state.caption.right, state.device.right) > Math.max(state.caption.left, state.device.left) ? 1 : 0)
-            : 0;
-          check(overlap <= 4, `${label}: caption clear of the device (overlap ${Math.round(overlap)}px)`);
-          check(state.device.top >= -2 && state.device.bottom <= state.vh + 2 && state.device.height >= 100, `${label}: device on screen`);
-          check(state.posters.every((r) => r.left >= -2 && r.right <= state.vw + 2), `${label}: posters not clipped`);
-        }
+        const label = `${path} ${width}×${height} ${locale.toUpperCase()}`;
+        const text = await page.evaluate(() =>
+          [...document.querySelectorAll("[data-step] h3, [data-step] p")].every((el) => {
+            let node = el;
+            while (node) {
+              const cs = getComputedStyle(node);
+              if (Number(cs.opacity) < 0.99 || cs.visibility === "hidden") return false;
+              node = node.parentElement;
+            }
+            return true;
+          }),
+        );
+        check(text, `${label}: every step's text is visible at load`);
+        const [anchor, holder, markers] = FINAL[path];
+        await page.evaluate((sel) => document.querySelector(sel).scrollIntoView({ block: "center" }), anchor);
+        await settle(page, 4800);
+        const state = await page.evaluate(([sel, marker]) => {
+          const block = document.querySelector(sel);
+          const devices = [...document.querySelectorAll("[data-step], [class*='pair']")]
+            .flatMap((el) => [...el.querySelectorAll("[aria-hidden='true'] > [class*='phone'], [aria-hidden='true'] [class*='laptop']")])
+            .map((el) => el.getBoundingClientRect())
+            .filter((r) => r.width > 0);
+          return {
+            final: block.innerText.includes(marker),
+            sideways: document.documentElement.scrollWidth > window.innerWidth,
+            offscreen: devices.filter((r) => r.left < -2 || r.right > window.innerWidth + 2).length,
+          };
+        }, [holder, markers[locale]]);
+        check(state.final, `${label}: the first step plays to its final state on arrival`);
+        check(!state.sideways && state.offscreen === 0, `${label}: no sideways scroll, every phone and laptop on screen (${state.offscreen} off)`);
         await page.close();
       }
     }
   }
 
-  // Awards after a reload in chapter 4 (players).
-  {
+  // No scroll-driven scenes: nothing pinned or sticky on the homes.
+  for (const path of PAGES) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await page.goto(base + "/", { waitUntil: "networkidle" });
-    const y = await page.evaluate(() => {
-      const scene = document.querySelector('[data-scene="pinned"]').parentElement;
-      return scene.offsetTop + document.getElementById("capitulo-se-juega").offsetTop + (scene.offsetHeight - window.innerHeight) * 0.12;
-    });
-    await page.evaluate((top) => window.scrollTo(0, top), y);
-    await settle(page);
-    await page.reload({ waitUntil: "networkidle" });
-    await settle(page, 1500);
-    const awards = await page.evaluate(() => [...document.querySelectorAll("[data-award]")].map((el) => Number(getComputedStyle(el).opacity)));
-    check(awards.length === 3 && Math.min(...awards) > 0.5, `/: awards visible after reloading in chapter 4 (${awards.map((o) => o.toFixed(2)).join(", ")})`);
-    const device = await page.evaluate(() => Number(getComputedStyle(document.querySelector("[data-story-device]")).opacity));
-    check(device > 0.5, "/: device visible after reloading mid-story");
+    await page.goto(base + path, { waitUntil: "networkidle" });
+    const pinned = await page.evaluate(
+      // Sticky table headers that only stick sideways (plans comparison) are fine.
+      () =>
+        [...document.querySelectorAll("main *")].filter((el) => {
+          const cs = getComputedStyle(el);
+          return el.hasAttribute("data-scene") || (cs.position === "sticky" && cs.top !== "auto");
+        }).length,
+    );
+    check(pinned === 0, `${path}: scrolls normally (no pinned or sticky blocks: ${pinned})`);
     await page.close();
   }
 
-  // Reduced motion: the nav mark is the visible home link from the start; the Torneos band doesn't move.
+  // Reduced motion: final states and the nav mark from the start; the Torneos band doesn't move.
   {
     const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1440, height: 900 } });
     const page = await context.newPage();
@@ -190,6 +198,10 @@ try {
     await settle(page, 1000);
     const markOpacity = await page.evaluate(() => Number(getComputedStyle(document.querySelector('[data-brand-mark="nav"]')).opacity));
     check(markOpacity > 0.9, `/ reduced motion: nav mark visible at load (${markOpacity})`);
+    await page.evaluate(() => document.getElementById("capitulo-convocas").scrollIntoView({ block: "center" }));
+    await settle(page, 300);
+    const final = await page.evaluate(() => document.getElementById("capitulo-convocas").innerText.includes("10/10"));
+    check(final, "/ reduced motion: steps show their final state right away");
     const bandTransform = async () =>
       page.evaluate(() => getComputedStyle(document.querySelector("#torneos > div")).transform);
     await page.evaluate(() => document.getElementById("torneos").scrollIntoView());
@@ -201,17 +213,25 @@ try {
     await context.close();
   }
 
-  // Galleries land pinned from their links.
+  // Feature grids: every card visible side by side or stacked, never in a sideways scroller.
   for (const url of ["/#funciones", "/torneos#torneos-funciones"]) {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await page.goto(base + url, { waitUntil: "networkidle" });
-    await settle(page, 1200);
-    const stage = await page.evaluate((id) => {
-      const r = document.getElementById(id).querySelector('[data-scene="pinned"]').getBoundingClientRect();
-      return { top: r.top, bottom: r.bottom, vh: window.innerHeight };
-    }, url.split("#")[1]);
-    check(Math.abs(stage.top) <= 2 && Math.abs(stage.bottom - stage.vh) <= 2, `${url}: gallery lands pinned (top ${Math.round(stage.top)})`);
-    await page.close();
+    for (const [width, height] of [[1440, 900], [375, 667]]) {
+      const page = await browser.newPage({ viewport: { width, height } });
+      await page.goto(base + url, { waitUntil: "networkidle" });
+      await settle(page, 1200);
+      const grid = await page.evaluate((id) => {
+        const section = document.getElementById(id);
+        const cards = [...section.querySelectorAll("[data-card]")].map((el) => el.getBoundingClientRect());
+        const head = section.querySelector("h2").getBoundingClientRect();
+        return {
+          cards: cards.length,
+          inside: cards.every((r) => r.left >= -1 && r.right <= window.innerWidth + 1),
+          headOnScreen: head.top >= 0 && head.top < window.innerHeight,
+        };
+      }, url.split("#")[1]);
+      check(grid.cards === 6 && grid.inside && grid.headOnScreen, `${url} ${width}×${height}: lands on the title, all ${grid.cards} cards within the page width`);
+      await page.close();
+    }
   }
 
   // The hero mark doesn't jump when the page hydrates on phones.
@@ -249,10 +269,14 @@ try {
     await page.close();
   }
 
-  // 3. Deep links and reload mid-story
+  // 3. Deep links
   for (const [url, selector] of [
+    ["/#como-funciona", "#como-se-arman h2"],
+    ["/#capitulo-se-arman", "#capitulo-se-arman h3"],
     ["/#mercado-arqueros", '[data-card="mercado-arqueros"]'],
     ["/#faq", "#preguntas h2"],
+    ["/torneos#capitulo-cargas", "#capitulo-cargas h3"],
+    ["/torneos#capitulo-se-comparte", "#capitulo-se-comparte h3"],
     ["/torneos#torneos-planes", "#torneos-planes h2"],
   ]) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
@@ -262,24 +286,9 @@ try {
       const el = document.querySelector(sel);
       if (!el) return false;
       const r = el.getBoundingClientRect();
-      return r.bottom > 0 && r.top < window.innerHeight && r.right > 0 && r.left < window.innerWidth;
+      return r.top >= 60 && r.top < window.innerHeight && r.right > 0 && r.left < window.innerWidth;
     }, selector);
-    check(visible, `${url}: target on screen`);
-    await page.close();
-  }
-  for (const path of PAGES) {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await page.goto(base + path, { waitUntil: "networkidle" });
-    const y = await page.evaluate(() => {
-      const scene = document.querySelector('[data-scene="pinned"]').parentElement;
-      return scene.offsetTop + (scene.offsetHeight - window.innerHeight) * 0.47;
-    });
-    await page.evaluate((top) => window.scrollTo(0, top), y);
-    await settle(page);
-    await page.reload({ waitUntil: "networkidle" });
-    await settle(page, 1200);
-    const shown = await page.evaluate(() => Math.max(...[...document.querySelectorAll("[data-caption]")].map((el) => Number(getComputedStyle(el).opacity))));
-    check(shown > 0.5, `${path}: reload mid-story shows the current chapter`);
+    check(visible, `${url}: target on screen, below the nav`);
     await page.close();
   }
 
@@ -314,7 +323,75 @@ try {
       return opacity;
     });
     check(h1Opacity > 0.9 && r.h1 && r.h1.top >= 0 && r.h1.bottom <= r.vh && deviceOnScreen(r), `${path}: h1 and hero device visible without JS`);
+    const content = await page.evaluate((marker) => ({
+      steps: document.querySelectorAll("[data-step] h3").length,
+      final: document.body.innerText.includes(marker),
+      cards: document.querySelectorAll("[data-card]").length,
+    }), path === "/" ? "10/10" : "Resultado guardado");
+    check(content.steps === 4 && content.final && content.cards === 6, `${path}: all four steps (final state) and six feature cards without JS`);
     await context.close();
+  }
+
+  // 6. Phones: every scroll shows something new (no stretch of a screen or more without text).
+  for (const path of PAGES) {
+    for (const [width, height] of [[320, 568], [375, 667], [390, 844]]) {
+      const context = await browser.newContext({ viewport: { width, height }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+      const page = await context.newPage();
+      await page.goto(base + path, { waitUntil: "networkidle" });
+      await settle(page);
+      const m = await page.evaluate(() => {
+        const tops = [...document.querySelectorAll("main h1, main h2, main h3, main p, main li, main summary, footer p")]
+          .map((el) => el.getBoundingClientRect())
+          .filter((r) => r.height > 0)
+          .map((r) => r.top + scrollY)
+          .sort((a, b) => a - b);
+        let gap = 0;
+        for (let i = 1; i < tops.length; i++) gap = Math.max(gap, tops[i] - tops[i - 1]);
+        const total = document.documentElement.scrollHeight - innerHeight;
+        return { vw: innerWidth, vh: innerHeight, gap: Math.round((gap / innerHeight) * 100) / 100, screens: Math.round((total / innerHeight) * 10) / 10 };
+      });
+      check(m.vw === width && m.vh === height, `${path} ${width}×${height}: viewport applied (got ${m.vw}×${m.vh})`);
+      check(m.gap < 1, `${path} ${width}×${height}: longest stretch without new text ${m.gap} screens (page: ${m.screens} screens)`);
+      await context.close();
+    }
+  }
+
+  // 7. Example tournament
+  for (const [width, height] of [[320, 568], [375, 667], [1440, 900]]) {
+    for (const locale of ["es", "en"]) {
+      const context = await browser.newContext({ viewport: { width, height }, isMobile: width < 768, hasTouch: width < 768 });
+      await context.addInitScript((value) => localStorage.setItem("arma2-locale", value), locale);
+      const page = await context.newPage();
+      await page.goto(`${base}/torneos/ejemplo`, { waitUntil: "networkidle" });
+      await settle(page);
+      const label = locale === "es" ? "Datos ficticios" : "Made-up data";
+      const results = [];
+      for (const id of ["tabla", "goleadores", "fixture", "resultados"]) {
+        await page.evaluate((target) => (location.hash = target), `#${id}`);
+        await settle(page, 400);
+        results.push(
+          await page.evaluate(([target, text]) => {
+            const bar = document.querySelector(".sticky");
+            const badge = [...bar.querySelectorAll("p")].find((p) => p.textContent.trim().toLowerCase() === text.toLowerCase());
+            const badgeRect = badge?.getBoundingClientRect();
+            const title = document.getElementById(`${target}-titulo`).getBoundingClientRect();
+            return {
+              labelOnScreen: !!badgeRect && badgeRect.top >= 0 && badgeRect.right <= innerWidth && badgeRect.width > 0,
+              titleBelowBar: title.top >= bar.getBoundingClientRect().bottom - 1 && title.top < innerHeight,
+            };
+          }, [id, label]),
+        );
+      }
+      const page2 = await page.evaluate(() => ({
+        sideways: document.documentElement.scrollWidth > innerWidth,
+        forms: document.querySelectorAll("main form, main button, main input").length,
+      }));
+      check(
+        !page2.sideways && page2.forms === 0 && results.every((r) => r.labelOnScreen && r.titleBelowBar),
+        `/torneos/ejemplo ${width}×${height} ${locale.toUpperCase()}: label on screen, sections land below it, no sideways scroll, nothing to submit`,
+      );
+      await context.close();
+    }
   }
 } finally {
   await browser.close();

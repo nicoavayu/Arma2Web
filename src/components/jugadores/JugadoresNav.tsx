@@ -2,18 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { BrandMark } from "@/components/cinematic/BrandMark";
-import { useHomeStoryProgress } from "@/components/cinematic/useHomeStoryProgress";
-import { useMounted } from "@/components/cinematic/useMounted";
-import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { cn } from "@/lib/utils";
-import { easeInOutCubic, seg } from "@/lib/motion-math";
 import { pickStore, STORE_LINKS } from "@/lib/store-links";
 
 /** Download target: the visitor's store on a phone, the download section otherwise. */
@@ -32,15 +27,6 @@ export function JugadoresNav() {
   const [open, setOpen] = React.useState(false);
   const downloadHref = useDownloadHref();
   const external = downloadHref.startsWith("http");
-  const pathname = usePathname();
-  const mounted = useMounted();
-  const storyProgress = useHomeStoryProgress();
-  const staticStory = useStaticStory();
-  // On the home the big mark in the hero flies into this one; until hydration we assume the top of the story.
-  // The reduced-motion home has no big mark, so the nav shows its own from the start.
-  const story = staticStory ? null : (storyProgress ?? (pathname === "/" && !mounted ? 0 : null));
-  const markOpacity = story === null ? 1 : seg(easeInOutCubic(seg(story, 0, 0.12)), 0.9, 1);
-  const solid = story === null ? scrolled : story > 0.125;
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -62,7 +48,7 @@ export function JugadoresNav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200",
-        solid || open ? "border-white/[0.07] bg-[#08061a]/75 backdrop-blur-xl" : "border-transparent bg-transparent",
+        scrolled || open ? "border-white/[0.07] bg-[#08061a]/75 backdrop-blur-xl" : "border-transparent bg-transparent",
       )}
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
@@ -76,7 +62,6 @@ export function JugadoresNav() {
           <BrandMark
             data-brand-mark="nav"
             className="h-9 w-9 transition-transform duration-500 ease-out group-hover:rotate-90 group-hover:scale-125"
-            style={{ opacity: open ? 1 : markOpacity }}
           />
         </Link>
 
@@ -96,7 +81,7 @@ export function JugadoresNav() {
           <a
             href={downloadHref}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="inline-flex min-h-11 items-center rounded-lg bg-white px-4 text-sm font-semibold text-[#070711] transition-colors hover:bg-white/90"
+            className="inline-flex min-h-11 items-center rounded-lg border border-[#8b6dff]/40 bg-[#7b5cff]/15 px-4 text-sm font-semibold text-white transition-colors hover:bg-[#7b5cff]/30"
           >
             {t.common.download}
           </a>

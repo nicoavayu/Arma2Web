@@ -7,17 +7,23 @@ de `Arma2Web`.
 
 - Dominio propio: `torneos.arma2.com.ar`, servido por `src/proxy.ts` (ver
   `docs/dominios-y-deploy.md`). `arma2.com.ar/torneos` redirige con 308.
-- Secciones: hero con la foto del estadio y el render del gestor; historia en
-  cuatro capítulos (cargás el resultado → la tabla se ordena → la página pública
-  se actualiza → salen las placas); galería (fixture, disciplina, multimedia,
-  colaboradores, historial); planes con comparativa plegable; preguntas y cierre.
+- Secciones (2026-10-13, scroll natural): hero con la foto del estadio y el
+  render del gestor; "Cómo funciona" en cuatro pasos (cargás el resultado → la
+  tabla se ordena → la página pública se actualiza → salen las placas), cada
+  ilustración animándose sola al llegar; grilla de funciones (inscripción por
+  capitán, fixture, reprogramación, disciplina, multimedia, colaboradores);
+  planes con comparativa plegable; preguntas y cierre; torneo de ejemplo en
+  `/ejemplo`.
 - El panel, la página pública y las placas están recreados en HTML con la liga
   de ejemplo de `src/lib/torneos-demo.ts`, con el rótulo "Ejemplo con datos
   ficticios". Ya no se usan capturas ni exports de Social Studio.
-- **Pendiente con Nico:** la sesión del producto usa "Precio de lanzamiento:
-  ARS 20.000 finales por temporada" (autorización del 2026-10-12). El sitio no
-  dice "lanzamiento" porque una nota anterior pedía no usar precio de
-  lanzamiento. Hasta que Nico confirme, el sitio queda como está.
+- **Premium, próximamente (2026-10-13):** con los pagos apagados, la tarjeta
+  Premium dice "Próximamente", no tiene link de compra y muestra "Precio de
+  lanzamiento: ARS 20.000 finales por temporada" (aprobado por Nico), con la
+  explicación de la temporada al lado. Las reglas que todavía no rigen
+  (duración de la temporada, borrado de fotos, 100 fotos) están escritas en
+  futuro. Lo gobierna `COMMERCIAL.premiumAvailable` (hoy `false`), que también
+  saca la oferta Premium del JSON-LD.
 
 ## Alcance
 
@@ -44,9 +50,10 @@ variable en Vercel, el valor requerido es exactamente:
 NEXT_PUBLIC_TORNEOS_APP_URL=https://app.arma2.com.ar/torneos
 ```
 
-No es necesario cambiar Production para revisar este PR. Tanto “Empezar gratis”
-como el CTA Premium entran a Torneos; el segundo conserva el intent Premium y
-el upgrade se inicia después desde la página Plan de una temporada autenticada.
+No es necesario cambiar Production para revisar este PR. “Empezar gratis” entra
+a Torneos. Mientras `COMMERCIAL.premiumAvailable` sea `false`, Premium no tiene
+CTA; cuando se habiliten los pagos, el CTA vuelve a entrar con el intent Premium
+y el upgrade se inicia desde la página Plan de una temporada autenticada.
 
 Flujo comercial:
 
@@ -67,16 +74,17 @@ apagados**. Los números viven en una sola constante, `COMMERCIAL`
 `faq` y el JSON-LD (`src/lib/torneos-jsonld.ts`). Un test (`src/__tests__/review-fixes.test.tsx`)
 falla si el copy y la constante se desalinean.
 
-| | FREE | Premium |
+| | FREE (disponible hoy) | Premium (próximamente) |
 | --- | --- | --- |
-| Precio | $0 | ARS 20.000 finales, pago único por temporada |
-| Duración de la temporada | hasta 6 meses | hasta 6 meses |
+| Precio | $0 | precio de lanzamiento: ARS 20.000 finales por temporada, pago único, sin renovación automática |
 | Fotos | hasta 25 por temporada | hasta 100 por temporada |
-| Fotos al terminar | se eliminan, con aviso y descarga previa | ídem |
-| Colaboradores | owner + 1 | owner + 10 |
-| Social Studio | 3 familias Base con firma Arma2 | 11 familias, 5 estilos, white-label |
+| Colaboradores | organizador + 1 | organizador + 10 |
+| Social Studio | 3 familias Base con firma Arma2 | 11 familias, 5 estilos, placas sin marca Arma2 |
 
-Cada temporada nueva vuelve a comenzar en FREE.
+Reglas futuras (rama comercial del producto, todavía no publicadas), escritas en
+futuro en el sitio: la temporada dura hasta 6 meses desde su activación, pasar a
+Premium a mitad de temporada no cambia la fecha de cierre, y al cerrar la
+temporada las fotos se eliminan con aviso previo y opción de descarga.
 
 **Antes de publicar:** confirmar estos textos contra el PR de integración. Si
 algo difiere, gana lo implementado: se cambia `COMMERCIAL` y, si cambia una
@@ -116,7 +124,7 @@ exportación white-label en Premium; ya no aplica el recorte "Street y Editorial
 sólo para Resultados".
 
 - Placas de la landing: desde el rediseño cinemático se recrean en HTML
-  (Resultado y Goleadores, esta última marcada Premium) con la liga de ejemplo.
+  (Resultado y Tabla de posiciones, las dos FREE) con la liga de ejemplo.
   Los estilos premium se comunican como texto en los planes.
 - Mejora visual opcional (no bloqueante): exports reales de Heritage, Street,
   Scoreboard y Editorial (portrait 4:5, mismo fixture QA). Es una mejora visual
@@ -169,7 +177,8 @@ El portal tiene metadata propia en `src/app/torneos/layout.tsx`: title,
 description, keywords, canonical `https://torneos.arma2.com.ar`, Open Graph
 (imagen generada en `opengraph-image.tsx`) y Twitter Card. Tiene además
 `sitemap.xml` y `robots.txt` propios en su host, y JSON-LD `FAQPage` +
-`SoftwareApplication` con las ofertas FREE y Premium. El contenido visible
+`SoftwareApplication` con la oferta FREE (la de Premium se suma cuando
+`COMMERCIAL.premiumAvailable` pase a `true`). El contenido visible
 responde al toggle ES/EN, y `LocalizedMeta` actualiza el título por idioma.
 
 El metadata del servidor se publica en español. Una metadata inglesa indexable

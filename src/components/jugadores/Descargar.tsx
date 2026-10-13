@@ -10,7 +10,7 @@ export function Descargar() {
   const copy = t.home.download;
 
   return (
-    <section id="descargar" className="relative overflow-hidden bg-[#05040d] px-5 py-[clamp(110px,18vh,190px)] text-center">
+    <section id="descargar" className="relative overflow-hidden bg-[#05040d] px-5 py-20 text-center md:py-[clamp(110px,18vh,190px)]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_60%,rgba(123,92,255,0.45),transparent_70%),radial-gradient(30%_40%_at_25%_40%,rgba(39,184,255,0.25),transparent_70%),radial-gradient(30%_40%_at_78%_40%,rgba(236,77,255,0.25),transparent_70%)]"

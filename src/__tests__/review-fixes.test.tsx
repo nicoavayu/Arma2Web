@@ -37,8 +37,8 @@ describe("commercial model single source (spec §6.1)", () => {
   const price = (locale: "es" | "en") =>
     new Intl.NumberFormat(locale === "es" ? "es-AR" : "en-US").format(COMMERCIAL.premiumPriceArs);
 
-  it("feeds the JSON-LD Premium offer", () => {
-    const offers = torneosJsonLd().app.offers;
+  it("feeds the JSON-LD Premium offer once Premium can be bought", () => {
+    const offers = torneosJsonLd({ premiumAvailable: true }).app.offers;
     expect(offers.find((offer) => offer.name === "Premium")?.price).toBe(String(COMMERCIAL.premiumPriceArs));
   });
 
@@ -50,15 +50,9 @@ describe("commercial model single source (spec §6.1)", () => {
     expect(faq).toContain(String(COMMERCIAL.seasonMonths));
     expect(faq).toContain(String(COMMERCIAL.photosFree));
     expect(faq).toContain(String(COMMERCIAL.photosPremium));
-    expect(copy.plans.renewal).toContain(String(COMMERCIAL.seasonMonths));
+    expect(copy.plans.premium.season.join(" ")).toContain(String(COMMERCIAL.seasonMonths));
     expect(copy.plans.free.features.join(" ")).toContain(String(COMMERCIAL.photosFree));
     expect(copy.plans.premium.features.join(" ")).toContain(String(COMMERCIAL.photosPremium));
-  });
-});
-
-describe("Social Studio poster labels", () => {
-  it.each(["es", "en"] as const)("mark the scorers post as Premium (%s)", (locale) => {
-    expect(torneosContent[locale].story.posters.scorersTag).toBe("Premium");
   });
 });
 

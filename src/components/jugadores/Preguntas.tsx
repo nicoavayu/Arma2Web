@@ -16,7 +16,7 @@ export function Preguntas() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_50%_at_15%_20%,rgba(123,92,255,0.18),transparent_70%),radial-gradient(40%_45%_at_90%_90%,rgba(39,184,255,0.12),transparent_70%)]"
       />
-      <div className="relative grid gap-10 px-[clamp(20px,6vw,104px)] py-24 md:py-32 lg:grid-cols-[1fr_1.5fr]">
+      <div className="relative grid gap-10 px-[clamp(20px,6vw,104px)] py-16 md:py-32 lg:grid-cols-[1fr_1.5fr]">
         <h2 className="text-[clamp(2.2rem,4.6vw,4.2rem)] font-extrabold leading-[1] tracking-[-0.045em] text-white">{copy.title}</h2>
         <div className="grid gap-3">
           {copy.items.map((item) => (

@@ -11,7 +11,7 @@ export function TorneosFaq() {
   return (
     <section id="torneos-faq" className="relative overflow-hidden bg-[#04050d] text-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(40%_45%_at_10%_20%,rgba(108,77,255,0.16),transparent_70%)]" />
-      <div className="relative grid gap-10 px-[clamp(20px,6vw,104px)] py-24 md:py-32 lg:grid-cols-[1fr_1.5fr]">
+      <div className="relative grid gap-10 px-[clamp(20px,6vw,104px)] py-16 md:py-32 lg:grid-cols-[1fr_1.5fr]">
         <h2 className="disp-t text-[clamp(2.6rem,5vw,4.6rem)]">{copy.title}</h2>
         <div className="grid gap-3">
           {copy.items.map((item) => (

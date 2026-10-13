@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { BandaTorneos } from "@/components/jugadores/BandaTorneos";
 import { Descargar } from "@/components/jugadores/Descargar";
-import { JugadoresGallery, JugadoresGalleryStatic } from "@/components/jugadores/JugadoresGallery";
+import { JugadoresGallery } from "@/components/jugadores/JugadoresGallery";
 import { Preguntas } from "@/components/jugadores/Preguntas";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
@@ -12,9 +12,10 @@ const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider
 describe("players gallery", () => {
   const html = render(<JugadoresGallery />);
 
-  it("shows the six features as cards in a pinned scene", () => {
+  it("shows the six features at once, in a grid that scrolls with the page", () => {
     expect(html.match(/<article/g)).toHaveLength(6);
-    expect(html).toContain('data-scene="pinned"');
+    expect(html).not.toContain("data-scene");
+    expect(html).toMatch(/<ul[^>]*data-feature-grid/);
     expect(html).toMatch(/<article[^>]*data-card="mercado-arqueros"[^>]*>[\s\S]*?Mercado de arqueros/);
   });
 
@@ -30,13 +31,6 @@ describe("players gallery", () => {
 
   it("keeps the section anchor and the old #features / #mercado-arqueros links", () => {
     for (const id of ["funciones", "features", "mercado-arqueros"]) expect(html).toContain(`id="${id}"`);
-  });
-
-  it("falls back to a swipeable row with reduced motion", () => {
-    const html = render(<JugadoresGalleryStatic />);
-    expect(html).not.toContain('data-scene="pinned"');
-    expect(html.match(/<article/g)).toHaveLength(6);
-    expect(html).toContain('id="mercado-arqueros"');
   });
 });
 

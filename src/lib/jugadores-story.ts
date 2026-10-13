@@ -1,21 +1,10 @@
 /**
- * Timeline and example data for the players' home story (hero + 4 chapters).
- * Progress values are fractions of the pinned scene; they mirror the approved
- * prototype (docs/superpowers/specs/prototipos-cinematicos/jugadores-cinematico.html).
+ * Example data for the players' home "Cómo funciona" (4 steps). Progress
+ * values are each step's own 0–1 animation, which plays once when the step
+ * comes into view (usePlayWhenVisible).
  */
 import { balanceTeams, DEMO_PLAYERS, type BalanceResult } from "@/lib/balance-demo";
 import { easeInOutCubic, lerp, seg } from "@/lib/motion-math";
-
-/** End of the hero → story transition. */
-export const STORY_HERO_END = 0.15;
-
-/** [start, end] of each chapter: convocás, votan, se arman, se juega. */
-export const STORY_CHAPTERS: readonly (readonly [number, number])[] = [
-  [0.16, 0.37],
-  [0.37, 0.58],
-  [0.58, 0.79],
-  [0.79, 1.02],
-];
 
 /** Teams shown in chapter 3, computed by the site's demo balancer. */
 export const STORY_SPLIT: BalanceResult = balanceTeams(DEMO_PLAYERS, { fixGoalkeepers: true });

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { translations } from "@/lib/i18n";
 import { torneosContent } from "@/lib/torneos-content";
+import { torneosEjemploContent } from "@/lib/torneos-ejemplo-content";
 
 /** Keys and array lengths, so a missing or extra translation fails loudly. */
 function shape(value: unknown): unknown {
@@ -31,9 +32,13 @@ describe("torneos portal copy", () => {
     expect(shape(torneosContent.en)).toEqual(shape(torneosContent.es));
   });
 
-  it.each(["es", "en"] as const)("tells the story in four chapters and shows five features (%s)", (locale) => {
+  it("has the example page in Spanish and English with the same shape", () => {
+    expect(shape(torneosEjemploContent.en)).toEqual(shape(torneosEjemploContent.es));
+  });
+
+  it.each(["es", "en"] as const)("tells the story in four chapters and shows six features (%s)", (locale) => {
     expect(torneosContent[locale].story.chapters).toHaveLength(4);
-    expect(torneosContent[locale].gallery.cards).toHaveLength(5);
+    expect(torneosContent[locale].gallery.cards).toHaveLength(6);
   });
 
   it.each(["es", "en"] as const)("shows the real public page URL (%s)", (locale) => {

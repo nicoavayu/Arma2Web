@@ -34,6 +34,8 @@
   /* The ball mark (one of the two in public/logo.svg), inlined so it paints with the first frame. */
   --brand-mark-shape: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='9 25.5 57.5 57.5' fill='%23fff'><path d='M27.92,80.42l9.71-9.59,9.67,9.78s-2.98,1.49-9.66,1.49-9.72-1.67-9.72-1.67Z'/><polygon points='24.21 78.92 37.63 65.66 51.41 78.99 54.36 76.81 37.65 60.17 21.22 76.81 24.21 78.92'/><polygon points='18.25 74.44 37.64 54.97 57.22 74.44 59.74 71.79 42.45 54.59 60.24 36.75 57.59 34.05 37.64 53.6 17.52 34.05 15.05 36.7 32.82 54.59 15.69 71.93 18.25 74.44'/><path d='M47.92,54.59l14.1,14.13s4.21-6.08,4.21-14.23c0-8.55-3.94-14.23-3.94-14.23l-14.38,14.32Z'/><polygon points='51.92 29.78 37.64 43.79 23.17 29.78 20.71 31.74 37.64 48.59 54.63 31.65 51.92 29.78'/><path d='M47.92,27.93l-10.33,10.48-10.5-10.23s3.81-2.23,10.49-2.23,10.34,1.98,10.34,1.98Z'/><path d='M27.61,54.54l-14.27-14.18s-4.21,6.08-4.21,14.23c0,8.55,3.94,14.23,3.94,14.23l14.55-14.27Z'/></svg>");
   --brand-conic: conic-gradient(from var(--brand-angle), #27b8ff, #7b5cff, #ec4dff, #2ee59d, #27b8ff);
+  /* Big mark behind the hero phones: Arma2 violets only (white → violet → deep violet). */
+  --brand-conic-violet: conic-gradient(from var(--brand-angle), #ffffff, #b8a8ff, #7b5cff, #5a3df0, #3b22b8, #5a3df0, #7b5cff, #b8a8ff, #ffffff);
 }
 
 @theme inline {
