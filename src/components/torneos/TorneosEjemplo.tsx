@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { getSiteUrl } from "@/lib/site-urls";
+import { torneosEjemploContent } from "@/lib/torneos-ejemplo-content";
 import { EJEMPLO_FIXTURE, EJEMPLO_RESULTS, EJEMPLO_SCORERS, EJEMPLO_STANDINGS, formatDay, formatKickoff, ROUND_DATES } from "@/lib/torneos-ejemplo";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 import { cn } from "@/lib/utils";
@@ -45,7 +46,7 @@ function Card({ id, title, className, children }: { id: string; title: string; c
 export function TorneosEjemplo() {
   const { locale } = useLanguage();
   const content = useTorneosContent();
-  const copy = content.ejemplo;
+  const copy = torneosEjemploContent[locale];
   const start = getCreateTournamentTarget();
   const sections = [
     ["tabla", copy.sections.standings],

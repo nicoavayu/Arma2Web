@@ -11,6 +11,7 @@ import { TorneosNav } from "@/components/torneos/TorneosNav";
 import { TorneosStoryStatic } from "@/components/torneos/TorneosStory";
 import { getSiteUrl } from "@/lib/site-urls";
 import { torneosContent } from "@/lib/torneos-content";
+import { torneosEjemploContent } from "@/lib/torneos-ejemplo-content";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
 const EXAMPLE_HREF = `href="${getSiteUrl("torneos", "/ejemplo")}"`;
@@ -38,7 +39,7 @@ describe("example tournament page", () => {
   });
 
   it("keeps a made-up data label on screen while scrolling", () => {
-    expect(html).toMatch(new RegExp(`class="[^"]*sticky[^"]*"[^>]*>[\\s\\S]*?${torneosContent.es.ejemplo.badge}`));
+    expect(html).toMatch(new RegExp(`class="[^"]*sticky[^"]*"[^>]*>[\\s\\S]*?${torneosEjemploContent.es.badge}`));
   });
 
   it("can't send anything: no forms or buttons", () => {
@@ -46,7 +47,7 @@ describe("example tournament page", () => {
   });
 
   it("offers to start for free and never a purchase", () => {
-    expect(html).toContain(torneosContent.es.ejemplo.cta.start);
+    expect(html).toContain(torneosEjemploContent.es.cta.start);
     expect(html).not.toContain("intent=premium");
   });
 });

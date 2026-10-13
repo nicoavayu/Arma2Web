@@ -1,14 +1,15 @@
 "use client";
 
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
-import { TorneosLogo } from "@/components/torneos/TorneosNav";
+import { TorneosLogo, useTorneosHomeHref } from "@/components/torneos/TorneosNav";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { getSiteUrl } from "@/lib/site-urls";
 import { TORNEOS_CONTACT_HREF } from "@/lib/torneos-links";
 
 const linkClass = "text-sm text-white/60 transition-colors hover:text-white";
 
-export function TorneosFooter({ homeHref = "" }: { homeHref?: string }) {
+export function TorneosFooter({ homeHref: override }: { homeHref?: string }) {
+  const homeHref = useTorneosHomeHref(override);
   const content = useTorneosContent();
   const copy = content.footer;
   const year = new Date().getFullYear();

@@ -90,7 +90,7 @@ function Illustration({ id, content, locale }: { id: string; content: TorneosCon
             </div>
             <div className={cn(g.row, g.wideOnly)} style={{ opacity: 0.75 }}>
               <span>{`${TEAM_NAMES[MOVED.homeId]} vs ${TEAM_NAMES[MOVED.awayId]}`}</span>
-              <span className={cn(g.tag, g.tagAmber)}>{content.ejemplo.fixture.rescheduled}</span>
+              <span className={cn(g.tag, g.tagAmber)}>{art.reschedule.tag}</span>
             </div>
           </div>
         </div>

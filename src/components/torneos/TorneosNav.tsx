@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useSelectedLayoutSegment } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
@@ -10,14 +11,24 @@ import { useHomeStoryProgress } from "@/components/cinematic/useHomeStoryProgres
 import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { cn } from "@/lib/utils";
+import { getSiteUrl } from "@/lib/site-urls";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 
 export function TorneosLogo({ className = "h-5 w-auto" }: { className?: string }) {
   return <Image src="/torneos/logo-torneos.png" alt="Arma2 Torneos" width={311} height={36} className={`${className} object-contain`} priority />;
 }
 
-/** `homeHref` prefixes the section links when the nav is shown outside the home (e.g. the example page). */
-export function TorneosNav({ homeHref = "" }: { homeHref?: string }) {
+/**
+ * Prefix for the home's section links: empty on the home, the home URL on other
+ * Torneos pages (e.g. /ejemplo), read from the route under the Torneos layout.
+ */
+export function useTorneosHomeHref(override?: string): string {
+  const segment = useSelectedLayoutSegment();
+  return override ?? (segment === null ? "" : getSiteUrl("torneos", "/"));
+}
+
+export function TorneosNav({ homeHref: override }: { homeHref?: string }) {
+  const homeHref = useTorneosHomeHref(override);
   const copy = useTorneosContent().nav;
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
