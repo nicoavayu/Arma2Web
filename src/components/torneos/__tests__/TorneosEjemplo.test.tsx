@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
+import { metadata as ejemploMetadata } from "@/app/torneos/ejemplo/page";
 import sitemap from "@/app/torneos/sitemap";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { TorneosCierre } from "@/components/torneos/TorneosCierre";
@@ -72,5 +73,12 @@ describe("links around the example", () => {
 
   it("lists the example in the Torneos sitemap", () => {
     expect(sitemap().map((entry) => entry.url)).toContain("https://torneos.arma2.com.ar/ejemplo");
+  });
+
+  it("shares with the Torneos preview image", () => {
+    const og = ejemploMetadata.openGraph as { images?: { url: string }[] };
+    const twitter = ejemploMetadata.twitter as { images?: { url: string }[] };
+    expect(og.images?.[0].url).toBe("/torneos/opengraph-image");
+    expect(twitter.images?.[0].url).toBe("/torneos/opengraph-image");
   });
 });
