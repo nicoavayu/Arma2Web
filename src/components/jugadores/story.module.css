@@ -226,6 +226,7 @@
 .bigMark > span {
   width: 100%;
   height: 100%;
+  background: var(--brand-conic-violet);
   animation: brand-hue 8s linear infinite, brand-breath 7s ease-in-out infinite;
 }
 
