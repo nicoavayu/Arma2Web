@@ -28,7 +28,9 @@ export const translations = {
         lead: "Quién viene, cómo quedan los equipos y quién fue la figura. Todo en una app, gratis para iOS y Android.",
       },
       story: {
-        navLabel: "Capítulos de cómo funciona",
+        eyebrow: "Cómo funciona",
+        title: "Del grupo a la cancha,",
+        titleAccent: "en cuatro pasos.",
         chapters: [
           {
             id: "convocas",
@@ -241,7 +243,9 @@ export const translations = {
         lead: "Who's coming, how the teams line up and who was player of the match. All in one app, free for iOS and Android.",
       },
       story: {
-        navLabel: "How it works, chapter by chapter",
+        eyebrow: "How it works",
+        title: "From the group chat to the pitch,",
+        titleAccent: "in four steps.",
         chapters: [
           {
             id: "convocas",

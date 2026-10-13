@@ -1,0 +1,260 @@
+/* "Cómo funciona" of the Torneos portal: the manager with steps 1–2 next to it,
+   then the public page and the posts. Everything is readable on arrival; the
+   illustrations play once on their own (TorneosStory.tsx). */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 7vw, 104px) clamp(20px, 6vw, 104px) clamp(56px, 7vw, 96px);
+  background:
+    radial-gradient(45% 40% at 20% 10%, rgba(108, 77, 255, 0.22), transparent 70%),
+    radial-gradient(40% 40% at 90% 70%, rgba(236, 77, 255, 0.1), transparent 70%),
+    var(--ink-torneos);
+}
+
+.head {
+  max-width: 900px;
+  margin: 0 auto clamp(40px, 5vw, 72px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b8a8ff;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(2.4rem, 5.4vw, 5rem);
+  color: #fff;
+}
+
+.glow {
+  position: absolute;
+  inset: 8% 4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(108, 77, 255, 0.45), transparent);
+  filter: blur(36px);
+  pointer-events: none;
+}
+
+/* ---------- steps 1–2: the manager ---------- */
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.pairArt {
+  position: relative;
+}
+
+.laptop {
+  position: relative;
+  width: 100%;
+}
+
+.pairSteps {
+  display: grid;
+  gap: clamp(28px, 3vw, 44px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- steps 3–4: public page and posts ---------- */
+.duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  max-width: 1240px;
+  margin: clamp(48px, 6vw, 88px) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardArt {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 380px;
+  padding-top: 36px;
+  overflow: hidden;
+}
+
+/* The phone peeks out of the card: the top of the public page is what matters. */
+.phoneWrap {
+  position: relative;
+  z-index: 1;
+}
+
+.phone {
+  width: 214px;
+}
+
+.chip {
+  position: absolute;
+  right: clamp(12px, 8%, 64px);
+  top: 46%;
+  z-index: 2;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(20, 16, 50, 0.92);
+  border: 1px solid rgba(139, 109, 255, 0.5);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 18px 40px -18px rgba(108, 77, 255, 0.9);
+}
+
+/* Posts are designed at 300px; the pair is zoomed down as a whole. */
+.posters {
+  position: relative;
+  width: 540px;
+  height: 420px;
+  zoom: 0.78;
+}
+
+.poster {
+  position: absolute;
+  left: 0;
+  top: 34px;
+  z-index: 1;
+  width: 300px;
+  rotate: -5deg;
+}
+
+.posterBack {
+  left: 236px;
+  top: 0;
+  z-index: 0;
+  rotate: 6deg;
+}
+
+.cardText {
+  padding: 26px clamp(22px, 2.4vw, 32px) 30px;
+}
+
+/* ---------- step text ---------- */
+/* Step links (#capitulo-…) land under the fixed nav. */
+.step {
+  scroll-margin-top: 88px;
+}
+
+.num {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.num i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b5cff, #5a3df0);
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.title {
+  margin: 14px 0 0;
+  font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+  color: #fff;
+}
+
+.copy {
+  margin: 12px 0 0;
+  max-width: 40ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #b3b6d4;
+}
+
+/* ---------- under the steps ---------- */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  max-width: 1240px;
+  margin: 32px auto 0;
+}
+
+.note {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.example {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 109, 255, 0.4);
+  background: rgba(123, 92, 255, 0.15);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.example:hover {
+  background: rgba(123, 92, 255, 0.3);
+}
+
+/* ---------- tablets and phones ---------- */
+@media (max-width: 1023px) {
+  .pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .duo {
+    grid-template-columns: 1fr;
+  }
+
+  .cardArt {
+    height: 330px;
+    padding-top: 28px;
+  }
+
+  .phone {
+    width: 190px;
+  }
+
+  .posters {
+    zoom: 0.5;
+  }
+}

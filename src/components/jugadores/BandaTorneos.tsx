@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
@@ -12,16 +10,12 @@ import { BRAND } from "@/lib/brand-assets";
 export function BandaTorneos() {
   const { t } = useLanguage();
   const copy = t.home.torneosBand;
-  const ref = React.useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-  const still = useReducedMotion() === true;
 
   return (
-    <section ref={ref} id="torneos" className="relative flex min-h-[78svh] items-center overflow-hidden bg-[#05040d] md:min-h-[92vh]">
-      <motion.div aria-hidden="true" className="absolute inset-x-0 -inset-y-[8%]" style={{ y: still ? 0 : y }}>
+    <section id="torneos" className="relative flex min-h-[78svh] items-center overflow-hidden bg-[#05040d] md:min-h-[92vh]">
+      <div aria-hidden="true" className="absolute inset-0">
         <Image src={BRAND.bgStadium.src} alt="" fill sizes="100vw" className="object-cover object-[70%_50%]" />
-      </motion.div>
+      </div>
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,4,13,0.92)_0%,rgba(5,4,13,0.6)_42%,rgba(5,4,13,0.05)_75%),linear-gradient(180deg,#05040d_0%,transparent_18%,transparent_82%,#05040d_100%)]"

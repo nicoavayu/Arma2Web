@@ -1,0 +1,440 @@
+/* "Cómo funciona" of the players' home: four steps, readable as soon as they
+   arrive. The screens and the small pieces around them play once on their own
+   (JugadoresStory.tsx); the text never waits for them. */
+
+.section {
+  position: relative;
+  padding: clamp(64px, 7vw, 104px) clamp(20px, 6vw, 104px) clamp(56px, 7vw, 96px);
+  overflow: hidden;
+  background:
+    radial-gradient(50% 40% at 12% 0%, rgba(123, 92, 255, 0.2), transparent 70%),
+    radial-gradient(45% 40% at 92% 55%, rgba(236, 77, 255, 0.1), transparent 70%),
+    var(--ink-jugadores);
+}
+
+/* Old links (#como-funciona, #how-it-works) land on the section header. */
+.alias {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  scroll-margin-top: 0;
+  pointer-events: none;
+}
+
+.head {
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 5vw, 72px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b8a8ff;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: #fff;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 44px);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  /* Step links (#capitulo-…) land under the fixed nav. */
+  scroll-margin-top: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.tone0 { --tone: rgba(123, 92, 255, 0.55); }
+.tone1 { --tone: rgba(236, 77, 255, 0.42); }
+.tone2 { --tone: rgba(90, 61, 240, 0.55); }
+.tone3 { --tone: rgba(255, 176, 32, 0.34); }
+
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 6px 0 18px;
+}
+
+.glow {
+  position: absolute;
+  inset: 12% -4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tone), transparent);
+  filter: blur(28px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.phone {
+  position: relative;
+  z-index: 1;
+  width: min(250px, 100%);
+}
+
+.text {
+  max-width: 34ch;
+}
+
+.num {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.num i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b6dff, #5a3df0);
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.title {
+  margin: 14px 0 0;
+  font-size: clamp(1.35rem, 1.75vw, 1.65rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: #fff;
+}
+
+.copy {
+  margin: 10px 0 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #aaa5c9;
+}
+
+.note {
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- small pieces around the phones ---------- */
+.decor {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.chat {
+  left: -4%;
+  bottom: 4%;
+  width: 214px;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(12, 30, 26, 0.92);
+  border: 1px solid rgba(46, 229, 157, 0.25);
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.85);
+}
+
+.chatHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #d9fff0;
+}
+
+.chatHead i {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2ee59d, #1aa874);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  color: #04140e;
+}
+
+.chatHead small {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  color: #8fc8b1;
+}
+
+.bubble {
+  padding: 8px 10px;
+  border-radius: 12px 12px 4px 12px;
+  background: #0f4a37;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #eafff6;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 7px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.previewLogo {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8b6dff, #5a3df0);
+}
+
+.previewLogo img {
+  width: 16px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.preview b {
+  display: block;
+  font-size: 11px;
+  color: #fff;
+}
+
+.preview small {
+  display: block;
+  font-size: 10px;
+  color: #a8d8c4;
+}
+
+.toasts {
+  right: -6%;
+  top: 16%;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+  background: rgba(22, 18, 48, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 16px 34px -16px rgba(0, 0, 0, 0.85);
+}
+
+.toastAv {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0b0820;
+}
+
+.toastOk {
+  width: 14px;
+  height: 14px;
+  color: #2ee59d;
+}
+
+.chips {
+  right: -6%;
+  top: 14%;
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.chip {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: rgba(20, 14, 50, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  box-shadow: 0 16px 40px -18px rgba(123, 92, 255, 0.85);
+}
+
+.chipText {
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #e3ddff;
+}
+
+.nums {
+  left: 50%;
+  bottom: -2%;
+  display: grid;
+  gap: 8px;
+  width: min(232px, 92%);
+  translate: -50% 0;
+}
+
+.big {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 16px;
+  background: rgba(16, 12, 40, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.big small {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c4bfe0;
+}
+
+.big b {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bigA b { background-image: linear-gradient(90deg, #b8a8ff, #ffffff); }
+.bigB b { background-image: linear-gradient(90deg, #c46bff, #ec4dff); }
+
+.dif {
+  padding: 7px;
+  border-radius: 999px;
+  background: rgba(46, 229, 157, 0.12);
+  border: 1px solid rgba(46, 229, 157, 0.45);
+  text-align: center;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2ee59d;
+}
+
+.awards {
+  left: -4%;
+  right: -4%;
+  bottom: -2%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+}
+
+.award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.award img {
+  width: 112px;
+  height: auto;
+  filter: drop-shadow(0 16px 30px rgba(90, 61, 240, 0.6));
+}
+
+.awardSmall img {
+  width: 78px;
+}
+
+.award span {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(22, 18, 48, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ---------- tablets: two by two ---------- */
+@media (max-width: 1099px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 64px;
+  }
+}
+
+/* ---------- phones: one after the other ---------- */
+@media (max-width: 639px) {
+  .list {
+    grid-template-columns: 1fr;
+    row-gap: 56px;
+  }
+
+  .step {
+    gap: 22px;
+  }
+
+  .phone {
+    width: min(240px, 64vw);
+  }
+
+  .text {
+    max-width: none;
+  }
+
+  .chat {
+    left: 0;
+    width: 196px;
+  }
+
+  .toasts,
+  .chips {
+    right: 0;
+  }
+}

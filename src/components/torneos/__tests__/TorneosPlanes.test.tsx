@@ -31,6 +31,7 @@ describe("torneos gallery and closing sections", () => {
     const html = render(<TorneosGallery />);
     expect(html.match(/<article/g)).toHaveLength(6);
     expect(html).toContain('id="torneos-funciones"');
+    expect(html).not.toContain("data-scene");
   });
 
   it("shows captain registration as the organiser's request list", () => {

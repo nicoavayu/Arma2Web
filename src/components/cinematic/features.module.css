@@ -1,0 +1,160 @@
+/* Feature grid shared by both sites. Accent color comes from --feature-accent on the section. */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 7vw, 104px) clamp(20px, 6vw, 104px) clamp(56px, 7vw, 96px);
+}
+
+.anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  scroll-margin-top: 0;
+  pointer-events: none;
+}
+
+/* Lands a card a little under the fixed nav. */
+.cardAnchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  scroll-margin-top: 96px;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.head {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto clamp(32px, 4vw, 56px);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--feature-accent);
+}
+
+.title {
+  margin: 0;
+  color: #fff;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* Zigzag on wide screens: 2-1 / 1-2 / 1-2. */
+.cell:nth-child(6n + 1),
+.cell:nth-child(6n + 4),
+.cell:nth-child(6n + 6) {
+  grid-column: span 2;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 26px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.artSlot {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.text {
+  padding: 4px 24px 24px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--feature-accent);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.note {
+  position: relative;
+  max-width: 1280px;
+  margin: 28px auto 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Tablets: two columns, the first and last cards full width. */
+@media (max-width: 1099px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cell:nth-child(6n + 4) {
+    grid-column: auto;
+  }
+}
+
+/* Phones: one column. */
+@media (max-width: 639px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cell:nth-child(6n + 1),
+  .cell:nth-child(6n + 4),
+  .cell:nth-child(6n + 6) {
+    grid-column: auto;
+  }
+
+  /* One column: each card as tall as its illustration, nothing clipped. */
+  .card {
+    min-height: 0;
+  }
+
+  .artSlot {
+    flex: none;
+  }
+}

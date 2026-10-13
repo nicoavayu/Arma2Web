@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { HorizontalGallery, type HorizontalGalleryProps } from "@/components/cinematic/HorizontalGallery";
+import { FeatureGrid, type FeatureGridProps } from "@/components/cinematic/FeatureGrid";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
@@ -17,11 +17,10 @@ import g from "./gallery.module.css";
 /** The example tournament's rescheduled match, so the card matches /ejemplo. */
 const MOVED = EJEMPLO_FIXTURE.find((match) => match.rescheduledFrom)!;
 
-const THEME: HorizontalGalleryProps["theme"] = {
+const THEME: FeatureGridProps["theme"] = {
   background: "#05060f",
-  glow: "radial-gradient(45% 50% at 15% 30%, rgba(108,77,255,.2), transparent 70%), radial-gradient(40% 45% at 85% 80%, rgba(39,184,255,.14), transparent 70%)",
-  accent: "#27b8ff",
-  gradient: "var(--grad-torneos)",
+  glow: "radial-gradient(45% 50% at 15% 30%, rgba(108,77,255,.2), transparent 70%), radial-gradient(40% 45% at 85% 80%, rgba(236,77,255,.1), transparent 70%)",
+  accent: "#b8a8ff",
 };
 
 const GLOWS: Record<string, string> = {
@@ -84,7 +83,7 @@ function Illustration({ id, content, locale }: { id: string; content: TorneosCon
                 <small>{`${art.reschedule.before}: ${formatKickoff(MOVED.rescheduledFrom!, locale)} · ${art.reschedule.now}: ${formatKickoff(MOVED.kickoff, locale)}`}</small>
               </span>
             </div>
-            <div className={cn(g.row, g.wideOnly)} style={{ opacity: 0.75 }}>
+            <div className={g.row} style={{ opacity: 0.75 }}>
               <span>{`${TEAM_NAMES[MOVED.homeId]} vs ${TEAM_NAMES[MOVED.awayId]}`}</span>
               <span className={cn(g.tag, g.tagAmber)}>{art.reschedule.tag}</span>
             </div>
@@ -178,16 +177,14 @@ function Illustration({ id, content, locale }: { id: string; content: TorneosCon
   }
 }
 
-/** "El torneo entero, en orden.": the rest of the manager, card by card. */
+/** "El torneo entero, en orden.": the rest of the manager, every card at once. */
 export function TorneosGallery() {
   const { locale } = useLanguage();
   const content = useTorneosContent();
   const copy = content.gallery;
   return (
-    <HorizontalGallery
+    <FeatureGrid
       id="torneos-funciones"
-      height="320svh"
-      phoneHeight="240svh"
       eyebrow={copy.eyebrow}
       title={
         <>
