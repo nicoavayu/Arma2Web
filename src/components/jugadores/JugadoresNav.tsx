@@ -96,7 +96,7 @@ export function JugadoresNav() {
           <a
             href={downloadHref}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="inline-flex min-h-11 items-center rounded-lg bg-white px-4 text-sm font-semibold text-[#070711] transition-colors hover:bg-white/90"
+            className="inline-flex min-h-11 items-center rounded-lg border border-[#8b6dff]/40 bg-[#7b5cff]/15 px-4 text-sm font-semibold text-white transition-colors hover:bg-[#7b5cff]/30"
           >
             {t.common.download}
           </a>
