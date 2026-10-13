@@ -3,6 +3,13 @@
 
 .scene {
   position: relative;
+  height: var(--gallery-h);
+}
+
+@media (max-width: 899px) and (min-height: 501px) {
+  .scene {
+    height: var(--gallery-h-phone);
+  }
 }
 
 .anchor {

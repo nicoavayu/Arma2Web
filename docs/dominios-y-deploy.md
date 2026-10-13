@@ -42,7 +42,9 @@ Tiene que terminar en `200`, sin bucles.
 
 - [ ] HTTPS válido en `https://torneos.arma2.com.ar/`.
 - [ ] `/` muestra el portal de Torneos (título "Arma2 Torneos — …").
-- [ ] `https://torneos.arma2.com.ar/sitemap.xml` lista `https://torneos.arma2.com.ar/`.
+- [ ] `https://torneos.arma2.com.ar/sitemap.xml` lista `https://torneos.arma2.com.ar/`
+      y `https://torneos.arma2.com.ar/ejemplo`.
+- [ ] `https://torneos.arma2.com.ar/ejemplo` responde `200` (torneo de ejemplo, datos ficticios).
 - [ ] `https://torneos.arma2.com.ar/robots.txt` apunta a ese sitemap.
 - [ ] `<link rel="canonical">` y `og:url` = `https://torneos.arma2.com.ar`.
 - [ ] `og:image` (`/torneos/opengraph-image?…`) responde `200 image/png`.

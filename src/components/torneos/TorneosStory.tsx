@@ -25,7 +25,6 @@ import { PublicPagePhone } from "./screens/PublicPagePhone";
 import s from "./story.module.css";
 
 const SECTION_ID = "torneos-como-funciona";
-const SCENE_HEIGHT = "820svh";
 const [, , CH3, CH4] = TORNEOS_STORY_CHAPTERS;
 
 const chapterAnchor = (id: string) => `capitulo-${id}`;
@@ -227,7 +226,7 @@ function TorneosStoryScene() {
   const howHref = `#${chapterAnchor(story.chapters[0].id)}`;
 
   return (
-    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT, scrollMarginTop: 0 }}>
+    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ scrollMarginTop: 0 }}>
       <span id="torneos-hero" className={s.anchor} style={{ top: 0 }} />
       {story.chapters.map((chapter, i) => (
         <span

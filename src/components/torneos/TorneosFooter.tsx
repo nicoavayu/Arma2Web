@@ -15,8 +15,8 @@ export function TorneosFooter({ homeHref = "" }: { homeHref?: string }) {
 
   return (
     <footer className="border-t border-white/[0.07] bg-[#04050d]">
-      <div className="grid gap-10 px-[clamp(20px,6vw,104px)] py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
-        <div>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-8 px-[clamp(20px,6vw,104px)] py-10 md:grid-cols-[1.5fr_1fr_1fr_1fr] md:gap-10 md:py-14">
+        <div className="col-span-2 md:col-span-1">
           <TorneosLogo className="h-5 w-auto" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{copy.description}</p>
         </div>
@@ -31,7 +31,8 @@ export function TorneosFooter({ homeHref = "" }: { homeHref?: string }) {
             <li><a href={getSiteUrl("torneos", "/ejemplo")} className={linkClass}>{copy.example}</a></li>
           </ul>
         </div>
-        <div>
+        {/* Phones: product and legal side by side, players below. */}
+        <div className="order-last col-span-2 md:order-none md:col-span-1">
           <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-white/55">{copy.playersTitle}</h2>
           <p className="mt-4 text-sm leading-relaxed text-white/60">{copy.playersBlurb}</p>
           <SiteSwitch to="jugadores" className="mt-3 text-sm font-semibold text-[#27b8ff] hover:text-white" />

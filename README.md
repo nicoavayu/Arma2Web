@@ -3,7 +3,8 @@
 Sitios públicos de Arma2, servidos desde un solo proyecto de Next.js (App Router, Tailwind v4):
 
 - **Jugadores** — `www.arma2.com.ar`: qué hace la app y cómo descargarla (`src/app/(jugadores)`).
-- **Arma2 Torneos** — `torneos.arma2.com.ar`: portal para organizadores (`src/app/torneos`).
+- **Arma2 Torneos** — `torneos.arma2.com.ar`: portal para organizadores (`src/app/torneos`),
+  con un torneo de ejemplo navegable en `/ejemplo` (datos ficticios, `src/lib/torneos-ejemplo.ts`).
 
 `src/proxy.ts` elige el sitio según el host. Dominios, deploy y verificación:
 [`docs/dominios-y-deploy.md`](docs/dominios-y-deploy.md). Estado comercial de Torneos:
@@ -28,7 +29,7 @@ npm run dev
 | `npm test` | Vitest (ruteo por host, descarga, datos de las historias, copy ES/EN, escenas por SSR) |
 | `npm run qr` | Regenera `public/descargar-qr.svg` (QR a `/descargar`) |
 | `npm run brand:assets -- <dir>` | Convierte los masters de marca a WebP (`public/brand/`, `public/torneos/`) |
-| `npm run check:visual -- [url]` | Chequeos de layout con Playwright sobre un server levantado (viewports, inglés, anclas, rotación, sin JS) |
+| `npm run check:visual -- [url]` | Chequeos de layout con Playwright sobre un server levantado (viewports desde 320×568, inglés, anclas, rotación, sin JS, largo del recorrido en celulares, torneo de ejemplo) |
 
 ## Cómo están armadas las home
 
@@ -41,6 +42,9 @@ visual aprobada: `docs/superpowers/specs/prototipos-cinematicos/`.
   y `src/lib/torneos-story.ts`. Llevan el rótulo "Ejemplo con datos ficticios".
 - El movimiento sale del progreso de scroll (framer-motion `useScroll`). Con
   "reducir movimiento" activado, cada escena se muestra estática.
+- En celulares en vertical las escenas son más cortas (historia ~5 pantallas,
+  galería ~1.4): el alto vive en el CSS (`.scene` de cada historia y
+  `phoneHeight` de la galería) y `check:visual` falla si se alargan.
 - Las imágenes de marca (`src/lib/brand-assets.ts`) son WebP generados desde los
   masters del sitio anterior y de Nico. El render corregido de Torneos está en
   `docs/assets/pc-torneos-corregido.png`.

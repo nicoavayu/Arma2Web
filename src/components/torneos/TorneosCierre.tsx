@@ -16,10 +16,10 @@ export function TorneosCierre() {
   const cut = copy.title.lastIndexOf(" ");
 
   return (
-    <section id="torneos-empezar" className="relative flex min-h-[88vh] items-center justify-center overflow-hidden bg-[#04050d] text-center text-white">
+    <section id="torneos-empezar" className="relative flex min-h-[72svh] items-center justify-center md:min-h-[88vh] overflow-hidden bg-[#04050d] text-center text-white">
       <Image src={BRAND.bgStadium.src} alt="" fill sizes="100vw" className="object-cover object-[70%_50%]" />
       <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,#04050d_0%,rgba(4,5,13,0.55)_30%,rgba(4,5,13,0.6)_70%,#04050d_100%)]" />
-      <div className="relative px-5 py-24">
+      <div className="relative px-5 py-16 md:py-24">
         <h2 className="disp-t text-[clamp(3rem,8vw,8rem)]">
           {copy.title.slice(0, cut)} <span className="text-grad-t">{copy.title.slice(cut + 1)}</span>
         </h2>

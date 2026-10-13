@@ -18,6 +18,8 @@ export interface HorizontalGalleryProps {
   id: string;
   /** Scene height, e.g. "330svh"; the scroll range is this minus one viewport. */
   height: string;
+  /** Shorter scene height for portrait phones. Defaults to `height`. */
+  phoneHeight?: string;
   /** Extra in-page anchors at a fraction of the scroll range (old links). */
   anchors?: { id: string; at: number }[];
   eyebrow: string;
@@ -65,7 +67,7 @@ function Heading({ eyebrow, title, titleClassName }: Pick<HorizontalGalleryProps
   );
 }
 
-function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassName, cards, note, theme }: HorizontalGalleryProps) {
+function PinnedGallery({ id, height, phoneHeight = height, anchors = [], eyebrow, title, titleClassName, cards, note, theme }: HorizontalGalleryProps) {
   const sectionRef = React.useRef<HTMLElement>(null);
   const stageRef = React.useRef<HTMLDivElement>(null);
   const trackRef = React.useRef<HTMLDivElement>(null);
@@ -95,7 +97,7 @@ function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassNam
   }, [progress]);
 
   return (
-    <section ref={sectionRef} id={id} className={s.scene} style={{ ...themeStyle(theme), height, scrollMarginTop: 0 }}>
+    <section ref={sectionRef} id={id} className={s.scene} style={{ ...themeStyle(theme), "--gallery-h": height, "--gallery-h-phone": phoneHeight, scrollMarginTop: 0 } as CSSProperties}>
       {anchors.map((anchor) => (
         <span key={anchor.id} id={anchor.id} className={s.anchor} style={{ top: `calc(${anchor.at} * (100% - 100svh))` }} />
       ))}

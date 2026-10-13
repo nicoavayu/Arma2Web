@@ -21,6 +21,7 @@ function useGalleryProps(): HorizontalGalleryProps {
   return {
     id: "funciones",
     height: "330svh",
+    phoneHeight: "240svh",
     anchors: [
       { id: "features", at: 0 },
       { id: "mercado-arqueros", at: KEEPERS_AT },

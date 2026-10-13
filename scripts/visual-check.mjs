@@ -20,6 +20,10 @@
  *  with reduced motion; galleries land pinned from their links; the hero mark
  *  doesn't jump at hydration; tablet store buttons are centered; the Torneos
  *  band doesn't move with reduced motion.
+ *  6. Phones: the story and the gallery stay short (scroll length measured with
+ *     the viewport the page actually got, not just the one requested).
+ *  7. Example tournament (/torneos/ejemplo): no sideways scroll, the made-up
+ *     data label stays on screen, sections are reachable, nothing to submit.
  */
 import { readdirSync } from "node:fs";
 import { homedir } from "node:os";
@@ -50,6 +54,7 @@ const VIEWPORTS = [
   [1920, 1080],
   [390, 844],
   [375, 667],
+  [320, 568],
   [844, 390],
   [667, 375],
 ];
@@ -122,7 +127,7 @@ try {
 
   // Per chapter: caption vs device, device on screen, posters inside the viewport.
   for (const path of PAGES) {
-    for (const [width, height] of [[1440, 900], [1280, 720], [1024, 768], [390, 844], [375, 667], [844, 390]]) {
+    for (const [width, height] of [[1440, 900], [1280, 720], [1024, 768], [390, 844], [375, 667], [320, 568], [844, 390]]) {
       for (const locale of ["es", "en"]) {
         const page = await browser.newPage({ viewport: { width, height } });
         await page.addInitScript((value) => localStorage.setItem("arma2-locale", value), locale);
@@ -315,6 +320,66 @@ try {
     });
     check(h1Opacity > 0.9 && r.h1 && r.h1.top >= 0 && r.h1.bottom <= r.vh && deviceOnScreen(r), `${path}: h1 and hero device visible without JS`);
     await context.close();
+  }
+
+  // 6. Phone journey length
+  const PHONE_LIMITS = { story: 5.2, gallery: 1.6 };
+  for (const path of PAGES) {
+    for (const [width, height] of [[320, 568], [375, 667], [390, 844]]) {
+      const context = await browser.newContext({ viewport: { width, height }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+      const page = await context.newPage();
+      await page.goto(base + path, { waitUntil: "networkidle" });
+      await settle(page);
+      const m = await page.evaluate(() => {
+        const scenes = [...document.querySelectorAll('[data-scene="pinned"]')].map((stage) => stage.parentElement);
+        const screens = (el) => Math.round(((el.offsetHeight - innerHeight) / innerHeight) * 10) / 10;
+        return { vw: innerWidth, vh: innerHeight, story: screens(scenes[0]), gallery: screens(scenes[1]) };
+      });
+      check(m.vw === width && m.vh === height, `${path} ${width}×${height}: viewport applied (got ${m.vw}×${m.vh})`);
+      check(
+        m.story <= PHONE_LIMITS.story && m.gallery <= PHONE_LIMITS.gallery,
+        `${path} ${width}×${height}: short phone journey (story ${m.story} ≤ ${PHONE_LIMITS.story}, gallery ${m.gallery} ≤ ${PHONE_LIMITS.gallery} screens)`,
+      );
+      await context.close();
+    }
+  }
+
+  // 7. Example tournament
+  for (const [width, height] of [[320, 568], [375, 667], [1440, 900]]) {
+    for (const locale of ["es", "en"]) {
+      const context = await browser.newContext({ viewport: { width, height }, isMobile: width < 768, hasTouch: width < 768 });
+      await context.addInitScript((value) => localStorage.setItem("arma2-locale", value), locale);
+      const page = await context.newPage();
+      await page.goto(`${base}/torneos/ejemplo`, { waitUntil: "networkidle" });
+      await settle(page);
+      const label = locale === "es" ? "Datos ficticios" : "Made-up data";
+      const results = [];
+      for (const id of ["tabla", "goleadores", "fixture", "resultados"]) {
+        await page.evaluate((target) => (location.hash = target), `#${id}`);
+        await settle(page, 400);
+        results.push(
+          await page.evaluate(([target, text]) => {
+            const bar = document.querySelector(".sticky");
+            const badge = [...bar.querySelectorAll("p")].find((p) => p.textContent.trim().toLowerCase() === text.toLowerCase());
+            const badgeRect = badge?.getBoundingClientRect();
+            const title = document.getElementById(`${target}-titulo`).getBoundingClientRect();
+            return {
+              labelOnScreen: !!badgeRect && badgeRect.top >= 0 && badgeRect.right <= innerWidth && badgeRect.width > 0,
+              titleBelowBar: title.top >= bar.getBoundingClientRect().bottom - 1 && title.top < innerHeight,
+            };
+          }, [id, label]),
+        );
+      }
+      const page2 = await page.evaluate(() => ({
+        sideways: document.documentElement.scrollWidth > innerWidth,
+        forms: document.querySelectorAll("main form, main button, main input").length,
+      }));
+      check(
+        !page2.sideways && page2.forms === 0 && results.every((r) => r.labelOnScreen && r.titleBelowBar),
+        `/torneos/ejemplo ${width}×${height} ${locale.toUpperCase()}: label on screen, sections land below it, no sideways scroll, nothing to submit`,
+      );
+      await context.close();
+    }
   }
 } finally {
   await browser.close();

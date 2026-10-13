@@ -191,6 +191,7 @@ export function TorneosGallery() {
     <HorizontalGallery
       id="torneos-funciones"
       height="320svh"
+      phoneHeight="240svh"
       eyebrow={copy.eyebrow}
       title={
         <>

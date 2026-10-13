@@ -29,7 +29,6 @@ type StoryCopy = TranslationDictionary["home"]["story"];
 
 const SECTION_ID = "como-se-arman";
 /** Scene height; the scroll range is this minus one viewport. */
-const SCENE_HEIGHT = "860svh";
 const TINTS = [s.t0, s.t1, s.t2, s.t3];
 /** Hero pose of the phone: rotateX, rotateY, rotateZ (deg). */
 const HERO_TILT = { desktop: [9, -26, 4], mobile: [5, 0, -3] } as const;
@@ -311,7 +310,7 @@ function JugadoresStoryScene() {
   const chapterProgress = [c1, c2, c3, c4];
 
   return (
-    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT, scrollMarginTop: 0 }}>
+    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ scrollMarginTop: 0 }}>
       <span id="how-it-works" className={s.anchor} style={{ top: `calc(${STORY_CHAPTERS[0][0] + 0.01} * (100% - 100svh))` }} />
       <span id="como-funciona" className={s.anchor} style={{ top: `calc(${STORY_CHAPTERS[0][0] + 0.01} * (100% - 100svh))` }} />
       {story.chapters.map((chapter, i) => (

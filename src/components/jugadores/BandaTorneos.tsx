@@ -18,7 +18,7 @@ export function BandaTorneos() {
   const still = useReducedMotion() === true;
 
   return (
-    <section ref={ref} id="torneos" className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#05040d]">
+    <section ref={ref} id="torneos" className="relative flex min-h-[78svh] items-center overflow-hidden bg-[#05040d] md:min-h-[92vh]">
       <motion.div aria-hidden="true" className="absolute inset-x-0 -inset-y-[8%]" style={{ y: still ? 0 : y }}>
         <Image src={BRAND.bgStadium.src} alt="" fill sizes="100vw" className="object-cover object-[70%_50%]" />
       </motion.div>
@@ -26,7 +26,7 @@ export function BandaTorneos() {
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,4,13,0.92)_0%,rgba(5,4,13,0.6)_42%,rgba(5,4,13,0.05)_75%),linear-gradient(180deg,#05040d_0%,transparent_18%,transparent_82%,#05040d_100%)]"
       />
-      <div className="relative max-w-[720px] px-[clamp(20px,6vw,104px)] py-24">
+      <div className="relative max-w-[720px] px-[clamp(20px,6vw,104px)] py-16 md:py-24">
         <Image src="/torneos/logo-torneos.png" alt="Arma2 Torneos" width={311} height={36} className="mb-7 h-[clamp(24px,2.8vw,36px)] w-auto" />
         <h2 className="text-[clamp(2.3rem,5vw,4.6rem)] font-extrabold leading-[1] tracking-[-0.045em] text-white">{copy.title}</h2>
         <p className="mb-8 mt-5 max-w-[36ch] text-[clamp(1rem,1.3vw,1.2rem)] leading-relaxed text-[#d6d2ee]">{copy.body}</p>
