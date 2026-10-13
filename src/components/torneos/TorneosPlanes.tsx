@@ -3,6 +3,7 @@
 import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
+import { COMMERCIAL } from "@/lib/torneos-content";
 import { getCreateTournamentTarget, getPremiumTournamentTarget, type CtaTarget } from "@/lib/torneos-links";
 import { cn } from "@/lib/utils";
 
@@ -25,9 +26,23 @@ function CtaLink({ target, label, tone }: { target: CtaTarget; label: string; to
   );
 }
 
+function Badge({ children, tone }: { children: string; tone: "live" | "soon" }) {
+  return (
+    <span
+      className={cn(
+        "rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.1em]",
+        tone === "live" ? "bg-[#2ee59d]/15 text-[#7ff5c4]" : "bg-white/12 text-white/85",
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
 /**
  * Plans and comparison. Every number comes from `plans` in torneos-content.ts,
- * which builds them from COMMERCIAL.
+ * which builds them from COMMERCIAL. While Premium can't be bought, its card
+ * says "Próximamente" and has no purchase link.
  */
 export function TorneosPlanes() {
   const copy = useTorneosContent().plans;
@@ -43,7 +58,10 @@ export function TorneosPlanes() {
 
         <div className="mx-auto mt-14 grid max-w-[920px] gap-5 lg:grid-cols-2">
           <article className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.045] p-7 md:p-8">
-            <h3 className="text-xs font-extrabold tracking-[0.16em] text-[#c9c2ff]">{copy.free.name}</h3>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-xs font-extrabold tracking-[0.16em] text-[#c9c2ff]">{copy.free.name}</h3>
+              <Badge tone="live">{copy.free.tag}</Badge>
+            </div>
             <p className="mt-4 flex items-baseline gap-2">
               <span className="disp-t text-6xl">{copy.free.price}</span>
               <span className="text-sm text-white/65">{copy.free.priceDetail}</span>
@@ -64,12 +82,20 @@ export function TorneosPlanes() {
           </article>
 
           <article className="flex flex-col rounded-3xl border border-[#8b6dff]/60 bg-[linear-gradient(170deg,rgba(108,77,255,0.28),rgba(108,77,255,0.06))] p-7 shadow-[0_30px_80px_-30px_rgba(108,77,255,0.8)] md:p-8">
-            <h3 className="text-xs font-extrabold tracking-[0.16em] text-[#c9c2ff]">{copy.premium.name}</h3>
-            <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-xs font-extrabold tracking-[0.16em] text-[#c9c2ff]">{copy.premium.name}</h3>
+              {!COMMERCIAL.premiumAvailable && <Badge tone="soon">{copy.premium.tag}</Badge>}
+            </div>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-white/65">{copy.premium.priceLabel}</p>
+            <p className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
               <span className="disp-t text-6xl">{copy.premium.price}</span>
               <span className="text-sm text-white/70">{copy.premium.priceDetail}</span>
             </p>
-            <p className="mt-3 text-white/75">{copy.premium.lead}</p>
+            {copy.premium.season.map((line) => (
+              <p key={line} className="mt-3 text-[15px] leading-snug text-white/75">
+                {line}
+              </p>
+            ))}
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-white/60">{copy.premiumAdds}</p>
             <ul className="mt-3 flex-1 space-y-2.5">
               {copy.premium.features.map((feature) => (
@@ -80,16 +106,21 @@ export function TorneosPlanes() {
               ))}
             </ul>
             <div className="mt-8">
-              <CtaLink target={getPremiumTournamentTarget()} label={copy.choosePremium} tone="violet" />
-              <p className="mt-3 text-center text-xs text-white/60">{copy.upgrade}</p>
+              {COMMERCIAL.premiumAvailable ? (
+                <CtaLink target={getPremiumTournamentTarget()} label={copy.choosePremium} tone="violet" />
+              ) : (
+                <>
+                  <p className="flex min-h-12 w-full items-center justify-center rounded-xl border border-dashed border-white/30 px-5 text-base font-bold text-white/80">
+                    {copy.comingSoon}
+                  </p>
+                  <p className="mt-3 text-center text-xs text-white/65">{copy.comingSoonNote}</p>
+                </>
+              )}
             </div>
           </article>
         </div>
 
-        <ul className="mx-auto mt-6 max-w-[920px] space-y-1.5 text-center text-sm text-white/60">
-          <li>{copy.renewal}</li>
-          <li>{copy.photosNotice}</li>
-        </ul>
+        <p className="mx-auto mt-6 max-w-[920px] text-center text-sm text-white/60">{copy.photosNotice}</p>
 
         <details className="group mx-auto mt-12 max-w-[920px] rounded-2xl border border-white/10 bg-white/[0.03]">
           <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 text-base font-semibold [&::-webkit-details-marker]:hidden">

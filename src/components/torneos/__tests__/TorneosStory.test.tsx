@@ -6,8 +6,10 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { DashboardResultado } from "@/components/torneos/screens/DashboardResultado";
 import { Poster } from "@/components/torneos/screens/Poster";
 import { PublicPagePhone } from "@/components/torneos/screens/PublicPagePhone";
+import { TEAM_NAMES } from "@/components/torneos/screens/teams";
 import { TorneosStory, TorneosStoryStatic } from "@/components/torneos/TorneosStory";
 import { torneosContent } from "@/lib/torneos-content";
+import { standingsRows } from "@/lib/torneos-story";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
 const story = torneosContent.es.story;
@@ -62,10 +64,12 @@ describe("torneos story screens (final state)", () => {
     expect(render(<PublicPagePhone copy={story.publicPage} />)).toMatch(/Los Galácticos[\s\S]*?15/);
   });
 
-  it("the scorers post is tagged Premium", () => {
-    const html = render(<Poster kind="scorers" copy={story.posters} />);
-    expect(html).toContain(story.posters.scorersTag);
-    expect(html).toContain("Nico");
+  it("the standings post is a FREE post with the leader after the result", () => {
+    const leader = [...standingsRows()].sort((a, b) => a.rank1 - b.rank1)[0];
+    const html = render(<Poster kind="standings" copy={story.posters} />);
+    expect(html).toContain(story.posters.standings);
+    expect(html).toMatch(new RegExp(`1\\. ${TEAM_NAMES[leader.teamId]}[\\s\\S]*?>${leader.pts1}<`));
+    expect(html).not.toMatch(/premium/i);
   });
 });
 

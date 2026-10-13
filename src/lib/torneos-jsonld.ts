@@ -2,9 +2,10 @@ import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
 
 /**
  * Structured data for the Torneos portal, built from the same copy and the
- * same commercial constants the page renders (default locale).
+ * same commercial constants the page renders (default locale). The Premium
+ * offer is left out while Premium can't be bought.
  */
-export function torneosJsonLd() {
+export function torneosJsonLd({ premiumAvailable = COMMERCIAL.premiumAvailable }: { premiumAvailable?: boolean } = {}) {
   const copy = torneosContent.es;
 
   const faq = {
@@ -26,7 +27,7 @@ export function torneosJsonLd() {
     description: copy.seo.description,
     offers: [
       { "@type": "Offer", name: "FREE", price: "0", priceCurrency: "ARS" },
-      { "@type": "Offer", name: "Premium", price: String(COMMERCIAL.premiumPriceArs), priceCurrency: "ARS" },
+      ...(premiumAvailable ? [{ "@type": "Offer", name: "Premium", price: String(COMMERCIAL.premiumPriceArs), priceCurrency: "ARS" }] : []),
     ],
   };
 

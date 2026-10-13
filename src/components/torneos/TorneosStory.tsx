@@ -274,7 +274,7 @@ function TorneosStoryScene() {
             </div>
 
             <div ref={(el) => { n.current.posters[1] = el; }} className={cn(s.poster, s.posterBack)} aria-hidden="true" data-poster>
-              <Poster kind="scorers" copy={story.posters} />
+              <Poster kind="standings" copy={story.posters} />
             </div>
             <div ref={(el) => { n.current.posters[0] = el; }} className={s.poster} aria-hidden="true" data-poster>
               <Poster kind="results" copy={story.posters} />
@@ -313,7 +313,7 @@ export function TorneosStoryStatic() {
     </DeviceFrame>,
     <div key="posters" className={s.staticVisual}>
       <Poster kind="results" copy={story.posters} className={s.staticPoster} />
-      <Poster kind="scorers" copy={story.posters} className={s.staticPoster} />
+      <Poster kind="standings" copy={story.posters} className={s.staticPoster} />
     </div>,
   ];
 
