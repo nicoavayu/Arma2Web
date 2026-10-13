@@ -8,7 +8,7 @@ import { TORNEOS_CONTACT_HREF } from "@/lib/torneos-links";
 
 const linkClass = "text-sm text-white/60 transition-colors hover:text-white";
 
-export function TorneosFooter() {
+export function TorneosFooter({ homeHref = "" }: { homeHref?: string }) {
   const content = useTorneosContent();
   const copy = content.footer;
   const year = new Date().getFullYear();
@@ -25,9 +25,10 @@ export function TorneosFooter() {
           <ul className="mt-4 space-y-3">
             {content.nav.links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className={linkClass}>{link.label}</a>
+                <a href={`${homeHref}${link.href}`} className={linkClass}>{link.label}</a>
               </li>
             ))}
+            <li><a href={getSiteUrl("torneos", "/ejemplo")} className={linkClass}>{copy.example}</a></li>
           </ul>
         </div>
         <div>

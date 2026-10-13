@@ -52,6 +52,7 @@ const es = {
     start: "Empezar gratis",
     explore: "Ver cómo funciona",
     freeNote: "Empezás en FREE, sin tarjeta.",
+    example: "Ver un torneo de ejemplo",
   },
   story: {
     navLabel: "Capítulos de cómo funciona",
@@ -117,7 +118,7 @@ const es = {
     ],
     art: {
       round: "Fecha 8",
-      roundMeta: "Sáb 18 · Sede Norte",
+      roundMeta: "Sáb 17 · Sede Norte",
       league: "Liga",
       knockout: "Cuartos de final",
       knockoutMeta: "Eliminatoria",
@@ -240,11 +241,13 @@ const es = {
     body: "Empezás en FREE, sin tarjeta.",
     start: "Empezar gratis",
     contact: "Hablar con nosotros",
+    example: "Ver un torneo de ejemplo",
     players: "¿Sos jugador? Arma2 para jugadores",
   },
   footer: {
     description: "Gestión de ligas y torneos de fútbol amateur: fixture, resultados, tabla, página pública y placas para redes.",
     product: "Arma2 Torneos",
+    example: "Torneo de ejemplo",
     playersTitle: "Jugadores",
     playersBlurb: "Organizá partidos y armá equipos parejos votados por el grupo.",
     legal: "Legal",
@@ -254,6 +257,41 @@ const es = {
     rights: "Todos los derechos reservados.",
   },
   demoNote: "Ejemplo con datos ficticios",
+  ejemplo: {
+    seo: {
+      title: "Torneo de ejemplo — Arma2 Torneos",
+      description:
+        "Mirá un torneo de ejemplo en Arma2 Torneos: tabla, goleadores, fixture y resultados de una liga con datos ficticios. Sin registrarte.",
+    },
+    badge: "Datos ficticios",
+    name: "Copa Primavera 2026",
+    meta: "Liga · 4 equipos · 9 fechas",
+    lead: "Un torneo con datos ficticios para que veas qué publica Arma2 Torneos: tabla, goleadores, fixture y resultados, siempre al día. No hace falta registrarse.",
+    sectionsLabel: "Secciones del torneo",
+    sections: { standings: "Tabla", scorers: "Goleadores", fixture: "Fixture", results: "Resultados" },
+    standings: {
+      title: "Tabla de posiciones",
+      caption: "Tabla de posiciones después de la fecha 7",
+      columns: [
+        ["Pos", "Posición"],
+        ["Equipo", "Equipo"],
+        ["PJ", "Partidos jugados"],
+        ["PG", "Partidos ganados"],
+        ["PE", "Partidos empatados"],
+        ["PP", "Partidos perdidos"],
+        ["GF", "Goles a favor"],
+        ["GC", "Goles en contra"],
+        ["DG", "Diferencia de gol"],
+        ["Pts", "Puntos"],
+      ],
+      pending: "Un partido de la fecha 7 se reprogramó.",
+      pendingLink: "Ver fixture",
+    },
+    scorers: { title: "Goleadores", goals: "goles" },
+    fixture: { title: "Fixture", lead: "Lo que falta jugar. Todos los partidos se juegan en", round: "Fecha", pitch: "Cancha", venue: "Sede Norte", rescheduled: "Reprogramado", before: "antes era" },
+    results: { title: "Resultados", round: "Fecha", pending: "Reprogramado" },
+    cta: { title: "¿Querés el tuyo?", body: "Empezás en FREE, sin tarjeta.", start: "Empezar gratis", back: "Volver a Arma2 Torneos" },
+  },
 };
 
 type TorneosCopy = typeof es;
@@ -284,6 +322,7 @@ const en: TorneosCopy = {
     start: "Start for free",
     explore: "See how it works",
     freeNote: "You start on FREE, no card needed.",
+    example: "See an example tournament",
   },
   story: {
     navLabel: "How it works, chapter by chapter",
@@ -349,7 +388,7 @@ const en: TorneosCopy = {
     ],
     art: {
       round: "Round 8",
-      roundMeta: "Sat 18 · North venue",
+      roundMeta: "Sat 17 · North venue",
       league: "League",
       knockout: "Quarter-finals",
       knockoutMeta: "Knockout",
@@ -472,11 +511,13 @@ const en: TorneosCopy = {
     body: "You start on FREE, no card needed.",
     start: "Start for free",
     contact: "Talk to us",
+    example: "See an example tournament",
     players: "Are you a player? Arma2 for players",
   },
   footer: {
     description: "League and tournament management for amateur football: fixtures, results, standings, a public page and social posts.",
     product: "Arma2 Tournaments",
+    example: "Example tournament",
     playersTitle: "Players",
     playersBlurb: "Organise matches and build even teams voted by the group.",
     legal: "Legal",
@@ -486,6 +527,41 @@ const en: TorneosCopy = {
     rights: "All rights reserved.",
   },
   demoNote: "Example with made-up data",
+  ejemplo: {
+    seo: {
+      title: "Example tournament — Arma2 Tournaments",
+      description:
+        "See an example tournament on Arma2 Tournaments: standings, top scorers, fixtures and results of a league with made-up data. No sign-up.",
+    },
+    badge: "Made-up data",
+    name: "Copa Primavera 2026",
+    meta: "League · 4 teams · 9 rounds",
+    lead: "A tournament with made-up data so you can see what Arma2 Tournaments publishes: standings, top scorers, fixtures and results, always up to date. No sign-up needed.",
+    sectionsLabel: "Tournament sections",
+    sections: { standings: "Standings", scorers: "Top scorers", fixture: "Fixtures", results: "Results" },
+    standings: {
+      title: "Standings",
+      caption: "Standings after round 7",
+      columns: [
+        ["#", "Position"],
+        ["Team", "Team"],
+        ["P", "Played"],
+        ["W", "Won"],
+        ["D", "Drawn"],
+        ["L", "Lost"],
+        ["GF", "Goals for"],
+        ["GA", "Goals against"],
+        ["GD", "Goal difference"],
+        ["Pts", "Points"],
+      ],
+      pending: "A round 7 match was rescheduled.",
+      pendingLink: "See fixtures",
+    },
+    scorers: { title: "Top scorers", goals: "goals" },
+    fixture: { title: "Fixtures", lead: "What's left to play. Every match is at", round: "Round", pitch: "Pitch", venue: "the North venue", rescheduled: "Rescheduled", before: "was" },
+    results: { title: "Results", round: "Round", pending: "Rescheduled" },
+    cta: { title: "Want your own?", body: "You start on FREE, no card needed.", start: "Start for free", back: "Back to Arma2 Tournaments" },
+  },
 };
 
 export type TorneosContent = TorneosCopy;

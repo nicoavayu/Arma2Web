@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed } from "next/font/google";
 
-import { TorneosFooter } from "@/components/torneos/TorneosFooter";
-import { TorneosNav } from "@/components/torneos/TorneosNav";
 import { torneosContent } from "@/lib/torneos-content";
 
 /**
  * Torneos portal, served at torneos.arma2.com.ar (see `src/proxy.ts`).
  * Metadata is emitted in the default locale (es), like the players site.
  * The Open Graph image comes from `opengraph-image.tsx` next to this file.
+ * Each page renders the nav and footer, so pages other than the home can point
+ * their section links back to it.
  */
 const seo = torneosContent.es.seo;
 
@@ -57,10 +57,6 @@ export default function TorneosLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={display.variable}>
-      <TorneosNav />
-      {children}
-      <TorneosFooter />
-    </div>
+    <div className={display.variable}>{children}</div>
   );
 }

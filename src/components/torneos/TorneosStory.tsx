@@ -13,6 +13,7 @@ import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
 import { backOut, clamp, easeInOutCubic, easeOutCubic, lerp, seg } from "@/lib/motion-math";
+import { getSiteUrl } from "@/lib/site-urls";
 import type { TorneosContent } from "@/lib/torneos-content";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
 import { TORNEOS_HERO_END, TORNEOS_STORY_CHAPTERS } from "@/lib/torneos-story";
@@ -56,7 +57,12 @@ function HeroCopy({ copy, howHref }: { copy: TorneosContent; howHref: string }) 
           {copy.hero.explore}
         </a>
       </div>
-      <p className={s.micro}>{copy.hero.freeNote}</p>
+      <p className={s.micro}>
+        {copy.hero.freeNote}{" "}
+        <a href={getSiteUrl("torneos", "/ejemplo")} className="font-semibold text-[#c9c2ff] underline underline-offset-4 hover:text-white">
+          {copy.hero.example}
+        </a>
+      </p>
     </>
   );
 }

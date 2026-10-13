@@ -14,6 +14,8 @@ const redirect = (url: string): SiteRouteResult => ({ kind: "redirect", url, sta
 describe("resolveSiteRoute", () => {
   it.each<[string | null, string, string, SiteRouteResult]>([
     ["torneos.arma2.com.ar", "/", "", rewrite("/torneos")],
+    ["torneos.arma2.com.ar", "/ejemplo", "", rewrite("/torneos/ejemplo")],
+    ["www.arma2.com.ar", "/torneos/ejemplo", "", redirect("https://torneos.arma2.com.ar/ejemplo")],
     ["torneos.arma2.com.ar", "/sitemap.xml", "", rewrite("/torneos/sitemap.xml")],
     ["torneos.arma2.com.ar", "/robots.txt", "", rewrite("/torneos/robots.txt")],
     ["torneos.arma2.com.ar", "/opengraph-image", "", rewrite("/torneos/opengraph-image")],

@@ -35,6 +35,12 @@ export function TorneosCierre() {
             <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
           </a>
           <a
+            href={getSiteUrl("torneos", "/ejemplo")}
+            className="inline-flex min-h-12 items-center rounded-xl border border-white/25 bg-white/[0.05] px-6 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
+          >
+            {copy.example}
+          </a>
+          <a
             href={getSiteUrl("jugadores", TORNEOS_CONTACT_HREF)}
             className="inline-flex min-h-12 items-center rounded-xl border border-white/25 bg-white/[0.05] px-6 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
           >
