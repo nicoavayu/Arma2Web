@@ -34,6 +34,16 @@ describe("example tournament page", () => {
     expect(firstRow).toMatch(/>15</);
   });
 
+  it("names every standings column in full for screen readers, with semantic headers", () => {
+    const head = html.slice(html.indexOf("<thead"), html.indexOf("</thead>"));
+    for (const [abbr, full] of torneosEjemploContent.es.standings.columns) {
+      expect(head).toContain(`<span class="sr-only">${full}</span>`);
+      expect(head).toContain(`<span aria-hidden="true">${abbr}</span>`);
+    }
+    expect(head.match(/<th scope="col"/g)).toHaveLength(10);
+    expect(html.match(/<th scope="row"/g)).toHaveLength(4);
+  });
+
   it("shows the rescheduled match the way the product does", () => {
     expect(html).toContain("Reprogramado · antes era Sáb 10/10 · 18:00");
   });

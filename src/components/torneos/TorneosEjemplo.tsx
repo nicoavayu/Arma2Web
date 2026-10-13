@@ -94,9 +94,8 @@ export function TorneosEjemplo() {
                     scope="col"
                     className={cn("px-1.5 py-2 font-semibold", i === 1 ? "w-full text-left" : "text-right", i === 0 && "text-left", WIDE_ONLY_COLUMNS.has(i) && "hidden sm:table-cell")}
                   >
-                    <abbr title={full} className="no-underline">
-                      {abbr}
-                    </abbr>
+                    <span aria-hidden="true">{abbr}</span>
+                    <span className="sr-only">{full}</span>
                   </th>
                 ))}
               </tr>
