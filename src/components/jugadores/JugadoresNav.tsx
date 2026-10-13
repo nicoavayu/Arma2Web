@@ -9,6 +9,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { BrandMark } from "@/components/cinematic/BrandMark";
 import { useHomeStoryProgress } from "@/components/cinematic/useHomeStoryProgress";
 import { useMounted } from "@/components/cinematic/useMounted";
+import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { cn } from "@/lib/utils";
@@ -34,8 +35,10 @@ export function JugadoresNav() {
   const pathname = usePathname();
   const mounted = useMounted();
   const storyProgress = useHomeStoryProgress();
+  const staticStory = useStaticStory();
   // On the home the big mark in the hero flies into this one; until hydration we assume the top of the story.
-  const story = storyProgress ?? (pathname === "/" && !mounted ? 0 : null);
+  // The reduced-motion home has no big mark, so the nav shows its own from the start.
+  const story = staticStory ? null : (storyProgress ?? (pathname === "/" && !mounted ? 0 : null));
   const markOpacity = story === null ? 1 : seg(easeInOutCubic(seg(story, 0, 0.12)), 0.9, 1);
   const solid = story === null ? scrolled : story > 0.125;
 

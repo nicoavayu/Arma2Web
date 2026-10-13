@@ -31,7 +31,7 @@ const es = {
   },
   nav: {
     links: [
-      { label: "Cómo funciona", href: "#torneos-como-funciona" },
+      { label: "Cómo funciona", href: "#capitulo-cargas" },
       { label: "Funciones", href: "#torneos-funciones" },
       { label: "Planes", href: "#torneos-planes" },
       { label: "Preguntas", href: "#torneos-faq" },
@@ -257,7 +257,7 @@ const en: TorneosCopy = {
   },
   nav: {
     links: [
-      { label: "How it works", href: "#torneos-como-funciona" },
+      { label: "How it works", href: "#capitulo-cargas" },
       { label: "Features", href: "#torneos-funciones" },
       { label: "Plans", href: "#torneos-planes" },
       { label: "Questions", href: "#torneos-faq" },

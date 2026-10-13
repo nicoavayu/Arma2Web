@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
@@ -15,10 +15,11 @@ export function BandaTorneos() {
   const ref = React.useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const still = useReducedMotion() === true;
 
   return (
     <section ref={ref} id="torneos" className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#05040d]">
-      <motion.div aria-hidden="true" className="absolute inset-x-0 -inset-y-[8%]" style={{ y }}>
+      <motion.div aria-hidden="true" className="absolute inset-x-0 -inset-y-[8%]" style={{ y: still ? 0 : y }}>
         <Image src={BRAND.bgStadium.src} alt="" fill sizes="100vw" className="object-cover object-[70%_50%]" />
       </motion.div>
       <div

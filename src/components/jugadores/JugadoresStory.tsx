@@ -54,7 +54,7 @@ function HeroCopy({ hero }: { hero: TranslationDictionary["home"]["hero"] }) {
         <span>{hero.title[2]}</span>
       </h1>
       <p className={s.lead}>{hero.lead}</p>
-      <StoreButtons tone="glass" />
+      <StoreButtons tone="glass" className={s.stores} />
     </>
   );
 }
@@ -141,13 +141,22 @@ function JugadoresStoryScene() {
     const measure = () => {
       const W = stage.clientWidth;
       const H = stage.clientHeight;
-      const isMobile = W < 900;
+      // Portrait phones stack caption and phone; short screens (landscape phones) use the side-by-side layout.
+      const isMobile = W < 900 && H > 500;
       const box = layoutBox(anchor, stage);
-      const heroPh = phone.offsetHeight;
-      const ph = isMobile ? Math.min(0.54 * H, 480) : Math.min(0.76 * H, 700);
+      // Keep the phone below the fixed nav (72px) on short screens.
+      let ph = Math.min(0.76 * H, H - 96, 700);
+      let cyE = Math.max(H * 0.52, 80 + ph / 2);
+      if (isMobile) {
+        // The phone goes under the tallest caption and above the chapter selector.
+        const captionBottom = Math.max(84, ...nodes.caps.map((cap) => (cap ? cap.offsetTop + cap.offsetHeight : 0)));
+        const selector = (chaptersRef.current?.offsetHeight ?? 54) + 14;
+        ph = clamp(H - captionBottom - selector - 28, 160, Math.min(0.54 * H, 480));
+        cyE = captionBottom + 16 + ph / 2;
+      }
+      const heroPh = phone.offsetHeight || ph;
       const pw = ph * 0.485;
       const cxE = isMobile ? W * 0.5 : W * 0.6;
-      const cyE = isMobile ? H * 0.64 : H * 0.52;
       // The nav is fixed and the stage is pinned at the top, so viewport and stage coordinates match.
       const navMark = document.querySelector<HTMLElement>('[data-brand-mark="nav"]')?.getBoundingClientRect();
       return {
@@ -168,6 +177,8 @@ function JugadoresStoryScene() {
         ny: navMark ? navMark.top + navMark.height / 2 : 34,
         nw: navMark?.width ?? 36,
         bm: bigMark.offsetWidth,
+        // The big mark sits right of the phone on desktop (CSS `left`); centered on phones.
+        bmx: isMobile ? 0 : heroPh * 0.485 * 0.32,
       };
     };
 
@@ -248,8 +259,7 @@ function JugadoresStoryScene() {
       }
 
       const m = easeInOutCubic(seg(p, 0, 0.12));
-      const bmx = g.isMobile ? 0 : g.heroPw * 0.32;
-      bigMark.style.transform = `translate3d(${lerp(bmx, g.nx - g.acx, m)}px,${lerp(0, g.ny - g.acy, m)}px,0) scale(${Math.pow(g.nw / g.bm, m)})`;
+      bigMark.style.transform = `translate3d(${lerp(0, g.nx - g.acx - g.bmx, m)}px,${lerp(0, g.ny - g.acy, m)}px,0) scale(${Math.pow(g.nw / g.bm, m)})`;
       bigMark.style.opacity = String(lerp(g.isMobile ? 0.5 : 0.42, 1, m) * (1 - seg(m, 0.9, 1)));
 
       const home = nodes.layers[0];
@@ -285,21 +295,23 @@ function JugadoresStoryScene() {
 
     apply(progress.get());
     const unsubscribe = progress.on("change", apply);
-    window.addEventListener("resize", refresh);
+    // Re-measure whenever the layout changes: viewport, language (caption and hero copy heights), fonts.
+    const observer = new ResizeObserver(refresh);
+    [stage, anchor, phone, heroCopyRef.current, ...nodes.caps].forEach((el) => el && observer.observe(el));
     window.addEventListener("orientationchange", refresh);
-    document.fonts?.ready.then(refresh).catch(() => {});
     return () => {
       unsubscribe();
-      window.removeEventListener("resize", refresh);
+      observer.disconnect();
       window.removeEventListener("orientationchange", refresh);
     };
-  }, [progress]);
+    // `showAwards` mounts the award images: re-run so they get positioned without waiting for a scroll.
+  }, [progress, showAwards]);
 
   const [rx, ry, rz] = HERO_TILT.desktop;
   const chapterProgress = [c1, c2, c3, c4];
 
   return (
-    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT }}>
+    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT, scrollMarginTop: 0 }}>
       <span id="how-it-works" className={s.anchor} style={{ top: `calc(${STORY_CHAPTERS[0][0] + 0.01} * (100% - 100svh))` }} />
       <span id="como-funciona" className={s.anchor} style={{ top: `calc(${STORY_CHAPTERS[0][0] + 0.01} * (100% - 100svh))` }} />
       {story.chapters.map((chapter, i) => (
@@ -327,7 +339,7 @@ function JugadoresStoryScene() {
             <HeroCopy hero={t.home.hero} />
           </div>
           <div ref={anchorRef} className={s.heroAnchor}>
-            <div ref={bigMarkRef} className={s.bigMark} style={{ opacity: 0.42, transform: "translateX(calc(min(76vh, 700px) * 0.1552))" }}>
+            <div ref={bigMarkRef} className={s.bigMark}>
               <BrandMark data-brand-mark="hero" />
             </div>
             <div
@@ -345,6 +357,7 @@ function JugadoresStoryScene() {
               ref={phoneRef}
               className={s.phone}
               data-hero-device
+              data-story-device
               style={{ transform: `perspective(1800px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)` }}
             >
               <div className={s.phoneGlow} />

@@ -364,8 +364,8 @@
   width: min(260px, 42vw);
 }
 
-/* ---------- phone layout (< 900px) ---------- */
-@media (max-width: 899px) {
+/* ---------- phone layout (portrait, < 900px wide) ---------- */
+@media (max-width: 899px) and (min-height: 501px) {
   .stage {
     --lw: 92vw;
     --ph: min(34vh, 312px);
@@ -485,6 +485,80 @@
   .staticRow {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+}
+
+/* ---------- short screens (landscape phones): copy left, render right ---------- */
+@media (max-height: 500px) {
+  .heroCopy {
+    left: clamp(20px, 5vw, 60px);
+    top: calc(50% + 28px);
+    width: 46vw;
+    translate: 0 -50%;
+    text-align: left;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 9vh, 3rem);
+  }
+
+  .lead {
+    margin: 10px 0 14px;
+    font-size: 13px;
+  }
+
+  .ctas {
+    justify-content: flex-start;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .micro {
+    display: none;
+  }
+
+  .render {
+    left: auto;
+    right: 3vw;
+    top: calc(50% + 28px);
+    bottom: auto;
+    width: min(42vw, calc((100vh - 110px) * 1.78));
+    translate: 0 -50%;
+  }
+
+  .cap {
+    margin-top: 0;
+    translate: 0 -50%;
+  }
+
+  .step {
+    margin-bottom: 8px;
+  }
+
+  .capTitle {
+    font-size: clamp(1.6rem, 8vh, 2.6rem);
+  }
+
+  .capText {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .poster {
+    scale: 0.55;
+  }
+
+  .posterBack {
+    left: calc(64vw + var(--lw) * 0.04 + var(--poster) * 0.55 * 0.98);
+  }
+
+  .chapters {
+    display: none;
   }
 }
 

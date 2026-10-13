@@ -33,7 +33,10 @@ export interface HorizontalGalleryProps {
 function Cards({ cards }: { cards: GalleryCard[] }) {
   return cards.map((card) => (
     <article key={card.id} className={s.card} data-card={card.id}>
-      {card.art}
+      {/* Example data: decorative; the card text says what it shows. */}
+      <div aria-hidden="true" className={s.artSlot}>
+        {card.art}
+      </div>
       <div className={s.text}>
         <span className={s.label}>{card.label}</span>
         <h3 className={s.cardTitle}>{card.title}</h3>
@@ -92,7 +95,7 @@ function PinnedGallery({ id, height, anchors = [], eyebrow, title, titleClassNam
   }, [progress]);
 
   return (
-    <section ref={sectionRef} id={id} className={s.scene} style={{ ...themeStyle(theme), height }}>
+    <section ref={sectionRef} id={id} className={s.scene} style={{ ...themeStyle(theme), height, scrollMarginTop: 0 }}>
       {anchors.map((anchor) => (
         <span key={anchor.id} id={anchor.id} className={s.anchor} style={{ top: `calc(${anchor.at} * (100% - 100svh))` }} />
       ))}

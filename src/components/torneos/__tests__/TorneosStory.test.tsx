@@ -27,8 +27,18 @@ describe("torneos hero + story scene", () => {
   });
 
   it("paints the hero visible on the server", () => {
-    const hero = html.slice(html.indexOf("data-hero-copy"), html.indexOf("</h1>"));
+    const start = html.lastIndexOf("<div", html.indexOf("data-hero-copy"));
+    const hero = html.slice(start, html.indexOf("data-hero-device"));
+    expect(hero).toContain("<h1");
+    expect(hero).toContain("Empezar gratis");
     expect(hero).not.toMatch(/opacity:\s*0[;"]/);
+    expect(hero).not.toMatch(/visibility:\s*hidden/);
+  });
+
+  it("points the nav's \"Cómo funciona\" at the first chapter, not the hero", () => {
+    for (const locale of ["es", "en"] as const) {
+      expect(torneosContent[locale].nav.links[0].href).toBe("#capitulo-cargas");
+    }
   });
 
   it("labels the example data", () => {

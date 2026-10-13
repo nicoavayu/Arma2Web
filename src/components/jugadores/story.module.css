@@ -208,11 +208,13 @@
 
 .bigMark {
   position: absolute;
-  left: 0;
+  /* Right of the phone on desktop (JS animates from here). */
+  left: calc(var(--ph) * 0.1552);
   top: 0;
   width: var(--bm);
   height: var(--bm);
   translate: -50% -50%;
+  opacity: 0.42;
   z-index: 1;
   pointer-events: none;
   will-change: transform, opacity;
@@ -581,8 +583,12 @@
   margin: 0 auto;
 }
 
-/* ---------- phone layout (< 900px) ---------- */
-@media (max-width: 899px) {
+.stores {
+  /* Hook for the phone layout below. */
+}
+
+/* ---------- phone layout (portrait, < 900px wide) ---------- */
+@media (max-width: 899px) and (min-height: 501px) {
   .stage {
     --ph: min(54vh, 480px);
     --bm: 94vw;
@@ -646,6 +652,11 @@
   .bigMark {
     left: 50%;
     top: 50%;
+    opacity: 0.5;
+  }
+
+  .stores {
+    justify-content: center;
   }
 
   .cap {
@@ -698,6 +709,65 @@
   .staticRow {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+}
+
+/* ---------- short screens (landscape phones): side by side, compact ---------- */
+@media (max-height: 500px) {
+  .stage {
+    --ph: min(76vh, calc(100vh - 100px), 700px);
+  }
+
+  .heroAnchor {
+    top: calc(50% + 36px);
+  }
+
+  .heroCopy {
+    top: calc(50% + 28px);
+    width: min(50vw, 560px);
+  }
+
+  .eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 8vh, 2.6rem);
+  }
+
+  .lead {
+    margin: 10px 0 14px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .stores :global(a[data-store]) {
+    min-height: 44px;
+  }
+
+  .cap {
+    margin-top: 0;
+    translate: 0 -50%;
+  }
+
+  .step {
+    margin-bottom: 8px;
+  }
+
+  .capTitle {
+    font-size: clamp(1.6rem, 7.5vh, 2.4rem);
+  }
+
+  .capText {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* No room for the selector under the phone; the captions carry the story. */
+  .chapters {
+    display: none;
   }
 }
 

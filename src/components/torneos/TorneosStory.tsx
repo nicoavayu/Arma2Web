@@ -125,11 +125,21 @@ function TorneosStoryScene() {
     if (!stage) return;
 
     const measure = () => {
-      const isMobile = stage.clientWidth < 900;
+      const W = stage.clientWidth;
+      // Portrait phones stack; short screens (landscape phones) use the side-by-side layout with CSS-scaled posters.
+      const isMobile = W < 900 && stage.clientHeight > 500;
+      const short = stage.clientHeight <= 500;
       // Elements centered with `translate: -50% -50%` have their visual center at offsetLeft/offsetTop.
       const laptop = n.laptop ? { x: n.laptop.offsetLeft, y: n.laptop.offsetTop } : { x: 0, y: 0 };
-      const posters = n.posters.map((poster) => (poster ? { dx: laptop.x - poster.offsetLeft, dy: laptop.y - poster.offsetTop } : { dx: 0, dy: 0 }));
-      return { isMobile, posters };
+      const front = n.posters[0];
+      // Desktop: shrink the poster pair so the back one (300px design, CSS gap 0.98×) fits on screen.
+      const fit = !isMobile && !short && front ? clamp((W - 16 - front.offsetLeft) / (300 * (0.98 + 0.5)), 0.55, 1) : 1;
+      const posters = n.posters.map((poster, i) => {
+        if (!poster) return { dx: 0, dy: 0, shift: 0 };
+        const shift = i === 1 ? -(1 - fit) * 300 * 0.98 : 0;
+        return { dx: laptop.x - poster.offsetLeft, dy: laptop.y - poster.offsetTop, shift };
+      });
+      return { isMobile, posters, fit };
     };
     let g = measure();
 
@@ -179,9 +189,9 @@ function TorneosStoryScene() {
         if (!poster) return;
         const t = seg(p, CH4[0] + 0.02 + i * 0.05, CH4[0] + 0.12 + i * 0.05);
         const e = easeOutCubic(t);
-        const { dx, dy } = g.posters[i];
+        const { dx, dy, shift } = g.posters[i];
         poster.style.opacity = String(clamp(t * 2));
-        poster.style.transform = `translate(${lerp(dx, 0, e)}px, ${lerp(dy, 0, e)}px) scale(${lerp(0.4, i ? 0.94 : 1, clamp(backOut(t), 0, 1.1))}) rotate(${lerp(0, i ? 6 : -5, e)}deg)`;
+        poster.style.transform = `translate(${lerp(dx, shift, e)}px, ${lerp(dy, 0, e)}px) scale(${lerp(0.4, i ? 0.94 : 1, clamp(backOut(t), 0, 1.1)) * g.fit}) rotate(${lerp(0, i ? 6 : -5, e)}deg)`;
       });
 
       if (n.chapters) {
@@ -197,11 +207,12 @@ function TorneosStoryScene() {
     };
     apply(progress.get());
     const unsubscribe = progress.on("change", apply);
-    window.addEventListener("resize", refresh);
+    const observer = new ResizeObserver(refresh);
+    [stage, n.laptop, ...n.posters].forEach((el) => el && observer.observe(el));
     window.addEventListener("orientationchange", refresh);
     return () => {
       unsubscribe();
-      window.removeEventListener("resize", refresh);
+      observer.disconnect();
       window.removeEventListener("orientationchange", refresh);
     };
   }, [progress, started]);
@@ -210,7 +221,7 @@ function TorneosStoryScene() {
   const howHref = `#${chapterAnchor(story.chapters[0].id)}`;
 
   return (
-    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT }}>
+    <section ref={sectionRef} id={SECTION_ID} className={s.scene} style={{ height: SCENE_HEIGHT, scrollMarginTop: 0 }}>
       <span id="torneos-hero" className={s.anchor} style={{ top: 0 }} />
       {story.chapters.map((chapter, i) => (
         <span
@@ -245,7 +256,7 @@ function TorneosStoryScene() {
           </div>
         ))}
 
-        <div ref={(el) => { n.current.laptop = el; }} className={s.laptop}>
+        <div ref={(el) => { n.current.laptop = el; }} className={s.laptop} data-story-device>
           <LaptopFrame>
             <DashboardResultado progress={progress} copy={story.dashboard} />
           </LaptopFrame>
@@ -262,10 +273,10 @@ function TorneosStoryScene() {
               </div>
             </div>
 
-            <div ref={(el) => { n.current.posters[1] = el; }} className={cn(s.poster, s.posterBack)} aria-hidden="true">
+            <div ref={(el) => { n.current.posters[1] = el; }} className={cn(s.poster, s.posterBack)} aria-hidden="true" data-poster>
               <Poster kind="scorers" copy={story.posters} />
             </div>
-            <div ref={(el) => { n.current.posters[0] = el; }} className={s.poster} aria-hidden="true">
+            <div ref={(el) => { n.current.posters[0] = el; }} className={s.poster} aria-hidden="true" data-poster>
               <Poster kind="results" copy={story.posters} />
             </div>
           </>

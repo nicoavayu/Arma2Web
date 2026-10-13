@@ -7,6 +7,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
 import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { useHomeStoryProgress } from "@/components/cinematic/useHomeStoryProgress";
+import { useStaticStory } from "@/components/cinematic/useStaticStory";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { cn } from "@/lib/utils";
 import { getCreateTournamentTarget } from "@/lib/torneos-links";
@@ -21,7 +22,8 @@ export function TorneosNav() {
   const [scrolled, setScrolled] = React.useState(false);
   const enter = getCreateTournamentTarget();
   // Transparent over the hero photo, glass once the story starts (or after scrolling on other pages).
-  const story = useHomeStoryProgress("torneos-como-funciona");
+  const storyProgress = useHomeStoryProgress("torneos-como-funciona");
+  const story = useStaticStory() ? null : storyProgress;
   const solid = open || (story === null ? scrolled : story > 0.14);
 
   React.useEffect(() => {

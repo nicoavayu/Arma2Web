@@ -18,6 +18,12 @@ describe("players gallery", () => {
     expect(html).toMatch(/<article[^>]*data-card="mercado-arqueros"[^>]*>[\s\S]*?Mercado de arqueros/);
   });
 
+  it("hides the example illustrations from screen readers", () => {
+    const arts = html.match(/<article[^>]*>\s*<div[^>]*>/g) ?? [];
+    expect(arts).toHaveLength(6);
+    for (const open of arts) expect(open).toContain('aria-hidden="true"');
+  });
+
   it("labels the example data", () => {
     expect(html).toContain("Ejemplo con datos ficticios");
   });

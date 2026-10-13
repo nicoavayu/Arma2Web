@@ -71,6 +71,13 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.artSlot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .text {
   padding: 22px 26px 26px;
 }

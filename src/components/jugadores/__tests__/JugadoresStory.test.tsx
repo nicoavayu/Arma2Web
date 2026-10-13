@@ -35,9 +35,14 @@ describe("players hero + story scene", () => {
   });
 
   it("paints the hero visible on the server (no hidden h1, lead or CTAs)", () => {
-    const hero = html.slice(html.indexOf('data-hero-copy'), html.indexOf("</h1>"));
+    const start = html.lastIndexOf("<div", html.indexOf("data-hero-copy"));
+    const end = html.indexOf('data-store="googlePlay"');
+    const hero = html.slice(start, end);
+    expect(hero).toContain("<h1");
+    expect(hero).toContain("Quién viene");
+    expect(hero).toContain('data-store="appStore"');
     expect(hero).not.toMatch(/opacity:\s*0[;"]/);
-    expect(html.slice(0, html.indexOf('data-hero-copy'))).not.toMatch(/data-hero-copy[^>]*opacity:\s*0/);
+    expect(hero).not.toMatch(/visibility:\s*hidden/);
   });
 });
 

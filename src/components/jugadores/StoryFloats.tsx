@@ -105,6 +105,7 @@ export function StoryFloats({
             key={award.src}
             ref={(el) => register("awards", index, el)}
             className={cn(s.float, s.award, index > 0 && s.awardSmall)}
+            data-award
             style={hidden}
           >
             <Image src={award.src} alt="" width={award.width} height={award.height} sizes="200px" />
