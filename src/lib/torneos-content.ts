@@ -256,8 +256,12 @@ const es = {
     title: "Armá tu torneo hoy.",
     body: "Empezás en FREE, sin tarjeta.",
     start: "Empezar gratis",
-    contact: "Hablar con nosotros",
     example: "Ver un torneo de ejemplo",
+    help: {
+      question: "¿Necesitás ayuda para organizar tu primera temporada?",
+      action: "Escribinos a",
+      subject: "Mi primera temporada en Arma2 Torneos",
+    },
     players: "¿Sos jugador? Arma2 para jugadores",
   },
   footer: {
@@ -542,8 +546,12 @@ const en: TorneosCopy = {
     title: "Set up your tournament today.",
     body: "You start on FREE, no card needed.",
     start: "Start for free",
-    contact: "Talk to us",
     example: "See an example tournament",
+    help: {
+      question: "Need a hand setting up your first season?",
+      action: "Write to us at",
+      subject: "My first season on Arma2 Tournaments",
+    },
     players: "Are you a player? Arma2 for players",
   },
   footer: {

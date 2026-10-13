@@ -48,6 +48,13 @@ describe("torneos gallery and closing sections", () => {
     expect(html).toContain("Antes: Sáb 10/10 · 18:00 · Ahora: Mié 21/10 · 21:00");
   });
 
+  it("offers help for a first season by email, without WhatsApp or support promises", () => {
+    const html = render(<TorneosCierre />);
+    expect(html).toContain(torneosContent.es.cierre.help.question);
+    expect(html).toMatch(/href="mailto:arma2app@gmail\.com\?subject=[^"]+"/);
+    expect(html).not.toMatch(/whatsapp|wa\.me|soporte|24\s*h/i);
+  });
+
   it("keep their anchors", () => {
     expect(render(<TorneosFaq />)).toContain('id="torneos-faq"');
     expect(render(<TorneosCierre />)).toContain('id="torneos-empezar"');

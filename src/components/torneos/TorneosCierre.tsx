@@ -7,7 +7,7 @@ import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { BRAND } from "@/lib/brand-assets";
 import { getSiteUrl } from "@/lib/site-urls";
-import { getCreateTournamentTarget, TORNEOS_CONTACT_HREF } from "@/lib/torneos-links";
+import { getCreateTournamentTarget, TORNEOS_CONTACT_EMAIL } from "@/lib/torneos-links";
 
 /** Closing call over the stadium photo. The last word of the title gets the brand gradient. */
 export function TorneosCierre() {
@@ -40,14 +40,20 @@ export function TorneosCierre() {
           >
             {copy.example}
           </a>
-          <a
-            href={getSiteUrl("jugadores", TORNEOS_CONTACT_HREF)}
-            className="inline-flex min-h-12 items-center rounded-xl border border-white/25 bg-white/[0.05] px-6 text-base font-bold text-white transition-transform hover:-translate-y-0.5"
-          >
-            {copy.contact}
-          </a>
         </div>
-        <SiteSwitch to="jugadores" label={copy.players} className="mt-10 min-h-11 text-sm font-semibold text-[#b8a8ff] hover:text-white" />
+        <p className="mx-auto mt-8 max-w-md text-[15px] leading-relaxed text-[#d6d8f0]">
+          {copy.help.question}{" "}
+          <span className="whitespace-nowrap">
+            {copy.help.action}{" "}
+            <a
+              href={`mailto:${TORNEOS_CONTACT_EMAIL}?subject=${encodeURIComponent(copy.help.subject)}`}
+              className="font-semibold text-white underline underline-offset-4 hover:text-[#c9c2ff]"
+            >
+              {TORNEOS_CONTACT_EMAIL}
+            </a>
+          </span>
+        </p>
+        <SiteSwitch to="jugadores" label={copy.players} className="mt-8 min-h-11 text-sm font-semibold text-[#b8a8ff] hover:text-white" />
       </div>
     </section>
   );
