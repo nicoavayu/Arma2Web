@@ -110,11 +110,12 @@ const es = {
     title: "El torneo entero,",
     accent: "en orden.",
     cards: [
+      { id: "inscripcion", label: "Inscripción por capitán", title: "Los capitanes anotan a sus equipos. Vos aprobás o pedís cambios." },
       { id: "fixture", label: "Fixture", title: "Liga, grupos o eliminatorias, con día, hora, sede y cancha." },
+      { id: "reprogramacion", label: "Reprogramación", title: "Si movés un partido, los jugadores con cuenta ven el aviso en la app." },
       { id: "disciplina", label: "Disciplina", title: "Tarjetas y suspensiones al día, sin cuadernos." },
       { id: "multimedia", label: "Multimedia", title: "Las fotos de cada fecha, junto al partido." },
       { id: "colaboradores", label: "Colaboradores", title: "Sumá a quien te da una mano con la carga." },
-      { id: "historial", label: "Historial", title: "Cada versión publicada del fixture queda registrada." },
     ],
     art: {
       round: "Fecha 8",
@@ -136,11 +137,16 @@ const es = {
       photosTag: `Hasta ${C.photosFree} por temporada`,
       collaborators: "Colaboradores",
       collaboratorsTag: `Organizador + ${C.collaboratorsFree} colaborador`,
-      versions: [
-        { name: "Fixture v3 publicado", meta: "Hoy, 18:20 · Nico", tag: "Actual" },
-        { name: "Fixture v2", meta: "Ayer · Martina", tag: "" },
-        { name: "Fixture v1", meta: "12 sep · Nico", tag: "" },
-      ],
+      registration: {
+        title: "Solicitudes de inscripción",
+        source: "Desde «Explorar torneos»",
+        requests: [
+          { team: "Tiki-Taka", meta: "Juani · 12 jugadores", tag: "Solicitud enviada" },
+          { team: "El Tanque", meta: "Tomi · 10 jugadores", tag: "Cambios pedidos" },
+        ],
+        actions: ["Aprobar", "Pedir cambios", "Rechazar"],
+      },
+      reschedule: { inbox: "Avisos", title: "Partido reprogramado", before: "Antes", now: "Ahora" },
     },
   },
   plans: {
@@ -225,6 +231,16 @@ const es = {
       {
         question: "¿Puedo administrar varios torneos?",
         answer: "Sí. Una temporada puede tener varias categorías y competencias, y podés crear todas las temporadas FREE que necesites.",
+      },
+      {
+        question: "¿Cómo se inscriben los equipos?",
+        answer:
+          "Publicás la convocatoria del torneo. Cada capitán la encuentra en «Explorar torneos», arma su equipo y su plantel, y envía la solicitud. Vos la revisás en «Solicitudes de inscripción»: la aprobás, pedís cambios (con el motivo) o la rechazás. Si pedís cambios, el capitán corrige y la vuelve a enviar.",
+      },
+      {
+        question: "¿Qué pasa si tengo que reprogramar un partido?",
+        answer:
+          "Lo cambiás desde «Programación». Los jugadores con cuenta del plantel aprobado y los capitanes y delegados de los dos equipos reciben un aviso en la app con el horario de antes y el de ahora, y el partido queda marcado como reprogramado. Lo mismo si lo postergás. Los avisos llegan solo dentro de la app: no se envían emails ni notificaciones push.",
       },
       {
         question: "¿Cómo funciona Premium?",
@@ -380,11 +396,12 @@ const en: TorneosCopy = {
     title: "The whole tournament,",
     accent: "in order.",
     cards: [
+      { id: "inscripcion", label: "Registration by captains", title: "Captains sign up their teams. You approve or ask for changes." },
       { id: "fixture", label: "Fixtures", title: "League, groups or knockout, with day, time, venue and pitch." },
+      { id: "reprogramacion", label: "Rescheduling", title: "Move a match and players with an account see the notice in the app." },
       { id: "disciplina", label: "Discipline", title: "Cards and suspensions up to date, no notebooks." },
       { id: "multimedia", label: "Media", title: "Every round's photos, next to the match." },
       { id: "colaboradores", label: "Collaborators", title: "Bring in whoever helps you enter results." },
-      { id: "historial", label: "History", title: "Every published version of the fixtures is kept." },
     ],
     art: {
       round: "Round 8",
@@ -406,11 +423,16 @@ const en: TorneosCopy = {
       photosTag: `Up to ${C.photosFree} per season`,
       collaborators: "Collaborators",
       collaboratorsTag: `Organiser + ${C.collaboratorsFree} collaborator`,
-      versions: [
-        { name: "Fixtures v3 published", meta: "Today, 6:20 pm · Nico", tag: "Current" },
-        { name: "Fixtures v2", meta: "Yesterday · Martina", tag: "" },
-        { name: "Fixtures v1", meta: "Sep 12 · Nico", tag: "" },
-      ],
+      registration: {
+        title: "Registration requests",
+        source: "From “Explore tournaments”",
+        requests: [
+          { team: "Tiki-Taka", meta: "Juani · 12 players", tag: "Request sent" },
+          { team: "El Tanque", meta: "Tomi · 10 players", tag: "Changes requested" },
+        ],
+        actions: ["Approve", "Ask for changes", "Reject"],
+      },
+      reschedule: { inbox: "Notices", title: "Match rescheduled", before: "Before", now: "Now" },
     },
   },
   plans: {
@@ -495,6 +517,16 @@ const en: TorneosCopy = {
       {
         question: "Can I run several tournaments?",
         answer: "Yes. A season can hold several categories and competitions, and you can create as many FREE seasons as you need.",
+      },
+      {
+        question: "How do teams sign up?",
+        answer:
+          "You publish the tournament's call for teams. Each captain finds it in “Explore tournaments”, builds the team and squad, and sends the request. You review it in “Registration requests”: approve it, ask for changes (with a reason) or reject it. If you ask for changes, the captain fixes it and sends it again.",
+      },
+      {
+        question: "What if I need to reschedule a match?",
+        answer:
+          "Change it from “Scheduling”. Players with an account on the approved squads, plus the captains and delegates of both teams, get an in-app notice with the old and the new time, and the match is marked as rescheduled. The same goes if you postpone it. Notices are in-app only: no emails or push notifications.",
       },
       {
         question: "How does Premium work?",

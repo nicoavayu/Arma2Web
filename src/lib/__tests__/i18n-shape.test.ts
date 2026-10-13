@@ -31,9 +31,9 @@ describe("torneos portal copy", () => {
     expect(shape(torneosContent.en)).toEqual(shape(torneosContent.es));
   });
 
-  it.each(["es", "en"] as const)("tells the story in four chapters and shows five features (%s)", (locale) => {
+  it.each(["es", "en"] as const)("tells the story in four chapters and shows six features (%s)", (locale) => {
     expect(torneosContent[locale].story.chapters).toHaveLength(4);
-    expect(torneosContent[locale].gallery.cards).toHaveLength(5);
+    expect(torneosContent[locale].gallery.cards).toHaveLength(6);
   });
 
   it.each(["es", "en"] as const)("shows the real public page URL (%s)", (locale) => {

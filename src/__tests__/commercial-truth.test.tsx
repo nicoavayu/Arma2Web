@@ -68,4 +68,16 @@ describe("Premium is not on sale yet (payments are off)", () => {
     const html = render(<TorneosStoryStatic />);
     expect(html).toContain(torneosContent.es.story.posters.standings);
   });
+
+  it("explains captain registration with the product's own steps", () => {
+    const faq = torneosContent.es.faq.items.find((item) => item.question.includes("inscriben"));
+    expect(faq?.answer).toContain("«Explorar torneos»");
+    expect(faq?.answer).toContain("«Solicitudes de inscripción»");
+    expect(faq?.answer).toMatch(/aprobás.*pedís cambios.*rechazás/);
+  });
+
+  it.each(["es", "en"] as const)("says rescheduling notices are in-app only (%s)", (locale) => {
+    const faq = torneosContent[locale].faq.items[torneosContent.es.faq.items.findIndex((item) => item.question.includes("reprogramar"))];
+    expect(faq.answer).toMatch(locale === "es" ? /solo dentro de la app: no se envían emails ni notificaciones push/ : /in-app only: no emails or push notifications/);
+  });
 });
