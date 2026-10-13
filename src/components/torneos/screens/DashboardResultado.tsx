@@ -45,9 +45,9 @@ function StandingRow({ progress, row }: { progress: MotionValue<number>; row: (t
 }
 
 /**
- * The Torneos manager "Cargar resultado" screen. Driven by the story's global
- * progress: goals in chapter 1, table and scorers in chapter 2, status lines
- * through chapters 2–4. `motionValue(1)` renders the final state.
+ * The Torneos manager "Cargar resultado" screen, driven by the story timeline
+ * (torneos-story.ts): goals in step 1, table and scorers in step 2, status
+ * lines through steps 2–4. `motionValue(1)` renders the final state.
  */
 export function DashboardResultado({ progress, copy }: { progress: MotionValue<number>; copy: TorneosStoryCopy["dashboard"] }) {
   const state = useProgressValue(progress, (p) => {

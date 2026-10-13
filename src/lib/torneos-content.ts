@@ -55,7 +55,9 @@ const es = {
     example: "Ver un torneo de ejemplo",
   },
   story: {
-    navLabel: "Capítulos de cómo funciona",
+    eyebrow: "Cómo funciona",
+    title: "Del resultado a las redes,",
+    titleAccent: "en cuatro pasos.",
     chapters: [
       { id: "cargas", step: "Cargás", title: "Cargás el resultado.", accent: "Una sola vez.", text: "Marcador, goles y quién los hizo. Nada más." },
       { id: "se-actualiza", step: "Se actualiza", title: "La tabla se ordena sola.", accent: "", text: "Puntos, diferencia de gol y goleadores se recalculan al instante. Nada de planillas." },
@@ -310,7 +312,9 @@ const en: TorneosCopy = {
     example: "See an example tournament",
   },
   story: {
-    navLabel: "How it works, chapter by chapter",
+    eyebrow: "How it works",
+    title: "From the result to social media,",
+    titleAccent: "in four steps.",
     chapters: [
       { id: "cargas", step: "Enter", title: "Enter the result.", accent: "Just once.", text: "Score, goals and who scored them. That's it." },
       { id: "se-actualiza", step: "Updates", title: "The table sorts itself.", accent: "", text: "Points, goal difference and top scorers recalculate instantly. No spreadsheets." },

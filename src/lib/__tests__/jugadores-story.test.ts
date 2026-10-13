@@ -4,7 +4,6 @@ import {
   CONFIRM_ORDER,
   GUEST_ID,
   PLAYER_COLORS,
-  STORY_CHAPTERS,
   STORY_SPLIT,
   SURVEY_MVP,
   SURVEY_TILES,
@@ -38,12 +37,7 @@ describe("jugadores story data", () => {
     expect(voteState(1)).toMatchObject({ index: 2, dunno: true, done: 4 });
   });
 
-  it("keeps the timeline and the cast consistent", () => {
-    expect(STORY_CHAPTERS).toHaveLength(4);
-    STORY_CHAPTERS.forEach(([start, end], index) => {
-      expect(end).toBeGreaterThan(start);
-      if (index > 0) expect(start).toBe(STORY_CHAPTERS[index - 1][1]);
-    });
+  it("keeps the cast consistent", () => {
     expect(CONFIRM_ORDER).toHaveLength(10);
     expect(CONFIRM_ORDER).toContain(GUEST_ID);
     expect(SURVEY_TILES).toContain(SURVEY_MVP);

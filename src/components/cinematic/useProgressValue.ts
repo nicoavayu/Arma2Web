@@ -4,7 +4,7 @@ import React from "react";
 import { useMotionValueEvent, type MotionValue } from "framer-motion";
 
 /**
- * A discrete value derived from scroll progress (a count, a step, a flag).
+ * A discrete value derived from an animation's progress (a count, a step, a flag).
  * Starts from the current progress, so `motionValue(1)` renders the final state,
  * and only re-renders when the derived primitive changes.
  */

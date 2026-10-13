@@ -8,7 +8,7 @@ import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosEjemplo } from "@/components/torneos/TorneosEjemplo";
 import { TorneosFooter } from "@/components/torneos/TorneosFooter";
 import { TorneosNav } from "@/components/torneos/TorneosNav";
-import { TorneosStoryStatic } from "@/components/torneos/TorneosStory";
+import { TorneosStory } from "@/components/torneos/TorneosStory";
 import { getSiteUrl } from "@/lib/site-urls";
 import { torneosContent } from "@/lib/torneos-content";
 import { torneosEjemploContent } from "@/lib/torneos-ejemplo-content";
@@ -75,7 +75,7 @@ describe("links around the example", () => {
   });
 
   it.each([
-    ["hero", <TorneosStoryStatic key="hero" />],
+    ["hero", <TorneosStory key="hero" />],
     ["closing", <TorneosCierre key="closing" />],
     ["footer", <TorneosFooter key="footer" />],
   ])("links to the example from the %s", (_, node) => {

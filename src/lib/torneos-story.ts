@@ -1,11 +1,12 @@
 /**
- * Timeline and example data for the Torneos portal story (hero + 4 chapters).
- * Built on the demo league in torneos-demo.ts (Los Galácticos 3–1 Tiki-Taka);
- * timings mirror docs/superpowers/specs/prototipos-cinematicos/torneos-cinematico.html.
+ * Timeline and example data for the Torneos "Cómo funciona" (4 steps). Built
+ * on the demo league in torneos-demo.ts (Los Galácticos 3–1 Tiki-Taka). The
+ * manager screen plays this timeline on its own, from TORNEOS_HERO_END to 1,
+ * once it comes into view.
  */
 import { applyResult, DEMO_RESULT, INITIAL_DEMO_STATE, sortStandings } from "@/lib/torneos-demo";
 
-/** End of the hero → story transition. */
+/** Where the manager screen's animation starts (before it, nothing is typed yet). */
 export const TORNEOS_HERO_END = 0.16;
 
 /** [start, end] of each chapter: cargás, se actualiza, se publica, se comparte. */

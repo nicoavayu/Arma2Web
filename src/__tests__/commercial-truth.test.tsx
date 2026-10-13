@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
-import { TorneosStoryStatic } from "@/components/torneos/TorneosStory";
+import { TorneosStory } from "@/components/torneos/TorneosStory";
 import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
 import { torneosJsonLd } from "@/lib/torneos-jsonld";
 
@@ -65,7 +65,7 @@ describe("Premium is not on sale yet (payments are off)", () => {
   });
 
   it("shares FREE posts (results and standings) in the story", () => {
-    const html = render(<TorneosStoryStatic />);
+    const html = render(<TorneosStory />);
     expect(html).toContain(torneosContent.es.story.posters.standings);
   });
 

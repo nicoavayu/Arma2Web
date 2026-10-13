@@ -7,10 +7,13 @@ de `Arma2Web`.
 
 - Dominio propio: `torneos.arma2.com.ar`, servido por `src/proxy.ts` (ver
   `docs/dominios-y-deploy.md`). `arma2.com.ar/torneos` redirige con 308.
-- Secciones: hero con la foto del estadio y el render del gestor; historia en
-  cuatro capítulos (cargás el resultado → la tabla se ordena → la página pública
-  se actualiza → salen las placas); galería (fixture, disciplina, multimedia,
-  colaboradores, historial); planes con comparativa plegable; preguntas y cierre.
+- Secciones (2026-10-13, scroll natural): hero con la foto del estadio y el
+  render del gestor; "Cómo funciona" en cuatro pasos (cargás el resultado → la
+  tabla se ordena → la página pública se actualiza → salen las placas), cada
+  ilustración animándose sola al llegar; grilla de funciones (inscripción por
+  capitán, fixture, reprogramación, disciplina, multimedia, colaboradores);
+  planes con comparativa plegable; preguntas y cierre; torneo de ejemplo en
+  `/ejemplo`.
 - El panel, la página pública y las placas están recreados en HTML con la liga
   de ejemplo de `src/lib/torneos-demo.ts`, con el rótulo "Ejemplo con datos
   ficticios". Ya no se usan capturas ni exports de Social Studio.
