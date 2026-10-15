@@ -46,6 +46,17 @@ export function getCreateTournamentTarget(): CtaTarget {
   return { href: TORNEOS_APP_URL, isExternal: true };
 }
 
+/**
+ * Consumer pages of the product that sells Premium (Armado_Equipos, #211). They live on the app host, where the
+ * purchase happens; the portal only links to them. Same origin as the canonical app entry point.
+ */
+const APP_ORIGIN = "https://app.arma2.com.ar";
+export const TORNEOS_LEGAL_LINKS = {
+  termsOfSale: `${APP_ORIGIN}/terminos-de-venta`,
+  revocation: `${APP_ORIGIN}/arrepentimiento`,
+  cancellation: `${APP_ORIGIN}/baja-del-servicio`,
+} as const;
+
 /** Premium CTA keeps the commercial intent explicit until the product Plan page. */
 export function getPremiumTournamentTarget(): CtaTarget {
   const url = new URL(TORNEOS_APP_URL);
