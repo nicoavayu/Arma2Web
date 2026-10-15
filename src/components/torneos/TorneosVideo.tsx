@@ -6,7 +6,7 @@ import { TORNEOS_VIDEO, torneosVideoSrc } from "@/lib/torneos-video";
 import { cn } from "@/lib/utils";
 
 /**
- * The explainer (v10, 1:31), right under the hero: a native player that loads nothing until played
+ * The explainer (v11, 1:31), right under the hero: a native player that loads nothing until played
  * (`preload="none"`). Hidden in Production until NEXT_PUBLIC_TORNEOS_VIDEO_URL is set (see torneos-video.ts).
  */
 export function TorneosVideo() {

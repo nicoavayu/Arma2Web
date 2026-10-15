@@ -31,14 +31,14 @@ describe("structural redesign (spec 2026-10-15)", () => {
   });
 });
 
-describe("video block (v10, 1:31)", () => {
+describe("video block (v11, 1:31)", () => {
   it("stays out of Production until its URL is configured", () => {
     expect(showTorneosVideo("production", null)).toBe(false);
     expect(torneosVideoSrc("production", null)).toBeNull();
-    expect(torneosVideoSrc("production", "/torneos/video/arma2-torneos-v10.mp4")).toBe("/torneos/video/arma2-torneos-v10.mp4");
+    expect(torneosVideoSrc("production", "/torneos/video/arma2-torneos-v11.mp4")).toBe("/torneos/video/arma2-torneos-v11.mp4");
   });
 
-  it("plays the bundled v10 file in previews and locally", () => {
+  it("plays the bundled v11 file in previews and locally", () => {
     expect(torneosVideoSrc("preview", null)).toBe(TORNEOS_VIDEO_FILE);
     expect(torneosVideoSrc(undefined, null)).toBe(TORNEOS_VIDEO_FILE);
   });
