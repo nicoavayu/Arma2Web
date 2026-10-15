@@ -81,6 +81,8 @@ describe("Premium is on sale (public checkout open since 2026-10-15)", () => {
   it.each(["es", "en"] as const)("never says the table or the public page update on their own: the product recalculates and publishes (%s)", (locale) => {
     const text = `${all(locale)} ${JSON.stringify(i18nContent[locale])}`;
     expect(text).not.toMatch(/se actualiza todo|se ordena sola|se actualiza sola|se recalculan al instante|everything updates|sorts itself|updates itself|recalculate instantly/i);
+    // Recalcular and Publicar are two separate actions in the product, each confirmed.
+    expect(text).not.toMatch(/en un clic|in one click/i);
     expect(JSON.stringify(torneosContent[locale].story)).toMatch(locale === "es" ? /Recalculás y publicás/ : /Recalculate and publish/);
   });
 

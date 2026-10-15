@@ -60,7 +60,7 @@ const es = {
     titleAccent: "en cuatro pasos.",
     chapters: [
       { id: "cargas", step: "Cargás", title: "Cargás el resultado.", accent: "Una sola vez.", text: "Marcador, goles y quién los hizo. Nada más." },
-      { id: "se-actualiza", step: "Se actualiza", title: "La tabla, en un clic.", accent: "", text: "Recalculás y publicás: puntos, diferencia de gol y goleadores salen de las actas oficiales. Nada de planillas." },
+      { id: "se-actualiza", step: "Se actualiza", title: "Recalculás y publicás.", accent: "", text: "La tabla, la diferencia de gol y los goleadores salen de las actas oficiales: los recalculás y, cuando está lista, publicás la tabla. Nada de planillas." },
       {
         id: "se-publica",
         step: "Se publica",
@@ -421,7 +421,7 @@ const en: TorneosCopy = {
     titleAccent: "in four steps.",
     chapters: [
       { id: "cargas", step: "Enter", title: "Enter the result.", accent: "Just once.", text: "Score, goals and who scored them. That's it." },
-      { id: "se-actualiza", step: "Updates", title: "The table, in one click.", accent: "", text: "Recalculate and publish: points, goal difference and top scorers come from the official match reports. No spreadsheets." },
+      { id: "se-actualiza", step: "Updates", title: "Recalculate and publish.", accent: "", text: "Standings, goal difference and top scorers come from the official match reports: recalculate them and, once it's ready, publish the table. No spreadsheets." },
       {
         id: "se-publica",
         step: "Goes public",
