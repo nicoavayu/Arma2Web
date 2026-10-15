@@ -98,6 +98,13 @@ describe("social posts", () => {
     expect(html).toContain("Historia 9:16");
     expect(html).toMatch(/hasta 100 fotos por temporada en vez de 25/);
   });
+
+  it.each(["es", "en"] as const)("keeps the round summary on the Premium side, apart from the three FREE posts (%s)", (locale) => {
+    const placas = torneosContent[locale].placas;
+    expect(placas.premium.text).toMatch(locale === "es" ? /resumen de fecha/ : /round summary/);
+    expect(placas.free.text).not.toMatch(/resumen|summary/i);
+    expect(placas.free.text).toMatch(locale === "es" ? /Resultados de la fecha, Tabla de posiciones y Próxima fecha/ : /Round results, Standings and Next round/);
+  });
 });
 
 describe("getting started", () => {

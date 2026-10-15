@@ -126,7 +126,7 @@ const es = {
       points: [
         "Armás el torneo con tu formato, tus categorías y tus reglas.",
         "Programás cada fecha con día, hora, sede y cancha.",
-        "Cargás el resultado una sola vez; la tabla y los goleadores se recalculan y se publican en un clic.",
+        "Cargás el resultado una sola vez; después recalculás la tabla y los goleadores desde las actas y la publicás.",
         "Sumás colaboradores para que te den una mano con la carga.",
       ],
       cta: "Empezar gratis",
@@ -231,7 +231,7 @@ const es = {
       { title: "Compartí", text: "Desde el celular se abre el menú para compartir; si no, se descarga el archivo." },
     ],
     free: { label: "En FREE", text: "Resultados de la fecha, Tabla de posiciones y Próxima fecha, en estilo Base con la firma Arma2." },
-    premium: { label: "Con Premium", text: "Las 11 placas (goleadores, equipo de la fecha, figura, final, campeón y más), los estilos Heritage, Street, Scoreboard y Editorial, sin marca Arma2. Y hasta 100 fotos por temporada en vez de 25." },
+    premium: { label: "Con Premium", text: "Las 11 placas (resumen de fecha, goleadores, equipo de la fecha, figura, final, campeón y más), los estilos Heritage, Street, Scoreboard y Editorial, sin marca Arma2. Y hasta 100 fotos por temporada en vez de 25." },
     note: "Placas reales de Social Studio con datos ficticios",
   },
   pasos: {
@@ -487,7 +487,7 @@ const en: TorneosCopy = {
       points: [
         "Set up the tournament with your format, your categories and your rules.",
         "Schedule every round with day, time, venue and pitch.",
-        "Enter the result once; standings and top scorers are recalculated and published in one click.",
+        "Enter the result once; then recalculate standings and top scorers from the match reports and publish them.",
         "Bring in collaborators to help you enter results.",
       ],
       cta: "Start for free",
@@ -592,7 +592,7 @@ const en: TorneosCopy = {
       { title: "Share", text: "On a phone the share menu opens; otherwise the file downloads." },
     ],
     free: { label: "On FREE", text: "Round results, Standings and Next round, in the Base style with the Arma2 signature." },
-    premium: { label: "With Premium", text: "All 11 posts (top scorers, team of the round, player of the match, final, champion and more), the Heritage, Street, Scoreboard and Editorial styles, without Arma2 branding. And up to 100 photos per season instead of 25." },
+    premium: { label: "With Premium", text: "All 11 posts (round summary, top scorers, team of the round, player of the match, final, champion and more), the Heritage, Street, Scoreboard and Editorial styles, without Arma2 branding. And up to 100 photos per season instead of 25." },
     note: "Real Social Studio posts with made-up data",
   },
   pasos: {
