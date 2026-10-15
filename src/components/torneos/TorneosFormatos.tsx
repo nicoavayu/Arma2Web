@@ -13,7 +13,7 @@ import { TEAM_NAMES } from "./screens/teams";
 type Diagram = TorneosContent["formats"]["diagram"];
 
 const TEAMS = Object.values(TEAM_NAMES);
-const short = (name: string) => name.split(" ").map((word) => word[0]).join("").slice(0, 2).toUpperCase();
+const short = (name: string) => name.split(/[\s-]+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
 
 function useAppear(progress: MotionValue<number>, from: number) {
   const opacity = useTransform(progress, [from, Math.min(from + 0.25, 1)], [0, 1]);
@@ -23,8 +23,8 @@ function useAppear(progress: MotionValue<number>, from: number) {
 
 function Panel({ title, children, className }: { title: string; children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("flex flex-col rounded-2xl border border-white/10 bg-white/[0.05] p-3.5", className)}>
-      <span className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#b8a8ff]">{title}</span>
+    <div className={cn("flex flex-col rounded-xl border border-white/10 bg-white/[0.05] p-2 sm:rounded-2xl sm:p-3.5", className)}>
+      <span className="mb-2 truncate text-[10px] font-bold uppercase tracking-[0.12em] text-[#b8a8ff] sm:mb-2.5 sm:text-[11px]">{title}</span>
       {children}
     </div>
   );
@@ -38,12 +38,12 @@ function FormatDiagram({ copy }: { copy: Diagram }) {
   const knockout = useAppear(progress, 0.5);
 
   return (
-    <div ref={ref} aria-hidden="true" className="grid gap-3 sm:grid-cols-3">
+    <div ref={ref} aria-hidden="true" className="grid grid-cols-3 gap-2 sm:gap-3">
       <motion.div style={league}>
         <Panel title={copy.league} className="h-full">
           {TEAMS.map((team, index) => (
-            <div key={team} className="flex items-center gap-2 border-b border-white/[0.06] py-1.5 text-[13px] last:border-b-0">
-              <span className="w-4 text-white/55">{index + 1}</span>
+            <div key={team} className="flex items-center gap-1.5 border-b border-white/[0.06] py-1 text-[11px] last:border-b-0 sm:gap-2 sm:py-1.5 sm:text-[13px]">
+              <span className="w-3 text-white/55 sm:w-4">{index + 1}</span>
               <span className="flex-1 truncate text-white/85">{team}</span>
             </div>
           ))}
@@ -56,7 +56,7 @@ function FormatDiagram({ copy }: { copy: Diagram }) {
               <span className="text-[11px] font-semibold text-white/60">{group}</span>
               <div className="mt-1 flex gap-1.5">
                 {TEAMS.slice(g * 2, g * 2 + 2).map((team) => (
-                  <span key={team} className="rounded-lg bg-white/10 px-2 py-1 text-[12px] font-bold text-white/85">{short(team)}</span>
+                  <span key={team} className="rounded-md bg-white/10 px-1.5 py-0.5 text-[11px] font-bold text-white/85 sm:rounded-lg sm:px-2 sm:py-1 sm:text-[12px]">{short(team)}</span>
                 ))}
               </div>
             </div>
@@ -65,16 +65,16 @@ function FormatDiagram({ copy }: { copy: Diagram }) {
       </motion.div>
       <motion.div style={knockout}>
         <Panel title={copy.knockout} className="h-full">
-          <div className="flex flex-1 items-center gap-2">
-            <div className="flex flex-1 flex-col gap-2">
+          <div className="flex flex-1 flex-col items-stretch gap-1.5 sm:flex-row sm:items-center sm:gap-2">
+            <div className="flex flex-1 flex-col gap-1.5 sm:gap-2">
               {[0, 2].map((i) => (
-                <div key={i} className="rounded-lg bg-white/[0.06] px-2 py-1 text-[12px] font-bold text-white/80">
+                <div key={i} className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[11px] font-bold text-white/80 sm:rounded-lg sm:px-2 sm:py-1 sm:text-[12px]">
                   {short(TEAMS[i])} · {short(TEAMS[i + 1])}
                 </div>
               ))}
             </div>
-            <span className="h-12 w-3 rounded-r-md border-y border-r border-white/30" />
-            <div className="rounded-lg bg-[#6c4dff]/35 px-2 py-1.5 text-[12px] font-extrabold text-white">{copy.final}</div>
+            <span className="hidden h-12 w-3 rounded-r-md border-y border-r border-white/30 sm:block" />
+            <div className="rounded-md bg-[#6c4dff]/35 px-1.5 py-1 text-center text-[11px] font-extrabold text-white sm:rounded-lg sm:px-2 sm:py-1.5 sm:text-[12px]">{copy.final}</div>
           </div>
         </Panel>
       </motion.div>
@@ -103,14 +103,14 @@ export function TorneosFormatos() {
         </div>
         <div className="flex flex-col gap-6">
           <FormatDiagram copy={copy.diagram} />
-          <dl className="grid gap-4 sm:grid-cols-2">
+          <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4">
             {copy.details.map((detail) => (
-              <div key={detail.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
-                <dt className="font-extrabold text-white">{detail.title}</dt>
-                <dd className="mt-1.5 text-sm leading-relaxed text-white/70">{detail.text}</dd>
-              </div>
+              <li key={detail.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                <h3 className="font-extrabold text-white">{detail.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/70">{detail.text}</p>
+              </li>
             ))}
-          </dl>
+          </ul>
         </div>
       </div>
     </section>

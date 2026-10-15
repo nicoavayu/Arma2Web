@@ -53,7 +53,8 @@ Todo en `src/components/torneos/`, con copy de `useTorneosContent()`.
 - **Animación:** sólo entrada al aparecer, con `usePlayWhenVisible` o CSS sobre `transform` y `opacity`. En el servidor, sin JS y con movimiento reducido se ve el estado final.
 
 ## 5. Afirmaciones verificadas (fuente: relevamiento del producto, 2026-10-15)
-- **Formatos:** Liga, Eliminación directa, Fase de grupos, Grupos y eliminatorias, Liga y eliminatorias (`domain/competitionCatalog.js`). Ida y vuelta; tercer puesto; agregar una fase a una competencia en curso.
+- **Formatos:** Liga, Eliminación directa, Fase de grupos, Grupos y playoffs, Liga y playoffs. Son los nombres que el organizador elige en el asistente, del catálogo de la base (`tournament_competition_formats`, baseline). La página pública muestra el fallback del cliente, «…y eliminatorias».
+- **Tabla:** no se actualiza sola. Al oficializar el acta, se **Recalcula** y se **Publica** la revisión (`MatchOperationsPage.jsx:1059`, `CompetitionCenterPage.jsx:526`). La página pública muestra los resultados oficiales y la tabla publicada. Corregido también en PR #13 (`4842195`). Ida y vuelta; tercer puesto; agregar una fase a una competencia en curso.
 - **Reglas:** puntos por partido configurables. Desempates: diferencia de gol, goles a favor, resultado entre sí, partidos ganados, fair play, partido desempate, sorteo.
 - **Modalidades:** Fútbol 5, 6, 7, 8, 9 y 11. Categorías con género (Masculino, Femenino, Mixto, Abierto) y edad. Una temporada tiene varios torneos.
 - **Asistente:** Información, Modalidad, Formato, Reglas, Categorías, Revisión.

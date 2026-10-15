@@ -161,6 +161,11 @@
   list-style: none;
 }
 
+/* The zigzag spans don't apply inside a group: its cards share the row. */
+.groupGrid .cell {
+  grid-column: auto;
+}
+
 .cardGrouped {
   min-height: 340px;
 }

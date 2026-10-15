@@ -126,7 +126,7 @@ const es = {
       points: [
         "Armás el torneo con tu formato, tus categorías y tus reglas.",
         "Programás cada fecha con día, hora, sede y cancha.",
-        "Cargás el resultado una vez: tabla, goleadores y página pública se actualizan solos.",
+        "Cargás el resultado una sola vez; la tabla y los goleadores se recalculan y se publican en un clic.",
         "Sumás colaboradores para que te den una mano con la carga.",
       ],
       cta: "Empezar gratis",
@@ -149,7 +149,7 @@ const es = {
     accent: "Como lo juegues.",
     lead: "Elegís el formato al crear el torneo y Arma2 arma el fixture. Si la competencia ya arrancó, podés sumarle una fase.",
     formatsLabel: "Formatos",
-    formats: ["Liga", "Eliminación directa", "Fase de grupos", "Grupos y eliminatorias", "Liga y eliminatorias"],
+    formats: ["Liga", "Eliminación directa", "Fase de grupos", "Grupos y playoffs", "Liga y playoffs"],
     details: [
       { title: "Ida y vuelta", text: "En la liga y en las llaves. Con partido por el tercer puesto si lo querés." },
       { title: "Puntos y desempates", text: "Definís cuánto vale ganar o empatar y el orden de desempate: diferencia de gol, goles a favor, resultado entre sí, fair play y más." },
@@ -166,7 +166,7 @@ const es = {
     tabsLabel: "Lo que ve cualquiera",
     tabs: ["Inicio", "Fixture", "Resultados", "Tabla", "Goleadores", "Equipos", "Disciplina"],
     points: [
-      "Se actualiza sola cada vez que cargás un resultado.",
+      "Muestra los resultados oficiales y la tabla que publicás.",
       "Con el logo del torneo y selector de categoría y fase.",
       "Si abrís la inscripción, los equipos la piden desde ahí.",
     ],
@@ -332,7 +332,7 @@ const es = {
       },
       {
         question: "¿Qué formatos de torneo puedo armar?",
-        answer: "Liga, eliminación directa, fase de grupos, grupos y eliminatorias, o liga y eliminatorias, con ida y vuelta si querés. Configurás los puntos y el orden de desempate, y cada categoría tiene su modalidad (fútbol 5 a 11), su género y su rango de edad.",
+        answer: "Liga, eliminación directa, fase de grupos, grupos y playoffs, o liga y playoffs, con ida y vuelta si querés. Configurás los puntos y el orden de desempate, y cada categoría tiene su modalidad (fútbol 5 a 11), su género y su rango de edad.",
       },
       {
         question: "¿Cómo se inscriben los equipos?",
@@ -487,7 +487,7 @@ const en: TorneosCopy = {
       points: [
         "Set up the tournament with your format, your categories and your rules.",
         "Schedule every round with day, time, venue and pitch.",
-        "Enter the result once: standings, top scorers and the public page update themselves.",
+        "Enter the result once; standings and top scorers are recalculated and published in one click.",
         "Bring in collaborators to help you enter results.",
       ],
       cta: "Start for free",
@@ -510,7 +510,7 @@ const en: TorneosCopy = {
     accent: "However you play it.",
     lead: "Pick the format when you create the tournament and Arma2 builds the fixtures. If the competition has already started, you can add a phase.",
     formatsLabel: "Formats",
-    formats: ["League", "Knockout", "Group stage", "Groups and knockout", "League and knockout"],
+    formats: ["League", "Knockout", "Group stage", "Groups and playoffs", "League and playoffs"],
     details: [
       { title: "Home and away", text: "In the league and in the knockout rounds. With a third-place match if you want one." },
       { title: "Points and tie-breaks", text: "Decide what a win or a draw is worth and the tie-break order: goal difference, goals scored, head-to-head, fair play and more." },
@@ -527,7 +527,7 @@ const en: TorneosCopy = {
     tabsLabel: "What anyone can see",
     tabs: ["Home", "Fixtures", "Results", "Standings", "Top scorers", "Teams", "Discipline"],
     points: [
-      "It updates itself every time you enter a result.",
+      "It shows the official results and the table you publish.",
       "With the tournament's logo and a category and phase selector.",
       "If you open registration, teams apply from there.",
     ],
@@ -693,7 +693,7 @@ const en: TorneosCopy = {
       },
       {
         question: "Which tournament formats can I set up?",
-        answer: "League, knockout, group stage, groups and knockout, or league and knockout, home and away if you like. You set the points and the tie-break order, and each category has its own format (5 to 11-a-side), gender and age range.",
+        answer: "League, knockout, group stage, groups and playoffs, or league and playoffs, home and away if you like. You set the points and the tie-break order, and each category has its own format (5 to 11-a-side), gender and age range.",
       },
       {
         question: "How do teams sign up?",

@@ -36,7 +36,7 @@ export function TorneosStory() {
   );
 }
 
-function TorneosHero() {
+export function TorneosHero() {
   const copy = useTorneosContent();
   const start = getCreateTournamentTarget();
 
@@ -195,7 +195,7 @@ function PostersStep({ story }: { story: StoryCopy }) {
   );
 }
 
-function TorneosSteps() {
+export function TorneosSteps() {
   const copy = useTorneosContent();
   const story = copy.story;
 
