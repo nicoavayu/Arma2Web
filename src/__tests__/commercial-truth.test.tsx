@@ -6,6 +6,7 @@ import { TorneosFooter } from "@/components/torneos/TorneosFooter";
 import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
 import { TorneosStory } from "@/components/torneos/TorneosStory";
 import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
+import { translations as i18nContent } from "@/lib/i18n";
 import { torneosJsonLd } from "@/lib/torneos-jsonld";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
@@ -75,6 +76,12 @@ describe("Premium is on sale (public checkout open since 2026-10-15)", () => {
     expect(html).toContain('href="https://app.arma2.com.ar/arrepentimiento"');
     expect(html).toContain('href="https://app.arma2.com.ar/baja-del-servicio"');
     expect(html).toContain('href="https://app.arma2.com.ar/terminos-de-venta"');
+  });
+
+  it.each(["es", "en"] as const)("never says the table or the public page update on their own: the product recalculates and publishes (%s)", (locale) => {
+    const text = `${all(locale)} ${JSON.stringify(i18nContent[locale])}`;
+    expect(text).not.toMatch(/se actualiza todo|se ordena sola|se actualiza sola|se recalculan al instante|everything updates|sorts itself|updates itself|recalculate instantly/i);
+    expect(JSON.stringify(torneosContent[locale].story)).toMatch(locale === "es" ? /Recalculás y publicás/ : /Recalculate and publish/);
   });
 
   it.each(["es", "en"] as const)("talks about organisers and Arma2-free posts, not owners or white-label (%s)", (locale) => {

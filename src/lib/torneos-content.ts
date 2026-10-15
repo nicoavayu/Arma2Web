@@ -48,7 +48,7 @@ const es = {
   },
   hero: {
     title: ["Todo el torneo.", "Mucho menos trabajo."],
-    body: "Fixture, resultados, tabla, página pública y placas para redes en un mismo lugar. Cargás el resultado una vez y se actualiza todo.",
+    body: "Fixture, resultados, tabla, página pública y placas para redes en un mismo lugar. Cargás el resultado una sola vez y de ahí sale todo lo demás.",
     start: "Empezar gratis",
     explore: "Ver cómo funciona",
     freeNote: "Empezás en FREE, sin tarjeta.",
@@ -60,13 +60,13 @@ const es = {
     titleAccent: "en cuatro pasos.",
     chapters: [
       { id: "cargas", step: "Cargás", title: "Cargás el resultado.", accent: "Una sola vez.", text: "Marcador, goles y quién los hizo. Nada más." },
-      { id: "se-actualiza", step: "Se actualiza", title: "La tabla se ordena sola.", accent: "", text: "Puntos, diferencia de gol y goleadores se recalculan al instante. Nada de planillas." },
+      { id: "se-actualiza", step: "Se actualiza", title: "La tabla, en un clic.", accent: "", text: "Recalculás y publicás: puntos, diferencia de gol y goleadores salen de las actas oficiales. Nada de planillas." },
       {
         id: "se-publica",
         step: "Se publica",
         title: "Todos lo ven",
         accent: "al toque.",
-        text: "La página pública del torneo se actualiza sola. Jugadores y familias la abren desde un link, sin descargar nada.",
+        text: "El resultado oficial aparece en la página pública del torneo, y la tabla apenas la publicás. Jugadores y familias la abren desde un link, sin descargar nada.",
       },
       {
         id: "se-comparte",
@@ -91,7 +91,7 @@ const es = {
       status: ["Tabla y goleadores", "Página pública", "Placa de resultado"],
       save: "Guardar resultado",
       saved: "Resultado guardado",
-      toast: "Tabla, goleadores y página pública actualizados",
+      toast: "Resultado oficial. Tabla y goleadores publicados",
     },
     publicPage: {
       kind: "Torneo · Liga",
@@ -409,7 +409,7 @@ const en: TorneosCopy = {
   },
   hero: {
     title: ["The whole tournament.", "Much less work."],
-    body: "Fixtures, results, standings, a public page and social posts in one place. Enter the result once and everything updates.",
+    body: "Fixtures, results, standings, a public page and social posts in one place. Enter the result once and everything else comes from it.",
     start: "Start for free",
     explore: "See how it works",
     freeNote: "You start on FREE, no card needed.",
@@ -421,13 +421,13 @@ const en: TorneosCopy = {
     titleAccent: "in four steps.",
     chapters: [
       { id: "cargas", step: "Enter", title: "Enter the result.", accent: "Just once.", text: "Score, goals and who scored them. That's it." },
-      { id: "se-actualiza", step: "Updates", title: "The table sorts itself.", accent: "", text: "Points, goal difference and top scorers recalculate instantly. No spreadsheets." },
+      { id: "se-actualiza", step: "Updates", title: "The table, in one click.", accent: "", text: "Recalculate and publish: points, goal difference and top scorers come from the official match reports. No spreadsheets." },
       {
         id: "se-publica",
         step: "Goes public",
         title: "Everyone sees it",
         accent: "right away.",
-        text: "The tournament's public page updates itself. Players and families open it from a link, no download needed.",
+        text: "The official result shows on the tournament's public page, and the table as soon as you publish it. Players and families open it from a link, no download needed.",
       },
       {
         id: "se-comparte",
@@ -452,7 +452,7 @@ const en: TorneosCopy = {
       status: ["Standings and top scorers", "Public page", "Results post"],
       save: "Save result",
       saved: "Result saved",
-      toast: "Standings, top scorers and public page updated",
+      toast: "Result official. Standings and top scorers published",
     },
     publicPage: {
       kind: "Tournament · League",
