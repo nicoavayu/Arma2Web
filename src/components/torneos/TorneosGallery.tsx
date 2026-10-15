@@ -177,7 +177,7 @@ function Illustration({ id, content, locale }: { id: string; content: TorneosCon
   }
 }
 
-/** "El torneo entero, en orden.": the rest of the manager, every card at once. */
+/** "El torneo entero, en orden.": the rest of the manager, every card at once, in three groups. */
 export function TorneosGallery() {
   const { locale } = useLanguage();
   const content = useTorneosContent();
@@ -195,6 +195,7 @@ export function TorneosGallery() {
       cards={copy.cards.map((card) => ({ ...card, art: <Illustration id={card.id} content={content} locale={locale} /> }))}
       note={content.demoNote}
       theme={THEME}
+      groups={copy.groups}
     />
   );
 }

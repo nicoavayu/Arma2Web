@@ -1,11 +1,17 @@
 import { torneosContent } from "@/lib/torneos-content";
 import { torneosJsonLd } from "@/lib/torneos-jsonld";
 import { LocalizedMeta } from "@/components/shared/LocalizedMeta";
+import { TorneosAudiencias } from "@/components/torneos/TorneosAudiencias";
 import { TorneosCierre } from "@/components/torneos/TorneosCierre";
 import { TorneosFaq } from "@/components/torneos/TorneosFaq";
-import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
-import { TorneosStory } from "@/components/torneos/TorneosStory";
+import { TorneosFormatos } from "@/components/torneos/TorneosFormatos";
 import { TorneosGallery } from "@/components/torneos/TorneosGallery";
+import { TorneosPaginaPublica } from "@/components/torneos/TorneosPaginaPublica";
+import { TorneosPasos } from "@/components/torneos/TorneosPasos";
+import { TorneosPlacas } from "@/components/torneos/TorneosPlacas";
+import { TorneosPlanes } from "@/components/torneos/TorneosPlanes";
+import { TorneosHero, TorneosSteps } from "@/components/torneos/TorneosStory";
+import { TorneosVideo } from "@/components/torneos/TorneosVideo";
 
 /**
  * Server component: ships the FAQ JSON-LD. Metadata lives in `torneos/layout.tsx`.
@@ -23,9 +29,18 @@ export default function TorneosPage() {
       />
 
       <LocalizedMeta seo={{ es: torneosContent.es.seo, en: torneosContent.en.seo }} />
-      <TorneosStory />
+      {/* Order (spec 2026-10-15): hero, video, who it's for, formats, how it works, public page, features,
+          social posts, plans, getting started, questions, closing. */}
+      <TorneosHero />
+      <TorneosVideo />
+      <TorneosAudiencias />
+      <TorneosFormatos />
+      <TorneosSteps />
+      <TorneosPaginaPublica />
       <TorneosGallery />
+      <TorneosPlacas />
       <TorneosPlanes />
+      <TorneosPasos />
       <TorneosFaq />
       <TorneosCierre />
     </main>

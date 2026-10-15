@@ -126,6 +126,70 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Grouped variant (Torneos): each group is a heading over its cards, side by side. */
+.groups {
+  position: relative;
+  display: grid;
+  gap: clamp(28px, 3.4vw, 44px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 28px);
+  align-items: start;
+}
+
+.groupTitle {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 2px solid var(--feature-accent);
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.groupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The zigzag spans don't apply inside a group: its cards share the row. */
+.groupGrid .cell {
+  grid-column: auto;
+}
+
+.cardGrouped {
+  min-height: 340px;
+}
+
+@media (max-width: 1099px) {
+  .group {
+    grid-template-columns: 1fr;
+  }
+
+  .groupTitle {
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 639px) {
+  .groupGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardGrouped {
+    min-height: 0;
+  }
+}
+
 /* Tablets: two columns, the first and last cards full width. */
 @media (max-width: 1099px) {
   .grid {
