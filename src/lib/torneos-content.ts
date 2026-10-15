@@ -108,13 +108,12 @@ const es = {
     linkChip: "Link público · se abre sin app",
   },
   video: {
-    eyebrow: "En un minuto",
+    eyebrow: "En un minuto y medio",
     title: "Mirá cómo funciona",
     accent: "Arma2 Torneos.",
-    lead: "De crear el torneo a compartir la placa de la fecha, en un minuto.",
+    lead: "De crear el torneo a compartir la placa de la fecha, en un minuto y medio.",
     play: "Reproducir el video",
-    placeholder: "Video en preparación",
-    duration: "1 min",
+    duration: "1:31",
   },
   audiences: {
     eyebrow: "Para quién es",
@@ -469,13 +468,12 @@ const en: TorneosCopy = {
     linkChip: "Public link · opens without the app",
   },
   video: {
-    eyebrow: "In one minute",
+    eyebrow: "In a minute and a half",
     title: "See how",
     accent: "Arma2 Tournaments works.",
-    lead: "From creating the tournament to sharing the round's post, in one minute.",
+    lead: "From creating the tournament to sharing the round's post, in a minute and a half.",
     play: "Play the video",
-    placeholder: "Video in production",
-    duration: "1 min",
+    duration: "1:31",
   },
   audiences: {
     eyebrow: "Who it's for",

@@ -10,7 +10,7 @@ import { TorneosPasos } from "@/components/torneos/TorneosPasos";
 import { TorneosPlacas } from "@/components/torneos/TorneosPlacas";
 import TorneosPage from "@/app/torneos/page";
 import { torneosContent } from "@/lib/torneos-content";
-import { showTorneosVideo } from "@/lib/torneos-video";
+import { showTorneosVideo, TORNEOS_VIDEO_FILE, torneosVideoSrc } from "@/lib/torneos-video";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
 const all = (locale: "es" | "en") => JSON.stringify(torneosContent[locale]);
@@ -31,15 +31,22 @@ describe("structural redesign (spec 2026-10-15)", () => {
   });
 });
 
-describe("video block", () => {
-  it("is left out of Production until the video file exists", () => {
+describe("video block (v10, 1:31)", () => {
+  it("stays out of Production until its URL is configured", () => {
     expect(showTorneosVideo("production", null)).toBe(false);
-    expect(showTorneosVideo("production", "/torneos/video.mp4")).toBe(true);
+    expect(torneosVideoSrc("production", null)).toBeNull();
+    expect(torneosVideoSrc("production", "/torneos/video/arma2-torneos-v10.mp4")).toBe("/torneos/video/arma2-torneos-v10.mp4");
   });
 
-  it("shows the labelled poster in previews and locally", () => {
-    expect(showTorneosVideo("preview", null)).toBe(true);
-    expect(showTorneosVideo(undefined, null)).toBe(true);
+  it("plays the bundled v10 file in previews and locally", () => {
+    expect(torneosVideoSrc("preview", null)).toBe(TORNEOS_VIDEO_FILE);
+    expect(torneosVideoSrc(undefined, null)).toBe(TORNEOS_VIDEO_FILE);
+  });
+
+  it.each(["es", "en"] as const)("states the real duration, not «one minute» (%s)", (locale) => {
+    const video = torneosContent[locale].video;
+    expect(video.duration).toBe("1:31");
+    expect(JSON.stringify(video)).not.toMatch(/en un minuto[^ ]|in one minute/i);
   });
 });
 
