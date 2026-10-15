@@ -35,6 +35,7 @@ const es = {
   nav: {
     links: [
       { label: "Cómo funciona", href: "#capitulo-cargas" },
+      { label: "Formatos", href: "#torneos-formatos" },
       { label: "Funciones", href: "#torneos-funciones" },
       { label: "Planes", href: "#torneos-planes" },
       { label: "Preguntas", href: "#torneos-faq" },
@@ -106,10 +107,79 @@ const es = {
     },
     linkChip: "Link público · se abre sin app",
   },
+  video: {
+    eyebrow: "En un minuto",
+    title: "Mirá cómo funciona",
+    accent: "Arma2 Torneos.",
+    lead: "De crear el torneo a compartir la placa de la fecha, en un minuto.",
+    play: "Reproducir el video",
+    placeholder: "Video en preparación",
+    duration: "1 min",
+  },
+  audiences: {
+    eyebrow: "Para quién es",
+    title: "Un lugar para quien organiza.",
+    accent: "Y uno para los que juegan.",
+    organizer: {
+      label: "Para vos, que organizás",
+      title: "El gestor web de tu torneo.",
+      points: [
+        "Armás el torneo con tu formato, tus categorías y tus reglas.",
+        "Programás cada fecha con día, hora, sede y cancha.",
+        "Cargás el resultado una vez: tabla, goleadores y página pública se actualizan solos.",
+        "Sumás colaboradores para que te den una mano con la carga.",
+      ],
+      cta: "Empezar gratis",
+    },
+    players: {
+      label: "Para tus jugadores y su gente",
+      title: "El torneo, a un link de distancia.",
+      points: [
+        "Siguen fixture, resultados y tabla desde la página pública, sin app ni cuenta.",
+        "Los capitanes inscriben a su equipo y arman el plantel.",
+        "Si movés un partido, los jugadores con cuenta ven el aviso en la app Arma2.",
+        "Las fotos de cada fecha quedan junto al partido, para los participantes.",
+      ],
+      link: "Conocé la app Arma2 para jugadores",
+    },
+  },
+  formats: {
+    eyebrow: "Tu reglamento, tu formato",
+    title: "Liga, grupos o eliminatorias.",
+    accent: "Como lo juegues.",
+    lead: "Elegís el formato al crear el torneo y Arma2 arma el fixture. Si la competencia ya arrancó, podés sumarle una fase.",
+    formatsLabel: "Formatos",
+    formats: ["Liga", "Eliminación directa", "Fase de grupos", "Grupos y eliminatorias", "Liga y eliminatorias"],
+    details: [
+      { title: "Ida y vuelta", text: "En la liga y en las llaves. Con partido por el tercer puesto si lo querés." },
+      { title: "Puntos y desempates", text: "Definís cuánto vale ganar o empatar y el orden de desempate: diferencia de gol, goles a favor, resultado entre sí, fair play y más." },
+      { title: "Fútbol 5 a 11", text: "Fútbol 5, 6, 7, 8, 9 y 11. Cada categoría con su modalidad, su género y su rango de edad." },
+      { title: "Toda la temporada", text: "Una temporada puede tener varios torneos y categorías, y todos se gestionan desde el mismo lugar." },
+    ],
+    diagram: { league: "Liga", groups: "Grupos", knockout: "Eliminatoria", groupA: "Grupo A", groupB: "Grupo B", final: "Final" },
+  },
+  publicPage: {
+    eyebrow: "Página pública",
+    title: "Cada torneo,",
+    accent: "con su propia página.",
+    lead: "Un link para compartir por WhatsApp o en redes. Se abre en cualquier celular, sin descargar nada ni crear una cuenta.",
+    tabsLabel: "Lo que ve cualquiera",
+    tabs: ["Inicio", "Fixture", "Resultados", "Tabla", "Goleadores", "Equipos", "Disciplina"],
+    points: [
+      "Se actualiza sola cada vez que cargás un resultado.",
+      "Con el logo del torneo y selector de categoría y fase.",
+      "Si abrís la inscripción, los equipos la piden desde ahí.",
+    ],
+  },
   gallery: {
     eyebrow: "Todo lo demás",
     title: "El torneo entero,",
     accent: "en orden.",
+    groups: [
+      { id: "competencia", label: "Competencia", cards: ["fixture", "reprogramacion"] },
+      { id: "equipos", label: "Equipos", cards: ["inscripcion", "disciplina"] },
+      { id: "trabajo", label: "Trabajo en equipo y fotos", cards: ["colaboradores", "multimedia"] },
+    ],
     cards: [
       { id: "inscripcion", label: "Inscripción por capitán", title: "Los capitanes anotan a sus equipos. Vos aprobás o pedís cambios." },
       { id: "fixture", label: "Fixture", title: "Liga, grupos o eliminatorias, con día, hora, sede y cancha." },
@@ -149,6 +219,33 @@ const es = {
       },
       reschedule: { inbox: "Avisos", title: "Partido reprogramado", before: "Antes", now: "Ahora", tag: "Reprogramado" },
     },
+  },
+  placas: {
+    eyebrow: "Placas para redes",
+    title: "El resumen de la fecha,",
+    accent: "listo para publicar.",
+    lead: "Social Studio arma las placas con los datos del torneo. No hace falta diseñar nada.",
+    steps: [
+      { title: "Elegí", text: "La placa, el estilo y el formato: Feed 4:5 o Historia 9:16." },
+      { title: "Descargá", text: "Sale en alta calidad, con los resultados, la tabla o la próxima fecha." },
+      { title: "Compartí", text: "Desde el celular se abre el menú para compartir; si no, se descarga el archivo." },
+    ],
+    free: { label: "En FREE", text: "Resultados de la fecha, Tabla de posiciones y Próxima fecha, en estilo Base con la firma Arma2." },
+    premium: { label: "Con Premium", text: "Las 11 placas (goleadores, equipo de la fecha, figura, final, campeón y más), los estilos Heritage, Street, Scoreboard y Editorial, sin marca Arma2. Y hasta 100 fotos por temporada en vez de 25." },
+    note: "Placas reales de Social Studio con datos ficticios",
+  },
+  pasos: {
+    eyebrow: "Cómo empezar",
+    title: "Tu torneo, andando",
+    accent: "en cuatro pasos.",
+    steps: [
+      { title: "Entrá", text: "Con tu cuenta de Google, de Apple o con tu email." },
+      { title: "Creá el torneo", text: "Un asistente te guía: información, modalidad, formato, reglas y categorías." },
+      { title: "Sumá los equipos", text: "Cargalos vos o abrí la inscripción para que la pidan los capitanes." },
+      { title: "Jugá la fecha", text: "Publicá el fixture, cargá los resultados y compartí las placas." },
+    ],
+    cta: "Empezar gratis",
+    help: "¿Dudas para arrancar? Escribinos a",
   },
   plans: {
     title: "Empezá en FREE. Pasá a Premium cuando quieras.",
@@ -234,6 +331,10 @@ const es = {
         answer: "Sí. Una temporada puede tener varias categorías y competencias, y podés crear todas las temporadas FREE que necesites.",
       },
       {
+        question: "¿Qué formatos de torneo puedo armar?",
+        answer: "Liga, eliminación directa, fase de grupos, grupos y eliminatorias, o liga y eliminatorias, con ida y vuelta si querés. Configurás los puntos y el orden de desempate, y cada categoría tiene su modalidad (fútbol 5 a 11), su género y su rango de edad.",
+      },
+      {
         question: "¿Cómo se inscriben los equipos?",
         answer:
           "Publicás la convocatoria del torneo. Cada capitán la encuentra en «Explorar torneos», arma su equipo y su plantel, y envía la solicitud. Vos la revisás en «Solicitudes de inscripción»: la aprobás, pedís cambios (con el motivo) o la rechazás. Si pedís cambios, el capitán corrige y la vuelve a enviar.",
@@ -295,6 +396,7 @@ const en: TorneosCopy = {
   nav: {
     links: [
       { label: "How it works", href: "#capitulo-cargas" },
+      { label: "Formats", href: "#torneos-formatos" },
       { label: "Features", href: "#torneos-funciones" },
       { label: "Plans", href: "#torneos-planes" },
       { label: "Questions", href: "#torneos-faq" },
@@ -366,10 +468,79 @@ const en: TorneosCopy = {
     },
     linkChip: "Public link · opens without the app",
   },
+  video: {
+    eyebrow: "In one minute",
+    title: "See how",
+    accent: "Arma2 Tournaments works.",
+    lead: "From creating the tournament to sharing the round's post, in one minute.",
+    play: "Play the video",
+    placeholder: "Video in production",
+    duration: "1 min",
+  },
+  audiences: {
+    eyebrow: "Who it's for",
+    title: "One place for whoever organises.",
+    accent: "And one for those who play.",
+    organizer: {
+      label: "For you, the organiser",
+      title: "The web manager for your tournament.",
+      points: [
+        "Set up the tournament with your format, your categories and your rules.",
+        "Schedule every round with day, time, venue and pitch.",
+        "Enter the result once: standings, top scorers and the public page update themselves.",
+        "Bring in collaborators to help you enter results.",
+      ],
+      cta: "Start for free",
+    },
+    players: {
+      label: "For your players and their people",
+      title: "The tournament, one link away.",
+      points: [
+        "They follow fixtures, results and standings on the public page, with no app or account.",
+        "Captains register their team and build the squad.",
+        "If you move a match, players with an account see the notice in the Arma2 app.",
+        "Every round's photos sit next to the match, for the participants.",
+      ],
+      link: "Meet the Arma2 app for players",
+    },
+  },
+  formats: {
+    eyebrow: "Your rules, your format",
+    title: "League, groups or knockout.",
+    accent: "However you play it.",
+    lead: "Pick the format when you create the tournament and Arma2 builds the fixtures. If the competition has already started, you can add a phase.",
+    formatsLabel: "Formats",
+    formats: ["League", "Knockout", "Group stage", "Groups and knockout", "League and knockout"],
+    details: [
+      { title: "Home and away", text: "In the league and in the knockout rounds. With a third-place match if you want one." },
+      { title: "Points and tie-breaks", text: "Decide what a win or a draw is worth and the tie-break order: goal difference, goals scored, head-to-head, fair play and more." },
+      { title: "5 to 11-a-side", text: "5, 6, 7, 8, 9 and 11-a-side. Each category with its own format, gender and age range." },
+      { title: "The whole season", text: "A season can hold several tournaments and categories, all managed from the same place." },
+    ],
+    diagram: { league: "League", groups: "Groups", knockout: "Knockout", groupA: "Group A", groupB: "Group B", final: "Final" },
+  },
+  publicPage: {
+    eyebrow: "Public page",
+    title: "Every tournament",
+    accent: "gets its own page.",
+    lead: "One link to share on WhatsApp or social media. It opens on any phone, with nothing to download and no account to create.",
+    tabsLabel: "What anyone can see",
+    tabs: ["Home", "Fixtures", "Results", "Standings", "Top scorers", "Teams", "Discipline"],
+    points: [
+      "It updates itself every time you enter a result.",
+      "With the tournament's logo and a category and phase selector.",
+      "If you open registration, teams apply from there.",
+    ],
+  },
   gallery: {
     eyebrow: "Everything else",
     title: "The whole tournament,",
     accent: "in order.",
+    groups: [
+      { id: "competencia", label: "Competition", cards: ["fixture", "reprogramacion"] },
+      { id: "equipos", label: "Teams", cards: ["inscripcion", "disciplina"] },
+      { id: "trabajo", label: "Teamwork and photos", cards: ["colaboradores", "multimedia"] },
+    ],
     cards: [
       { id: "inscripcion", label: "Registration by captains", title: "Captains sign up their teams. You approve or ask for changes." },
       { id: "fixture", label: "Fixtures", title: "League, groups or knockout, with day, time, venue and pitch." },
@@ -409,6 +580,33 @@ const en: TorneosCopy = {
       },
       reschedule: { inbox: "Notices", title: "Match rescheduled", before: "Before", now: "Now", tag: "Rescheduled" },
     },
+  },
+  placas: {
+    eyebrow: "Social posts",
+    title: "The round's summary,",
+    accent: "ready to post.",
+    lead: "Social Studio builds the posts from the tournament data. No design work needed.",
+    steps: [
+      { title: "Choose", text: "The post, the style and the format: Feed 4:5 or Story 9:16." },
+      { title: "Download", text: "It comes out in high quality, with the results, the standings or the next round." },
+      { title: "Share", text: "On a phone the share menu opens; otherwise the file downloads." },
+    ],
+    free: { label: "On FREE", text: "Round results, Standings and Next round, in the Base style with the Arma2 signature." },
+    premium: { label: "With Premium", text: "All 11 posts (top scorers, team of the round, player of the match, final, champion and more), the Heritage, Street, Scoreboard and Editorial styles, without Arma2 branding. And up to 100 photos per season instead of 25." },
+    note: "Real Social Studio posts with made-up data",
+  },
+  pasos: {
+    eyebrow: "Getting started",
+    title: "Your tournament, up and running",
+    accent: "in four steps.",
+    steps: [
+      { title: "Log in", text: "With your Google or Apple account, or with your email." },
+      { title: "Create the tournament", text: "A wizard guides you: details, format, structure, rules and categories." },
+      { title: "Add the teams", text: "Enter them yourself or open registration so captains apply." },
+      { title: "Play the round", text: "Publish the fixtures, enter the results and share the posts." },
+    ],
+    cta: "Start for free",
+    help: "Questions before you start? Write to us at",
   },
   plans: {
     title: "Start on FREE. Move to Premium whenever you want.",
@@ -492,6 +690,10 @@ const en: TorneosCopy = {
       {
         question: "Can I run several tournaments?",
         answer: "Yes. A season can hold several categories and competitions, and you can create as many FREE seasons as you need.",
+      },
+      {
+        question: "Which tournament formats can I set up?",
+        answer: "League, knockout, group stage, groups and knockout, or league and knockout, home and away if you like. You set the points and the tie-break order, and each category has its own format (5 to 11-a-side), gender and age range.",
       },
       {
         question: "How do teams sign up?",
