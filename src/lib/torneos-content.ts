@@ -113,6 +113,7 @@ const es = {
     accent: "Arma2 Torneos.",
     lead: "De crear el torneo a compartir la placa de la fecha, en un minuto y medio.",
     play: "Reproducir el video",
+    watch: "Ver el video completo",
     duration: "1:31",
   },
   audiences: {
@@ -473,6 +474,7 @@ const en: TorneosCopy = {
     accent: "Arma2 Tournaments works.",
     lead: "From creating the tournament to sharing the round's post, in a minute and a half.",
     play: "Play the video",
+    watch: "Watch the full video",
     duration: "1:31",
   },
   audiences: {

@@ -10,7 +10,8 @@ import { TorneosPasos } from "@/components/torneos/TorneosPasos";
 import { TorneosPlacas } from "@/components/torneos/TorneosPlacas";
 import TorneosPage from "@/app/torneos/page";
 import { torneosContent } from "@/lib/torneos-content";
-import { showTorneosVideo, TORNEOS_VIDEO_FILE, torneosVideoSrc } from "@/lib/torneos-video";
+import { showTorneosVideo, TORNEOS_VIDEO, TORNEOS_VIDEO_FILE, torneosVideoSrc } from "@/lib/torneos-video";
+import { TorneosVideo } from "@/components/torneos/TorneosVideo";
 
 const render = (node: React.ReactNode) => renderToStaticMarkup(<LanguageProvider>{node}</LanguageProvider>);
 const all = (locale: "es" | "en") => JSON.stringify(torneosContent[locale]);
@@ -41,6 +42,15 @@ describe("video block (v11, 1:31)", () => {
   it("plays the bundled v11 file in previews and locally", () => {
     expect(torneosVideoSrc("preview", null)).toBe(TORNEOS_VIDEO_FILE);
     expect(torneosVideoSrc(undefined, null)).toBe(TORNEOS_VIDEO_FILE);
+  });
+
+  it("loops a silent excerpt before play and offers the full video", () => {
+    const html = render(<TorneosVideo />);
+    expect(html).toContain('data-video="loop"');
+    expect(html).toContain(TORNEOS_VIDEO.loop);
+    expect(html).toMatch(/<video[^>]*muted[^>]*loop|<video[^>]*loop[^>]*muted/);
+    expect(html).toContain("Ver el video completo");
+    expect(html).not.toContain('data-video="full"');
   });
 
   it.each(["es", "en"] as const)("states the real duration, not «one minute» (%s)", (locale) => {

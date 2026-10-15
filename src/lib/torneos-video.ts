@@ -12,8 +12,13 @@ const ENV_SRC = process.env.NEXT_PUBLIC_TORNEOS_VIDEO_URL?.trim() || null;
 
 export const TORNEOS_VIDEO = {
   src: ENV_SRC,
-  /** 16:9 still before playing: the opening logo frame (v10/v11). */
-  poster: "/torneos/video/poster-v10.webp",
+  /**
+   * Silent preview that loops before the visitor presses play: v11 66.85 s → 71.75 s (the Premium styles, then the
+   * sponsors band), with a slow continuous zoom so nothing is ever still. ~0.4 MB, no audio track.
+   */
+  loop: "/torneos/video/arma2-torneos-v11-loop.mp4",
+  /** Still for reduced motion and before the loop loads: a frame of that same passage (v11 at 71.2 s). */
+  poster: "/torneos/video/poster-v11-sponsors.webp",
 } as const;
 
 /** The file to play: the configured URL, or the bundled file outside Production; null hides the block. */
