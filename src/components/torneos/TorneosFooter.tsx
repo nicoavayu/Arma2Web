@@ -4,7 +4,7 @@ import { SiteSwitch } from "@/components/shared/SiteSwitch";
 import { TorneosLogo, useTorneosHomeHref } from "@/components/torneos/TorneosNav";
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { getSiteUrl } from "@/lib/site-urls";
-import { TORNEOS_CONTACT_HREF } from "@/lib/torneos-links";
+import { TORNEOS_CONTACT_HREF, TORNEOS_LEGAL_LINKS } from "@/lib/torneos-links";
 
 const linkClass = "text-sm text-white/60 transition-colors hover:text-white";
 
@@ -43,9 +43,19 @@ export function TorneosFooter({ homeHref: override }: { homeHref?: string }) {
           <ul className="mt-4 space-y-3">
             <li><a href={getSiteUrl("jugadores", "/privacy")} className={linkClass}>{copy.privacy}</a></li>
             <li><a href={getSiteUrl("jugadores", "/terms")} className={linkClass}>{copy.terms}</a></li>
+            <li><a href={TORNEOS_LEGAL_LINKS.termsOfSale} className={linkClass}>{copy.termsOfSale}</a></li>
             <li><a href={getSiteUrl("jugadores", TORNEOS_CONTACT_HREF)} className={linkClass}>{copy.contact}</a></li>
           </ul>
         </div>
+      </div>
+      {/* Consumer buttons of the purchase (Disp. DNDCyAC 954/2025): the pages live on the app host, where Premium is sold. */}
+      <div className="flex flex-wrap gap-3 border-t border-white/[0.07] px-[clamp(20px,6vw,104px)] py-5">
+        <a href={TORNEOS_LEGAL_LINKS.revocation} className="inline-flex min-h-11 items-center rounded-full border border-white/60 px-4 text-sm font-extrabold tracking-[0.02em] text-white hover:bg-white/10">
+          {copy.revocation}
+        </a>
+        <a href={TORNEOS_LEGAL_LINKS.cancellation} className="inline-flex min-h-11 items-center rounded-full border border-white/60 px-4 text-sm font-extrabold tracking-[0.02em] text-white hover:bg-white/10">
+          {copy.cancellation}
+        </a>
       </div>
       <div className="border-t border-white/[0.07] px-[clamp(20px,6vw,104px)] py-6 text-xs text-white/55">
         © {year} Arma2. {copy.rights}

@@ -4,17 +4,16 @@ import type { Locale } from "@/lib/i18n";
  * Copy for the Torneos portal (torneos.arma2.com.ar), ES/EN.
  *
  * COMMERCIAL MODEL (spec §6.1, approved 2026-10-12): every price, limit and
- * plan rule lives in `plans` and in the plan answers of `faq`. FREE is what the
- * product offers today. Premium can't be bought yet (payments are off), so it
- * is shown as "Próximamente" and its rules (season length, photo deletion) are
- * written as future. When payments go live, flip `premiumAvailable` and review
- * that copy against the product (docs/torneos-landing-gaps.md).
+ * plan rule lives in `plans` and in the plan answers of `faq`. Premium is on
+ * sale since 2026-10-15 (public checkout open in Armado_Equipos). Its rules are
+ * the published terms of sale (https://app.arma2.com.ar/terminos-de-venta):
+ * if they change, this copy follows them (docs/torneos-landing-gaps.md).
  */
 
 /** Commercial model (spec §6.1). Copy below and the JSON-LD derive from it. */
 export const COMMERCIAL = {
-  /** Payments are off in Armado_Equipos: no purchase link, no Premium offer in the JSON-LD. */
-  premiumAvailable: false,
+  /** Public checkout is open in Armado_Equipos (2026-10-15): purchase link and Premium offer in the JSON-LD. */
+  premiumAvailable: true,
   premiumPriceArs: 20000,
   seasonMonths: 6,
   photosFree: 25,
@@ -48,7 +47,7 @@ const es = {
   },
   hero: {
     title: ["Todo el torneo.", "Mucho menos trabajo."],
-    body: "Fixture, resultados, tabla, página pública y placas para redes en un mismo lugar. Cargás el resultado una vez y se actualiza todo.",
+    body: "Fixture, resultados, tabla, página pública y placas para redes en un mismo lugar. Cargás el resultado una sola vez y de ahí sale todo lo demás.",
     start: "Empezar gratis",
     explore: "Ver cómo funciona",
     freeNote: "Empezás en FREE, sin tarjeta.",
@@ -60,13 +59,13 @@ const es = {
     titleAccent: "en cuatro pasos.",
     chapters: [
       { id: "cargas", step: "Cargás", title: "Cargás el resultado.", accent: "Una sola vez.", text: "Marcador, goles y quién los hizo. Nada más." },
-      { id: "se-actualiza", step: "Se actualiza", title: "La tabla se ordena sola.", accent: "", text: "Puntos, diferencia de gol y goleadores se recalculan al instante. Nada de planillas." },
+      { id: "se-actualiza", step: "Se actualiza", title: "Recalculás y publicás.", accent: "", text: "La tabla, la diferencia de gol y los goleadores salen de las actas oficiales: los recalculás y, cuando está lista, publicás la tabla. Nada de planillas." },
       {
         id: "se-publica",
         step: "Se publica",
         title: "Todos lo ven",
         accent: "al toque.",
-        text: "La página pública del torneo se actualiza sola. Jugadores y familias la abren desde un link, sin descargar nada.",
+        text: "El resultado oficial aparece en la página pública del torneo, y la tabla apenas la publicás. Jugadores y familias la abren desde un link, sin descargar nada.",
       },
       {
         id: "se-comparte",
@@ -91,7 +90,7 @@ const es = {
       status: ["Tabla y goleadores", "Página pública", "Placa de resultado"],
       save: "Guardar resultado",
       saved: "Resultado guardado",
-      toast: "Tabla, goleadores y página pública actualizados",
+      toast: "Resultado oficial. Tabla y goleadores publicados",
     },
     publicPage: {
       kind: "Torneo · Liga",
@@ -152,8 +151,8 @@ const es = {
     },
   },
   plans: {
-    title: "Empezá en FREE. Premium llega próximamente.",
-    lead: "FREE ya tiene todo para organizar y publicar tu temporada. Premium todavía no se puede comprar: te contamos cómo va a funcionar.",
+    title: "Empezá en FREE. Pasá a Premium cuando quieras.",
+    lead: "FREE tiene todo para organizar y publicar tu temporada. Premium suma todas las placas, más fotos y más colaboradores para la temporada que elijas.",
     free: {
       name: "FREE",
       tag: "Disponible hoy",
@@ -173,7 +172,7 @@ const es = {
     },
     premium: {
       name: "PREMIUM",
-      tag: "Próximamente",
+      tag: "Disponible hoy",
       priceLabel: "Precio de lanzamiento",
       price: `ARS ${PRICE_ES}`,
       priceDetail: "finales por temporada",
@@ -193,9 +192,9 @@ const es = {
     premiumAdds: "Todo lo de FREE, más",
     start: "Empezar gratis",
     choosePremium: "Elegir Premium",
-    comingSoon: "Próximamente",
-    comingSoonNote: "Todavía no se puede comprar. Mientras tanto, organizá tu temporada en FREE.",
-    photosNotice: "Próximamente también: al cerrar cada temporada, las fotos se van a eliminar. Antes te vamos a avisar para que puedas descargarlas.",
+    premiumHow: "Se compra dentro de Arma2 Torneos, desde «Mi plan» de la temporada. Pago con Mercado Pago. Tenés 10 días para arrepentirte.",
+    termsOfSale: "Términos de venta",
+    photosNotice: "Al terminar la temporada, sus fotos dejan de estar disponibles y pueden eliminarse; los resultados, las tablas y el historial se conservan. Si querés guardarlas, descargalas antes de la fecha de fin.",
     comparison: {
       toggle: "Ver comparación completa",
       caption: "Comparación entre FREE y Premium",
@@ -203,7 +202,7 @@ const es = {
       plan: "Plan",
       included: "Incluido",
       rows: [
-        ["Disponibilidad", "Disponible hoy", "Próximamente"],
+        ["Disponibilidad", "Disponible hoy", "Disponible hoy"],
         ["Precio", "$0", `Lanzamiento: ARS ${PRICE_ES} finales por temporada`],
         ["Modalidad", "Gratis", "Pago único por temporada, sin renovación automática"],
         ["Gestión completa del torneo", "✓", "✓"],
@@ -246,11 +245,11 @@ const es = {
       },
       {
         question: "¿Cómo funciona Premium?",
-        answer: `Premium todavía no se puede comprar: los pagos no están habilitados. Precio de lanzamiento: ARS ${PRICE_ES} finales por temporada, en un solo pago y sin renovación automática. Va a cubrir todas las categorías de la temporada, que va a durar hasta ${C.seasonMonths} meses desde que la activás. Mientras tanto, podés organizar todo en FREE.`,
+        answer: `Premium se compra para una temporada, desde «Mi plan» dentro de Arma2 Torneos; lo puede comprar el propietario o un administrador. Precio de lanzamiento: ARS ${PRICE_ES} finales por temporada, en un solo pago con Mercado Pago y sin renovación automática. Cubre todas las categorías de la temporada, que dura hasta ${C.seasonMonths} meses desde que la activás; pasar a Premium no cambia la fecha de cierre. Tenés 10 días corridos desde el pago para arrepentirte y te devolvemos el total.`,
       },
       {
         question: "¿Qué pasa con las fotos al terminar la temporada?",
-        answer: `Hoy FREE guarda hasta ${C.photosFree} fotos por temporada. Próximamente, al cerrar cada temporada las fotos se van a eliminar: antes te vamos a avisar para que puedas descargarlas. Premium, cuando esté disponible, va a guardar hasta ${C.photosPremium}.`,
+        answer: `FREE guarda hasta ${C.photosFree} fotos por temporada y Premium hasta ${C.photosPremium}. Al terminar la temporada, sus fotos dejan de estar disponibles y pueden eliminarse; los resultados, las tablas y el historial se conservan. Si querés guardar las fotos, descargalas antes de la fecha de fin.`,
       },
     ],
   },
@@ -275,6 +274,9 @@ const es = {
     legal: "Legal",
     privacy: "Privacidad",
     terms: "Términos",
+    termsOfSale: "Términos de venta",
+    revocation: "BOTÓN DE ARREPENTIMIENTO",
+    cancellation: "BOTÓN DE BAJA DE SERVICIO",
     contact: "Contacto",
     rights: "Todos los derechos reservados.",
   },
@@ -305,7 +307,7 @@ const en: TorneosCopy = {
   },
   hero: {
     title: ["The whole tournament.", "Much less work."],
-    body: "Fixtures, results, standings, a public page and social posts in one place. Enter the result once and everything updates.",
+    body: "Fixtures, results, standings, a public page and social posts in one place. Enter the result once and everything else comes from it.",
     start: "Start for free",
     explore: "See how it works",
     freeNote: "You start on FREE, no card needed.",
@@ -317,13 +319,13 @@ const en: TorneosCopy = {
     titleAccent: "in four steps.",
     chapters: [
       { id: "cargas", step: "Enter", title: "Enter the result.", accent: "Just once.", text: "Score, goals and who scored them. That's it." },
-      { id: "se-actualiza", step: "Updates", title: "The table sorts itself.", accent: "", text: "Points, goal difference and top scorers recalculate instantly. No spreadsheets." },
+      { id: "se-actualiza", step: "Updates", title: "Recalculate and publish.", accent: "", text: "Standings, goal difference and top scorers come from the official match reports: recalculate them and, once it's ready, publish the table. No spreadsheets." },
       {
         id: "se-publica",
         step: "Goes public",
         title: "Everyone sees it",
         accent: "right away.",
-        text: "The tournament's public page updates itself. Players and families open it from a link, no download needed.",
+        text: "The official result shows on the tournament's public page, and the table as soon as you publish it. Players and families open it from a link, no download needed.",
       },
       {
         id: "se-comparte",
@@ -348,7 +350,7 @@ const en: TorneosCopy = {
       status: ["Standings and top scorers", "Public page", "Results post"],
       save: "Save result",
       saved: "Result saved",
-      toast: "Standings, top scorers and public page updated",
+      toast: "Result official. Standings and top scorers published",
     },
     publicPage: {
       kind: "Tournament · League",
@@ -409,8 +411,8 @@ const en: TorneosCopy = {
     },
   },
   plans: {
-    title: "Start on FREE. Premium is coming soon.",
-    lead: "FREE already has everything to run and publish your season. Premium can't be bought yet: here's how it will work.",
+    title: "Start on FREE. Move to Premium whenever you want.",
+    lead: "FREE has everything to run and publish your season. Premium adds every post, more photos and more collaborators for the season you choose.",
     free: {
       name: "FREE",
       tag: "Available today",
@@ -430,7 +432,7 @@ const en: TorneosCopy = {
     },
     premium: {
       name: "PREMIUM",
-      tag: "Coming soon",
+      tag: "Available today",
       priceLabel: "Launch price",
       price: `ARS ${PRICE_EN}`,
       priceDetail: "final price per season",
@@ -450,9 +452,9 @@ const en: TorneosCopy = {
     premiumAdds: "Everything in FREE, plus",
     start: "Start for free",
     choosePremium: "Choose Premium",
-    comingSoon: "Coming soon",
-    comingSoonNote: "It can't be bought yet. In the meantime, run your season on FREE.",
-    photosNotice: "Also coming: when each season closes, its photos will be deleted. We'll let you know beforehand so you can download them.",
+    premiumHow: "You buy it inside Arma2 Tournaments, from the season's “My plan”. Paid with Mercado Pago. You have 10 days to change your mind.",
+    termsOfSale: "Terms of sale (in Spanish)",
+    photosNotice: "When the season ends, its photos are no longer available and may be deleted; results, standings and history are kept. To keep the photos, download them before the end date.",
     comparison: {
       toggle: "See full comparison",
       caption: "FREE and Premium compared",
@@ -460,7 +462,7 @@ const en: TorneosCopy = {
       plan: "Plan",
       included: "Included",
       rows: [
-        ["Availability", "Available today", "Coming soon"],
+        ["Availability", "Available today", "Available today"],
         ["Price", "$0", `Launch: ARS ${PRICE_EN} final per season`],
         ["Billing", "Free", "One-off payment per season, no automatic renewal"],
         ["Full tournament management", "✓", "✓"],
@@ -503,11 +505,11 @@ const en: TorneosCopy = {
       },
       {
         question: "How does Premium work?",
-        answer: `Premium can't be bought yet: payments aren't enabled. Launch price: ARS ${PRICE_EN} (final) per season, in a single payment with no automatic renewal. It will cover every category in the season, which will last up to ${C.seasonMonths} months from when you activate it. In the meantime, you can run everything on FREE.`,
+        answer: `Premium is bought for one season, from “My plan” inside Arma2 Tournaments; the season's main organiser or an administrator can buy it. Launch price: ARS ${PRICE_EN} (final) per season, in a single Mercado Pago payment with no automatic renewal. It covers every category in the season, which lasts up to ${C.seasonMonths} months from when you activate it; moving to Premium doesn't change the closing date. You have 10 calendar days from the payment to change your mind and get a full refund.`,
       },
       {
         question: "What happens to photos when the season ends?",
-        answer: `Today FREE keeps up to ${C.photosFree} photos per season. Coming soon: when each season closes, its photos will be deleted, and we'll let you know beforehand so you can download them. Premium, once available, will keep up to ${C.photosPremium}.`,
+        answer: `FREE keeps up to ${C.photosFree} photos per season and Premium up to ${C.photosPremium}. When the season ends, its photos are no longer available and may be deleted; results, standings and history are kept. To keep the photos, download them before the end date.`,
       },
     ],
   },
@@ -532,6 +534,9 @@ const en: TorneosCopy = {
     legal: "Legal",
     privacy: "Privacy",
     terms: "Terms",
+    termsOfSale: "Terms of sale (in Spanish)",
+    revocation: "BOTÓN DE ARREPENTIMIENTO (cancel a purchase)",
+    cancellation: "BOTÓN DE BAJA DE SERVICIO (end the service)",
     contact: "Contact",
     rights: "All rights reserved.",
   },

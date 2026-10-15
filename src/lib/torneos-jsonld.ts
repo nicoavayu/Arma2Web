@@ -3,7 +3,7 @@ import { COMMERCIAL, torneosContent } from "@/lib/torneos-content";
 /**
  * Structured data for the Torneos portal, built from the same copy and the
  * same commercial constants the page renders (default locale). The Premium
- * offer is left out while Premium can't be bought.
+ * offer is listed only while `COMMERCIAL.premiumAvailable` is true.
  */
 export function torneosJsonLd({ premiumAvailable = COMMERCIAL.premiumAvailable }: { premiumAvailable?: boolean } = {}) {
   const copy = torneosContent.es;

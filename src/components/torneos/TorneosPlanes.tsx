@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 
 import { useTorneosContent } from "@/components/torneos/useTorneosContent";
 import { COMMERCIAL } from "@/lib/torneos-content";
-import { getCreateTournamentTarget, getPremiumTournamentTarget, type CtaTarget } from "@/lib/torneos-links";
+import { getCreateTournamentTarget, getPremiumTournamentTarget, TORNEOS_LEGAL_LINKS, type CtaTarget } from "@/lib/torneos-links";
 import { cn } from "@/lib/utils";
 
 function CtaLink({ target, label, tone }: { target: CtaTarget; label: string; tone: "ghost" | "violet" }) {
@@ -41,8 +41,9 @@ function Badge({ children, tone }: { children: string; tone: "live" | "soon" }) 
 
 /**
  * Plans and comparison. Every number comes from `plans` in torneos-content.ts,
- * which builds them from COMMERCIAL. While Premium can't be bought, its card
- * says "Próximamente" and has no purchase link.
+ * which builds them from COMMERCIAL. Premium is bought inside the product (the
+ * season's Plan page), so its CTA enters Torneos with the Premium intent and the
+ * card links the published terms of sale.
  */
 export function TorneosPlanes() {
   const copy = useTorneosContent().plans;
@@ -84,7 +85,7 @@ export function TorneosPlanes() {
           <article className="flex flex-col rounded-3xl border border-[#8b6dff]/60 bg-[linear-gradient(170deg,rgba(108,77,255,0.28),rgba(108,77,255,0.06))] p-5 shadow-[0_30px_80px_-30px_rgba(108,77,255,0.8)] md:p-8">
             <div className="flex items-center justify-between gap-3">
               <h3 className="text-xs font-extrabold tracking-[0.16em] text-[#c9c2ff]">{copy.premium.name}</h3>
-              {!COMMERCIAL.premiumAvailable && <Badge tone="soon">{copy.premium.tag}</Badge>}
+              {COMMERCIAL.premiumAvailable && <Badge tone="live">{copy.premium.tag}</Badge>}
             </div>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-white/65">{copy.premium.priceLabel}</p>
             <p className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
@@ -106,14 +107,15 @@ export function TorneosPlanes() {
               ))}
             </ul>
             <div className="mt-6 md:mt-8">
-              {COMMERCIAL.premiumAvailable ? (
-                <CtaLink target={getPremiumTournamentTarget()} label={copy.choosePremium} tone="violet" />
-              ) : (
+              {COMMERCIAL.premiumAvailable && (
                 <>
-                  <p className="flex min-h-12 w-full items-center justify-center rounded-xl border border-dashed border-white/30 px-5 text-base font-bold text-white/80">
-                    {copy.comingSoon}
+                  <CtaLink target={getPremiumTournamentTarget()} label={copy.choosePremium} tone="violet" />
+                  <p className="mt-3 text-center text-xs leading-relaxed text-white/70">
+                    {copy.premiumHow}{" "}
+                    <a href={TORNEOS_LEGAL_LINKS.termsOfSale} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white">
+                      {copy.termsOfSale}
+                    </a>
                   </p>
-                  <p className="mt-3 text-center text-xs text-white/65">{copy.comingSoonNote}</p>
                 </>
               )}
             </div>

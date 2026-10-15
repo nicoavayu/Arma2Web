@@ -168,7 +168,7 @@ export const translations = {
       },
       torneosBand: {
         title: "¿Organizás un torneo?",
-        body: "Fixture, tabla, página pública y placas para redes. Cargás el resultado una vez y se actualiza todo.",
+        body: "Fixture, tabla, página pública y placas para redes. Cargás el resultado una sola vez y de ahí sale todo lo demás.",
         cta: "Conocé Arma2 Torneos",
       },
       download: {
@@ -383,7 +383,7 @@ export const translations = {
       },
       torneosBand: {
         title: "Running a tournament?",
-        body: "Fixtures, standings, a public page and social posts. Enter the result once and everything updates.",
+        body: "Fixtures, standings, a public page and social posts. Enter the result once and everything else comes from it.",
         cta: "Discover Arma2 Tournaments",
       },
       download: {
